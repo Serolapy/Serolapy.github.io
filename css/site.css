@@ -1,0 +1,33 @@
+body {
+	background: url("../img/background.jpg") no-repeat;
+	background-size: 100% auto;
+}
+header{
+	text-align:right;
+}
+nav{
+	width:100%;
+	text-align:center;
+}
+article{
+	float:none;
+	width:60%;
+	background-color:white;
+}
+aside{
+	position: fixed;
+	right:20%;
+	float:right;
+	width:15%;
+	background-color:blue;
+	padding:10px;
+}
+footer{
+	float:none;
+	width:100%;
+	text-align: center;
+}
+.mylink{
+	height:30px;
+	width:30px;
+}
