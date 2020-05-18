@@ -1,1 +1,16 @@
+.MRbuttom {
+	background: black;
+	border-color: #73AA1F;
+	width: 40%;
+	border-radius: 20px;
+	text-align: center;
+	color: white;
+	outline: none;
+	display: block;
+	margin: 5px auto;
+}
 
+.MRbuttom:focus{
+	border-color:#40E0D0;
+	width: 50%;
+}
