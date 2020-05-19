@@ -1,4 +1,4 @@
-.MRbuttom {
+.MRbutton{
 	background: black;
 	border-color: #73AA1F;
 	width: 40%;
@@ -10,7 +10,7 @@
 	margin: 5px auto;
 }
 
-.MRbuttom:focus{
+.MRbutton:focus{
 	border-color:#40E0D0;
 	width: 50%;
 }
