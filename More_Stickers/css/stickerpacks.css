@@ -10,7 +10,7 @@
 	margin: 5px auto;
 }
 
-.MRbutton:focus{
+.MRbutton:hover{
 	border-color:#40E0D0;
 	width: 50%;
 }
