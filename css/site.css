@@ -135,6 +135,7 @@ article h1{
 	font-family:HEADER;
 	border:1px solid black;
 	border-radius: 0 20px 0 20px;
+	font-size:2em;
 }
 article h1::first-letter{
 	text-decoration: underline;
@@ -275,7 +276,7 @@ article .download li a:hover{
 }
 .list a:first-child{
 	font-weight:bold;
-	font-size:2em;
+	font-size:1.5em;
 	color:black;
 	text-decoration:underline;
 }
