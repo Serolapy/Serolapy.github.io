@@ -126,7 +126,7 @@ footer a:hover{
 /*Настройки содержимого*/
 article h1{
 	display:block;
-	text-align: center;
+	text-align: right;
 	margin:0;
 	margin-bottom:5px;
 	padding-top:10px;
@@ -251,4 +251,34 @@ article .download li a:hover{
 	text-align:right;
 	width:100%;
 	background-color: rgba(255, 228, 196, 0.9);
+}
+#list{
+	background-color:rgba(255,255,255,0.8);
+	border-color:black;
+	border-top-width:5px;
+	border-left-width:5px;
+	border-right-width:1px;
+	border-bottom-width:1px;
+	border-bottom-style: solid;
+	border-right-style:solid;
+	border-left-style:double;
+	border-top-style:double;
+	padding:5px;
+	margin:10px 5px 10px 5px;
+}
+.list{
+	font-family:HEADER;
+	margin:1px;
+	height:6em;
+	overflow:hidden;
+	border-bottom: 1px solid black;
+}
+.list a:first-child{
+	font-weight:bold;
+	font-size:2em;
+	color:black;
+	text-decoration:underline;
+}
+.list a:first-child:hover{
+	color:rgb(255, 222, 173);
 }
