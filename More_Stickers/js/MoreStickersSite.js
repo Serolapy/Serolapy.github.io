@@ -48,9 +48,9 @@ var previewNB = 0,
 	newstickerPack = '',
 	valueSt ='';
 function Ferrors(){
-	document.getElementById("ID").style.color = "#FFFFFF";
-	document.getElementById("name").style.color = "#FFFFFF";
-	document.getElementById("nameSt").style.color = "#FFFFFF";
+	document.getElementById("ID").style.color = "black";
+	document.getElementById("name").style.color = "black";
+	document.getElementById("nameSt").style.color = "bkack";
 }
 function preview() {
 	//стикеры
