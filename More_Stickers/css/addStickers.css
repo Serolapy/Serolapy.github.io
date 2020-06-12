@@ -1,0 +1,52 @@
+.tableMR{
+	margin: auto;
+	color:black;
+	
+}
+.text{
+	text-align: center;
+    margin: 5px auto;
+    border-radius: 5px;
+    border-color: black;
+    width: 75%;
+    display: block;
+    transition: 0.5s;
+    outline: none;
+}
+.text:focus{
+	width:100%;
+	border-color:rgb(255, 222, 173);
+}
+#tablesticks{
+	margin: auto;
+}
+.newsticker{
+	background: none;
+	border-color: black;
+	text-align: center;
+	outline: none;
+	color: black;
+	border-radius: 5px;
+}
+.newsticker:focus {
+	border-color:rgb(255, 222, 173);
+}
+.buttonpm{
+	outline: none;
+    border-color: black;
+    background: rgba(255, 222, 173,0.6); 
+    border-radius: 20px;
+    color: black;
+    width: 100%;
+}
+.buttonpm:hover{
+	border-color: rgb(255, 222, 173);
+}
+.button{
+	outline: none;
+    border-color: #000000;
+    background: none;
+    border-radius: 20px;
+    width: 75%;
+    cursor: pointer;
+}
