@@ -4,11 +4,11 @@
 */
 @font-face{
 	font-family: HEADER;
-    src: url(/css/fonts/DidactGothic.ttf);
+    src: url(fonts/DidactGothic.ttf);
 }
 body {
-	background: url("/img/background.jpg") no-repeat;
-	bachgfond-color:white;
+	background: url("../img/background.jpg") no-repeat;
+	background-color:white;
 	background-size: 100% auto;
 	font-family: Arial;
 	margin:0px;
