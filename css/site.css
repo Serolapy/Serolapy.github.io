@@ -7,7 +7,8 @@
     src: url(/css/fonts/DidactGothic.ttf);
 }
 body {
-	background: url("/img/background.jpg") no-repeat, url("https://i.ibb.co/4PVLy8Y/0.png");
+	background: url("/img/background.jpg") no-repeat;
+	bachgfond-color:white;
 	background-size: 100% auto;
 	font-family: Arial;
 	margin:0px;
