@@ -1,10 +1,10 @@
 window.onload = function(){
 	//смена титла
-	var newTitle = document.getElementsByTagName("article")[0].getElementsByTagName("h1")[0].innerText;
+	/*var newTitle = document.getElementsByTagName("article")[0].getElementsByTagName("h1")[0].innerText;
 	if (newTitle!="undefined"){
 		document.getElementsByTagName("title")[0].innerHTML = newTitle + ' | Serolapy';
 	}
-	
+	*/
 	var Mods = new Array("More_Stickers","CBM");
 	var ModsLink = new Array("/More_Stickers", "CBM");
 	var ModsList = document.createElement("div");
@@ -23,4 +23,3 @@ window.onload = function(){
 	
 	
 }
-	
