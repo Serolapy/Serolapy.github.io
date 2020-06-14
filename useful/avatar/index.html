@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+	<meta charset="UTF-8">
+	<head>
+		<title>Serolapy</title>
+		<link rel="stylesheet" href="/css/site.css">
+		<link rel="SHORTCUT ICON" href="/img/favicon.ico" type="image/x-icon">
+		<script src="/js/site.js"></script>
+	</head>
+	<body>
+		<header>
+			<div id="header"><a href="https://vk.com/serolapy"><img src="/img/vk.png" class="mylink"></a><a href="https://t.me/serolapy"><img src="/img/telegram.png" class="mylink"></a><a href=""><img src="" class=""></a> Пушистый блог Серолапого<br><span>@serolapy</span></div>
+		</header>
+		<nav>
+			<ul>
+				<li>
+					<a href="/blogs">Блоги</a>
+				</li>
+				<li>
+					<a href="javascript:alert('Ещё не добавлено')">Интересное</a>
+				</li>
+				<li>
+					<a href="/">Главная</a>
+				</li>
+				<li>
+					<a href="/mods">Моды</a>
+				</li>
+				<li>
+					<a href="javascript:alert('Ещё не добавлено')">Полезное</a>
+				</li>
+			</ul>
+		</nav>
+		<aside> 	<!--Боковая панель-->
+			<h1>Смотрите также:</h1>
+		</aside>
+		<article>	<!--Главная часть-->
+			<h1>Поиск аватарки по ID</h1>
+			<div class="update">14 июня 2020</div>
+			Добра! Этот небольшой скрипт поможет вам найти аватарку любого игрока в CatWar, зная лишь только его ID.
+			Введите ID игрока:<input type="text" id="ID" placeholder="982738">
+			<button id="btn" onclick="a(document.getElementById('ID').value,'.jpg')">Поиск</button>
+			<img scr="#" id="img" onerror="a(document.getElementById('ID').value,e)">
+			<script>
+				var d = document.getElementById("img"),
+					e ='';
+				function a(b, c){
+					switch (c){
+						case ".jpg":
+							e = ".png";
+							break;
+						case ".png":
+							e = ".gif";
+							break;
+						case ".gif":
+							e = ".ERROR";
+							break;
+						case ".ERROR":
+							e = "";
+							alert("Игрока с данным ID не существует");
+						}
+					if(e!=""){
+						d.src = 'https://e.catwar.su/avatar/'+b+c;
+					}
+				}
+			</script>
+		</article>
+		<footer>
+			(c)<a href="https://catwar.su/cat982738">Серолапый</a>, 2020
+		</footer>
+	</body>
+</html>
