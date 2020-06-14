@@ -12,7 +12,6 @@ body {
 	background-size: 100% auto;
 	font-family: Arial;
 	margin:0px;
-	font-size:12pt;
 }
 header{
 	text-align:right;
@@ -61,7 +60,6 @@ article{
 	background-color:rgba(255, 228, 196, 0.8);
 	border-radius:0 20px 0 0;
 	padding-bottom:10px;
-	font-size:1em;
 }
 aside{
 	position: absolute;
