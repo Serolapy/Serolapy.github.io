@@ -10,11 +10,11 @@ function mod(check,author,link,site /*имя в Локал с, автор мод
 			siteCheck=true
 	}}
 	if(site.length==0 || siteCheck){
-		var checkMod = localStorage.setItem[check];
+		var checkMod = localStorage.getItem[check];
 		if(checkMod==null){
 			//дефолтные значения
-			checkMod = false;
-			localStorage.setItem[check] = false;
+			checkMod = true;
+			localStorage.setItem[check] = true;
 		}
 		this.name = check;
 		this.check = checkMod;
@@ -324,7 +324,7 @@ $(function(){
 		УВЕДОМЛЕНИЯ
 	*/
 	/*Значок уведомлений*/
-	if(localStorage.setItem['MLNotifications']){
+	if(localStorage.getItem['MLNotifications']){
 		$('#MLCnot').children().eq(0).html('notifications');
 		$('#MLCnot_window_ON').children().eq(0).html('toggle_on');
 		$('#MLCnot_window_ON').css("color","#00FF7F");
@@ -338,7 +338,7 @@ $(function(){
 	/*Вкл показа уведомлений*/
 	$('#MLCnot_window_ON').on('click',function(e){
 		e.preventDefault();
-		if(!localStorage.setItem['MLNotifications']){
+		if(!localStorage.getItem['MLNotifications']){
 			localStorage.setItem['MLNotifications']=true;
 			$('#MLCnot').children().eq(0).html('notifications');
 			$('#MLCnot').css({'color':'white','border-color':'white'});
@@ -397,7 +397,7 @@ $(function(){
 	$(".MLCmods_window_table_button_class").on('click',function(e){
 		e.preventDefault();;
 		var MOD = $(this).attr("data-id");
-		if(localStorage.setItem[MOD]){
+		if(localStorage.getItem[MOD]){
 			localStorage.setItem[MOD] = false;
 			$('#a_'+MOD).children().eq(0).html('toggle_off');
 			$('#a_'+MOD).css('color','#EB8D8D');
