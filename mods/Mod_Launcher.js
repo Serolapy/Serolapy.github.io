@@ -324,7 +324,7 @@ $(function(){
 		УВЕДОМЛЕНИЯ
 	*/
 	/*Значок уведомлений*/
-	if(localStorage.getItem['MLNotifications']){
+	if(localStorage.getItem('MLNotifications')){
 		$('#MLCnot').children().eq(0).html('notifications');
 		$('#MLCnot_window_ON').children().eq(0).html('toggle_on');
 		$('#MLCnot_window_ON').css("color","#00FF7F");
@@ -338,7 +338,7 @@ $(function(){
 	/*Вкл показа уведомлений*/
 	$('#MLCnot_window_ON').on('click',function(e){
 		e.preventDefault();
-		if(!localStorage.getItem['MLNotifications']){
+		if(!localStorage.getItem('MLNotifications')){
 			localStorage.setItem['MLNotifications']=true;
 			$('#MLCnot').children().eq(0).html('notifications');
 			$('#MLCnot').css({'color':'white','border-color':'white'});
@@ -397,7 +397,7 @@ $(function(){
 	$(".MLCmods_window_table_button_class").on('click',function(e){
 		e.preventDefault();;
 		var MOD = $(this).attr("data-id");
-		if(localStorage.getItem[MOD]){
+		if(localStorage.getItem(MOD)){
 			localStorage.setItem[MOD] = false;
 			$('#a_'+MOD).children().eq(0).html('toggle_off');
 			$('#a_'+MOD).css('color','#EB8D8D');
