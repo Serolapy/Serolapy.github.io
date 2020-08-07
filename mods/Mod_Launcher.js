@@ -380,7 +380,7 @@ $(function(){
 	*/
 	
 	/*Создание списка модов*/
-	for(i;i<MODS.length;i++){
+	for(i=0;i<MODS.length;i++){
 		var tr = $('<tr><\/tr'),
 		td1 = $('<td><\/td'),
 		td2 = $('<td><\/td'),
