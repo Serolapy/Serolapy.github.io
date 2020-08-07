@@ -15,8 +15,8 @@ function mod(check,author,link,site /*имя в Локал с, автор мод
 		var checkMod = localStorage.getItem(check);
 		if(checkMod==null){
 			//дефолтные значения
-			checkMod = true;
-			localStorage.setItem(check,true);
+			checkMod = false;
+			localStorage.setItem(check,false);
 		}
 		this.name = check;
 		this.check = checkMod;
