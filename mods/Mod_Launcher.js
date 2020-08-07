@@ -387,7 +387,7 @@ $(function(){
 		if(MODS[i].check){a='toggle_on';}
 		else{a='toggle_off';};
 		var b = $('<a><\/a>').attr('href','#').attr('id','a_'+MODS[i].name).html("<span class='material-icons'>"+a+"<\/span>").addClass("MLCmods_window_table_button_class").attr("data-id",MODS[i].name).css('color','#EB8D8D');
-		if(MODS[i].check){b.css('color','#00FF7F';}
+		if(MODS[i].check){b.css('color','#00FF7F');}
 		td2.append(b);
 		tr.append(td1,td2);
 		$("#MLCmods_window_table tbody").append(tr);
