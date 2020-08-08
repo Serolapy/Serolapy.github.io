@@ -18,12 +18,6 @@ function mod(check,author,link,site /*имя в Локал с, автор мод
 			checkMod = false;
 			localStorage.setItem(check,false);
 		}
-		this.name = check;
-		this.check = checkMod;
-		this.author = author;
-		this.link = link;
-		this.site = site;
-		
 		if(checkMod){
 			//если мод разрешён
 			let script = document.createElement("script");
@@ -31,6 +25,11 @@ function mod(check,author,link,site /*имя в Локал с, автор мод
 			document.getElementsByTagName("head")[0].appendChild(script);
 		}
 	}
+	this.check = localStorage.getItem(check);
+	this.author = author;
+	this.link = link;
+	this.site = site;
+	this.name = check;
 }
 window.onload = function(){
 	//сайт с настройками мода
@@ -380,7 +379,7 @@ $(function(){
 	*/
 	
 	/*Создание списка модов*/
-	for(i=0;i<MODS.length;i++){
+	for(i;i<MODS.length;i++){
 		var tr = $('<tr><\/tr'),
 		td1 = $('<td><\/td'),
 		td2 = $('<td><\/td'),
@@ -397,7 +396,8 @@ $(function(){
 	
 	/*Вкл/откл модов*/
 	$(".MLCmods_window_table_button_class").on('click',function(e){
-		e.preventDefault();;
+		e.preventDefault();
+		
 		var MOD = $(this).attr("data-id");
 		if(localStorage.getItem(MOD)){
 			localStorage.setItem(MOD,false);
