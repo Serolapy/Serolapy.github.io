@@ -396,7 +396,7 @@ $(function(){
 	
 	/*Вкл/откл модов*/
 	$(".MLCmods_window_table_button_class").on('click',function(e){
-		e.preventDefault();
+
 		
 		var MOD = $(this).attr("data-id");
 		if(localStorage.getItem(MOD)){
