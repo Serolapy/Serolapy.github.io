@@ -339,7 +339,7 @@ $(function(){
 	/*Вкл показа уведомлений*/
 	$('#MLCnot_window_ON').on('click',function(e){
 		e.preventDefault();
-		if(!localStorage.getItem('MLNotifications')=='true'){
+		if(localStorage.getItem('MLNotifications')=='false'){
 			localStorage.setItem('MLNotifications',true);
 			$('#MLCnot').children().eq(0).html('notifications');
 			$('#MLCnot').css({'color':'white','border-color':'white'});
