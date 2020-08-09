@@ -217,7 +217,7 @@ $('body').append(`<div id="MLconsole" class="MLconsole">
 	<div id="MLCwindows">
 		<!--MainMenu-->
 		<div id="MainMenu" class="MLCwindow">
-			<h1>Mod Launcher version 0.2.2.3 BETA</h1>
+			<h1>Mod Launcher version 0.2.2 BETA</h1>
 			<a href="#" class="menu" data-id="MLCaccount"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">perm_identity</span></a>
 			<a href="#" class="menu" data-id="MLCcode"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">code</span></a>
 			<a href="#" class="menu" data-id="MLCmods"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">settings</span></a>
@@ -226,7 +226,7 @@ $('body').append(`<div id="MLconsole" class="MLconsole">
 		
 		<!--Windows-->
 		<!--Аккаунт-->
-		<div id="MLCaccount" style="display:none;" class="MLCwindow">Я всё видел, и у меня есть неоспоримы доказательсва. Можешь не пытаться отвертеться - у тебя ничего не получится</div>
+		<div id="MLCaccount" style="display:none;" class="MLCwindow">Если Мурр оказался вдруг<br>И не друг, и не враг, а так...<br>Ты скорее зови Лапа,<br>Чтоб ударить по Мурру с зада;<br>Мы быстро переход найдём, <br>Тихонько Попугов побьём..<br><b>Автор неизвестен</b></div>
 		
 		<!--Моды-->
 		<div id="MLCmods" style="display:none;" class="MLCwindow">
