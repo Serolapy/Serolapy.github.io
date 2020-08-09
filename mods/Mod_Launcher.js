@@ -217,7 +217,7 @@ $('body').append(`<div id="MLconsole" class="MLconsole">
 	<div id="MLCwindows">
 		<!--MainMenu-->
 		<div id="MainMenu" class="MLCwindow">
-			<h1>Mod Launcher version 0.2.0 BETA</h1>
+			<h1>Mod Launcher version 0.2.2 BETA</h1>
 			<a href="#" class="menu" data-id="MLCaccount"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">perm_identity</span></a>
 			<a href="#" class="menu" data-id="MLCcode"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">code</span></a>
 			<a href="#" class="menu" data-id="MLCmods"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">settings</span></a>
@@ -385,7 +385,7 @@ $(function(){
 		td2 = $('<td><\/td'),
 		a='';
 		td1.append(MODS[i].name + '<br><b>Автор:</b>' + MODS[i].author);
-		if(MODS[i].check){a='toggle_on';}
+		if(MODS[i].check=='true'){a='toggle_on';}
 		else{a='toggle_off';};
 		var b = $('<a><\/a>').attr('href','#').attr('id','a_'+MODS[i].name).html("<span class='material-icons'>"+a+"<\/span>").addClass("MLCmods_window_table_button_class").attr("data-id",MODS[i].name).css('color','#EB8D8D');
 		if(MODS[i].check){b.css('color','#00FF7F');}
