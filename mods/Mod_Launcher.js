@@ -18,7 +18,7 @@ function mod(check,author,link,site /*имя в Локал с, автор мод
 			checkMod = false;
 			localStorage.setItem(check,false);
 		}
-		if(checkMod){
+		if(checkMod=='true'){
 			//если мод разрешён
 			let script = document.createElement("script");
 			script.src = link;
@@ -226,7 +226,7 @@ $('body').append(`<div id="MLconsole" class="MLconsole">
 		
 		<!--Windows-->
 		<!--Аккаунт-->
-		<div id="MLCaccount" style="display:none;" class="MLCwindow">Если Мурр оказался вдруг<br>И не друг, и не враг, а так...<br>Ты скорее зови Лапа,<br>Чтоб ударить по Мурру с зада;<br>Мы быстро переход найдём, <br>Тихонько Попугов побьём..<br><b>Автор неизвестен</b></div>
+		<div id="MLCaccount" style="display:none;" class="MLCwindow">Я всё видел, и у меня есть неоспоримы доказательсва. Можешь не пытаться отвертеться - у тебя ничего не получится</div>
 		
 		<!--Моды-->
 		<div id="MLCmods" style="display:none;" class="MLCwindow">
