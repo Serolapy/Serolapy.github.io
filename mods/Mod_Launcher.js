@@ -1,3 +1,6 @@
+/*Проверка на jQuery*/
+if(!jQuery){let a = document.createElement('script');a.src='//e.catwar.su/js/jquery.js';document.head.appendChild(a);}
+
 var	CatWarMod = new mod('CatWarMod','Хвойница','https://openuserjs.org/install/Fredo14/CatWar_Mod.user.js',[]),
 	CW_shed = new mod('CW_shed','Ленивый','https://openuserjs.org/install/ReiReiRei/CW_Shed.user.js',[]),
 	CW_WhiteSpiderweb = new mod('CW_WhiteSpiderweb','Ленивый','https://openuserjs.org/install/ReReRe/CW_White_Spiderweb.user.js',['https://catwar.su/cw3/']);
@@ -5,7 +8,7 @@ var	CatWarMod = new mod('CatWarMod','Хвойница','https://openuserjs.org/i
 var MODS = [CatWarMod,CW_shed,CW_WhiteSpiderweb];
 
 function mod(check,author,link,site /*имя в Локал с, автор мода, ссылка на скрипт, разрешенные сайты*/){
-	//проверка на разрешение сайта разработчиком мода
+	/*проверка на разрешение сайта разработчиком мода*/
 	var siteCheck = false;
 	for(i=0;i<site.length;i++){
 		if(window.location.href==site[i]){
@@ -14,12 +17,12 @@ function mod(check,author,link,site /*имя в Локал с, автор мод
 	if(site.length==0 || siteCheck){
 		var checkMod = localStorage.getItem(check);
 		if(checkMod==null){
-			//дефолтные значения
+			/*дефолтные значения*/
 			checkMod = false;
 			localStorage.setItem(check,false);
 		}
 		if(checkMod=='true'){
-			//если мод разрешён
+			/*если мод разрешён*/
 			let script = document.createElement("script");
 			script.src = link;
 			document.getElementsByTagName("head")[0].appendChild(script);
@@ -31,16 +34,6 @@ function mod(check,author,link,site /*имя в Локал с, автор мод
 	this.site = site;
 	this.name = check;
 }
-window.onload = function(){
-	//сайт с настройками мода
-	if(window.location.href=="https://catwar.su/ModLauncher"){
-		var head, body;
-		document.getElementsByTagName("title")[0].innerHTML = "Настройки ModLauncher";
-		var css = document.createElement("style")
-		css.innerHTML =``;
-		
-		document.getElementsByTagName("head")[0].appendChild(css);
-}}
 $('head').append($('<style><\/style>').html(`.MLconsole{
 		background-color:#696969;
 		color:#FFF;
@@ -217,7 +210,7 @@ $('body').append(`<div id="MLconsole" class="MLconsole">
 	<div id="MLCwindows">
 		<!--MainMenu-->
 		<div id="MainMenu" class="MLCwindow">
-			<h1>Mod Launcher version 0.2.2 BETA</h1>
+			<h1>Mod Launcher version 0.2.3 BETA</h1>
 			<a href="#" class="menu" data-id="MLCaccount"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">perm_identity</span></a>
 			<a href="#" class="menu" data-id="MLCcode"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">code</span></a>
 			<a href="#" class="menu" data-id="MLCmods"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">settings</span></a>
