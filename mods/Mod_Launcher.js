@@ -1,5 +1,5 @@
 /*Проверка на jQuery*/
-if(!jQuery){let a = document.createElement('script');a.src='//e.catwar.su/js/jquery.js';document.head.appendChild(a);}
+if(!("jQuery" in window)){let a = document.createElement('script');a.src='//e.catwar.su/js/jquery.js';document.head.appendChild(a);}
 
 var	CatWarMod = new mod('CatWarMod','Хвойница','https://openuserjs.org/install/Fredo14/CatWar_Mod.user.js',[]),
 	CW_shed = new mod('CW_shed','Ленивый','https://openuserjs.org/install/ReiReiRei/CW_Shed.user.js',[]),
@@ -353,9 +353,48 @@ $(function(){
 		e.preventDefault();
 		var title = prompt('Введите заголовок'),
 			text = prompt('Введите текст уведомления');
-			alert('Еще не поддерживается');
-		//newNotification(title, text, '#', '', '');
-	})
+			newNotification(title, text);
+	});
+	function newNotification(title = 'CatWar', text = 'Новое уведомление', site = '#', icon = 'https://catwar.su/favicon.ico',dir = 'auto'){
+	/*(Заголовок, текст, ссылка при клике, направление текста)*/
+		var a = {
+			/*Тело уведомления*/
+			body:text,
+			icon:icon,
+			dir:dir
+		};
+		if(localStorage.getItem('MLNotifications')=='true'){
+			/*проверка браузера*/
+			if (!("Notification" in window)) {
+				alert('Ваш браузер не поддерживает уведомления.');
+			}
+			/*если права есть*/
+			else if (Notification.permission == "granted") {
+				var notification = new Notification(title, a);
+				notification.onclick = function(){
+					window.open(site);
+					notification.close();
+				}
+			}
+			/*получаем права*/
+			else if (Notification.permission != 'denied') {
+				Notification.requestPermission(function (permission) {
+					/* Если права успешно получены, отправляем уведомление*/
+					if (permission == "granted") {
+					newNotification();
+					} else {
+						alert('Вы запретили показывать уведомления. Включить показ всегда можно в настройках мода.');
+					}
+				});
+			}else {/*Отклонено*/}
+		}
+	}
+	function newNotificationML(text, siteCH, site){
+		if(!siteCH){
+			site = '#';
+		}
+		newNotification('Mod Launcher | CatWar',text,site,'https://avatars0.githubusercontent.com/u/65182656');
+	}
 	
 	/*
 		МОДЫ
