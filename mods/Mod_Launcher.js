@@ -210,7 +210,7 @@ $('body').append(`<div id="MLconsole" class="MLconsole">
 	<div id="MLCwindows">
 		<!--MainMenu-->
 		<div id="MainMenu" class="MLCwindow">
-			<h1>Mod Launcher version 0.3 BETA</h1>
+			<h1>Mod Launcher version 0.3.1 BETA</h1>
 			<a href="#" class="menu" data-id="MLCaccount"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">perm_identity</span></a>
 			<a href="#" class="menu" data-id="MLCcode"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">code</span></a>
 			<a href="#" class="menu" data-id="MLCmods"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">settings</span></a>
@@ -355,46 +355,6 @@ $(function(){
 			text = prompt('Введите текст уведомления');
 			newNotification(title, text);
 	});
-	function newNotification(title = 'CatWar', text = 'Новое уведомление', site = '#', icon = 'https://catwar.su/favicon.ico',dir = 'auto'){
-	/*(Заголовок, текст, ссылка при клике, направление текста)*/
-		var a = {
-			/*Тело уведомления*/
-			body:text,
-			icon:icon,
-			dir:dir
-		};
-		if(localStorage.getItem('MLNotifications')=='true'){
-			/*проверка браузера*/
-			if (!("Notification" in window)) {
-				alert('Ваш браузер не поддерживает уведомления.');
-			}
-			/*если права есть*/
-			else if (Notification.permission == "granted") {
-				var notification = new Notification(title, a);
-				notification.onclick = function(){
-					window.open(site);
-					notification.close();
-				}
-			}
-			/*получаем права*/
-			else if (Notification.permission != 'denied') {
-				Notification.requestPermission(function (permission) {
-					/* Если права успешно получены, отправляем уведомление*/
-					if (permission == "granted") {
-					newNotification();
-					} else {
-						alert('Вы запретили показывать уведомления. Включить показ всегда можно в настройках мода.');
-					}
-				});
-			}else {/*Отклонено*/}
-		}
-	}
-	function newNotificationML(text, siteCH, site){
-		if(!siteCH){
-			site = '#';
-		}
-		newNotification('Mod Launcher | CatWar',text,site,'https://avatars0.githubusercontent.com/u/65182656');
-	}
 	
 	/*
 		МОДЫ
@@ -442,3 +402,46 @@ $(function(){
 		}
 	});
 });
+function newNotification(title = 'CatWar', text = 'Новое уведомление', site = '#', icon = 'https://catwar.su/favicon.ico',dir = 'auto'){
+/*(Заголовок, текст, ссылка при клике, направление текста)*/
+	var a = {
+		/*Тело уведомления*/
+		body:text,
+		icon:icon,
+		dir:dir
+	};
+	if(localStorage.getItem('MLNotifications')=='true'){
+		/*проверка браузера*/
+		if (!("Notification" in window)) {
+			alert('Ваш браузер не поддерживает уведомления.');
+		}
+		/*если права есть*/
+		else if (Notification.permission == "granted") {
+			var notification = new Notification(title, a);
+			notification.onclick = function(){
+				window.open(site);
+				notification.close();
+			}
+			/*добавление в списочек*/
+			var d = new Date();
+			$('#MLCnot_window_table tbody').append($('<tr><\/tr>').append($('<td><\/td>').html('<b>'+title+'<\/b><br>'+text),$('<td><\/td>').html(d.getHours()+':'+d.getMinutes())));
+		}
+		/*получаем права*/
+		else if (Notification.permission != 'denied') {
+			Notification.requestPermission(function (permission) {
+				/* Если права успешно получены, отправляем уведомление*/
+				if (permission == "granted") {
+				newNotification();
+				} else {
+					alert('Вы запретили показывать уведомления. Включить показ всегда можно в настройках мода.');
+				}
+			});
+		}else {/*Отклонено*/}
+	}
+}
+function newNotificationML(text, siteCH, site){
+	if(!siteCH){
+		site = '#';
+	}
+	newNotification('Mod Launcher | CatWar',text,site,'https://avatars0.githubusercontent.com/u/65182656');
+}
