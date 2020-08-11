@@ -3,9 +3,10 @@ if(!("jQuery" in window)){let a = document.createElement('script');a.src='//e.ca
 
 var	CatWarMod = new mod('CatWarMod','Хвойница','https://openuserjs.org/install/Fredo14/CatWar_Mod.user.js',[]),
 	CW_shed = new mod('CW_shed','Ленивый','https://openuserjs.org/install/ReiReiRei/CW_Shed.user.js',[]),
-	CW_WhiteSpiderweb = new mod('CW_WhiteSpiderweb','Ленивый','https://openuserjs.org/install/ReReRe/CW_White_Spiderweb.user.js',['https://catwar.su/cw3/']);
+	CW_WhiteSpiderweb = new mod('CW_WhiteSpiderweb','Ленивый','https://openuserjs.org/install/ReReRe/CW_White_Spiderweb.user.js',['https://catwar.su/cw3/']),
+    	More_Stickers_Addon = new mod('More_Stickers_Addon', 'Серолапый', 'https://serolapy.github.io/mods/More_Stickers_Addon.js',[]);
 
-var MODS = [CatWarMod,CW_shed,CW_WhiteSpiderweb];
+var MODS = [CatWarMod,CW_shed,CW_WhiteSpiderweb,More_Stickers_Addon];
 
 function mod(check,author,link,site /*имя в Локал с, автор мода, ссылка на скрипт, разрешенные сайты*/){
 	/*проверка на разрешение сайта разработчиком мода*/
@@ -210,7 +211,7 @@ $('body').append(`<div id="MLconsole" class="MLconsole">
 	<div id="MLCwindows">
 		<!--MainMenu-->
 		<div id="MainMenu" class="MLCwindow">
-			<h1>Mod Launcher version 0.3.1 BETA</h1>
+			<h1>Mod Launcher version 0.3.2 BETA</h1>
 			<a href="#" class="menu" data-id="MLCaccount"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">perm_identity</span></a>
 			<a href="#" class="menu" data-id="MLCcode"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">code</span></a>
 			<a href="#" class="menu" data-id="MLCmods"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">settings</span></a>
@@ -219,7 +220,7 @@ $('body').append(`<div id="MLconsole" class="MLconsole">
 		
 		<!--Windows-->
 		<!--Аккаунт-->
-		<div id="MLCaccount" style="display:none;" class="MLCwindow">Я всё видел, и у меня есть неоспоримы доказательсва. Можешь не пытаться отвертеться - у тебя ничего не получится</div>
+		<div id="MLCaccount" style="display:none;" class="MLCwindow"><h1 style="text-align:center; color:red;">ГРЯДЁТ!</h1></div>
 		
 		<!--Моды-->
 		<div id="MLCmods" style="display:none;" class="MLCwindow">
