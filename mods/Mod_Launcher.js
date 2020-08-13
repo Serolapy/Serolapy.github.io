@@ -239,7 +239,7 @@ $('body').append(`<div id="MLconsole" class="MLconsole">
 	<div id="MLCwindows">
 		<!--MainMenu-->
 		<div id="MainMenu" class="MLCwindow">
-			<h1>Mod Launcher version 0.3.3.2 BETA</h1>
+			<h1>Mod Launcher version 0.3.3.3 BETA</h1>
 			<a href="#" class="menu" data-id="MLCaccount"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">perm_identity</span></a>
 			<a href="#" class="menu" data-id="MLCcode"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">code</span></a>
 			<a href="#" class="menu" data-id="MLCmods"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">settings</span></a>
@@ -496,18 +496,18 @@ var eml='';
 function avatarML(id,a){
 	switch (a){
 		case ".jpg":
-			e = ".png";
+			eml = ".png";
 			break;
 		case ".png":
-			e = ".gif";
+			eml = ".gif";
 			break;
 		case ".gif":
-			e = ".ERROR";
+			eml = ".ERROR";
 			break;
 		case ".ERROR":
-			e = "";
+			eml = "";
 	}
-	if(!e){
+	if(!eml){
 		$('#avatarcatml').attr('src','https://e.catwar.su/avatar/'+id+a);
 	}else{
 		$('#avatarcatml').attr('src','https://serolapy.github.io/mods/img/symbol.png');
