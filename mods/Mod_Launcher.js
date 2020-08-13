@@ -211,7 +211,7 @@ $('body').append(`<div id="MLconsole" class="MLconsole">
 	<div id="MLCwindows">
 		<!--MainMenu-->
 		<div id="MainMenu" class="MLCwindow">
-			<h1>Mod Launcher version 0.3.3 BETA</h1>
+			<h1>Mod Launcher version 0.3.3.1 BETA</h1>
 			<a href="#" class="menu" data-id="MLCaccount"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">perm_identity</span></a>
 			<a href="#" class="menu" data-id="MLCcode"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">code</span></a>
 			<a href="#" class="menu" data-id="MLCmods"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">settings</span></a>
@@ -224,7 +224,7 @@ $('body').append(`<div id="MLconsole" class="MLconsole">
 			<table class="window_table">
 				<tr>
 					<td><b>Имя: </b><span id="namecatml">Гость</span></td>
-					<td rowspan="2"><img id="avatarcatml" alt="Аватарка" src="/"  onerror="avatarML(MY_CAT_ML.id,,eml)"></td>
+					<td rowspan="2"><img id="avatarcatml" alt="Аватарка" src="/"  onerror="avatarML(MY_CAT_ML.id,eml)"></td>
 				</tr>
 				<tr>
 					<td><b>ID: </b><span id="idcatml">Нет</span></td>
