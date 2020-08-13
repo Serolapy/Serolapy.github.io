@@ -220,7 +220,17 @@ $('body').append(`<div id="MLconsole" class="MLconsole">
 		
 		<!--Windows-->
 		<!--Аккаунт-->
-		<div id="MLCaccount" style="display:none;" class="MLCwindow"><h1 style="text-align:center; color:red;">ГРЯДЁТ!</h1></div>
+		<div id="MLCaccount" style="display:none;" class="MLCwindow">
+			<table class="window_table">
+				<tr>
+					<td><b>Имя: </b><span id="namecatml">Гость</span></td>
+					<td rowspan="2"><img id="avatarcatml" alt="Аватарка" src="/"  onerror="avatarML(MY_CAT_ML.id,,eml)"></td>
+				</tr>
+				<tr>
+					<td><b>ID: </b><span id="idcatml">Нет</span></td>
+				</tr>
+			</table>
+		</div>
 		
 		<!--Моды-->
 		<div id="MLCmods" style="display:none;" class="MLCwindow">
@@ -446,3 +456,62 @@ function newNotificationML(text, siteCH, site){
 	}
 	newNotification('Mod Launcher | CatWar',text,site,'https://avatars0.githubusercontent.com/u/65182656');
 }
+
+/*
+	обновление и добавление данных о персонаже
+*/
+async function MyCharacterNew(){
+    var name = '';
+	/*установка имени кота*/
+	if(window.location.href=='https://catwar.su/'){
+		name = $('#education').data('login');
+	}else{
+		name = prompt("Введите имя персонажа");
+		if(name == null){return}
+	}
+	/*установка ID перса; о-очень честно стырено у @ara2am*/
+	var	id = parseInt(await $.post("https://catwar.su/ajax/top_cat", {name: nameCatML}).promise()),
+	/*промежуточный объект и заполнение в память*/
+		a = {
+			login: name,
+			id: id
+		};
+	localStorage.setItem ("myCatML", JSON.stringify(a));
+}
+
+/*если нет данных*/
+if(!localStorage.getItem('myCatML')){
+	MyCharacterNew();
+}
+
+/*общедоступные переменные*/
+var MY_CAT_ML = JSON.parse(localStorage.getItem('myCatML'));
+/* 	MY_CAT_ML.login - имя
+	MY_CAT_ML.id - ID 
+*/
+
+/*поиск аватара*/
+var eml='';
+function avatarML(id,a){
+	switch (a){
+		case ".jpg":
+			e = ".png";
+			break;
+		case ".png":
+			e = ".gif";
+			break;
+		case ".gif":
+			e = ".ERROR";
+			break;
+		case ".ERROR":
+			e = "";
+	}
+	if(!e){
+		$('#avatarcatml').attr('scr','https://e.catwar.su/avatar/'+id+a);
+	}else{
+		$('#avatarcatml').attr('scr','https://serolapy.github.io/mods/img/symbol.png');
+	}
+}
+avatarML(MY_CAT_ML.id,'.jpg');
+$('#namecatml').html(MY_CAT_ML.login);
+$('#idcatml').html(MY_CAT_ML.id);
