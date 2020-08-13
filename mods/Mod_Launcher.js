@@ -35,6 +35,34 @@ function mod(check,author,link,site /*имя в Локал с, автор мод
 	this.site = site;
 	this.name = check;
 }
+
+/*
+	обновление и добавление данных о персонаже
+*/
+async function MyCharacterNew(){
+    var name = '';
+	/*установка имени кота*/
+	if(window.location.href=='https://catwar.su/'){
+		name = $('#education').data('login');
+	}else{
+		name = prompt("Введите имя персонажа");
+		if(name == null){return}
+	}
+	/*установка ID перса; о-очень честно стырено у @ara2am*/
+	var	id = parseInt(await $.post("https://catwar.su/ajax/top_cat", {name: nameCatML}).promise()),
+	/*промежуточный объект и заполнение в память*/
+		a = {
+			login: name,
+			id: id
+		};
+	localStorage.setItem ("myCatML", JSON.stringify(a));
+}
+
+/*если нет данных*/
+if(!localStorage.getItem('myCatML')){
+	MyCharacterNew();
+}
+/*начало консоли*/
 $('head').append($('<style><\/style>').html(`.MLconsole{
 		background-color:#696969;
 		color:#FFF;
@@ -211,7 +239,7 @@ $('body').append(`<div id="MLconsole" class="MLconsole">
 	<div id="MLCwindows">
 		<!--MainMenu-->
 		<div id="MainMenu" class="MLCwindow">
-			<h1>Mod Launcher version 0.3.3.1 BETA</h1>
+			<h1>Mod Launcher version 0.3.3.2 BETA</h1>
 			<a href="#" class="menu" data-id="MLCaccount"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">perm_identity</span></a>
 			<a href="#" class="menu" data-id="MLCcode"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">code</span></a>
 			<a href="#" class="menu" data-id="MLCmods"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">settings</span></a>
@@ -457,33 +485,6 @@ function newNotificationML(text, siteCH, site){
 	newNotification('Mod Launcher | CatWar',text,site,'https://avatars0.githubusercontent.com/u/65182656');
 }
 
-/*
-	обновление и добавление данных о персонаже
-*/
-async function MyCharacterNew(){
-    var name = '';
-	/*установка имени кота*/
-	if(window.location.href=='https://catwar.su/'){
-		name = $('#education').data('login');
-	}else{
-		name = prompt("Введите имя персонажа");
-		if(name == null){return}
-	}
-	/*установка ID перса; о-очень честно стырено у @ara2am*/
-	var	id = parseInt(await $.post("https://catwar.su/ajax/top_cat", {name: nameCatML}).promise()),
-	/*промежуточный объект и заполнение в память*/
-		a = {
-			login: name,
-			id: id
-		};
-	localStorage.setItem ("myCatML", JSON.stringify(a));
-}
-
-/*если нет данных*/
-if(!localStorage.getItem('myCatML')){
-	MyCharacterNew();
-}
-
 /*общедоступные переменные*/
 var MY_CAT_ML = JSON.parse(localStorage.getItem('myCatML'));
 /* 	MY_CAT_ML.login - имя
@@ -507,11 +508,12 @@ function avatarML(id,a){
 			e = "";
 	}
 	if(!e){
-		$('#avatarcatml').attr('scr','https://e.catwar.su/avatar/'+id+a);
+		$('#avatarcatml').attr('src','https://e.catwar.su/avatar/'+id+a);
 	}else{
-		$('#avatarcatml').attr('scr','https://serolapy.github.io/mods/img/symbol.png');
+		$('#avatarcatml').attr('src','https://serolapy.github.io/mods/img/symbol.png');
 	}
 }
+/*установка данных в консоле на странице кота*/
 avatarML(MY_CAT_ML.id,'.jpg');
 $('#namecatml').html(MY_CAT_ML.login);
 $('#idcatml').html(MY_CAT_ML.id);
