@@ -49,7 +49,7 @@ async function MyCharacterNew(){
 		if(name == null){return}
 	}
 	/*установка ID перса; о-очень честно стырено у @ara2am*/
-	var	id = parseInt(await $.post("https://catwar.su/ajax/top_cat", {name: nameCatML}).promise()),
+	var	id = parseInt(await $.post("https://catwar.su/ajax/top_cat", {name: name}).promise()),
 	/*промежуточный объект и заполнение в память*/
 		a = {
 			login: name,
