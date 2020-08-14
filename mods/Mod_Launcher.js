@@ -1,12 +1,26 @@
 /*Проверка на jQuery*/
 if(!("jQuery" in window)){let a = document.createElement('script');a.src='//e.catwar.su/js/jquery.js';document.head.appendChild(a);}
 
+var versionML = '0.4';
 var	CatWarMod = new mod('CatWarMod','Хвойница','https://openuserjs.org/install/Fredo14/CatWar_Mod.user.js',[]),
 	CW_shed = new mod('CW_shed','Ленивый','https://openuserjs.org/install/ReiReiRei/CW_Shed.user.js',[]),
 	CW_WhiteSpiderweb = new mod('CW_WhiteSpiderweb','Ленивый','https://openuserjs.org/install/ReReRe/CW_White_Spiderweb.user.js',['https://catwar.su/cw3/']),
     	More_Stickers_Addon = new mod('More_Stickers_Addon', 'Серолапый', 'https://serolapy.github.io/mods/More_Stickers_Addon.js',[]);
 
 var MODS = [CatWarMod,CW_shed,CW_WhiteSpiderweb,More_Stickers_Addon];
+
+if(!localStorage.getItem('versionML')){
+	localStorage.setItem('versionML',versionML);
+	if(!("Notification" in window){
+		newNotificationML('Версия мода: '+versionML, false);
+		}
+	else{
+		alert('Версия мода: '+versionML+';  уведомления недоступны')
+	}
+}else if(localStorage.getItem('versionML')!=versionML){			
+	newNotificationML('Обновление мода. Текущая версия: '+versionML, false);
+	localStorage.setItem('versionML',versionML);
+}
 
 function mod(check,author,link,site /*имя в Локал с, автор мода, ссылка на скрипт, разрешенные сайты*/){
 	/*проверка на разрешение сайта разработчиком мода*/
@@ -259,17 +273,50 @@ $('head').append($('<style><\/style>').html(`.MLconsole{
 		.MLCbutton_exit_active{
 			top: 0;
 			color: white;
-			border-color: white;
 			text-decoration: none;
 			margin: 0;
 			left: 0;
 			width: 50%;
 			border-radius: 0;
+			border: 1px solid white;
 		}
 		.MLCwindow{
 			padding-top: 30px;
 		}
-	}`))
+	}
+	.desktopMLconsole{
+		width: 100%;
+		bottom: 0;
+		right: 0;
+		border: 0;
+		height: 100%;
+		border-radius: 0;
+	}
+	.to_housedesctop{
+		top: 0;
+		color: white;
+		border-color: white;
+		text-decoration: none;
+		margin: 0;
+		left: 50%;
+		width: 50%;
+		border-radius: 0;
+		border: 1px solid white;
+	}
+	.MLCbutton_exitdesctop{
+		top: 0;
+		color: white;
+		text-decoration: none;
+		margin: 0;
+		left: 0;
+		width: 50%;
+		border-radius: 0;
+		border: 1px solid white;
+	}
+	.MLCwindowdesctop{
+		padding-top: 30px;
+	}
+	`))
 	$('head').append($('<link>').attr('href','https://fonts.googleapis.com/icon?family=Material+Icons').attr('rel','stylesheet'));
 $('body').append(`<div id="MLconsole" class="MLconsole">
 	<a href="#" id="to_house" class="to_house" style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-24">home</span></a>
@@ -282,6 +329,7 @@ $('body').append(`<div id="MLconsole" class="MLconsole">
 			<a href="#" class="menu" data-id="MLCcode"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">code</span></a>
 			<a href="#" class="menu" data-id="MLCmods"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">settings</span></a>
 			<a href="#" class="menu" id="MLCnot" data-id="MLCnot_window"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">notifications</span></a>
+			<a href="#" class="menu" data-id="settings_ML"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">app_settings_alt</span></a>
 			<a href="#" id="cancelML" class="menu" style="color:white;border-color:#EB8D8D;text-decoration:none;"><span class="material-icons md-56">cancel</span></a>
 		</div>
 		
@@ -313,6 +361,14 @@ $('body').append(`<div id="MLconsole" class="MLconsole">
 		
 		</div>
 		
+		<!--Настройки системы-->
+		<div id="settings_ML" style="display:none;" class="MLCwindow">
+			<p class="MLlist">На весь экран (не работает на телефоне) <span id="desktopML" class="MLlistBTN" style="color:white">laptop</span>
+			
+		
+		
+		
+		</div>
 		<!--Коды-->
 		<div id="MLCcode" style="display:none;" class="MLCwindow">
 			<h1>Режим разработчика</h1>
@@ -562,3 +618,11 @@ $('#cancelML').on('click',function(e){
 	e.preventDefault();
 	$('#MLconsole').css('display','none');
 });
+
+/*на весь экран*/
+$('#desktopML').on('click',function(){
+	$('#MLconsole').toggleClass('desktopMLconsole');
+	$('#to_house').toggleClass('to_housedesctop');
+	$('#MLCbutton_exit').toggleClass('MLCbutton_exitdesctop');
+	$('.MLCwindow').toggleClass('MLCwindowdesctop')
+})
