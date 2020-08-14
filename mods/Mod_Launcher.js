@@ -254,6 +254,7 @@ $('head').append($('<style><\/style>').html(`.MLconsole{
 			width: 50%;
 			border-radius: 0;
 			border: 1px solid white;
+                        transition:0s;
 		}
 		.MLCbutton_exit_active{
 			top: 0;
@@ -276,7 +277,7 @@ $('body').append(`<div id="MLconsole" class="MLconsole">
 	<div id="MLCwindows">
 		<!--MainMenu-->
 		<div id="MainMenu" class="MLCwindow">
-			<h1>Mod Launcher version 0.4.2.2 BETA<br>"Телефонщики, ликуйте!"</h1>
+			<h1>Mod Launcher version 0.4.2.3 BETA<br>"Телефонщики, ликуйте!"</h1>
 			<a href="#" class="menu" data-id="MLCaccount"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">perm_identity</span></a>
 			<a href="#" class="menu" data-id="MLCcode"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">code</span></a>
 			<a href="#" class="menu" data-id="MLCmods"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">settings</span></a>
