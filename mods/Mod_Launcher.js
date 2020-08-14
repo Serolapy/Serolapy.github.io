@@ -231,7 +231,44 @@ $('head').append($('<style><\/style>').html(`.MLconsole{
 	.material-icons.md-24 { font-size: 24px; }
 	/*Цвета-классы*/
 	.true{color:#00FF7F;border-color:#00FF7F;}
-	.false{color:#EB8D8D;border-color:#EB8D8D;}`))
+	.false{color:#EB8D8D;border-color:#EB8D8D;}
+	/*
+	МОБИЛЬНАЯ ВЕРСИЯ
+	*/
+	@media only all and (max-width: 730px){
+		.MLconsole_active{
+			width: 100%;
+			bottom: 0;
+			right: 0;
+			border: 0;
+			height: 100%;
+			border-radius: 0;
+		}
+		.to_house_active{
+			top: 0;
+			color: white;
+			border-color: white;
+			text-decoration: none;
+			margin: 0;
+			left: 50%;
+			width: 50%;
+			border-radius: 0;
+			border: 1px solid white;
+		}
+		.MLCbutton_exit_active{
+			top: 0;
+			color: white;
+			border-color: white;
+			text-decoration: none;
+			margin: 0;
+			left: 0;
+			width: 50%;
+			border-radius: 0;
+		}
+		.MLCwindow{
+			padding-top: 30px;
+		}
+	}`))
 	$('head').append($('<link>').attr('href','https://fonts.googleapis.com/icon?family=Material+Icons').attr('rel','stylesheet'));
 $('body').append(`<div id="MLconsole" class="MLconsole">
 	<a href="#" id="to_house" class="to_house" style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-24">home</span></a>
@@ -239,7 +276,7 @@ $('body').append(`<div id="MLconsole" class="MLconsole">
 	<div id="MLCwindows">
 		<!--MainMenu-->
 		<div id="MainMenu" class="MLCwindow">
-			<h1>Mod Launcher version 0.4.0 BETA ё-моё</h1>
+			<h1>Mod Launcher version 0.4.1.1 BETA</h1>
 			<a href="#" class="menu" data-id="MLCaccount"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">perm_identity</span></a>
 			<a href="#" class="menu" data-id="MLCcode"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">code</span></a>
 			<a href="#" class="menu" data-id="MLCmods"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">settings</span></a>
