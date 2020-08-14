@@ -235,7 +235,7 @@ $('head').append($('<style><\/style>').html(`.MLconsole{
 	/*
 	МОБИЛЬНАЯ ВЕРСИЯ
 	*/
-	@media only all and ((max-width: 730px),(max-height: 400px){
+	@media only all and (max-width: 730px),(max-height:400px){
 		.MLconsole_active{
 			width: 100%;
 			bottom: 0;
