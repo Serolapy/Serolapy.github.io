@@ -75,8 +75,9 @@ $('head').append($('<style><\/style>').html(`.MLconsole{
 		border: solid black 10px;
 		border-radius: 10px;
 		transition:0.5s;
-		transform:translateX(100%);
+		transform:translateX(102%);
 		font-family:Arial;
+		z-index:10000;
 	}
 	.MLconsole_active{
 		transform:translateX(0%);
@@ -254,7 +255,6 @@ $('head').append($('<style><\/style>').html(`.MLconsole{
 			width: 50%;
 			border-radius: 0;
 			border: 1px solid white;
-                        transition:0s;
 		}
 		.MLCbutton_exit_active{
 			top: 0;
@@ -277,11 +277,12 @@ $('body').append(`<div id="MLconsole" class="MLconsole">
 	<div id="MLCwindows">
 		<!--MainMenu-->
 		<div id="MainMenu" class="MLCwindow">
-			<h1>Mod Launcher version 0.4.2.3 BETA<br>"Телефонщики, ликуйте!"</h1>
+			<h1>Mod Launcher version 0.4.3.1 BETA</h1>
 			<a href="#" class="menu" data-id="MLCaccount"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">perm_identity</span></a>
 			<a href="#" class="menu" data-id="MLCcode"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">code</span></a>
 			<a href="#" class="menu" data-id="MLCmods"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">settings</span></a>
 			<a href="#" class="menu" id="MLCnot" data-id="MLCnot_window"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">notifications</span></a>
+			<a href="#" id="cancelML" class="menu" style="color:white;border-color:#EB8D8D;text-decoration:none;"><span class="material-icons md-56">cancel</span></a>
 		</div>
 		
 		<!--Windows-->
@@ -555,3 +556,9 @@ function avatarML(id,a){
 avatarML(MY_CAT_ML.id,'.jpg');
 $('#namecatml').html(MY_CAT_ML.login);
 $('#idcatml').html(MY_CAT_ML.id);
+
+/*закрытие окна модов*/
+$('#cancelML').on('click',function(e){
+	e.preventDefault();
+	$('#MLconsole').css('display','none');
+});
