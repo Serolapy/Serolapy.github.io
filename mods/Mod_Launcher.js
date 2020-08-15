@@ -11,7 +11,7 @@ var MODS = [CatWarMod,CW_shed,CW_WhiteSpiderweb,More_Stickers_Addon];
 
 if(!localStorage.getItem('versionML')){
 	localStorage.setItem('versionML',versionML);
-	if("Notification" in window){
+	if(!("Notification" in window)){
 		newNotificationML('Версия мода: '+versionML, false);
 		}
 	else{
@@ -324,7 +324,7 @@ $('body').append(`<div id="MLconsole" class="MLconsole">
 	<div id="MLCwindows">
 		<!--MainMenu-->
 		<div id="MainMenu" class="MLCwindow">
-			<h1>Mod Launcher version 0.4.3.3 BETA</h1>
+			<h1>Mod Launcher version 0.4.3.4 BETA</h1>
 			<a href="#" class="menu" data-id="MLCaccount"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">perm_identity</span></a>
 			<a href="#" class="menu" data-id="MLCcode"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">code</span></a>
 			<a href="#" class="menu" data-id="MLCmods"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">settings</span></a>
@@ -363,11 +363,27 @@ $('body').append(`<div id="MLconsole" class="MLconsole">
 		
 		<!--Настройки системы-->
 		<div id="settings_ML" style="display:none;" class="MLCwindow">
-			<p class="MLlist">На весь экран (не работает на телефоне) <span id="desktopML" class="MLlistBTN" style="color:white">laptop</span>
+			<table class="window_table">
 			
-		
-		
-		
+				<tr>
+					<td>
+						На весь экран (не работает на телефоне) 
+					</td>
+					<td>
+						<span id="desktopML" class="material-icons" style="color:white">laptop</span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Версия мода:
+					</td>
+					<td>
+						<span id="versonML">~</span>
+					</td>
+				</tr>
+				
+				
+			</table>
 		</div>
 		<!--Коды-->
 		<div id="MLCcode" style="display:none;" class="MLCwindow">
@@ -412,6 +428,10 @@ $(function(){
 		$('#to_house').toggleClass('to_house_active');
 		e.preventDefault();
 		$(this).toggleClass('MLCbutton_exit_active');
+		$('#MLconsole').removeClass('desktopMLconsole');
+		$('#to_house').removeClass('to_housedesctop');
+		$('#MLCbutton_exit').removeClass('MLCbutton_exitdesctop');
+		$('.MLCwindow').removeClass('MLCwindowdesctop');
 	});
 	
 	/*Кнопка домой*/
@@ -510,7 +530,7 @@ $(function(){
 		td1 = $('<td><\/td'),
 		td2 = $('<td><\/td'),
 		a='';
-		td1.append(MODS[i].name + '<br><b>Автор:</b>' + MODS[i].author);
+		td1.append(MODS[i].name + '<br><b>Автор: </b>' + MODS[i].author);
 		if(MODS[i].check=='true'){a='toggle_on';}
 		else{a='toggle_off';};
 		var b = $('<a><\/a>').attr('href','#').attr('id','a_'+MODS[i].name).html("<span class='material-icons'>"+a+"<\/span>").addClass("MLCmods_window_table_button_class").attr("data-id",MODS[i].name).css('color','#EB8D8D');
@@ -624,5 +644,9 @@ $('#desktopML').on('click',function(){
 	$('#MLconsole').toggleClass('desktopMLconsole');
 	$('#to_house').toggleClass('to_housedesctop');
 	$('#MLCbutton_exit').toggleClass('MLCbutton_exitdesctop');
-	$('.MLCwindow').toggleClass('MLCwindowdesctop')
+	$('.MLCwindow').toggleClass('MLCwindowdesctop');
+	
 })
+
+/*версии модов на экран настройки*/
+$('#versonML').html(versionML);
