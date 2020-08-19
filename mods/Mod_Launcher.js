@@ -330,6 +330,7 @@ $('body').append(`<div id="MLconsole" class="MLconsole">
 			<a href="#" class="menu" data-id="MLCmods"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">settings</span></a>
 			<a href="#" class="menu" id="MLCnot" data-id="MLCnot_window"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">notifications</span></a>
 			<a href="#" class="menu" data-id="settings_ML"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">app_settings_alt</span></a>
+			<a href="#" id="TableCreatorbtn" data-id="TableCreator" class="menu" style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">border_all</span></a>
 			<a href="#" id="cancelML" class="menu" style="color:white;border-color:#EB8D8D;text-decoration:none;"><span class="material-icons md-56">cancel</span></a>
 		</div>
 		
@@ -345,6 +346,48 @@ $('body').append(`<div id="MLconsole" class="MLconsole">
 					<td><b>ID: </b><span id="idcatml">Нет</span></td>
 				</tr>
 			</table>
+		</div>
+		
+		<!--TableCreator-->
+		<div id="TableCreator" style="display:none;" class="MLCwindow">
+			<table class="window_table">
+				<tr>
+					<td>
+						Количество столбцов: 
+					</td>
+					<td>
+						<input type="number" id="TCstolb">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Количество строк: 
+					</td>
+					<td>
+						<input type="number" id="TCstrok">
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						Цвет заливки таблицы + наличие рамки
+						(стандарт - оставить пустым; без рамки - 0; цвет заливки - цвет):
+					</td>
+					<td>
+						<input type="text" id="TCcolor">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="button" id="TCgo1" value="2 этап"></td>
+				</tr>
+				<tr>
+					<td colspan="2"><textarea id="TCtext"></textarea></td>
+				</tr>
+			</table>
+			<div id="TCstage2"></div>
+			<input type="button" id="TCgo2" value="3 этап" style="display:none">
+			<div id="TCstage3"></div>
+			<div id="TCpreviewText"></div>
 		</div>
 		
 		<!--Моды-->
