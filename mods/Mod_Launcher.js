@@ -1,7 +1,7 @@
 /*Проверка на jQuery*/
 if(!("jQuery" in window)){let a = document.createElement('script');a.src='//e.catwar.su/js/jquery.js';document.head.appendChild(a);}
 
-var versionML = '0.4';
+var versionML = '0.5';
 var	CatWarMod = new mod('CatWarMod','Хвойница','https://openuserjs.org/install/Fredo14/CatWar_Mod.user.js',[]),
 	CW_shed = new mod('CW_shed','Ленивый','https://openuserjs.org/install/ReiReiRei/CW_Shed.user.js',[]),
 	CW_WhiteSpiderweb = new mod('CW_WhiteSpiderweb','Ленивый','https://openuserjs.org/install/ReReRe/CW_White_Spiderweb.user.js',['https://catwar.su/cw3/']),
@@ -316,6 +316,13 @@ $('head').append($('<style><\/style>').html(`.MLconsole{
 	.MLCwindowdesctop{
 		padding-top: 30px;
 	}
+	#TCstage2 table{
+	border: 1px solid black;    
+	border-collapse: collapse;
+	}
+	#TCstage2 tr, #TCstage2 td{
+	border: 1px solid black;
+	}
 	`))
 	$('head').append($('<link>').attr('href','https://fonts.googleapis.com/icon?family=Material+Icons').attr('rel','stylesheet'));
 $('body').append(`<div id="MLconsole" class="MLconsole">
@@ -324,7 +331,7 @@ $('body').append(`<div id="MLconsole" class="MLconsole">
 	<div id="MLCwindows">
 		<!--MainMenu-->
 		<div id="MainMenu" class="MLCwindow">
-			<h1>Mod Launcher version 0.5.0.0 BETA</h1>
+			<h1>Mod Launcher version 0.5.0.1 BETA</h1>
 			<a href="#" class="menu" data-id="MLCaccount"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">perm_identity</span></a>
 			<a href="#" class="menu" data-id="MLCcode"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">code</span></a>
 			<a href="#" class="menu" data-id="MLCmods"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">settings</span></a>
@@ -718,14 +725,14 @@ $('#TCgo1').on('click',function(){
 });
 $('#TCgo2').on('click',async function(){
 	var resultBBcode = '[table'+($('#TCcolor').val()==''?'':'='+$('#TCcolor').val())+']';
-	for(tr=0;tr<$('#TCtable1').children().length;tr++){
+	for(tr=0;tr<$('#TCtable1').children().eq(0).children().length;tr++){
 		/*для строчек*/
 		resultBBcode+='[tr]';
-		for(td=0;td<$('#TCtable1').children().eq(tr).children().length;td++){
+		for(td=0;td<$('#TCtable1').children().eq(0).children().eq(tr).children().length;td++){
 			/*для каждй ячейки*/
 			resultBBcode+='[td]';
 			/*текст ячейки*/
-			resultBBcode+=$('#TCtable1').children().eq(tr).children().eq(td).html();
+			resultBBcode+=$('#TCtable1').children().eq(0).children().eq(tr).children().eq(td).html();
 			resultBBcode+='[/td]';
 		}
 		resultBBcode+='[/tr]';
