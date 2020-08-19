@@ -324,7 +324,7 @@ $('body').append(`<div id="MLconsole" class="MLconsole">
 	<div id="MLCwindows">
 		<!--MainMenu-->
 		<div id="MainMenu" class="MLCwindow">
-			<h1>Mod Launcher version 0.4.3.4 BETA</h1>
+			<h1>Mod Launcher version 0.5.0.0 BETA</h1>
 			<a href="#" class="menu" data-id="MLCaccount"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">perm_identity</span></a>
 			<a href="#" class="menu" data-id="MLCcode"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">code</span></a>
 			<a href="#" class="menu" data-id="MLCmods"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">settings</span></a>
@@ -693,3 +693,46 @@ $('#desktopML').on('click',function(){
 
 /*версии модов на экран настройки*/
 $('#versonML').html(versionML);
+
+/*Тэйбл креатор+*/
+async function preview(text){
+	return await $.post("https://catwar.su/preview",{text:text});
+}
+	
+$('#TCgo1').on('click',function(){
+	var result='';
+	for(i=0;i<parseInt($('#TCstolb').val());i++){
+		var strok='';
+		for(j=0;j<parseInt($('#TCstrok').val());j++){
+			strok+='<td class="TCtd"></td>';
+		}
+		result+='<tr>'+strok+'</tr>';
+	}
+	result = '<table id="TCtable1">'+result+'</table>';
+	
+	$('#TCstage2').html(result);
+	$('.TCtd').on('click', function(){
+		$(this).html($('#TCtext').val());
+	});
+	$('#TCgo2').css('display','block');
+});
+$('#TCgo2').on('click',async function(){
+	var resultBBcode = '[table'+($('#TCcolor').val()==''?'':'='+$('#TCcolor').val())+']';
+	for(tr=0;tr<$('#TCtable1').children().length;tr++){
+		/*для строчек*/
+		resultBBcode+='[tr]';
+		for(td=0;td<$('#TCtable1').children().eq(tr).children().length;td++){
+			/*для каждй ячейки*/
+			resultBBcode+='[td]';
+			/*текст ячейки*/
+			resultBBcode+=$('#TCtable1').children().eq(tr).children().eq(td).html();
+			resultBBcode+='[/td]';
+		}
+		resultBBcode+='[/tr]';
+	}
+	resultBBcode+='[/table]';
+	
+	/*вывод, чёрт возьми*/
+	$('#TCstage3').html(await preview(resultBBcode));
+	$('#TCpreviewText').text(resultBBcode);
+});
