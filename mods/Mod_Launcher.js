@@ -1,7 +1,7 @@
 /*Проверка на jQuery*/
 if(!("jQuery" in window)){let a = document.createElement('script');a.src='//e.catwar.su/js/jquery.js';document.head.appendChild(a);}
 
-var versionML = '0.5';
+var versionML = '0.5.1 BETA';
 var	CatWarMod = new mod('CatWarMod','Хвойница','https://openuserjs.org/install/Fredo14/CatWar_Mod.user.js',[]),
 	CW_shed = new mod('CW_shed','Ленивый','https://openuserjs.org/install/ReiReiRei/CW_Shed.user.js',[]),
 	CW_WhiteSpiderweb = new mod('CW_WhiteSpiderweb','Ленивый','https://openuserjs.org/install/ReReRe/CW_White_Spiderweb.user.js',['https://catwar.su/cw3/']),
@@ -11,7 +11,7 @@ var MODS = [CatWarMod,CW_shed,CW_WhiteSpiderweb,More_Stickers_Addon];
 
 if(!localStorage.getItem('versionML')){
 	localStorage.setItem('versionML',versionML);
-	if(!("Notification" in window)){
+	if("Notification" in window){
 		newNotificationML('Версия мода: '+versionML, false);
 		}
 	else{
@@ -215,6 +215,26 @@ $('head').append($('<style><\/style>').html(`.MLconsole{
 		bottom:40px;
 		filter:opacity(100%);
 	}
+	.desktopML1{
+		display:flex;
+		position:absolute;
+		left:-45px;
+		bottom:0px;
+		height:30px;
+		width:30px;
+		background-color:black;
+		border-radius:50%;
+		color:white;
+		justify-content: center;
+		align-items: center;
+		text-decoration:none;
+		transition:1s;
+		filter:opacity(0%);
+	}
+	.desktopML1_active{
+		bottom:80px;
+		filter:opacity(100%);
+	}
 	.MLCnot_window_ON{
 		position:absolute;
 		right:0;
@@ -260,6 +280,7 @@ $('head').append($('<style><\/style>').html(`.MLconsole{
 			border-radius: 0;
 		}
 		.to_house_active{
+			transition:0s;
 			top: 0;
 			color: white;
 			border-color: white;
@@ -293,6 +314,7 @@ $('head').append($('<style><\/style>').html(`.MLconsole{
 		border-radius: 0;
 	}
 	.to_housedesctop{
+		transition:0s;
 		top: 0;
 		color: white;
 		border-color: white;
@@ -319,6 +341,7 @@ $('head').append($('<style><\/style>').html(`.MLconsole{
 	#TCstage2 table{
 	border: 1px solid black;    
 	border-collapse: collapse;
+	width:100%;
 	}
 	#TCstage2 tr, #TCstage2 td{
 	border: 1px solid black;
@@ -326,12 +349,13 @@ $('head').append($('<style><\/style>').html(`.MLconsole{
 	`))
 	$('head').append($('<link>').attr('href','https://fonts.googleapis.com/icon?family=Material+Icons').attr('rel','stylesheet'));
 $('body').append(`<div id="MLconsole" class="MLconsole">
+	<a href="#" id="desktopML1" style="color:white;border-color:white;text-decoration:none;" class="desktopML1"><span class="material-icons" style="color:white">laptop</span>
 	<a href="#" id="to_house" class="to_house" style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-24">home</span></a>
 	<a href="#" id="MLCbutton_exit" class="MLCbutton_exit"><span></span></a>
 	<div id="MLCwindows">
 		<!--MainMenu-->
 		<div id="MainMenu" class="MLCwindow">
-			<h1>Mod Launcher version 0.5.0.1 BETA</h1>
+			<h1>Mod Launcher version 0.5.1 BETA</h1>
 			<a href="#" class="menu" data-id="MLCaccount"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">perm_identity</span></a>
 			<a href="#" class="menu" data-id="MLCcode"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">code</span></a>
 			<a href="#" class="menu" data-id="MLCmods"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">settings</span></a>
@@ -363,7 +387,7 @@ $('body').append(`<div id="MLconsole" class="MLconsole">
 						Количество столбцов: 
 					</td>
 					<td>
-						<input type="number" id="TCstolb">
+						<input type="number" id="TCstolb" style="width:100%">
 					</td>
 				</tr>
 				<tr>
@@ -371,7 +395,7 @@ $('body').append(`<div id="MLconsole" class="MLconsole">
 						Количество строк: 
 					</td>
 					<td>
-						<input type="number" id="TCstrok">
+						<input type="number" id="TCstrok" style="width:100%">
 					</td>
 				</tr>
 				
@@ -381,20 +405,29 @@ $('body').append(`<div id="MLconsole" class="MLconsole">
 						(стандарт - оставить пустым; без рамки - 0; цвет заливки - цвет):
 					</td>
 					<td>
-						<input type="text" id="TCcolor">
+						<input type="text" id="TCcolor" style="width:100%">
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2"><input type="button" id="TCgo1" value="2 этап"></td>
+					<td colspan="2" style="text-align:center"><input type="button" id="TCgo1" value="2 этап" style="width:40%"></td>
 				</tr>
 				<tr>
-					<td colspan="2"><textarea id="TCtext"></textarea></td>
+					<td colspan="2"><textarea id="TCtext" style="width:100%"></textarea></td>
 				</tr>
+				<tr>
+					<td colspan="2" style="text-align:center"><div id="TCstage2"></div></td>
+				</tr>
+				<tr>
+					<td colspan="2" style="text-align:center"><input type="button" id="TCgo2" value="3 этап" style="display:none; width:100%"></td>
+				</tr>
+				<tr>
+					<td colspan="2" style="text-align:center"><div id="TCstage3"></div></td>
+				</tr>
+				<tr>
+					<td colspan="2" style="text-align:center"><div id="TCpreviewText"></div></td>
+				</tr>
+				
 			</table>
-			<div id="TCstage2"></div>
-			<input type="button" id="TCgo2" value="3 этап" style="display:none">
-			<div id="TCstage3"></div>
-			<div id="TCpreviewText"></div>
 		</div>
 		
 		<!--Моды-->
@@ -500,7 +533,6 @@ $(function(){
 		$(".MLCwindow").css("display","none");
 		/* Выборка нового окна и постановка ему display:block 
 		через data-id кнопки. id(окна)=data-id(кнопки)*/
-		/*Не дай Бог, кому-то не понравится эта строчка, оторву голову! Это неодобрение не стоит моих сожжённых нервов и убитого времени*/
 		$("#"+$(this).data('id')).css('display','block');
 	});
 	
@@ -690,13 +722,15 @@ $('#cancelML').on('click',function(e){
 });
 
 /*на весь экран*/
-$('#desktopML').on('click',function(){
+function MobileML(){
 	$('#MLconsole').toggleClass('desktopMLconsole');
 	$('#to_house').toggleClass('to_housedesctop');
 	$('#MLCbutton_exit').toggleClass('MLCbutton_exitdesctop');
+	$('#desktopML1').toggleClass('desktopML1_active');
 	$('.MLCwindow').toggleClass('MLCwindowdesctop');
-	
-})
+}
+$('#desktopML').on('click',MobileML());
+$('#desktopML1').on('click',MobileML());
 
 /*версии модов на экран настройки*/
 $('#versonML').html(versionML);
@@ -719,7 +753,7 @@ $('#TCgo1').on('click',function(){
 	
 	$('#TCstage2').html(result);
 	$('.TCtd').on('click', function(){
-		$(this).html($('#TCtext').val());
+		$(this).html(($('#TCtext').val()!=''? $('#TCtext').val():' '));
 	});
 	$('#TCgo2').css('display','block');
 });
