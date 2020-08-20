@@ -355,7 +355,7 @@ $('body').append(`<div id="MLconsole" class="MLconsole">
 	<div id="MLCwindows">
 		<!--MainMenu-->
 		<div id="MainMenu" class="MLCwindow">
-			<h1>Mod Launcher version 0.5.1 BETA</h1>
+			<h1>Mod Launcher version 0.5.0.2 BETA</h1>
 			<a href="#" class="menu" data-id="MLCaccount"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">perm_identity</span></a>
 			<a href="#" class="menu" data-id="MLCcode"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">code</span></a>
 			<a href="#" class="menu" data-id="MLCmods"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">settings</span></a>
@@ -515,6 +515,7 @@ $(function(){
 		$('#to_house').removeClass('to_housedesctop');
 		$('#MLCbutton_exit').removeClass('MLCbutton_exitdesctop');
 		$('.MLCwindow').removeClass('MLCwindowdesctop');
+		$('#desktopML1').toggleClass('desktopML1_active');
 	});
 	
 	/*Кнопка домой*/
@@ -726,11 +727,10 @@ function MobileML(){
 	$('#MLconsole').toggleClass('desktopMLconsole');
 	$('#to_house').toggleClass('to_housedesctop');
 	$('#MLCbutton_exit').toggleClass('MLCbutton_exitdesctop');
-	$('#desktopML1').toggleClass('desktopML1_active');
 	$('.MLCwindow').toggleClass('MLCwindowdesctop');
 }
-$('#desktopML').on('click',MobileML());
-$('#desktopML1').on('click',MobileML());
+$('#desktopML').on('click',MobileML);
+$('#desktopML1').on('click',MobileML);
 
 /*версии модов на экран настройки*/
 $('#versonML').html(versionML);
