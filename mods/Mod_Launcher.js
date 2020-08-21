@@ -108,6 +108,12 @@ $('head').append($('<style><\/style>').html(`.MLconsole{
 		margin:3px;
 		display:block;
 	}
+	#MainMenu{
+		background: url(https://serolapy.github.io/mods/img/symbol.png), rgb(105,105,105);
+		background-size: auto 100%;
+		background-repeat: no-repeat;
+		background-position: 50% 50%;
+	}
 	#MLcommand input[type="button"]{
 		width:40px;
 		background:none;
@@ -384,7 +390,7 @@ $('body').append(`<div id="MLconsole" class="MLconsole">
 			<table class="window_table">
 				<tr>
 					<td>
-						Количество столбцов: 
+						Количество строк: 
 					</td>
 					<td>
 						<input type="number" id="TCstolb" style="width:100%">
@@ -392,7 +398,7 @@ $('body').append(`<div id="MLconsole" class="MLconsole">
 				</tr>
 				<tr>
 					<td>
-						Количество строк: 
+						Количество ячеек: 
 					</td>
 					<td>
 						<input type="number" id="TCstrok" style="width:100%">
@@ -418,7 +424,7 @@ $('body').append(`<div id="MLconsole" class="MLconsole">
 					<td colspan="2" style="text-align:center"><div id="TCstage2"></div></td>
 				</tr>
 				<tr>
-					<td colspan="2" style="text-align:center"><input type="button" id="TCgo2" value="3 этап" style="display:none; width:100%"></td>
+					<td colspan="2" style="text-align:center"><input type="button" id="TCgo2" value="3 этап" style="display:none; width:40%"></td>
 				</tr>
 				<tr>
 					<td colspan="2" style="text-align:center"><div id="TCstage3"></div></td>
