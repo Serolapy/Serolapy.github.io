@@ -92,6 +92,7 @@ $('head').append($('<style><\/style>').html(`.MLconsole{
 		transform:translateX(102%);
 		font-family:Arial;
 		z-index:10000;
+		overflow:auto;
 	}
 	.MLconsole_active{
 		transform:translateX(0%);
@@ -136,12 +137,15 @@ $('head').append($('<style><\/style>').html(`.MLconsole{
 	}
 	.MLCwindow{
 		height:100%;
+		position:absolute;
+		width:100%;
 	}
 	.MLCwindow h1{
 		font-size: 36px;
 		margin: 0px;
 		text-align: center;
 		font-family: Arial;
+		color:white;
 	}
 	.menu{
 		color:#fff;
@@ -169,6 +173,7 @@ $('head').append($('<style><\/style>').html(`.MLconsole{
 		width:30px;
 		background-color:black;
 		border-radius:50%;
+		z-index:1;
 	}
 	.MLCbutton_exit span,
 	.MLCbutton_exit span::before,
@@ -216,6 +221,7 @@ $('head').append($('<style><\/style>').html(`.MLconsole{
 		text-decoration:none;
 		transition:1s;
 		filter:opacity(0%);
+		z-index:1;
 	}
 	.to_house_active{
 		bottom:40px;
@@ -358,10 +364,10 @@ $('body').append(`<div id="MLconsole" class="MLconsole">
 	<a href="#" id="desktopML1" style="color:white;border-color:white;text-decoration:none;" class="desktopML1"><span class="material-icons" style="color:white">laptop</span>
 	<a href="#" id="to_house" class="to_house" style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-24">home</span></a>
 	<a href="#" id="MLCbutton_exit" class="MLCbutton_exit"><span></span></a>
-	<div id="MLCwindows">
+	<div id="MLCwindows" style="height: 100%;width: 100%;position: absolute;">
 		<!--MainMenu-->
 		<div id="MainMenu" class="MLCwindow">
-			<h1>Mod Launcher version 0.5.0.2 BETA</h1>
+			<h1>Mod Launcher version 0.5.1 BETA</h1>
 			<a href="#" class="menu" data-id="MLCaccount"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">perm_identity</span></a>
 			<a href="#" class="menu" data-id="MLCcode"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">code</span></a>
 			<a href="#" class="menu" data-id="MLCmods"style="color:white;border-color:white;text-decoration:none;"><span class="material-icons md-56">settings</span></a>
@@ -773,7 +779,7 @@ $('#TCgo2').on('click',async function(){
 			resultBBcode+='[td]';
 			/*текст ячейки*/
 			resultBBcode+=$('#TCtable1').children().eq(0).children().eq(tr).children().eq(td).html();
-			resultBBcode+='[/td]';
+			resultBBcode+=' [/td]';
 		}
 		resultBBcode+='[/tr]';
 	}
