@@ -77,7 +77,9 @@ if(!localStorage.getItem('myCatML')){
 	MyCharacterNew();
 }
 /*начало консоли*/
-$('head').append($('<style><\/style>').html(`.MLconsole{
+$('head').append($('<style><\/style>').html(`
+		/*тут большой бардак. Лучше листайте дальше*/
+		.MLconsole{
 		background-color:#696969;
 		color:#FFF;
 		width:700px;
@@ -92,7 +94,6 @@ $('head').append($('<style><\/style>').html(`.MLconsole{
 		transform:translateX(102%);
 		font-family:Arial;
 		z-index:10000;
-		overflow:auto;
 	}
 	.MLconsole_active{
 		transform:translateX(0%);
@@ -108,6 +109,7 @@ $('head').append($('<style><\/style>').html(`.MLconsole{
 	#MLCwindows{
 		margin:3px;
 		display:block;
+		overflow:auto;
 	}
 	#MainMenu{
 		background: url(https://serolapy.github.io/mods/img/symbol.png), rgb(105,105,105);
@@ -128,7 +130,7 @@ $('head').append($('<style><\/style>').html(`.MLconsole{
 	}
 	.bottomLine{
 		background-color:black;
-		position:absolute;
+		position:sticky;
 		bottom:-3px;
 		margin:0;
 		display:block;
@@ -159,6 +161,7 @@ $('head').append($('<style><\/style>').html(`.MLconsole{
 		justify-content: center;
 		align-items: center;
 		border-radius:10px;
+		background: rgba(105,105,105,0.8);
 	}
 	.menu:hover{
 		color:#7FFFD4;
@@ -315,6 +318,7 @@ $('head').append($('<style><\/style>').html(`.MLconsole{
 		}
 		.MLCwindow{
 			padding-top: 30px;
+			height: calc(100% - 30px);
 		}
 	}
 	.desktopMLconsole{
