@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+	<meta charset="UTF-8">
+	<head>
+		<title>Serolapy</title>
+		<link rel="stylesheet" href="/css/site.css">
+		<link rel="SHORTCUT ICON" href="/img/favicon.ico" type="image/x-icon">
+		<script src="/js/site.js"></script>
+	</head>
+	<body>
+		<header>
+			<div id="header"><a href="https://vk.com/serolapy"><img src="/img/vk.png" class="mylink"></a><a href="https://t.me/serolapy"><img src="/img/telegram.png" class="mylink"></a><a href=""><img src="" class=""></a> Пушистый блог Серолапого<br><span>@serolapy</span></div>
+		</header>
+		<nav>
+			<ul>
+				<li>
+					<a href="/blogs">Блоги</a>
+				</li>
+				<li>
+					<a href="javascript:alert('Ещё не добавлено')">Интересное</a>
+				</li>
+				<li>
+					<a href="/">Главная</a>
+				</li>
+				<li>
+					<a href="/mods">Моды</a>
+				</li>
+				<li>
+					<a href="javascript:alert('Ещё не добавлено')">Полезное</a>
+				</li>
+			</ul>
+		</nav>
+		<aside> 	<!--Боковая панель-->
+			<h1>Смотрите также:</h1>
+		</aside>
+		<article>	<!--Главная часть-->
+			<h1>Варокарточки</h1>
+			Вставте сюда ваш текст.
+			<textarea></textarea>
+			
+			<input type="button" id="go" value="Далее">
+			
+			<div id="result"></div>
+			<div id="resultBB"></div>
+		</article>
+		<footer>
+			(c)<a href="https://catwar.su/cat982738">Серолапый</a>, 2020
+		</footer>
+		<script>
+			function BuchstabeInBild(text){
+				text = text.toLocaleLowerCase();
+				var Worterbild = '', /*Ergebnis*/
+				WorterbildBB = '',
+				Buchstaben = ['а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я', ]; /*die Buchstaben, die in den Text sich finden*/
+				for( i=0;i<text.length;i++){
+					if(Buchstaben.indexOf(text[i]) != -1){
+						Worterbild += '<img src="'+text[i]+'.png">';
+						WorterbildBB += '[img]https://serolapy.github.io/symbol/'+text[i]+'.png[/img]';
+					} else{
+						Worterbild += text[i];
+						WorterbildBB += text[i];
+					}
+				}
+				document.getElementById('result').innerHTML = Worterbild;
+				document.getElementById('resultBB').innerHTML = WorterbildBB;
+			}
+		</script>
+	</body>
+</html>
