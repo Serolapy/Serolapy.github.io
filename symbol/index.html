@@ -35,8 +35,8 @@
 		</aside>
 		<article>	<!--Главная часть-->
 			<h1>Варокарточки</h1>
-			Вставте сюда ваш текст.
-			<textarea></textarea>
+			Вставте сюда ваш текст.<br>
+			<textarea id="textarea"></textarea><br>
 			
 			<input type="button" id="go" value="Далее">
 			
@@ -47,8 +47,10 @@
 			(c)<a href="https://catwar.su/cat982738">Серолапый</a>, 2020
 		</footer>
 		<script>
-			function BuchstabeInBild(text){
+			function BuchstabeInBild(){
+				var text = document.getElementById('textarea').innerText;
 				text = text.toLocaleLowerCase();
+				
 				var Worterbild = '', /*Ergebnis*/
 				WorterbildBB = '',
 				Buchstaben = ['а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я', ]; /*die Buchstaben, die in den Text sich finden*/
@@ -64,6 +66,7 @@
 				document.getElementById('result').innerHTML = Worterbild;
 				document.getElementById('resultBB').innerHTML = WorterbildBB;
 			}
+			go.onclick = BuchstabeInBild
 		</script>
 	</body>
 </html>
