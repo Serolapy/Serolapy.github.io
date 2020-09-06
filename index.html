@@ -2,6 +2,7 @@
 <html>
 	<meta charset="UTF-8">
 	<head>
+		<script src="/js/jQuery.js"></script>
 		<title>Serolapy</title>
 		<link rel="stylesheet" href="/css/site.css">
 		<link rel="SHORTCUT ICON" href="/img/favicon.ico" type="image/x-icon">
@@ -14,19 +15,16 @@
 		<nav>
 			<ul>
 				<li>
-					<a href="javascript:alert('Еще не добавлено')">Блоги</a>
-				</li>
-				<li>
-					<a href="javascript:alert('Ещё не добавлено')">Интересное</a>
+					<a href="/blogs">Блоги</a>
 				</li>
 				<li>
 					<a href="/">Главная</a>
 				</li>
 				<li>
-					<a href="javascript:alert('Еще не добавлено');">Моды</a>
+					<a href="/mods">Моды</a>
 				</li>
 				<li>
-					<a href="javascript:alert('Ещё не добавлено')">Полезное</a>
+					<a href="/useful">Полезное</a>
 				</li>
 			</ul>
 		</nav>
@@ -37,16 +35,39 @@
 			<h1>Пушистый блог Серолапого</h1>
 			<div id="list">
 				<div class="list">
-					<a href='/mods'>Модификации для CatWar</a><br>
-					
+					<a href='/blogs'>Блоги</a><br>
+					Мои блоги
 				</div>
 				<div class="list">
-					<a href='javascript:alert("Будет чуть позжже")'>Блоги</a>
+					<a href='/useful/avatar'>Поиск аватара по ID</a><br>
+					Поиск аватарки любого игрока через его ID
+				</div>
+				<div class="list">
+					<a href='/useful/smell'>Генератор запахов</a><br>
+					Тут вы сможете сгенерировать свой собственный запах по заданным цветам
+				</div>
+				<div class="list">
+					<a href='/useful/symbol'>Варокарточки</a><br>
+					Преобразование текста в Варокарточки
 				</div>
 			</div>
 		</article>
 		<footer>
 			(c)<a href="https://catwar.su/cat982738">Серолапый</a>, 2020
 		</footer>
+		<!-- Yandex.Metrika counter -->
+			<script type="text/javascript" >
+			(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+			m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+			(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+			
+			ym(67068502, "init", {
+					clickmap:true,
+					trackLinks:true,
+					accurateTrackBounce:true
+			});
+			</script>
+			<noscript><div><img src="https://mc.yandex.ru/watch/67068502" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+		<!-- /Yandex.Metrika counter -->
 	</body>
 </html>
