@@ -5,8 +5,8 @@ window.onload = function(){
 		document.getElementsByTagName("title")[0].innerHTML = newTitle + ' | Serolapy';
 	}
 	*/
-	var Mods = new Array("More_Stickers","CBM");
-	var ModsLink = new Array("/More_Stickers", "CBM");
+	var Mods = new Array("More_Stickers");
+	var ModsLink = new Array("/More_Stickers");
 	var ModsList = document.createElement("div");
 	ModsList.className="liMenu";
 	for(i=0;i<Mods.length;i++){
