@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+	<meta charset="UTF-8">
+	<head>
+		<script src="/js/jQuery.js"></script>
+		<title>Serolapy</title>
+		<link rel="stylesheet" href="/css/site.css">
+		<link rel="SHORTCUT ICON" href="/img/favicon.ico" type="image/x-icon">
+		<script src="/js/site.js"></script>
+		<link rel="stylesheet" href="css.css">
+	</head>
+	<body>
+		<header>
+			<div id="header"><a href="https://vk.com/serolapy"><img src="/img/vk.png" class="mylink"></a><a href="https://t.me/serolapy"><img src="/img/telegram.png" class="mylink"></a><a href=""><img src="" class=""></a>Пушистый блог Серолапого<br><span>@serolapy</span></div>
+		</header>
+		<nav>
+			<ul>
+				<li>
+					<a href="/blogs">Блоги</a>
+				</li>
+				<li>
+					<a href="/">Главная</a>
+				</li>
+				<li>
+					<a href="/mods">Моды</a>
+				</li>
+				<li>
+					<a href="/useful">Полезное</a>
+				</li>
+			</ul>
+		</nav>
+		<aside> 	<!--Боковая панель-->
+			<h1>Смотрите также:</h1>
+		</aside>
+		<article>	<!--Главная часть-->
+			<h1>Поиск аватарки по ID</h1>
+			<div class="update">14 июня 2020</div>
+			Добра! Этот небольшой скрипт поможет вам найти аватарку любого игрока в CatWar, зная лишь только его ID.<br>
+			<h2>Описание</h2>
+			Как нам известно, для того, чтобы поставить аватарку своему профилю, нужно загрузить изображение (обратите внимание - не вставить ссылку, а именно загрузить!) в игру. На самом сайте аватарки хранятся в папке AVATAR (полную ссылку на папку давать не буду, ибо это уже совсем нагло). <br>На выбор нам даётся 3 расширения для картинки: PNG, JPEG, GIF. Так если так всё строго и ограничено, не написать эту программу просто грех. Вот, держите:
+			<h2>Поиск</h2>
+			<div id="avatar">
+			Введите ID игрока:<input type="text" id="ID" placeholder="982738"><br>
+			<button id="btn" onclick="a(document.getElementById('ID').value,'.jpg')">Поиск</button><br>
+			<img scr="#" id="img" onerror="a(document.getElementById('ID').value,e)">
+			<script>
+				var d = document.getElementById("img"),
+					e ='';
+				function a(b, c){
+					switch (c){
+						case ".jpg":
+							e = ".png";
+							break;
+						case ".png":
+							e = ".gif";
+							break;
+						case ".gif":
+							e = ".ERROR";
+							break;
+						case ".ERROR":
+							e = "";
+							alert("Игрока с данным ID не существует");
+						}
+					if(e!=""){
+						d.src = 'https://catwar.su/avatar/'+b+c;
+					}
+				}
+			</script>
+		</div>
+		</article>
+		<footer>
+			(c)<a href="https://catwar.su/cat982738">Серолапый</a>, 2020
+		</footer>
+		<!-- Yandex.Metrika counter -->
+			<script type="text/javascript" >
+			(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+			m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+			(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+			
+			ym(67068502, "init", {
+					clickmap:true,
+					trackLinks:true,
+					accurateTrackBounce:true
+			});
+			</script>
+			<noscript><div><img src="https://mc.yandex.ru/watch/67068502" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+		<!-- /Yandex.Metrika counter -->
+	</body>
+</html>
