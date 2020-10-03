@@ -503,7 +503,7 @@ input#text {
 								</tbody>
 							</table>
 							<!--schwarzen Noten-->
-							<p><b>Тёмные баллы (шанс попасть в Сумрачный лес после смерти):</b> <span id="black">0</span></p>
+							<p><b>Тёмные баллы (шанс попасть в Сумрачный лес после смерти):</b> <span id="black">~</span></p>
 							
 						</div>
 					</td>
@@ -520,7 +520,7 @@ input#text {
 									<option value="objectCat">Кот + предмет под ним</option>
 								</select>
 							</div>
-							<div id="editCat">
+							<div id="editCat" style="display:none">
 								<h4>Настройки кота</h4>
 								<table width="100%">
 									<tbody>
@@ -580,7 +580,7 @@ input#text {
 									</tbody>
 								</table>
 							</div>
-							<div id="editObjects">
+							<div id="editObjects" style="display:none">
 								<h4>Создание предметов</h4>
 								<table>
 									<thead>
@@ -636,20 +636,57 @@ input#text {
 								<h4>Погода</h4>
 								<h5>Небо</h5>
 								<select id="editSky">
-									<option value="number"><img src="#"></option>
+									<option value="1">Небо 1</option>
+									<option value="2">Небо 2</option>
+									<option value="3">Небо 3</option>
+									<option value="4">Небо 4</option>
+									<option value="5">Небо 5</option>
+									<option value="6">Небо 6</option>
+									<option value="7">Небо 7</option>
+									<option value="8">Небо 8</option>
+									<option value="9">Небо 9</option>
+									<option value="10">Небо 10</option>
+									<option value="11">Небо 11</option>
 								</select>
+								<img id="editSkyPreview" src="https://catwar.su/cw3/sky/11.png">
 								<h5>Время</h5>
 								<select id="editTime">
-									<option value="number"><img src="#"></option>
+									<option value="0">Время 0</option>
+									<option value="1">Время 1</option>
+									<option value="2">Время 2</option>
+									<option value="3">Время 3</option>
+									<option value="4">Время 4</option>
+									<option value="5">Время 5</option>
+									<option value="6">Время 6</option>
+									<option value="7">Время 7</option>
+									<option value="8">Время 8</option>
+									<option value="9">Время 9</option>
+									<option value="10">Время 10</option>
+									<option value="11">Время 11</option>
+									<option value="12">Время 12</option>
+									<option value="13">Время 13</option>
+									<option value="14">Время 14</option>
+									<option value="15">Время 15</option>
+									<option value="16">Время 16</option>
+									<option value="17">Время 17</option>
+									<option value="18">Время 18</option>
+									<option value="19">Время 19</option>
+									<option value="20">Время 20</option>
+									<option value="21">Время 21</option>
+									<option value="22">Время 22</option>
+									<option value="23">Время 23</option>
 								</select>
+								<img id="editTimePreview" src="https://catwar.su/cw3/symbole/hours/0.png">
 								<h5>Время года</h5>
 								<select id="editSeason">
-									<option value="number"><img src="#"></option>
+									<option value="0">Зима</option>
+									<option value="1">Весна</option>
+									<option value="2">Лето</option>
+									<option value="3">Осень</option>
 								</select>
-								<h5>Температура</h5>
-								<select id="editTemp">
-									<option value="number"><img src="#"></option>
-								</select>
+								<img id="editSeasonPreview" src="https://catwar.su/cw3/symbole/season0.png">
+								
+								<!--ТЕМПЕРАТУРА ТУТ ДОЛЖНА БЫТЬ, НО ПРИШЛИ ВОЛКИ, ПОСТАВИЛИ КРОЛИКУ ТЕРМОМЕТР, А ОН ПОКАЗЫВАЕТ "36.9", А ВОЛКИ ТАКИЕ: "А, НЕ-Е-Е, КРОЛЬ, ТЫ НАМ НЕ ПОХДОДИШЬ". ТЕПЕРЬ В ВАРЕ НЕТ ТЕМПЕРАТУРЫ-->
 							</div>
 							<div><!--Действия-->
 								<h4>Действия</h4>

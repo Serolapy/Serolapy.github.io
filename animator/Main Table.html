@@ -1,0 +1,113 @@
+<table id="main_table" style="border-spacing:2px">
+	<tbody>
+		<tr id="tr_chat">
+			<td>
+				<form id="chat_form"><span id="txt"><input size="50" id="text" autocomplete="off"> <!----> <!----></span> <input type="submit" id="msg_send" value="OK"> <!----> <span><span id="volume" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 50%;"></span></span> <b>(правее — громче)</b></span></form>
+				<div id="chat_msg"></div>
+			</td>
+		</tr>
+		<tr id="tr_actions">
+			<td><span class="title">Действия</span> <div id="block_deys" style="display: none;"><table style="width: 100%;"><tbody><tr><td style="width: 70%;"><div id="akten" style="display: block;"><!--Действия--></div> <div id="dein" style="display: none;"><!--Действия с другими игроками--></div></td> 
+			<td>
+				Действия с каким-либо котом в соседней клетке:<br> <select id="mit"><option value="0">Действия с собой</option><option value="<!--ид кота-->"><!--имя кота--></option></select><br> <input type="button" id="mitok" value="Показать"></td></tr></tbody></table></div> <div id="block_mess"></div>
+			</td></tr>
+		<tr id="tr_tos">
+			<td><table><tbody><tr><td><!----> <!----></td> <td><div id="tos" style="background: #E84232;background: -moz-linear-gradient(0deg, #F17558, #E00F0B);background: -webkit-linear-gradient(0deg, #F17558, #E00F0B);background: -o-linear-gradient(0deg, #F17558, #E00F0B);background: -ms-linear-gradient(0deg, #F17558, #E00F0B);background: linear-gradient(90deg, #F17558, #E00F0B););"></div></td> <td><a href="/time" target="_blank" id="hour"><img src="symbole/hours/7.png"></a></td> <td><a href="/time" target="_blank"><img src="symbole/season2.png"></a></td> <!----></tr></tbody></table></td>
+		</tr>
+		<tr id="tr_sky">
+			<td><div id="sky" style="background-image: url(&quot;sky/3.png&quot;);"></div></td>
+		</tr>
+		<tr id="tr_field">
+			<td id="act">
+				<div id="cages_overflow">
+					<div id="cages_div" style="opacity: 1; background-image: url('');">
+						<table id="cages" style="border:1px black solid"><tbody>
+							<tr>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+							</tr>
+							<tr>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+							</tr>
+							<tr>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+							</tr>
+							<tr>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+							</tr>
+							<tr>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+							</tr>
+							<tr>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+								<td class="cage"></td>
+							</tr>
+						</tbody></table>
+					</div>
+				</div>
+			</td>
+		</tr>
+		<tr id="tr_mouth">
+			<td><span class="title">Во рту</span> <div id="tir"><table><tbody><tr id="katze"><td><ol id="itemList"><!--Рот--></ol></td> <!----></tr></tbody></table></div> <a href="#">Смешивать</a> <!----><br><br> <div id="thdey" style="display: none;"><ul style="margin: 0px; padding: 0px 0px 0px 1.4em;"><li><a href="#" id="eat"></a></li> <li><a href="#" id="put">Положить на землю</a></li> <li><a href="#" id="dig">Закопать</a></li> <li id="divide"><a href="#">Разделить</a></li> <li id="chew"><a href="#">Разжевать</a></li></ul> <br> <div id="layer" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 0%;"></span></div><br>
+				Чем правее, тем глубже будет закопан предмет. <a href="/about?id=12" target="_blank">[?]</a><br><br></div> <div id="ctdey" style="display: none;"><ul style="margin: 0px; padding: 0px 0px 0px 1.4em;"><li><a href="#" id="put2">Положить на землю</a></li> <li><a href="/cat1169401" target="_blank">Перейти в профиль</a></li></ul></div></td>
+		</tr>
+		<tr id="tr_info">
+			<td><table id="info_main">
+				<tbody><tr><td id="family" class="infos"><h2><a href="#" id="relatives" class="toggle">Родственные связи</a></h2> <div id="relatives_block"><div id="family_block"><b>Мама</b>: <br><b>Папа</b>: <br><b>Братья и сёстры</b>: <br><b>Котята</b>: нет<br><br><i>Курсивом</i> выделены приёмные родственники.</div> <a href="/relatives">Генеалогический кустик</a> <div id="pairs"> </div></div></td> <td id="history" class="infos"><h2><a href="#" id="history" class="toggle">История</a></h2> <div id="history_block"><span id="ist"></span><br> <a href="#" id="history_clean">Очистить историю</a> <div style="background-color: white;">
+							Моё местонахождение: <span id="location"></span></div></div></td> <td id="parameter" class="infos"><h2><a href="#" id="parameters" class="toggle">Параметры и навыки</a></h2> <div id="parameters_block"></div></td></tr></tbody></table>
+			</td>
+		</tr>
+	</tbody>
+</table>
