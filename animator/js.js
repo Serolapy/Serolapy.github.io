@@ -12,7 +12,7 @@ $('#tdType').change(function(){
 			cat.css('display','block');
 			object.css('display','none');
 			break;
-		case "object";
+		case "object":
 			cat.css('display','none');
 			object.css('display','block');
 			break;
