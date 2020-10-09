@@ -34,4 +34,8 @@ $('#editSeason').change(function(){
 	let s = $(this).val();
 	$('#editSeasonPreview').attr('src','https://catwar.su/cw3/symbole/season'+s+'.png');
 });
-alert();
+function Familie() {
+	$('#Mamapole').html($('#Mutter').val())
+	$('#Papapole').html($('#Vater').val())
+	$('#Bratosisterypole').html($('#MuttGeschwisterer').val())
+}
