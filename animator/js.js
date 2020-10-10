@@ -34,10 +34,13 @@ $('#editSeason').change(function(){
 	let s = $(this).val();
 	$('#editSeasonPreview').attr('src','https://catwar.su/cw3/symbole/season'+s+'.png');
 });
+/*изменение данных полей*/
 function FamilieGeschichteUndAndere() {
+	/*$(Murr).html($(Serolapy).val())*/
 	$('#Mamapole').html($('#Mutter').val());
 	$('#Papapole').html($('#Vater').val());
 	$('#Bratosisterypole').html($('#MuttGeschwisterer').val());
-	$('#Cathistory').html($('#ist').val());
-	$('#catLocation').html($('#location').val());
+	$('#ist').html($('#Cathistory').val());
+	$('#location').html($('#catLocation').val());
 }
+$('#Mutter, #Vater, #MuttGeschwisterer, #Cathistory, #catLocation').change(FamilieGeschichteUndAndere());
