@@ -34,6 +34,12 @@ $('#editSeason').change(function(){
 	let s = $(this).val();
 	$('#editSeasonPreview').attr('src','https://catwar.su/cw3/symbole/season'+s+'.png');
 });
+function SkyTimeSeasons() {
+	$('#sky').css('background-image', 'url("https://catwar.su/cw3/sky/' + $('#editSky').val() + '.png")');
+	$('#hour').html('<img src="https://catwar.su/cw3/symbole/hours/' + $('#editTime').val() + '.png">');
+	$('a[href="/time"]').eq(1).html('<img src="https://catwar.su/cw3/symbole/season' + $('#editSeason').val() + '.png">');
+}
+$('#editSky,#editTime,#editSeason').change(SkyTimeSeasons);
 /*изменение данных полей*/
 function FamilieGeschichteUndAndere() {
 	/*$(Murr).html($(Serolapy).val())*/
