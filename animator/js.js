@@ -38,4 +38,6 @@ function FamilieGeschichteUndAndere() {
 	$('#Mamapole').html($('#Mutter').val());
 	$('#Papapole').html($('#Vater').val());
 	$('#Bratosisterypole').html($('#MuttGeschwisterer').val());
+	$('#Cathistory').html($('#ist').val());
+	$('#catLocation').html($('#location').val());
 }
