@@ -43,4 +43,4 @@ function FamilieGeschichteUndAndere() {
 	$('#ist').html($('#Cathistory').val());
 	$('#location').html($('#catLocation').val());
 }
-$('#Mutter, #Vater, #MuttGeschwisterer, #Cathistory, #catLocation').change(FamilieGeschichteUndAndere());
+$('#Mutter, #Vater, #MuttGeschwisterer, #Cathistory, #catLocation').change(FamilieGeschichteUndAndere);
