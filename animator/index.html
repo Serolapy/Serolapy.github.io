@@ -394,8 +394,19 @@ input#text {
 									<tbody>
 										<tr id="tr_chat">
 											<td>
-												<form id="chat_form"><span id="txt"><input size="50" id="text" autocomplete="off"> <!----> <!----></span> <input type="submit" id="msg_send" value="OK"> <!----> <span><span id="volume" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 50%;"></span></span> <b>(правее — громче)</b></span></form>
-												<div id="chat_msg"></div>
+												<form id="chat_form">
+													<span id="txt">
+														<input size="50" id="text" autocomplete="off"> 
+														<!----> <!---->
+													</span> 
+													<input type="submit" id="msg_send" value="OK">
+													<!----> 
+													<span>
+														<span id="volume" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 50%;"></span></span> 
+														<b>(правее — громче)</b>
+													</span>
+												</form>
+												<div id="chat_msg"><hr></div>
 											</td>
 										</tr>
 										<tr id="tr_actions">
@@ -633,11 +644,11 @@ input#text {
 										<tbody>
 											<tr>
 												<th>Сообщение</th>
-												<td><input type="text" maxlength="255"></td>
+												<td><input type="text" maxlength="255" id="newMessText"></td>
 											</tr>
 											<tr>
 												<th>Отправитель</th>
-												<td><input type="text"></td>
+												<td><input type="text" id="newMessCat"></td>
 											</tr>
 											<tr>
 												<th>Громкость</th>
@@ -658,7 +669,15 @@ input#text {
 												</td>
 											</tr>
 											<tr>
-												<td><input type="button" value="Отравить"></td>
+												<th>
+													Моё имя
+												</th>
+												<td>
+													<input type="text" id="newMessName">
+												</td>
+											</tr>
+											<tr>
+												<td><input type="button" value="Отравить" id="newMessBtn"></td>
 												<td> </td>
 											</tr>
 										</tbody>
