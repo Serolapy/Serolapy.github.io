@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\animator"
+    "\\animator",
+    "\\js",
+    "\\test"
   ],
   "SelectedNode": "\\animator\\index.html",
   "PreviewInSolutionExplorer": false
