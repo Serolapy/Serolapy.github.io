@@ -60,12 +60,8 @@ $('#newMessBtn').on('click', function () {
 	var t = $('#newMessText').val().split(' '),
 		text = '';
 	for (var _ in t) {
-		if (_ == $('#newMessName').val()) {
-			text += '<span class="myname">' + _ + '</span>';
-		}
-		else {
-			text += _;
-		}
+		text += t[_].replace($('#newMessName').val(), '<span class="myname">' + $('#newMessName').val() + '</span>');
+		text += ' ';
 	}
 	$('#chat_msg').prepend('<span><hr><table width="100%"><tbody><tr><td style="width: 90%"><span class="chat_text vlm' + $('#editVolume').val() + '"><span>' + text + '</span> - <b class="nick">' + $('#newMessCat').val() + '</b></span></td><td style="width: 10%"><a href="#">➝</a> | <a href="#" class="msg_report">X</a></td></tr></tbody></table></span>');
 });
