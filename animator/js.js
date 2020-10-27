@@ -1,5 +1,3 @@
-import { cssNumber } from "jquery";
-
 /*Выбор типажа клетки*/
 $('#tdType').change(function(){
 	let v = $(this).val(),
@@ -58,19 +56,47 @@ $('#Mutter, #Vater, #MuttGeschwisterer, #Cathistory, #catLocation').change(Famil
 
 /*Отправка сообщений*/
 $('#newMessBtn').on('click', function () {
-	let text = $('newMessText').val().replace($('#newMessName').val(), '<span class="myname">' + $('#newMessName').val() + '</span>');
+	//text = $('newMessText').val().replace($('#newMessName').val(), '<span class="myname">' + $('#newMessName').val() + '</span>');
+	var t = $('newMessText').val().split(' '),
+		text = '';
+	for (var _ in t) {
+		if (_ == $('#newMessName').val()) {
+			text += '<span class="myname">' + _ + '</span>';
+		}
+		else {
+			text += _;
+		}
+	}
 	$('#chat_msg').prepend('<span><hr><table width="100%"><tbody><tr><td style="width: 90%"><span class="chat_text vlm' + $('#editVolume').val() + '"><span>' + text + '</span> - <b class="nick">' + $('#newMessCat').val() + '</b></span></td><td style="width: 10%"><a href="#">➝</a> | <a href="#" class="msg_report">X</a></td></tr></tbody></table></span>');
-})
+});
 
 /*edit cats DATA!!!*/
 function EdCdata(pol, name, job, smell, online) {
 	var cName = '<u><a href="#">' + name + '</a></u><br>',
 		cJob = '<small><i>' + job + '</i></small><br>',
-		cSmell = (pol == 'der') ? 'Его' : 'Её' + 'запах:<br><img src="' + smell + '"><br>',
-		cOnline = '[' + (online == 'online') ? '<font color="#006400">В игре</font>' : (online == 'offline') ? '<font color="#A52A2A">Спит</font>' : (online == 'wait') ? '<font color="#333333">Недавно ушёл</font>' : (online == 'delete') ? '<font color="#333366">На удалении</font>' : '<font color="#333366">Заблокирован</font>' + ']';
-	return '<span class="cat_tooltip">' + cName + cJob + cSmell + cOnline + '</span>'
+		cSmell = (pol == 'der') ? 'Его ' : 'Её ' + 'запах:<br><img src="' + smell + '"><br>',
+		cOnline = '[';
+	switch (online) {
+		case 'online':
+			cOnline += '<font color="#006400">В игре</font>';
+			break;
+		case 'offline':
+			cOnline += '<font color="#A52A2A">Спит</font>';
+			break;
+		case 'wait':
+			cOnline += '<font color="#333333">Недавно ушёл</font>' ;
+			break;
+		case 'delete':
+			cOnline += '<font color="#333366">На удалении</font>';
+			break;
+		case 'block':
+			cOnline += '<font color="#333366">Заблокирован' + (pol == 'der') ? '' : 'а' + '</font>';
+			break;
+	}
+	cOnline += ']';
+	return '<span class="cat_tooltip" style="display:block;z - index: 9999;padding: 5px; min - width: 80px; background: RGBA(255, 255, 255, 0.9); border: 1px solid gray; border - radius: 6px; color: #930; font - weight: bold; text - align: center;" >' + cName + cJob + cSmell + cOnline + '</span>'
 }
 $('#previewcatBtn').on('click', function () {
 	/*По нажатию на кнопку*/
-	$('#previewDataCat').html(EdCdata($('catPOL').val(), $('#catName').val(), $('#catJob').val(), $('#catSmell').val(), $('#catOnline').val()));
-})
+	$('#previewDataCat').html(EdCdata($('#catPOL').val(), $('#catName').val(), $('#catJob').val(), $('#catSmell').val(), $('#catOnline').val()));
+});
