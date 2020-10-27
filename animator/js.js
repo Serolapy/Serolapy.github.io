@@ -57,7 +57,7 @@ $('#Mutter, #Vater, #MuttGeschwisterer, #Cathistory, #catLocation').change(Famil
 /*Отправка сообщений*/
 $('#newMessBtn').on('click', function () {
 	//text = $('newMessText').val().replace($('#newMessName').val(), '<span class="myname">' + $('#newMessName').val() + '</span>');
-	var t = $('newMessText').val().split(' '),
+	var t = $('#newMessText').val().split(' '),
 		text = '';
 	for (var _ in t) {
 		if (_ == $('#newMessName').val()) {
