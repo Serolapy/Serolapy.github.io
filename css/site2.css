@@ -45,7 +45,15 @@ h1 {
 	text-align: center;
 	font-family: HEADER;
 	border: 2px black solid;
-	width: 100%;
+	width: calc(100% - 4px);
 	border-radius: 0 15px 0 15px;
 	margin: 10px 0 10px 0;
+}
+h2 {
+	text-align: center;
+	font-family: HEADER;
+	border: 2px black solid;
+	width: calc(100% - 4px);
+	border-radius: 0 0 15px 15px;
+	margin: 0;
 }
