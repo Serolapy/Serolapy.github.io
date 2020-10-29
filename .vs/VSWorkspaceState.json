@@ -2,9 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\animator",
+    "\\css",
     "\\js",
     "\\test"
   ],
-  "SelectedNode": "\\animator\\index.html",
+  "SelectedNode": "\\css\\site.css",
   "PreviewInSolutionExplorer": false
 }
