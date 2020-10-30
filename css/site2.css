@@ -73,12 +73,18 @@ h4 {
 	border-bottom: 1px black dashed;
 	margin: 10px 0 10px 0;
 }
+h1:hover, h2:hover, h3:hover{
+	background: #F8DA87;
+}
 select {
 	background: none;
 	border: 2px black solid;
 	border-radius: 10px;
 	outline: none;
 	width: 106.5px;
+}
+.section:hover {
+	background: #cc660420;
 }
 input[type="text"], input[type="number"] {
 	background: none;
@@ -90,4 +96,9 @@ input[type="text"], input[type="number"] {
 }
 .section {
 	background: #cc660010;
+}
+table.constructor {
+	border: 1px black solid;
+	width: 100%;
+	text-align: center;
 }
