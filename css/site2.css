@@ -63,7 +63,7 @@ h3 {
 	font-family: HEADER;
 	border-top: 2px black solid;
 	width: calc(100% - 4px);
-	margin: 1px 0 1px 0;
+	margin: 25px 0 1px 0;
 	border-bottom: 2px black solid;
 	font-style: italic;
 }
@@ -72,4 +72,22 @@ h4 {
 	font-style: italic;
 	border-bottom: 1px black dashed;
 	margin: 10px 0 10px 0;
+}
+select {
+	background: none;
+	border: 2px black solid;
+	border-radius: 10px;
+	outline: none;
+	width: 106.5px;
+}
+input[type="text"], input[type="number"] {
+	background: none;
+	color: black;
+	border: 2px black solid;
+	border-radius: 10px;
+	width: 100px;
+	outline: none;
+}
+.section {
+	background: #cc660010;
 }
