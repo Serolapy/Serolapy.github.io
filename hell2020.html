@@ -42,7 +42,8 @@
 			(c)<a href="https://catwar.su/cat982738">Серолапый</a>, 2020
 		</footer>
 		<script>
-		$('#text').change(function($('#text').val()){
+		$('#text').change(function(){
+	var text = $('#text').val();
 	var newtext = '';
 	for(i=0; i<text.length;i++){
 		switch (text[i]){
