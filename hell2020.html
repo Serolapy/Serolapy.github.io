@@ -37,6 +37,7 @@
 			<input type="text" id="text"><br>
 			Вывод:<br>
 			<div id="newtext"></div>
+			<div class="update">4 ноября 2020г.<br>Создано: 3 ноября 2020г.</div>
 		</article>
 		<footer>
 			(c)<a href="https://catwar.su/cat982738">Серолапый</a>, 2020
@@ -118,6 +119,9 @@
 					if(text[i] == '¡'){
 						newtext += 'л';
 					}
+				} else{
+					i--;
+					newtext += 'э';
 				}
 				break;
 			case '¦':
@@ -182,9 +186,6 @@
 				break;
 			case '<':
 				newtext += 'ь';
-				break;
-			case '^':
-				newtext += 'э';
 				break;
 			case 'L':
 				i++;
