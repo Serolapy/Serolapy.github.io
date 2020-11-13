@@ -1,0 +1,220 @@
+<!DOCTYPE HTML>
+<html>
+	<meta charset="UTF-8">
+	<head>
+		<script src="/js/jQuery.js"></script>
+		<title>Дешифровка Хелл 2020 CatWar</title>
+		<link rel="stylesheet" href="/css/site.css">
+		<link rel="SHORTCUT ICON" href="/img/favicon.ico" type="image/x-icon">
+		<script src="/js/site.js"></script>
+	</head>
+	<body>
+		<header>
+			<div id="header"><a href="https://vk.com/serolapy"><img src="/img/vk.png" class="mylink"></a><a href="https://t.me/serolapy"><img src="/img/telegram.png" class="mylink"></a><a href=""><img src="" class=""></a>Пушистый блог Серолапого<br><span>@serolapy</span></div>
+		</header>
+		<nav>
+			<ul>
+				<li>
+					<a href="/blogs">Блоги</a>
+				</li>
+				<li>
+					<a href="/">Главная</a>
+				</li>
+				<li>
+					<a href="/mods">Моды</a>
+				</li>
+				<li>
+					<a href="/useful">Полезное</a>
+				</li>
+			</ul>
+		</nav>
+		<aside> 	<!--Боковая панель-->
+			<h1>Смотрите также:</h1>
+		</aside>
+		<article>	<!--Главная часть-->
+			<h1>Дешифровка текста на квест 2020</h1>
+			Вставить текст сюда:<br>
+			<input type="text" id="text"><br>
+			Вывод:<br>
+			<div id="newtext"></div>
+			<div class="update">4 ноября 2020г.</div>
+		</article>
+		<footer>
+			(c)<a href="https://catwar.su/cat982738">Серолапый</a>, 2020
+		</footer>
+		<script>
+		$('#text').change(function(){
+	var text = $('#text').val();
+	var newtext = '';
+	for(i=0; i<text.length;i++){
+		switch (text[i]){
+			case 'Z':
+				newtext += 'а';
+				break;
+			case '>':
+				newtext += 'б';
+				break;
+			case 'X':
+				newtext += 'в';
+				break;
+			case 'H':
+				newtext += 'г';
+				break;
+			case '|':
+				i++;
+				if(text[i] == '¥'){
+					i++;
+					if(text[i] == '|'){
+						newtext += 'д';
+					}
+					
+				} else if(text[i] == '|'){
+					i++;
+					if(text[i] == '-'){
+						newtext += 'з';
+					}
+				} else if(text[i] == 'Y'){
+					newtext += 'ш';
+				}
+				break;
+			case '_':
+				newtext += 'е';
+				break;
+			case 'Y':
+				newtext += 'ё';
+				break;
+			case 'V':
+				newtext += 'ж';
+				break;
+			case '¥':
+				i++;
+				if(text[i] == 'F'){
+					i++;
+					if(text[i] == '1'){
+						newtext += 'и';
+					}
+				}else if(text[i] == '['){
+					newtext += 'о';
+				}else{
+					newtext += 'м';
+					i--
+				}
+				break;
+			case '[':
+				i++;
+				if(text[i] == '^'){
+					i++;
+					if(text[i] == "'"){
+						newtext += 'й';
+					}
+				}
+				break;
+			case '/':
+				newtext += 'к';
+				break;
+			case '^':
+				i++;
+				if(text[i] == '1'){
+					i++;
+					if(text[i] == '¡'){
+						newtext += 'л';
+					}
+				} else{
+					i--;
+					newtext += 'э';
+				}
+				break;
+			case '¦':
+				i++;
+				if(text[i] == 'L'){
+					i++;
+					if (text[i] == '^'){
+						newtext += 'н';
+					}
+				}else{
+					i--;
+					newtext+='п';
+				}
+				break;
+			case 'П':
+				i++;
+				if(text[i] == 'Z'){
+					newtext += 'р';
+				}
+				break;
+			case '1':
+				i++;
+				if(text[i] == '#'){
+					newtext += 'с';
+				}
+				break;
+			case '¬':
+				newtext += 'т';
+				break;
+			case '7':
+				i++;
+				if(text[i] == '#'){
+					i++;
+					if(text[i] == '-'){
+						newtext += 'у';
+					}
+				}
+				break;
+			case 'K':
+				i++;
+				i++;
+				newtext += 'ф';
+				break;
+			case 'F':
+				i++;
+				i++;
+				newtext += 'х';
+				break;
+			case '«':
+				i++;
+				newtext += 'ц';
+				break;
+			case 'N':
+				i++
+				newtext += 'ч';
+				break;
+			case ']':
+				newtext += 'ш';
+				break;
+			case 'Т':
+				newtext += 'ы';
+				break;
+			case '<':
+				newtext += 'ь';
+				break;
+			case 'L':
+				i++;
+				i++;
+				newtext += 'ю';
+				break;
+			case '≠':
+				newtext += 'я';
+				break;
+			default:
+				newtext += text[i];
+		}
+	}
+	$('#newtext').html(newtext);
+});
+		</script>
+		<!-- Yandex.Metrika counter -->
+			<script type="text/javascript" >
+			(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+			m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+			(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+			
+			ym(67068502, "init", {
+					clickmap:true,
+					trackLinks:true,
+					accurateTrackBounce:true
+			});
+			</script>
+			<noscript><div><img src="https://mc.yandex.ru/watch/67068502" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+		<!-- /Yandex.Metrika counter -->
+	</body>
+</html>
