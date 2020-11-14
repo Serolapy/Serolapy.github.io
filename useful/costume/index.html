@@ -45,7 +45,7 @@
 		</aside>
 		<article>
 			<!--Главная часть-->
-			<h1>Коллекция костюмов CarWar</h1>
+			<h1>Коллекция костюмов CatWar</h1>
 			<ul class="memory">
 				<li>Тут вы можете встретить не только костюмы котов, но и ботов.</li>
 				<li>Все изображения обновляются автоматически; частота обновлений зависит от Мурра.</li>
@@ -77,13 +77,14 @@
 			window.onload = function () {
 				var t = '';
 				for (i = 1; i <= 5000; i++) {
-                    t += '<img class="i" src="https://catwar.su/cw3/cats/0/costume/'+i+'.png">';
+                    t += '<img src="https://catwar.su/cw3/cats/0/costume/' + i +'.png" onclick="alertIMG()">';
 				}
 				$('#images').html(t);
             }
-			$('.i').on('click', function () {
+			function alertIMG() {
 				alert($(this).attr('src'));
-            })
+				});
+			}
 		</script>
 	</body>
 </html>
