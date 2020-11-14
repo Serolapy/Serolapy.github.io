@@ -77,12 +77,12 @@
 			window.onload = function () {
 				var t = '';
 				for (i = 1; i <= 5000; i++) {
-                    t += '<img src="https://catwar.su/cw3/cats/0/costume/' + i +'.png" onclick="alertIMG()">';
+                    t += '<img src="https://catwar.su/cw3/cats/0/costume/' + i +'.png" onclick="alertIMG($(this))">';
 				}
 				$('#images').html(t);
             }
-			function alertIMG() {
-				alert($(this).attr('src'));
+			function alertIMG(e) {
+				alert(e.attr('src'));
 			}
 		</script>
 	</body>
