@@ -1,6 +1,6 @@
 /* Цвета:
-	rgba(255, 228, 196, 0.8) - Bisque: ARTICLE
-	rgba(255, 222, 173, 0.6)
+    rgba(255, 228, 196, 0.8) - Bisque: ARTICLE
+    rgba(255, 222, 173, 0.6)
 */
 @font-face {
 	font-family: HEADER;
@@ -13,39 +13,40 @@ body {
 	background: #ffdead;
 }
 
-header {
+.pages {
+	display: none;
+	margin: 10px;
+}
+
+header, nav, footer {
 	width: 100%;
-	color: black;
-	font-family: HEADER, Arial;
-}
-
-nav {
-	width: 100%;
-	margin-bottom: 15px;
-}
-
-article { /*none*/
-}
-
-footer {
 	text-align: center;
-	font-family: HEADER, Arial;
+	margin: 2.5px 0 2.5px 0;
 }
 
-	nav a, footer a {
+	header a {
 		text-decoration: none;
-		color: black;
+		font-family: HEADER;
 	}
 
-		nav a:hover, footer a:hover {
-			text-decoration: underline;
+		header a:hover {
+			color: black;
 		}
 
-h1 {
-	text-align: center;
-	font-family: HEADER;
-	border: 2px black solid;
-	width: 100%;
-	border-radius: 0 15px 0 15px;
-	margin: 10px 0 10px 0;
+			header a:hover::before {
+				content: '<---- ';
+			}
+
+.btnPages {
+	text-decoration: none;
+	padding: 5px 10px 5px 10px;
+	margin-left: auto;
+	display: inline-block;
+	border: 1px black solid;
+	transition: 0.5s;
 }
+
+	.btnPages:hover {
+		color: black;
+		background-color: #cc660033;
+	}

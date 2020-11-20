@@ -1,3 +1,8 @@
+/*вкладки*/
+$('.btnPages').on('click', function () {
+	$('.pages').css('display', 'none');
+	$('#' + $(this).data('id')).css('display', 'block');
+});
 /*Выбор типажа клетки*/
 $('#tdType').change(function(){
 	let v = $(this).val(),
@@ -96,3 +101,4 @@ $('#previewcatBtn').on('click', function () {
 	/*По нажатию на кнопку*/
 	$('#previewDataCat').html(EdCdata($('#catPOL').val(), $('#catName').val(), $('#catJob').val(), $('#catSmell').val(), $('#catOnline').val()));
 });
+
