@@ -1,3 +1,8 @@
+
+$('.btnPages').on('click', function () {
+	$('.pages').css('display', 'none');
+	$('#' + $(this).data('id')).css('display', 'block');
+});
 /*Выбор типажа клетки*/
 $('#tdType').change(function(){
 	let v = $(this).val(),

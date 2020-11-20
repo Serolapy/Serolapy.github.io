@@ -1,6 +1,6 @@
 /* Цвета:
-	rgba(255, 228, 196, 0.8) - Bisque: ARTICLE
-	rgba(255, 222, 173, 0.6)
+    rgba(255, 228, 196, 0.8) - Bisque: ARTICLE
+    rgba(255, 222, 173, 0.6)
 */
 @font-face {
 	font-family: HEADER;
@@ -13,92 +13,39 @@ body {
 	background: #ffdead;
 }
 
-header {
+.pages {
+	display: none;
+	margin: 10px;
+}
+
+header, nav, footer {
 	width: 100%;
-	color: black;
-	font-family: HEADER, Arial;
-}
-
-nav {
-	width: 100%;
-	margin-bottom: 15px;
-}
-
-article { /*none*/
-}
-
-footer {
 	text-align: center;
-	font-family: HEADER, Arial;
+	margin: 2.5px 0 2.5px 0;
 }
 
-	nav a, footer a {
+	header a {
 		text-decoration: none;
-		color: black;
+		font-family: HEADER;
 	}
 
-		nav a:hover, footer a:hover {
-			text-decoration: underline;
+		header a:hover {
+			color: black;
 		}
+			header a:hover::before {
+				content: '<---- ';
+			}
 
-h1 {
-	text-align: center;
-	font-family: HEADER;
-	border: 2px black solid;
-	width: calc(100% - 4px);
-
-	border-radius: 0 15px 0 15px;
-	margin: 10px 0 10px 0;
-}
-h2 {
-	text-align: center;
-	font-family: HEADER;
-	border: 2px black solid;
-	width: calc(100% - 4px);
-	border-radius: 0 0 15px 15px;
-	margin: 1px 0 10px 0;
-}
-h3 {
-	text-align: center;
-	font-family: HEADER;
-	border-top: 2px black solid;
-	width: calc(100% - 4px);
-	margin: 25px 0 1px 0;
-	border-bottom: 2px black solid;
-	font-style: italic;
-}
-h4 {
-	font-weight: bold;
-	font-style: italic;
-	border-bottom: 1px black dashed;
-	margin: 10px 0 10px 0;
-}
-h1:hover, h2:hover, h3:hover{
-	background: #F8DA87;
-}
-select {
-	background: none;
-	border: 2px black solid;
-	border-radius: 10px;
-	outline: none;
-	width: 106.5px;
-}
-.section:hover {
-	background: #cc660420;
-}
-input[type="text"], input[type="number"] {
-	background: none;
-	color: black;
-	border: 2px black solid;
-	border-radius: 10px;
-	width: 100px;
-	outline: none;
-}
-.section {
-	background: #cc660010;
-}
-table.constructor {
+.btnPages {
+	text-decoration: none;
+	padding: 5px 10px 5px 10px;
+	margin-left: auto;
+	display: inline-block;
 	border: 1px black solid;
-	width: 100%;
-	text-align: center;
+	transition: 0.5s;
 }
+
+	.btnPages:hover {
+		color: black;
+		background-color: #cc660033;
+	}

@@ -1,861 +1,2115 @@
 ﻿<!DOCTYPE HTML>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<script src="/js/jQuery.js"></script>
-		<title>Анимационная студия CatWar</title>
-		<link rel="stylesheet" href="/css/site2.css">
-		<link rel="SHORTCUT ICON" href="/img/favicon.ico" type="image/x-icon">
-		<!--для этой стр-->
-		<link rel="stylesheet" href="https://e.catwar.su/css/blank.css"><!--на всех ваространицах-->
-		<style type="text/css">
-#app {
-  width: 500px;
-  font-size:7px;
-  margin: 0 5px 0 5px;
-}
-#newchat, #newls {
-  background-color: white;
-  font-weight: bold; }
-
-.small {
-  font-size: 6px; }
-
-.title {
-  display: block;
-  font-size: 9px;
-  font-weight: bold;
-  padding-bottom: 4px; }
-
-#main_table {
-  border-collapse: separate;
-  border: none;
-  width: 100%;
-  max-width: 500px;
-  border-spacing: 0;
-  margin: 0;
-  padding: 0;
-  margin-top: 3.5px;
-  background: black; }
-
-#main_table > tr, #main_table > tr > td, #main_table > tbody > tr, #main_table > tbody > tr > td {
-  margin: 0;
-  padding: 0; }
-
-.infos {
-  vertical-align: top;
-  width: 33%; }
-
-#info_main {
-  border: none;
-  width: 100%;
-  background: #FFDEAD; }
-
-#timer {
-  display: none;
-  position: fixed;
-  z-index: 9999;
-  background-color: RGBA(204, 204, 204, 0.5);
-  min-width: 25px;
-  max-width: 50px;
-  height: 10px;
-  top: 30px;
-  right: 5px;
-  border-radius: 5px;
-  text-align: center;
-  padding: 0.5px; }
-
-#tr_actions {
-  background-color: #FFDEAD; }
-
-.dey {
-  margin-right: 1.5px; }
-
-#dein {
-  display: none; }
-
-#block_mess {
-  margin: 4px 0; }
-
-#tr_chat {
-  background-color: #C60; }
-
-#chat_form {
-  margin: 7.5px; }
-
-input#text {
-  width: 95%;
-  max-width: 250px; 
-  /*Meine*/
-  height:8px;}
-
-#volume {
-  width: 100px;
-  display: inline-block;
-  margin-left: 2.5px; }
-
-#chat_msg {
-  width: 500px;
-  overflow: auto;
-  height: 137.5px; }
-
-.chat_text {
-  display: inline-block;
-  word-wrap: break-word; }
-
-.myname {
-  background: #FC3; }
-
-.nick {
-  border-bottom: 0.5px dotted #000; }
-
-.vlm0 {
-  font-size: 5px; }
-
-.vlm1 {
-  font-size: 5.5px; }
-
-.vlm2 {
-  font-size: 5.525px; }
-
-.vlm3 {
-  font-size: 6px; }
-
-.vlm4 {
-  font-size: 6.25px; }
-
-.vlm5 {
-  font-size: 6.5px; }
-
-.vlm6 {
-  font-size: 7.5px; }
-
-.vlm7 {
-  font-size: 8.5px; }
-
-.vlm8 {
-  font-size: 9.5px; }
-
-.vlm9 {
-  font-size: 10.5px; }
-
-.vlm10 {
-  font-size: 11.5px; }
-
-.pair-delete, .adopt {
-  font-size: 8.5px; }
-
-#tr_field, #act, #cages {
-  padding: 0;
-  margin: 0;
-  border-spacing: 0; }
-
-#cages_overflow, #cages_div {
-  width: 500px;
-  min-height: 500px; }
-
-#cages_div {
-  background-repeat: no-repeat; }
-
-#cages {
-  width: 500px;
-  min-height: 500px;
-  background-repeat: no-repeat; }
-
-.cage, .cage_items {
-  width: 50px;
-  height: 75px;
-  border: none;
-  margin: 0;
-  padding: 0; }
-
-.cage {
-  padding-bottom: 8px; }
-
-#cages table td {
-  width: 80px;
-  height: 16px;
-  text-align: left; }
-
-#cages table td div, #cages div[id^=thd] {
-  background-color: transparent; }
-
-#cages table td img {
-  width: 16px;
-  height: 16px;
-  text-align: left; }
-
-.move_parent {
-  display: block;
-  position: relative;
-  padding: 0;
-  margin: 0; }
-
-.move_img {
-  display: block;
-  width: 50px;
-  height: 75px;
-  border: 0;
-  margin: 0;
-  padding: 0; }
-
-.move_name {
-  display: block;
-  position: absolute;
-  font-size: 5.5px;
-  bottom: 21.5px;
-  left: 5px;
-  width: 42.5px;
-  text-align: center;
-  background-color: RGBA(255, 255, 255, 0.5);
-  border-radius: 5px;
-  padding: 0;
-  margin: 0; }
-
-.cat {
-  position: relative; }
-
-.huntEl {
-  position: absolute; }
-
-.cat_tooltip {
-  display: none; }
-
-.cat:hover .cat_tooltip {
-  display: block;
-  position: absolute;
-  z-index: 9999;
-  padding: 5px;
-  min-width: 80px;
-  background: RGBA(255, 255, 255, 0.9);
-  border: 1px solid gray;
-  border-radius: 6px;
-  color: #930;
-  font-weight: bold;
-  text-align: center; }
-
-.cat:hover .cat_tooltip a {
-  color: #930; }
-
-.mouth {
-  width: 100%;
-  padding: 0;
-  margin: 0; }
-  .mouth ol {
-    list-style-type: none; }
-  .mouth li {
-    display: inline-block; }
-  .mouth img {
-    width: 16px; }
-
-.online {
-  color: black; }
-
-.smell_move {
-  border: 1px solid white;
-  width: 48px;
-  height: 48px; }
-
-.arrow-paws {
-  background: url("/cw3/symbole/arrow_paws.png") 0 0 no-repeat; }
-
-.arrow-claws {
-  background: url("/cw3/symbole/arrow_claws.png") 0 0 no-repeat; }
-
-.arrow-teeth {
-  background: url("/cw3/symbole/arrow_teeth.png") 0 0 no-repeat; }
-
-.arrow {
-  height: 4px;
-  position: absolute;
-  margin: 0;
-  padding: 1.5px 0 0 5.5px;
-  z-index: 2; }
-
-.arrow table, .arrow td {
-  height: 2.5px !important;
-  padding: 0;
-  margin: 0; }
-
-.arrow_red {
-  background: #CD4141; }
-
-.arrow_green {
-  background: #41CD70; }
-
-#fightPanel {
-  position: fixed;
-  z-index: 9999;
-  background-color: RGBA(204, 204, 204, 0.9);
-  height: 50px;
-  top: 10px;
-  right: 5px;
-  border-radius: 5px;
-  text-align: left;
-  padding: 1.5px; }
-
-.hotkey {
-  background: white;
-  width: 16px;
-  padding: 0.5px;
-  outline: none; }
-
-#fightLog {
-  overflow-y: scroll;
-  margin-top: 2px;
-  margin-left: 2px; }
-
-.log_claws {
-  background: RGBA(212, 141, 118, 0.7); }
-
-.log_teeth {
-  background: RGBA(255, 255, 255, 0.7); }
-
-.itemInMouth, .catrot {
-  cursor: pointer; }
-
-.active_thing {
-  border: 0.5px solid blue; }
-
-#layer {
-  width: 100px; }
-
-#tr_mouth {
-  background-color: #FFDEAD; }
-
-#itemList {
-  list-style-type: none;
-  padding: 0;
-  margin: 0; }
-
-#itemList li {
-  display: inline-block; }
-
-.symbole {
-  width: 7.5px;
-  height: 7.5px;
-  background: url("/cw3/symbole/icons.png") no-repeat;
-  padding: 0;
-  margin: 0; }
-
-.parameter {
-  border: 0.5px solid black;
-  width: 75px;
-  height: 7.5px; }
-
-.parameter, .parameter td {
-  margin: 0;
-  padding: 0;
-  border-spacing: 0; }
-
-#lifes {
-  margin-top: 2.5px; }
-
-#sky {
-  height: 75px;
-  width: 100%;
-  max-width: 500px;
-  background-repeat: no-repeat; }
-
-#tos {
-  width: 75px;
-  height: 10px; }
-
-#hour {
-  margin: 0 2.5px; }
-</style>
-		<style type="text/css">.ui-helper-hidden-accessible{position:absolute!important;clip:rect(1px,1px,1px,1px)}.ui-helper-reset{border:0;outline:0;line-height:1.3;text-decoration:none;font-size:100%;list-style:none;margin:0;padding:0}.ui-helper-clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}.ui-helper-clearfix{display:block}* html .ui-helper-clearfix{height:1%}.ui-helper-zfix{width:100%;height:100%;top:0;left:0;position:absolute;opacity:0;filter:Alpha(Opacity=0)}.ui-state-disabled{cursor:default!important}.ui-icon{display:block;text-indent:-99999px;overflow:hidden;background-repeat:no-repeat;width:16px;height:16px;background-image:url(/cw3/images/ui-icons_d19405_256x240.png)}.ui-widget-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:#5c5c5c url(/cw3/images/ui-bg_flat_50_5c5c5c_40x100.png) 50% 50% repeat-x;opacity:.8;filter:Alpha(Opacity=80)}.ui-widget{font-family:Segoe UI,Arial,sans-serif;font-size:1.1em}.ui-widget .ui-widget{font-size:1em}.ui-widget input,.ui-widget select,.ui-widget textarea,.ui-widget button{font-family:Segoe UI,Arial,sans-serif;font-size:1em}.ui-widget-content{border:1px solid #8e846b;background:#feeebd url(/cw3/images/ui-bg_highlight-soft_100_feeebd_1x100.png) 50% top repeat-x;color:#383838}.ui-widget-content a{color:#383838}.ui-widget-header{border:1px solid #494437;background:#817865 url(/cw3/images/ui-bg_gloss-wave_45_817865_500x100.png) 50% 50% repeat-x;color:#fff;font-weight:700}.ui-state-default,.ui-widget-content .ui-state-default,.ui-widget-header .ui-state-default{border:1px solid #d19405;background:#fece2f url(/cw3/images/ui-bg_gloss-wave_60_fece2f_500x100.png) 50% 50% repeat-x;font-weight:700;color:#4c3000}.ui-state-default a,.ui-state-default a:link,.ui-state-default a:visited{color:#4c3000;text-decoration:none}.ui-state-hover,.ui-widget-content .ui-state-hover,.ui-widget-header .ui-state-hover,.ui-state-focus,.ui-widget-content .ui-state-focus,.ui-widget-header .ui-state-focus{border:1px solid #a45b13;background:#ffdd57 url(/cw3/images/ui-bg_gloss-wave_70_ffdd57_500x100.png) 50% 50% repeat-x;font-weight:700;color:#381f00}.ui-state-hover a,.ui-state-hover a:hover{color:#381f00;text-decoration:none}.ui-state-active,.ui-widget-content .ui-state-active,.ui-widget-header .ui-state-active{border:1px solid #655e4e;background:#fff url(/cw3/images/ui-bg_inset-soft_30_ffffff_1x100.png) 50% 50% repeat-x;font-weight:700;color:#0074c7}.ui-state-active a,.ui-state-active a:link,.ui-state-active a:visited{color:#0074c7;text-decoration:none}.ui-widget:active{outline:none}.ui-state-highlight,.ui-widget-content .ui-state-highlight,.ui-widget-header .ui-state-highlight{border:1px solid #eeb420;background:#fff9e5 url(/cw3/images/ui-bg_gloss-wave_90_fff9e5_500x100.png) 50% top repeat-x;color:#1f1f1f}.ui-state-highlight a,.ui-widget-content .ui-state-highlight a,.ui-widget-header .ui-state-highlight a{color:#1f1f1f}.ui-state-error,.ui-widget-content .ui-state-error,.ui-widget-header .ui-state-error{border:1px solid #ffb73d;background:#d34d17 url(/cw3/images/ui-bg_diagonals-medium_20_d34d17_40x40.png) 50% 50% repeat;color:#fff}.ui-priority-primary,.ui-widget-content .ui-priority-primary,.ui-widget-header .ui-priority-primary{font-weight:700}.ui-priority-secondary,.ui-widget-content .ui-priority-secondary,.ui-widget-header .ui-priority-secondary{opacity:.7;filter:Alpha(Opacity=70);font-weight:400}.ui-state-disabled,.ui-widget-content .ui-state-disabled,.ui-widget-header .ui-state-disabled{opacity:.35;filter:Alpha(Opacity=35);background-image:none}.ui-widget-content .ui-icon{background-image:url(/cw3/images/ui-icons_d19405_256x240.png)}.ui-widget-header .ui-icon{background-image:url(/cw3/images/ui-icons_fadc7a_256x240.png)}.ui-state-default .ui-icon{background-image:url(/cw3/images/ui-icons_3d3d3d_256x240.png)}.ui-state-hover .ui-icon,.ui-state-focus .ui-icon{background-image:url(/cw3/images/ui-icons_bd7b00_256x240.png)}.ui-state-active .ui-icon{background-image:url(/cw3/images/ui-icons_eb990f_256x240.png)}.ui-state-highlight .ui-icon{background-image:url(/cw3/images/ui-icons_ed9f26_256x240.png)}.ui-state-error .ui-icon,.ui-state-error-text .ui-icon{background-image:url(/cw3/images/ui-icons_ffe180_256x240.png)}.ui-icon-carat-1-n{background-position:0 0}.ui-icon-carat-1-ne{background-position:-16px 0}.ui-icon-carat-1-e{background-position:-32px 0}.ui-icon-carat-1-se{background-position:-48px 0}.ui-icon-carat-1-s{background-position:-64px 0}.ui-icon-carat-1-sw{background-position:-80px 0}.ui-icon-carat-1-w{background-position:-96px 0}.ui-icon-carat-1-nw{background-position:-112px 0}.ui-icon-carat-2-n-s{background-position:-128px 0}.ui-icon-carat-2-e-w{background-position:-144px 0}.ui-icon-triangle-1-n{background-position:0 -16px}.ui-icon-triangle-1-ne{background-position:-16px -16px}.ui-icon-triangle-1-e{background-position:-32px -16px}.ui-icon-triangle-1-se{background-position:-48px -16px}.ui-icon-triangle-1-s{background-position:-64px -16px}.ui-icon-triangle-1-sw{background-position:-80px -16px}.ui-icon-triangle-1-w{background-position:-96px -16px}.ui-icon-triangle-1-nw{background-position:-112px -16px}.ui-icon-triangle-2-n-s{background-position:-128px -16px}.ui-icon-triangle-2-e-w{background-position:-144px -16px}.ui-icon-arrow-1-n{background-position:0 -32px}.ui-icon-arrow-1-ne{background-position:-16px -32px}.ui-icon-arrow-1-e{background-position:-32px -32px}.ui-icon-arrow-1-se{background-position:-48px -32px}.ui-icon-arrow-1-s{background-position:-64px -32px}.ui-icon-arrow-1-sw{background-position:-80px -32px}.ui-icon-arrow-1-w{background-position:-96px -32px}.ui-icon-arrow-1-nw{background-position:-112px -32px}.ui-icon-arrow-2-n-s{background-position:-128px -32px}.ui-icon-arrow-2-ne-sw{background-position:-144px -32px}.ui-icon-arrow-2-e-w{background-position:-160px -32px}.ui-icon-arrow-2-se-nw{background-position:-176px -32px}.ui-icon-arrowstop-1-n{background-position:-192px -32px}.ui-icon-arrowstop-1-e{background-position:-208px -32px}.ui-icon-arrowstop-1-s{background-position:-224px -32px}.ui-icon-arrowstop-1-w{background-position:-240px -32px}.ui-icon-arrowthick-1-n{background-position:0 -48px}.ui-icon-arrowthick-1-ne{background-position:-16px -48px}.ui-icon-arrowthick-1-e{background-position:-32px -48px}.ui-icon-arrowthick-1-se{background-position:-48px -48px}.ui-icon-arrowthick-1-s{background-position:-64px -48px}.ui-icon-arrowthick-1-sw{background-position:-80px -48px}.ui-icon-arrowthick-1-w{background-position:-96px -48px}.ui-icon-arrowthick-1-nw{background-position:-112px -48px}.ui-icon-arrowthick-2-n-s{background-position:-128px -48px}.ui-icon-arrowthick-2-ne-sw{background-position:-144px -48px}.ui-icon-arrowthick-2-e-w{background-position:-160px -48px}.ui-icon-arrowthick-2-se-nw{background-position:-176px -48px}.ui-icon-arrowthickstop-1-n{background-position:-192px -48px}.ui-icon-arrowthickstop-1-e{background-position:-208px -48px}.ui-icon-arrowthickstop-1-s{background-position:-224px -48px}.ui-icon-arrowthickstop-1-w{background-position:-240px -48px}.ui-icon-arrowreturnthick-1-w{background-position:0 -64px}.ui-icon-arrowreturnthick-1-n{background-position:-16px -64px}.ui-icon-arrowreturnthick-1-e{background-position:-32px -64px}.ui-icon-arrowreturnthick-1-s{background-position:-48px -64px}.ui-icon-arrowreturn-1-w{background-position:-64px -64px}.ui-icon-arrowreturn-1-n{background-position:-80px -64px}.ui-icon-arrowreturn-1-e{background-position:-96px -64px}.ui-icon-arrowreturn-1-s{background-position:-112px -64px}.ui-icon-arrowrefresh-1-w{background-position:-128px -64px}.ui-icon-arrowrefresh-1-n{background-position:-144px -64px}.ui-icon-arrowrefresh-1-e{background-position:-160px -64px}.ui-icon-arrowrefresh-1-s{background-position:-176px -64px}.ui-icon-arrow-4{background-position:0 -80px}.ui-icon-arrow-4-diag{background-position:-16px -80px}.ui-icon-extlink{background-position:-32px -80px}.ui-icon-newwin{background-position:-48px -80px}.ui-icon-refresh{background-position:-64px -80px}.ui-icon-shuffle{background-position:-80px -80px}.ui-icon-transfer-e-w{background-position:-96px -80px}.ui-icon-transferthick-e-w{background-position:-112px -80px}.ui-icon-folder-collapsed{background-position:0 -96px}.ui-icon-folder-open{background-position:-16px -96px}.ui-icon-document{background-position:-32px -96px}.ui-icon-document-b{background-position:-48px -96px}.ui-icon-note{background-position:-64px -96px}.ui-icon-mail-closed{background-position:-80px -96px}.ui-icon-mail-open{background-position:-96px -96px}.ui-icon-suitcase{background-position:-112px -96px}.ui-icon-comment{background-position:-128px -96px}.ui-icon-person{background-position:-144px -96px}.ui-icon-print{background-position:-160px -96px}.ui-icon-trash{background-position:-176px -96px}.ui-icon-locked{background-position:-192px -96px}.ui-icon-unlocked{background-position:-208px -96px}.ui-icon-bookmark{background-position:-224px -96px}.ui-icon-tag{background-position:-240px -96px}.ui-icon-home{background-position:0 -112px}.ui-icon-flag{background-position:-16px -112px}.ui-icon-calendar{background-position:-32px -112px}.ui-icon-cart{background-position:-48px -112px}.ui-icon-pencil{background-position:-64px -112px}.ui-icon-clock{background-position:-80px -112px}.ui-icon-disk{background-position:-96px -112px}.ui-icon-calculator{background-position:-112px -112px}.ui-icon-zoomin{background-position:-128px -112px}.ui-icon-zoomout{background-position:-144px -112px}.ui-icon-search{background-position:-160px -112px}.ui-icon-wrench{background-position:-176px -112px}.ui-icon-gear{background-position:-192px -112px}.ui-icon-heart{background-position:-208px -112px}.ui-icon-star{background-position:-224px -112px}.ui-icon-link{background-position:-240px -112px}.ui-icon-cancel{background-position:0 -128px}.ui-icon-plus{background-position:-16px -128px}.ui-icon-plusthick{background-position:-32px -128px}.ui-icon-minus{background-position:-48px -128px}.ui-icon-minusthick{background-position:-64px -128px}.ui-icon-close{background-position:-80px -128px}.ui-icon-closethick{background-position:-96px -128px}.ui-icon-key{background-position:-112px -128px}.ui-icon-lightbulb{background-position:-128px -128px}.ui-icon-scissors{background-position:-144px -128px}.ui-icon-clipboard{background-position:-160px -128px}.ui-icon-copy{background-position:-176px -128px}.ui-icon-contact{background-position:-192px -128px}.ui-icon-image{background-position:-208px -128px}.ui-icon-video{background-position:-224px -128px}.ui-icon-script{background-position:-240px -128px}.ui-icon-alert{background-position:0 -144px}.ui-icon-info{background-position:-16px -144px}.ui-icon-notice{background-position:-32px -144px}.ui-icon-help{background-position:-48px -144px}.ui-icon-check{background-position:-64px -144px}.ui-icon-bullet{background-position:-80px -144px}.ui-icon-radio-off{background-position:-96px -144px}.ui-icon-radio-on{background-position:-112px -144px}.ui-icon-pin-w{background-position:-128px -144px}.ui-icon-pin-s{background-position:-144px -144px}.ui-icon-play{background-position:0 -160px}.ui-icon-pause{background-position:-16px -160px}.ui-icon-seek-next{background-position:-32px -160px}.ui-icon-seek-prev{background-position:-48px -160px}.ui-icon-seek-end{background-position:-64px -160px}.ui-icon-stop{background-position:-96px -160px}.ui-icon-eject{background-position:-112px -160px}.ui-icon-volume-off{background-position:-128px -160px}.ui-icon-volume-on{background-position:-144px -160px}.ui-icon-power{background-position:0 -176px}.ui-icon-signal-diag{background-position:-16px -176px}.ui-icon-signal{background-position:-32px -176px}.ui-icon-battery-0{background-position:-48px -176px}.ui-icon-battery-1{background-position:-64px -176px}.ui-icon-battery-2{background-position:-80px -176px}.ui-icon-battery-3{background-position:-96px -176px}.ui-icon-circle-plus{background-position:0 -192px}.ui-icon-circle-minus{background-position:-16px -192px}.ui-icon-circle-close{background-position:-32px -192px}.ui-icon-circle-triangle-e{background-position:-48px -192px}.ui-icon-circle-triangle-s{background-position:-64px -192px}.ui-icon-circle-triangle-w{background-position:-80px -192px}.ui-icon-circle-triangle-n{background-position:-96px -192px}.ui-icon-circle-arrow-e{background-position:-112px -192px}.ui-icon-circle-arrow-s{background-position:-128px -192px}.ui-icon-circle-arrow-w{background-position:-144px -192px}.ui-icon-circle-arrow-n{background-position:-160px -192px}.ui-icon-circle-zoomin{background-position:-176px -192px}.ui-icon-circle-zoomout{background-position:-192px -192px}.ui-icon-circle-check{background-position:-208px -192px}.ui-icon-circlesmall-plus{background-position:0 -208px}.ui-icon-circlesmall-minus{background-position:-16px -208px}.ui-icon-circlesmall-close{background-position:-32px -208px}.ui-icon-squaresmall-plus{background-position:-48px -208px}.ui-icon-squaresmall-minus{background-position:-64px -208px}.ui-icon-squaresmall-close{background-position:-80px -208px}.ui-icon-grip-dotted-vertical{background-position:0 -224px}.ui-icon-grip-dotted-horizontal{background-position:-16px -224px}.ui-icon-grip-solid-vertical{background-position:-32px -224px}.ui-icon-grip-solid-horizontal{background-position:-48px -224px}.ui-icon-gripsmall-diagonal-se{background-position:-64px -224px}.ui-icon-grip-diagonal-se{background-position:-80px -224px}.ui-corner-all,.ui-corner-top,.ui-corner-left,.ui-corner-tl{-moz-border-radius-topleft:8px;-webkit-border-top-left-radius:8px;-khtml-border-top-left-radius:8px;border-top-left-radius:8px}.ui-corner-all,.ui-corner-top,.ui-corner-right,.ui-corner-tr{-moz-border-radius-topright:8px;-webkit-border-top-right-radius:8px;-khtml-border-top-right-radius:8px;border-top-right-radius:8px}.ui-corner-all,.ui-corner-bottom,.ui-corner-left,.ui-corner-bl{-moz-border-radius-bottomleft:8px;-webkit-border-bottom-left-radius:8px;-khtml-border-bottom-left-radius:8px;border-bottom-left-radius:8px}.ui-corner-all,.ui-corner-bottom,.ui-corner-right,.ui-corner-br{-moz-border-radius-bottomright:8px;-webkit-border-bottom-right-radius:8px;-khtml-border-bottom-right-radius:8px;border-bottom-right-radius:8px}.ui-widget-shadow{background:#ccc url(/cw3/images/ui-bg_flat_30_cccccc_40x100.png) 50% 50% repeat-x;opacity:.6;filter:Alpha(Opacity=60);-moz-border-radius:8px;-khtml-border-radius:8px;-webkit-border-radius:8px;border-radius:8px;margin:-7px 0 0 -7px;padding:7px}.ui-slider{position:relative;text-align:left}.ui-slider .ui-slider-handle{position:absolute;z-index:2;width:1.2em;height:1.2em;cursor:default}.ui-slider .ui-slider-range{position:absolute;z-index:1;font-size:.7em;display:block;border:0;background-position:0 0}.ui-slider-horizontal{height:.8em}.ui-slider-horizontal .ui-slider-handle{top:-.3em;margin-left:-.6em}.ui-slider-horizontal .ui-slider-range{top:0;height:100%}.ui-slider-horizontal .ui-slider-range-min{left:0}.ui-slider-horizontal .ui-slider-range-max{right:0}.ui-slider-vertical{width:.8em;height:100px}.ui-slider-vertical .ui-slider-handle{left:-.3em;margin-left:0;margin-bottom:-.6em}.ui-slider-vertical .ui-slider-range{left:0;width:100%}.ui-slider-vertical .ui-slider-range-min{bottom:0}.ui-slider-vertical .ui-slider-range-max{top:0}span.tt span,.ui-helper-hidden{display:none}.ui-widget-header a,.ui-state-error a,.ui-widget-content .ui-state-error a,.ui-widget-header .ui-state-error a,.ui-state-error-text,.ui-widget-content .ui-state-error-text,.ui-widget-header .ui-state-error-text{color:#fff}.ui-icon-seek-start,.ui-icon-seek-first{background-position:-80px -160px}.reveal-modal-bg{position:fixed;height:100%;width:100%;background:rgba(0,0,0,.8);z-index:100;display:none;top:0;left:0}.reveal-modal{visibility:hidden;top:100px;left:50%;margin-left:-300px;width:320px;background:#eee url(/cw3/images/modal-gloss.png) no-repeat -200px -80px;position:absolute;z-index:101;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;-moz-box-shadow:0 0 10px rgba(0,0,0,.4);-webkit-box-shadow:0 0 10px rgba(0,0,0,.4);-box-shadow:0 0 10px rgba(0,0,0,.4);padding:30px 40px 34px}.reveal-modal.small{width:200px;margin-left:-140px}.reveal-modal.medium{width:400px;margin-left:-240px}.reveal-modal.large{width:600px;margin-left:-340px}.reveal-modal.xlarge{width:800px;margin-left:-440px}.reveal-modal .close-reveal-modal{font-size:22px;line-height:.5;position:absolute;top:8px;right:11px;color:#aaa;text-shadow:0 -1px 1px rbga(0,0,0,.6);font-weight:700;cursor:pointer}#tiptip_holder{display:none;position:absolute;top:0;left:0;z-index:99999}#tiptip_holder.tip_top{padding-bottom:5px}#tiptip_holder.tip_bottom{padding-top:5px}#tiptip_holder.tip_right{padding-left:5px}#tiptip_holder.tip_left{padding-right:5px}#tiptip_content{font-size:11px;color:#fff;text-shadow:0 0 2px #000;border:1px solid rgba(255,255,255,.25);background-color:rgba(25,25,25,.92);background-image:0;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;box-shadow:0 0 3px #555;-webkit-box-shadow:0 0 3px #555;-moz-box-shadow:0 0 3px #555;padding:4px 8px}#tiptip_arrow,#tiptip_arrow_inner{position:absolute;height:0;width:0;border-color:transparent;border-style:solid;border-width:6px}#tiptip_holder.tip_top #tiptip_arrow{border-top-color:rgba(255,255,255,.35)}#tiptip_holder.tip_bottom #tiptip_arrow{border-bottom-color:rgba(255,255,255,.35)}#tiptip_holder.tip_right #tiptip_arrow{border-right-color:rgba(255,255,255,.35)}#tiptip_holder.tip_left #tiptip_arrow{border-left-color:rgba(255,255,255,.35)}#tiptip_holder.tip_top #tiptip_arrow_inner{margin-top:-7px;margin-left:-6px;border-top-color:rgba(25,25,25,.92)}#tiptip_holder.tip_bottom #tiptip_arrow_inner{margin-top:-5px;margin-left:-6px;border-bottom-color:rgba(25,25,25,.92)}#tiptip_holder.tip_right #tiptip_arrow_inner{margin-top:-6px;margin-left:-5px;border-right-color:rgba(25,25,25,.92)}#tiptip_holder.tip_left #tiptip_arrow_inner{margin-top:-6px;margin-left:-7px;border-left-color:rgba(25,25,25,.92)}</style>
-	</head>
-	<body>
-		<header>
-			@serolapy [cat982738]
-		</header>
-		<nav>
-			<a href="/">На главную</a>
-		</nav>
-		<article>
-			<!--Главная часть-->
-			<h1>Анимационная студия CatWar</h1>
-			<table width="100%">
-				<tbody>
-					<tr>
-						<td style="width: 510px">
-							<div id="app">
-								<!--Fehler-->
-								<p id="error" style="display: none;"></p>
-								<!--Zeit-->
-								<div id="timer" style="display: none;"></div>
-								<!--Kampf log-->
-								<div id="fightPanel" style="display: none; width: 320px;">
-									<img src="symbole/unlock.png" id="block"> <input type="button" value="I" class="hotkey"><input type="button" value="O" class="hotkey"><input type="button" value="L" class="hotkey"><input type="button" value="J" class="hotkey"><input type="button" value="K" class="hotkey"><input type="button" value="T+1" class="hotkey"><input type="button" value="T+2" class="hotkey"><input type="button" value="T+3" class="hotkey"> <div id="fightLog" style="height: 70px;"></div>
+<head>
+	<meta charset="UTF-8">
+	<script src="/js/jQuery.js"></script>
+	<title>Анимационная студия CatWar</title>
+	<link rel="stylesheet" href="/css/site2.css">
+	<link rel="SHORTCUT ICON" href="/img/favicon.ico" type="image/x-icon">-->
+	<!--<link rel="stylesheet" href="css.css">
+	<script src="https://serolapy.github.io/js/jQuery.js"></script>-->
+	<!--для этой стр-->
+	<link rel="stylesheet" href="https://e.catwar.su/css/blank.css"><!--на всех ваространицах-->
+	<style type="text/css">
+		#app {
+			width: 500px;
+			font-size: 7px;
+			margin: 0 5px 0 5px;
+		}
+
+		#newchat, #newls {
+			background-color: white;
+			font-weight: bold;
+		}
+
+		.small {
+			font-size: 6px;
+		}
+
+		.title {
+			display: block;
+			font-size: 9px;
+			font-weight: bold;
+			padding-bottom: 4px;
+		}
+
+		#main_table {
+			border-collapse: separate;
+			border: none;
+			width: 100%;
+			max-width: 500px;
+			border-spacing: 0;
+			margin: 0;
+			padding: 0;
+			margin-top: 3.5px;
+			background: black;
+		}
+
+			#main_table > tr, #main_table > tr > td, #main_table > tbody > tr, #main_table > tbody > tr > td {
+				margin: 0;
+				padding: 0;
+			}
+
+		.infos {
+			vertical-align: top;
+			width: 33%;
+		}
+
+		#info_main {
+			border: none;
+			width: 100%;
+			background: #FFDEAD;
+		}
+
+		#timer {
+			display: none;
+			position: fixed;
+			z-index: 9999;
+			background-color: RGBA(204, 204, 204, 0.5);
+			min-width: 25px;
+			max-width: 50px;
+			height: 10px;
+			top: 30px;
+			right: 5px;
+			border-radius: 5px;
+			text-align: center;
+			padding: 0.5px;
+		}
+
+		#tr_actions {
+			background-color: #FFDEAD;
+		}
+
+		.dey {
+			margin-right: 1.5px;
+		}
+
+		#dein {
+			display: none;
+		}
+
+		#block_mess {
+			margin: 4px 0;
+		}
+
+		#tr_chat {
+			background-color: #C60;
+		}
+
+		#chat_form {
+			margin: 7.5px;
+		}
+
+		input#text {
+			width: 95%;
+			max-width: 250px;
+			/*Meine*/
+			height: 8px;
+		}
+
+		#volume {
+			width: 100px;
+			display: inline-block;
+			margin-left: 2.5px;
+		}
+
+		#chat_msg {
+			width: 500px;
+			overflow: auto;
+			height: 137.5px;
+		}
+
+		.chat_text {
+			display: inline-block;
+			word-wrap: break-word;
+		}
+
+		.myname {
+			background: #FC3;
+		}
+
+		.nick {
+			border-bottom: 0.5px dotted #000;
+		}
+
+		.vlm0 {
+			font-size: 5px;
+		}
+
+		.vlm1 {
+			font-size: 5.5px;
+		}
+
+		.vlm2 {
+			font-size: 5.525px;
+		}
+
+		.vlm3 {
+			font-size: 6px;
+		}
+
+		.vlm4 {
+			font-size: 6.25px;
+		}
+
+		.vlm5 {
+			font-size: 6.5px;
+		}
+
+		.vlm6 {
+			font-size: 7.5px;
+		}
+
+		.vlm7 {
+			font-size: 8.5px;
+		}
+
+		.vlm8 {
+			font-size: 9.5px;
+		}
+
+		.vlm9 {
+			font-size: 10.5px;
+		}
+
+		.vlm10 {
+			font-size: 11.5px;
+		}
+
+		.pair-delete, .adopt {
+			font-size: 8.5px;
+		}
+
+		#tr_field, #act, #cages {
+			padding: 0;
+			margin: 0;
+			border-spacing: 0;
+		}
+
+		#cages_overflow, #cages_div {
+			width: 500px;
+			min-height: 500px;
+		}
+
+		#cages_div {
+			background-repeat: no-repeat;
+		}
+
+		#cages {
+			width: 500px;
+			min-height: 500px;
+			background-repeat: no-repeat;
+		}
+
+		.cage, .cage_items {
+			width: 50px;
+			height: 75px;
+			border: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		.cage {
+			padding-bottom: 8px;
+		}
+
+		#cages table td {
+			width: 80px;
+			height: 16px;
+			text-align: left;
+		}
+
+			#cages table td div, #cages div[id^=thd] {
+				background-color: transparent;
+			}
+
+			#cages table td img {
+				width: 16px;
+				height: 16px;
+				text-align: left;
+			}
+
+		.move_parent {
+			display: block;
+			position: relative;
+			padding: 0;
+			margin: 0;
+		}
+
+		.move_img {
+			display: block;
+			width: 50px;
+			height: 75px;
+			border: 0;
+			margin: 0;
+			padding: 0;
+		}
+
+		.move_name {
+			display: block;
+			position: absolute;
+			font-size: 5.5px;
+			bottom: 21.5px;
+			left: 5px;
+			width: 42.5px;
+			text-align: center;
+			background-color: RGBA(255, 255, 255, 0.5);
+			border-radius: 5px;
+			padding: 0;
+			margin: 0;
+		}
+
+		.cat {
+			position: relative;
+		}
+
+		.huntEl {
+			position: absolute;
+		}
+
+		.cat_tooltip {
+			display: none;
+		}
+
+		.cat:hover .cat_tooltip {
+			display: block;
+			position: absolute;
+			z-index: 9999;
+			padding: 5px;
+			min-width: 80px;
+			background: RGBA(255, 255, 255, 0.9);
+			border: 1px solid gray;
+			border-radius: 6px;
+			color: #930;
+			font-weight: bold;
+			text-align: center;
+		}
+
+			.cat:hover .cat_tooltip a {
+				color: #930;
+			}
+
+		.mouth {
+			width: 100%;
+			padding: 0;
+			margin: 0;
+		}
+
+			.mouth ol {
+				list-style-type: none;
+			}
+
+			.mouth li {
+				display: inline-block;
+			}
+
+			.mouth img {
+				width: 16px;
+			}
+
+		.online {
+			color: black;
+		}
+
+		.smell_move {
+			border: 1px solid white;
+			width: 48px;
+			height: 48px;
+		}
+
+		.arrow-paws {
+			background: url("/cw3/symbole/arrow_paws.png") 0 0 no-repeat;
+		}
+
+		.arrow-claws {
+			background: url("/cw3/symbole/arrow_claws.png") 0 0 no-repeat;
+		}
+
+		.arrow-teeth {
+			background: url("/cw3/symbole/arrow_teeth.png") 0 0 no-repeat;
+		}
+
+		.arrow {
+			height: 4px;
+			position: absolute;
+			margin: 0;
+			padding: 1.5px 0 0 5.5px;
+			z-index: 2;
+		}
+
+			.arrow table, .arrow td {
+				height: 2.5px !important;
+				padding: 0;
+				margin: 0;
+			}
+
+		.arrow_red {
+			background: #CD4141;
+		}
+
+		.arrow_green {
+			background: #41CD70;
+		}
+
+		#fightPanel {
+			position: fixed;
+			z-index: 9999;
+			background-color: RGBA(204, 204, 204, 0.9);
+			height: 50px;
+			top: 10px;
+			right: 5px;
+			border-radius: 5px;
+			text-align: left;
+			padding: 1.5px;
+		}
+
+		.hotkey {
+			background: white;
+			width: 16px;
+			padding: 0.5px;
+			outline: none;
+		}
+
+		#fightLog {
+			overflow-y: scroll;
+			margin-top: 2px;
+			margin-left: 2px;
+		}
+
+		.log_claws {
+			background: RGBA(212, 141, 118, 0.7);
+		}
+
+		.log_teeth {
+			background: RGBA(255, 255, 255, 0.7);
+		}
+
+		.itemInMouth, .catrot {
+			cursor: pointer;
+		}
+
+		.active_thing {
+			border: 0.5px solid blue;
+		}
+
+		#layer {
+			width: 100px;
+		}
+
+		#tr_mouth {
+			background-color: #FFDEAD;
+		}
+
+		#itemList {
+			list-style-type: none;
+			padding: 0;
+			margin: 0;
+		}
+
+			#itemList li {
+				display: inline-block;
+			}
+
+		.symbole {
+			width: 7.5px;
+			height: 7.5px;
+			background: url("/cw3/symbole/icons.png") no-repeat;
+			padding: 0;
+			margin: 0;
+		}
+
+		.parameter {
+			border: 0.5px solid black;
+			width: 75px;
+			height: 7.5px;
+		}
+
+			.parameter, .parameter td {
+				margin: 0;
+				padding: 0;
+				border-spacing: 0;
+			}
+
+		#lifes {
+			margin-top: 2.5px;
+		}
+
+		#sky {
+			height: 75px;
+			width: 100%;
+			max-width: 500px;
+			background-repeat: no-repeat;
+		}
+
+		#tos {
+			width: 75px;
+			height: 10px;
+		}
+
+		#hour {
+			margin: 0 2.5px;
+		}
+	</style>
+	<style type="text/css">
+		.ui-helper-hidden-accessible {
+			position: absolute !important;
+			clip: rect(1px,1px,1px,1px)
+		}
+
+		.ui-helper-reset {
+			border: 0;
+			outline: 0;
+			line-height: 1.3;
+			text-decoration: none;
+			font-size: 100%;
+			list-style: none;
+			margin: 0;
+			padding: 0
+		}
+
+		.ui-helper-clearfix:after {
+			content: ".";
+			display: block;
+			height: 0;
+			clear: both;
+			visibility: hidden
+		}
+
+		.ui-helper-clearfix {
+			display: block
+		}
+
+		* html .ui-helper-clearfix {
+			height: 1%
+		}
+
+		.ui-helper-zfix {
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			position: absolute;
+			opacity: 0;
+			filter: Alpha(Opacity=0)
+		}
+
+		.ui-state-disabled {
+			cursor: default !important
+		}
+
+		.ui-icon {
+			display: block;
+			text-indent: -99999px;
+			overflow: hidden;
+			background-repeat: no-repeat;
+			width: 16px;
+			height: 16px;
+			background-image: url(/cw3/images/ui-icons_d19405_256x240.png)
+		}
+
+		.ui-widget-overlay {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: #5c5c5c url(/cw3/images/ui-bg_flat_50_5c5c5c_40x100.png) 50% 50% repeat-x;
+			opacity: .8;
+			filter: Alpha(Opacity=80)
+		}
+
+		.ui-widget {
+			font-family: Segoe UI,Arial,sans-serif;
+			font-size: 1.1em
+		}
+
+			.ui-widget .ui-widget {
+				font-size: 1em
+			}
+
+			.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
+				font-family: Segoe UI,Arial,sans-serif;
+				font-size: 1em
+			}
+
+		.ui-widget-content {
+			border: 1px solid #8e846b;
+			background: #feeebd url(/cw3/images/ui-bg_highlight-soft_100_feeebd_1x100.png) 50% top repeat-x;
+			color: #383838
+		}
+
+			.ui-widget-content a {
+				color: #383838
+			}
+
+		.ui-widget-header {
+			border: 1px solid #494437;
+			background: #817865 url(/cw3/images/ui-bg_gloss-wave_45_817865_500x100.png) 50% 50% repeat-x;
+			color: #fff;
+			font-weight: 700
+		}
+
+			.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+				border: 1px solid #d19405;
+				background: #fece2f url(/cw3/images/ui-bg_gloss-wave_60_fece2f_500x100.png) 50% 50% repeat-x;
+				font-weight: 700;
+				color: #4c3000
+			}
+
+				.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited {
+					color: #4c3000;
+					text-decoration: none
+				}
+
+			.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
+				border: 1px solid #a45b13;
+				background: #ffdd57 url(/cw3/images/ui-bg_gloss-wave_70_ffdd57_500x100.png) 50% 50% repeat-x;
+				font-weight: 700;
+				color: #381f00
+			}
+
+				.ui-state-hover a, .ui-state-hover a:hover {
+					color: #381f00;
+					text-decoration: none
+				}
+
+			.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+				border: 1px solid #655e4e;
+				background: #fff url(/cw3/images/ui-bg_inset-soft_30_ffffff_1x100.png) 50% 50% repeat-x;
+				font-weight: 700;
+				color: #0074c7
+			}
+
+				.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {
+					color: #0074c7;
+					text-decoration: none
+				}
+
+		.ui-widget:active {
+			outline: none
+		}
+
+		.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+			border: 1px solid #eeb420;
+			background: #fff9e5 url(/cw3/images/ui-bg_gloss-wave_90_fff9e5_500x100.png) 50% top repeat-x;
+			color: #1f1f1f
+		}
+
+			.ui-state-highlight a, .ui-widget-content .ui-state-highlight a, .ui-widget-header .ui-state-highlight a {
+				color: #1f1f1f
+			}
+
+		.ui-state-error, .ui-widget-content .ui-state-error, .ui-widget-header .ui-state-error {
+			border: 1px solid #ffb73d;
+			background: #d34d17 url(/cw3/images/ui-bg_diagonals-medium_20_d34d17_40x40.png) 50% 50% repeat;
+			color: #fff
+		}
+
+		.ui-priority-primary, .ui-widget-content .ui-priority-primary, .ui-widget-header .ui-priority-primary {
+			font-weight: 700
+		}
+
+		.ui-priority-secondary, .ui-widget-content .ui-priority-secondary, .ui-widget-header .ui-priority-secondary {
+			opacity: .7;
+			filter: Alpha(Opacity=70);
+			font-weight: 400
+		}
+
+		.ui-state-disabled, .ui-widget-content .ui-state-disabled, .ui-widget-header .ui-state-disabled {
+			opacity: .35;
+			filter: Alpha(Opacity=35);
+			background-image: none
+		}
+
+		.ui-widget-content .ui-icon {
+			background-image: url(/cw3/images/ui-icons_d19405_256x240.png)
+		}
+
+		.ui-widget-header .ui-icon {
+			background-image: url(/cw3/images/ui-icons_fadc7a_256x240.png)
+		}
+
+		.ui-state-default .ui-icon {
+			background-image: url(/cw3/images/ui-icons_3d3d3d_256x240.png)
+		}
+
+		.ui-state-hover .ui-icon, .ui-state-focus .ui-icon {
+			background-image: url(/cw3/images/ui-icons_bd7b00_256x240.png)
+		}
+
+		.ui-state-active .ui-icon {
+			background-image: url(/cw3/images/ui-icons_eb990f_256x240.png)
+		}
+
+		.ui-state-highlight .ui-icon {
+			background-image: url(/cw3/images/ui-icons_ed9f26_256x240.png)
+		}
+
+		.ui-state-error .ui-icon, .ui-state-error-text .ui-icon {
+			background-image: url(/cw3/images/ui-icons_ffe180_256x240.png)
+		}
+
+		.ui-icon-carat-1-n {
+			background-position: 0 0
+		}
+
+		.ui-icon-carat-1-ne {
+			background-position: -16px 0
+		}
+
+		.ui-icon-carat-1-e {
+			background-position: -32px 0
+		}
+
+		.ui-icon-carat-1-se {
+			background-position: -48px 0
+		}
+
+		.ui-icon-carat-1-s {
+			background-position: -64px 0
+		}
+
+		.ui-icon-carat-1-sw {
+			background-position: -80px 0
+		}
+
+		.ui-icon-carat-1-w {
+			background-position: -96px 0
+		}
+
+		.ui-icon-carat-1-nw {
+			background-position: -112px 0
+		}
+
+		.ui-icon-carat-2-n-s {
+			background-position: -128px 0
+		}
+
+		.ui-icon-carat-2-e-w {
+			background-position: -144px 0
+		}
+
+		.ui-icon-triangle-1-n {
+			background-position: 0 -16px
+		}
+
+		.ui-icon-triangle-1-ne {
+			background-position: -16px -16px
+		}
+
+		.ui-icon-triangle-1-e {
+			background-position: -32px -16px
+		}
+
+		.ui-icon-triangle-1-se {
+			background-position: -48px -16px
+		}
+
+		.ui-icon-triangle-1-s {
+			background-position: -64px -16px
+		}
+
+		.ui-icon-triangle-1-sw {
+			background-position: -80px -16px
+		}
+
+		.ui-icon-triangle-1-w {
+			background-position: -96px -16px
+		}
+
+		.ui-icon-triangle-1-nw {
+			background-position: -112px -16px
+		}
+
+		.ui-icon-triangle-2-n-s {
+			background-position: -128px -16px
+		}
+
+		.ui-icon-triangle-2-e-w {
+			background-position: -144px -16px
+		}
+
+		.ui-icon-arrow-1-n {
+			background-position: 0 -32px
+		}
+
+		.ui-icon-arrow-1-ne {
+			background-position: -16px -32px
+		}
+
+		.ui-icon-arrow-1-e {
+			background-position: -32px -32px
+		}
+
+		.ui-icon-arrow-1-se {
+			background-position: -48px -32px
+		}
+
+		.ui-icon-arrow-1-s {
+			background-position: -64px -32px
+		}
+
+		.ui-icon-arrow-1-sw {
+			background-position: -80px -32px
+		}
+
+		.ui-icon-arrow-1-w {
+			background-position: -96px -32px
+		}
+
+		.ui-icon-arrow-1-nw {
+			background-position: -112px -32px
+		}
+
+		.ui-icon-arrow-2-n-s {
+			background-position: -128px -32px
+		}
+
+		.ui-icon-arrow-2-ne-sw {
+			background-position: -144px -32px
+		}
+
+		.ui-icon-arrow-2-e-w {
+			background-position: -160px -32px
+		}
+
+		.ui-icon-arrow-2-se-nw {
+			background-position: -176px -32px
+		}
+
+		.ui-icon-arrowstop-1-n {
+			background-position: -192px -32px
+		}
+
+		.ui-icon-arrowstop-1-e {
+			background-position: -208px -32px
+		}
+
+		.ui-icon-arrowstop-1-s {
+			background-position: -224px -32px
+		}
+
+		.ui-icon-arrowstop-1-w {
+			background-position: -240px -32px
+		}
+
+		.ui-icon-arrowthick-1-n {
+			background-position: 0 -48px
+		}
+
+		.ui-icon-arrowthick-1-ne {
+			background-position: -16px -48px
+		}
+
+		.ui-icon-arrowthick-1-e {
+			background-position: -32px -48px
+		}
+
+		.ui-icon-arrowthick-1-se {
+			background-position: -48px -48px
+		}
+
+		.ui-icon-arrowthick-1-s {
+			background-position: -64px -48px
+		}
+
+		.ui-icon-arrowthick-1-sw {
+			background-position: -80px -48px
+		}
+
+		.ui-icon-arrowthick-1-w {
+			background-position: -96px -48px
+		}
+
+		.ui-icon-arrowthick-1-nw {
+			background-position: -112px -48px
+		}
+
+		.ui-icon-arrowthick-2-n-s {
+			background-position: -128px -48px
+		}
+
+		.ui-icon-arrowthick-2-ne-sw {
+			background-position: -144px -48px
+		}
+
+		.ui-icon-arrowthick-2-e-w {
+			background-position: -160px -48px
+		}
+
+		.ui-icon-arrowthick-2-se-nw {
+			background-position: -176px -48px
+		}
+
+		.ui-icon-arrowthickstop-1-n {
+			background-position: -192px -48px
+		}
+
+		.ui-icon-arrowthickstop-1-e {
+			background-position: -208px -48px
+		}
+
+		.ui-icon-arrowthickstop-1-s {
+			background-position: -224px -48px
+		}
+
+		.ui-icon-arrowthickstop-1-w {
+			background-position: -240px -48px
+		}
+
+		.ui-icon-arrowreturnthick-1-w {
+			background-position: 0 -64px
+		}
+
+		.ui-icon-arrowreturnthick-1-n {
+			background-position: -16px -64px
+		}
+
+		.ui-icon-arrowreturnthick-1-e {
+			background-position: -32px -64px
+		}
+
+		.ui-icon-arrowreturnthick-1-s {
+			background-position: -48px -64px
+		}
+
+		.ui-icon-arrowreturn-1-w {
+			background-position: -64px -64px
+		}
+
+		.ui-icon-arrowreturn-1-n {
+			background-position: -80px -64px
+		}
+
+		.ui-icon-arrowreturn-1-e {
+			background-position: -96px -64px
+		}
+
+		.ui-icon-arrowreturn-1-s {
+			background-position: -112px -64px
+		}
+
+		.ui-icon-arrowrefresh-1-w {
+			background-position: -128px -64px
+		}
+
+		.ui-icon-arrowrefresh-1-n {
+			background-position: -144px -64px
+		}
+
+		.ui-icon-arrowrefresh-1-e {
+			background-position: -160px -64px
+		}
+
+		.ui-icon-arrowrefresh-1-s {
+			background-position: -176px -64px
+		}
+
+		.ui-icon-arrow-4 {
+			background-position: 0 -80px
+		}
+
+		.ui-icon-arrow-4-diag {
+			background-position: -16px -80px
+		}
+
+		.ui-icon-extlink {
+			background-position: -32px -80px
+		}
+
+		.ui-icon-newwin {
+			background-position: -48px -80px
+		}
+
+		.ui-icon-refresh {
+			background-position: -64px -80px
+		}
+
+		.ui-icon-shuffle {
+			background-position: -80px -80px
+		}
+
+		.ui-icon-transfer-e-w {
+			background-position: -96px -80px
+		}
+
+		.ui-icon-transferthick-e-w {
+			background-position: -112px -80px
+		}
+
+		.ui-icon-folder-collapsed {
+			background-position: 0 -96px
+		}
+
+		.ui-icon-folder-open {
+			background-position: -16px -96px
+		}
+
+		.ui-icon-document {
+			background-position: -32px -96px
+		}
+
+		.ui-icon-document-b {
+			background-position: -48px -96px
+		}
+
+		.ui-icon-note {
+			background-position: -64px -96px
+		}
+
+		.ui-icon-mail-closed {
+			background-position: -80px -96px
+		}
+
+		.ui-icon-mail-open {
+			background-position: -96px -96px
+		}
+
+		.ui-icon-suitcase {
+			background-position: -112px -96px
+		}
+
+		.ui-icon-comment {
+			background-position: -128px -96px
+		}
+
+		.ui-icon-person {
+			background-position: -144px -96px
+		}
+
+		.ui-icon-print {
+			background-position: -160px -96px
+		}
+
+		.ui-icon-trash {
+			background-position: -176px -96px
+		}
+
+		.ui-icon-locked {
+			background-position: -192px -96px
+		}
+
+		.ui-icon-unlocked {
+			background-position: -208px -96px
+		}
+
+		.ui-icon-bookmark {
+			background-position: -224px -96px
+		}
+
+		.ui-icon-tag {
+			background-position: -240px -96px
+		}
+
+		.ui-icon-home {
+			background-position: 0 -112px
+		}
+
+		.ui-icon-flag {
+			background-position: -16px -112px
+		}
+
+		.ui-icon-calendar {
+			background-position: -32px -112px
+		}
+
+		.ui-icon-cart {
+			background-position: -48px -112px
+		}
+
+		.ui-icon-pencil {
+			background-position: -64px -112px
+		}
+
+		.ui-icon-clock {
+			background-position: -80px -112px
+		}
+
+		.ui-icon-disk {
+			background-position: -96px -112px
+		}
+
+		.ui-icon-calculator {
+			background-position: -112px -112px
+		}
+
+		.ui-icon-zoomin {
+			background-position: -128px -112px
+		}
+
+		.ui-icon-zoomout {
+			background-position: -144px -112px
+		}
+
+		.ui-icon-search {
+			background-position: -160px -112px
+		}
+
+		.ui-icon-wrench {
+			background-position: -176px -112px
+		}
+
+		.ui-icon-gear {
+			background-position: -192px -112px
+		}
+
+		.ui-icon-heart {
+			background-position: -208px -112px
+		}
+
+		.ui-icon-star {
+			background-position: -224px -112px
+		}
+
+		.ui-icon-link {
+			background-position: -240px -112px
+		}
+
+		.ui-icon-cancel {
+			background-position: 0 -128px
+		}
+
+		.ui-icon-plus {
+			background-position: -16px -128px
+		}
+
+		.ui-icon-plusthick {
+			background-position: -32px -128px
+		}
+
+		.ui-icon-minus {
+			background-position: -48px -128px
+		}
+
+		.ui-icon-minusthick {
+			background-position: -64px -128px
+		}
+
+		.ui-icon-close {
+			background-position: -80px -128px
+		}
+
+		.ui-icon-closethick {
+			background-position: -96px -128px
+		}
+
+		.ui-icon-key {
+			background-position: -112px -128px
+		}
+
+		.ui-icon-lightbulb {
+			background-position: -128px -128px
+		}
+
+		.ui-icon-scissors {
+			background-position: -144px -128px
+		}
+
+		.ui-icon-clipboard {
+			background-position: -160px -128px
+		}
+
+		.ui-icon-copy {
+			background-position: -176px -128px
+		}
+
+		.ui-icon-contact {
+			background-position: -192px -128px
+		}
+
+		.ui-icon-image {
+			background-position: -208px -128px
+		}
+
+		.ui-icon-video {
+			background-position: -224px -128px
+		}
+
+		.ui-icon-script {
+			background-position: -240px -128px
+		}
+
+		.ui-icon-alert {
+			background-position: 0 -144px
+		}
+
+		.ui-icon-info {
+			background-position: -16px -144px
+		}
+
+		.ui-icon-notice {
+			background-position: -32px -144px
+		}
+
+		.ui-icon-help {
+			background-position: -48px -144px
+		}
+
+		.ui-icon-check {
+			background-position: -64px -144px
+		}
+
+		.ui-icon-bullet {
+			background-position: -80px -144px
+		}
+
+		.ui-icon-radio-off {
+			background-position: -96px -144px
+		}
+
+		.ui-icon-radio-on {
+			background-position: -112px -144px
+		}
+
+		.ui-icon-pin-w {
+			background-position: -128px -144px
+		}
+
+		.ui-icon-pin-s {
+			background-position: -144px -144px
+		}
+
+		.ui-icon-play {
+			background-position: 0 -160px
+		}
+
+		.ui-icon-pause {
+			background-position: -16px -160px
+		}
+
+		.ui-icon-seek-next {
+			background-position: -32px -160px
+		}
+
+		.ui-icon-seek-prev {
+			background-position: -48px -160px
+		}
+
+		.ui-icon-seek-end {
+			background-position: -64px -160px
+		}
+
+		.ui-icon-stop {
+			background-position: -96px -160px
+		}
+
+		.ui-icon-eject {
+			background-position: -112px -160px
+		}
+
+		.ui-icon-volume-off {
+			background-position: -128px -160px
+		}
+
+		.ui-icon-volume-on {
+			background-position: -144px -160px
+		}
+
+		.ui-icon-power {
+			background-position: 0 -176px
+		}
+
+		.ui-icon-signal-diag {
+			background-position: -16px -176px
+		}
+
+		.ui-icon-signal {
+			background-position: -32px -176px
+		}
+
+		.ui-icon-battery-0 {
+			background-position: -48px -176px
+		}
+
+		.ui-icon-battery-1 {
+			background-position: -64px -176px
+		}
+
+		.ui-icon-battery-2 {
+			background-position: -80px -176px
+		}
+
+		.ui-icon-battery-3 {
+			background-position: -96px -176px
+		}
+
+		.ui-icon-circle-plus {
+			background-position: 0 -192px
+		}
+
+		.ui-icon-circle-minus {
+			background-position: -16px -192px
+		}
+
+		.ui-icon-circle-close {
+			background-position: -32px -192px
+		}
+
+		.ui-icon-circle-triangle-e {
+			background-position: -48px -192px
+		}
+
+		.ui-icon-circle-triangle-s {
+			background-position: -64px -192px
+		}
+
+		.ui-icon-circle-triangle-w {
+			background-position: -80px -192px
+		}
+
+		.ui-icon-circle-triangle-n {
+			background-position: -96px -192px
+		}
+
+		.ui-icon-circle-arrow-e {
+			background-position: -112px -192px
+		}
+
+		.ui-icon-circle-arrow-s {
+			background-position: -128px -192px
+		}
+
+		.ui-icon-circle-arrow-w {
+			background-position: -144px -192px
+		}
+
+		.ui-icon-circle-arrow-n {
+			background-position: -160px -192px
+		}
+
+		.ui-icon-circle-zoomin {
+			background-position: -176px -192px
+		}
+
+		.ui-icon-circle-zoomout {
+			background-position: -192px -192px
+		}
+
+		.ui-icon-circle-check {
+			background-position: -208px -192px
+		}
+
+		.ui-icon-circlesmall-plus {
+			background-position: 0 -208px
+		}
+
+		.ui-icon-circlesmall-minus {
+			background-position: -16px -208px
+		}
+
+		.ui-icon-circlesmall-close {
+			background-position: -32px -208px
+		}
+
+		.ui-icon-squaresmall-plus {
+			background-position: -48px -208px
+		}
+
+		.ui-icon-squaresmall-minus {
+			background-position: -64px -208px
+		}
+
+		.ui-icon-squaresmall-close {
+			background-position: -80px -208px
+		}
+
+		.ui-icon-grip-dotted-vertical {
+			background-position: 0 -224px
+		}
+
+		.ui-icon-grip-dotted-horizontal {
+			background-position: -16px -224px
+		}
+
+		.ui-icon-grip-solid-vertical {
+			background-position: -32px -224px
+		}
+
+		.ui-icon-grip-solid-horizontal {
+			background-position: -48px -224px
+		}
+
+		.ui-icon-gripsmall-diagonal-se {
+			background-position: -64px -224px
+		}
+
+		.ui-icon-grip-diagonal-se {
+			background-position: -80px -224px
+		}
+
+		.ui-corner-all, .ui-corner-top, .ui-corner-left, .ui-corner-tl {
+			-moz-border-radius-topleft: 8px;
+			-webkit-border-top-left-radius: 8px;
+			-khtml-border-top-left-radius: 8px;
+			border-top-left-radius: 8px
+		}
+
+		.ui-corner-all, .ui-corner-top, .ui-corner-right, .ui-corner-tr {
+			-moz-border-radius-topright: 8px;
+			-webkit-border-top-right-radius: 8px;
+			-khtml-border-top-right-radius: 8px;
+			border-top-right-radius: 8px
+		}
+
+		.ui-corner-all, .ui-corner-bottom, .ui-corner-left, .ui-corner-bl {
+			-moz-border-radius-bottomleft: 8px;
+			-webkit-border-bottom-left-radius: 8px;
+			-khtml-border-bottom-left-radius: 8px;
+			border-bottom-left-radius: 8px
+		}
+
+		.ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br {
+			-moz-border-radius-bottomright: 8px;
+			-webkit-border-bottom-right-radius: 8px;
+			-khtml-border-bottom-right-radius: 8px;
+			border-bottom-right-radius: 8px
+		}
+
+		.ui-widget-shadow {
+			background: #ccc url(/cw3/images/ui-bg_flat_30_cccccc_40x100.png) 50% 50% repeat-x;
+			opacity: .6;
+			filter: Alpha(Opacity=60);
+			-moz-border-radius: 8px;
+			-khtml-border-radius: 8px;
+			-webkit-border-radius: 8px;
+			border-radius: 8px;
+			margin: -7px 0 0 -7px;
+			padding: 7px
+		}
+
+		.ui-slider {
+			position: relative;
+			text-align: left
+		}
+
+			.ui-slider .ui-slider-handle {
+				position: absolute;
+				z-index: 2;
+				width: 1.2em;
+				height: 1.2em;
+				cursor: default
+			}
+
+			.ui-slider .ui-slider-range {
+				position: absolute;
+				z-index: 1;
+				font-size: .7em;
+				display: block;
+				border: 0;
+				background-position: 0 0
+			}
+
+		.ui-slider-horizontal {
+			height: .8em
+		}
+
+			.ui-slider-horizontal .ui-slider-handle {
+				top: -.3em;
+				margin-left: -.6em
+			}
+
+			.ui-slider-horizontal .ui-slider-range {
+				top: 0;
+				height: 100%
+			}
+
+			.ui-slider-horizontal .ui-slider-range-min {
+				left: 0
+			}
+
+			.ui-slider-horizontal .ui-slider-range-max {
+				right: 0
+			}
+
+		.ui-slider-vertical {
+			width: .8em;
+			height: 100px
+		}
+
+			.ui-slider-vertical .ui-slider-handle {
+				left: -.3em;
+				margin-left: 0;
+				margin-bottom: -.6em
+			}
+
+			.ui-slider-vertical .ui-slider-range {
+				left: 0;
+				width: 100%
+			}
+
+			.ui-slider-vertical .ui-slider-range-min {
+				bottom: 0
+			}
+
+			.ui-slider-vertical .ui-slider-range-max {
+				top: 0
+			}
+
+		span.tt span, .ui-helper-hidden {
+			display: none
+		}
+
+		.ui-widget-header a, .ui-state-error a, .ui-widget-content .ui-state-error a, .ui-widget-header .ui-state-error a, .ui-state-error-text, .ui-widget-content .ui-state-error-text, .ui-widget-header .ui-state-error-text {
+			color: #fff
+		}
+
+		.ui-icon-seek-start, .ui-icon-seek-first {
+			background-position: -80px -160px
+		}
+
+		.reveal-modal-bg {
+			position: fixed;
+			height: 100%;
+			width: 100%;
+			background: rgba(0,0,0,.8);
+			z-index: 100;
+			display: none;
+			top: 0;
+			left: 0
+		}
+
+		.reveal-modal {
+			visibility: hidden;
+			top: 100px;
+			left: 50%;
+			margin-left: -300px;
+			width: 320px;
+			background: #eee url(/cw3/images/modal-gloss.png) no-repeat -200px -80px;
+			position: absolute;
+			z-index: 101;
+			-moz-border-radius: 5px;
+			-webkit-border-radius: 5px;
+			border-radius: 5px;
+			-moz-box-shadow: 0 0 10px rgba(0,0,0,.4);
+			-webkit-box-shadow: 0 0 10px rgba(0,0,0,.4);
+			-box-shadow: 0 0 10px rgba(0,0,0,.4);
+			padding: 30px 40px 34px
+		}
+
+			.reveal-modal.small {
+				width: 200px;
+				margin-left: -140px
+			}
+
+			.reveal-modal.medium {
+				width: 400px;
+				margin-left: -240px
+			}
+
+			.reveal-modal.large {
+				width: 600px;
+				margin-left: -340px
+			}
+
+			.reveal-modal.xlarge {
+				width: 800px;
+				margin-left: -440px
+			}
+
+			.reveal-modal .close-reveal-modal {
+				font-size: 22px;
+				line-height: .5;
+				position: absolute;
+				top: 8px;
+				right: 11px;
+				color: #aaa;
+				text-shadow: 0 -1px 1px rbga(0,0,0,.6);
+				font-weight: 700;
+				cursor: pointer
+			}
+
+		#tiptip_holder {
+			display: none;
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 99999
+		}
+
+			#tiptip_holder.tip_top {
+				padding-bottom: 5px
+			}
+
+			#tiptip_holder.tip_bottom {
+				padding-top: 5px
+			}
+
+			#tiptip_holder.tip_right {
+				padding-left: 5px
+			}
+
+			#tiptip_holder.tip_left {
+				padding-right: 5px
+			}
+
+		#tiptip_content {
+			font-size: 11px;
+			color: #fff;
+			text-shadow: 0 0 2px #000;
+			border: 1px solid rgba(255,255,255,.25);
+			background-color: rgba(25,25,25,.92);
+			background-image: 0;
+			border-radius: 3px;
+			-webkit-border-radius: 3px;
+			-moz-border-radius: 3px;
+			box-shadow: 0 0 3px #555;
+			-webkit-box-shadow: 0 0 3px #555;
+			-moz-box-shadow: 0 0 3px #555;
+			padding: 4px 8px
+		}
+
+		#tiptip_arrow, #tiptip_arrow_inner {
+			position: absolute;
+			height: 0;
+			width: 0;
+			border-color: transparent;
+			border-style: solid;
+			border-width: 6px
+		}
+
+		#tiptip_holder.tip_top #tiptip_arrow {
+			border-top-color: rgba(255,255,255,.35)
+		}
+
+		#tiptip_holder.tip_bottom #tiptip_arrow {
+			border-bottom-color: rgba(255,255,255,.35)
+		}
+
+		#tiptip_holder.tip_right #tiptip_arrow {
+			border-right-color: rgba(255,255,255,.35)
+		}
+
+		#tiptip_holder.tip_left #tiptip_arrow {
+			border-left-color: rgba(255,255,255,.35)
+		}
+
+		#tiptip_holder.tip_top #tiptip_arrow_inner {
+			margin-top: -7px;
+			margin-left: -6px;
+			border-top-color: rgba(25,25,25,.92)
+		}
+
+		#tiptip_holder.tip_bottom #tiptip_arrow_inner {
+			margin-top: -5px;
+			margin-left: -6px;
+			border-bottom-color: rgba(25,25,25,.92)
+		}
+
+		#tiptip_holder.tip_right #tiptip_arrow_inner {
+			margin-top: -6px;
+			margin-left: -5px;
+			border-right-color: rgba(25,25,25,.92)
+		}
+
+		#tiptip_holder.tip_left #tiptip_arrow_inner {
+			margin-top: -6px;
+			margin-left: -7px;
+			border-left-color: rgba(25,25,25,.92)
+		}
+
+		]
+	</style>
+</head>
+<body>
+	<header>
+		@serolapy [cat982738]
+		<h1>Анимационная студия CatWar</h1>
+		<a href="/">Домой</a>
+	</header>
+	<nav>
+		<a href="#" data-id="home" class="btnPages">Главная</a>
+		<a href="#" data-id="lData" class="btnPages">Личные данные</a>
+		<a href="#" data-id="newPers" class="btnPages">Новый персонаж</a>
+		<a href="#" data-id="gCostume" class="btnPages">Коллекция костюмов</a>
+		<a href="#" data-id="gItems" class="btnPages">Коллекция предметов</a>
+		<a href="#" data-id="instruction" class="btnPages">Инструкция</a>
+	</nav>
+	<article>
+		<!--Главная часть-->
+
+		<div id="home" class="pages">
+			<h2>Инструменты:</h2>
+			<div id="app">
+				<!--Fehler-->
+				<p id="error" style="display: none;"></p>
+				<!--Zeit-->
+				<div id="timer" style="display: none;"></div>
+				<!--Kampf log-->
+				<div id="fightPanel" style="display: none; width: 320px;">
+					<img src="symbole/unlock.png" id="block"> <input type="button" value="I" class="hotkey"><input type="button" value="O" class="hotkey"><input type="button" value="L" class="hotkey"><input type="button" value="J" class="hotkey"><input type="button" value="K" class="hotkey"><input type="button" value="T+1" class="hotkey"><input type="button" value="T+2" class="hotkey"><input type="button" value="T+3" class="hotkey"> <div id="fightLog" style="height: 70px;"></div>
+				</div>
+				<!--Haupttabelle-->
+				<table id="main_table" style="border-spacing:2px">
+					<tbody>
+						<tr id="tr_chat">
+							<td>
+								<form id="chat_form">
+									<span id="txt">
+										<input size="50" id="text" autocomplete="off">
+										<!----> <!---->
+									</span>
+									<input type="submit" id="msg_send" value="OK">
+									<!---->
+									<span>
+										<span id="volume" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 50%;"></span></span>
+										<b>(правее — громче)</b>
+									</span>
+								</form>
+								<div id="chat_msg"><hr></div>
+							</td>
+						</tr>
+						<tr id="tr_actions">
+							<td>
+								<span class="title">Действия</span> <div id="block_deys" style="display: none;">
+									<table style="width: 100%;">
+										<tbody>
+											<tr>
+												<td style="width: 70%;"><div id="akten" style="display: block;"><!--Действия--></div> <div id="dein" style="display: none;"><!--Действия с другими игроками--></div></td>
+												<td>
+													Действия с каким-либо котом в соседней клетке:<br> <select id="mit"><option value="0">Действия с собой</option><option value="<!--ид кота-->"><!--имя кота--></option></select><br> <input type="button" id="mitok" value="Показать">
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div> <div id="block_mess"></div>
+							</td>
+						</tr>
+						<tr id="tr_tos">
+							<td><table><tbody><tr><td><!----> <!----></td> <td><div id="tos" style="background: #E84232;background: -moz-linear-gradient(0deg, #F17558, #E00F0B);background: -webkit-linear-gradient(0deg, #F17558, #E00F0B);background: -o-linear-gradient(0deg, #F17558, #E00F0B);background: -ms-linear-gradient(0deg, #F17558, #E00F0B);background: linear-gradient(90deg, #F17558, #E00F0B););"></div></td> <td><a href="/time" target="_blank" id="hour"><img src="symbole/hours/7.png"></a></td> <td><a href="/time" target="_blank"><img src="symbole/season2.png"></a></td> <!----></tr></tbody></table></td>
+						</tr>
+						<tr id="tr_sky">
+							<td><div id="sky" style="background-image: url(&quot;sky/3.png&quot;);"></div></td>
+						</tr>
+						<tr id="tr_field">
+							<td id="act">
+								<div id="cages_overflow">
+									<div id="cages_div" style="opacity: 1; background-image: url('');">
+										<table id="cages" style="border:1px black solid">
+											<tbody>
+												<tr>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+												</tr>
+												<tr>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+												</tr>
+												<tr>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+												</tr>
+												<tr>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+												</tr>
+												<tr>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+												</tr>
+												<tr>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+													<td class="cage"></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
 								</div>
-								<!--Haupttabelle-->
-								<table id="main_table" style="border-spacing:2px">
+							</td>
+						</tr>
+						<tr id="tr_mouth">
+							<td>
+								<span class="title">Во рту</span> <div id="tir"><table><tbody><tr id="katze"><td><ol id="itemList"><!--Рот--></ol></td> <!----></tr></tbody></table></div> <a href="#">Смешивать</a> <!----><br><br> <div id="thdey" style="display: none;">
+									<ul style="margin: 0px; padding: 0px 0px 0px 1.4em;"><li><a href="#" id="eat"></a></li> <li><a href="#" id="put">Положить на землю</a></li> <li><a href="#" id="dig">Закопать</a></li> <li id="divide"><a href="#">Разделить</a></li> <li id="chew"><a href="#">Разжевать</a></li></ul> <br> <div id="layer" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 0%;"></span></div><br>
+									Чем правее, тем глубже будет закопан предмет. <a href="/about?id=12" target="_blank">[?]</a><br><br>
+								</div> <div id="ctdey" style="display: none;"><ul style="margin: 0px; padding: 0px 0px 0px 1.4em;"><li><a href="#" id="put2">Положить на землю</a></li> <li><a href="/cat1169401" target="_blank">Перейти в профиль</a></li></ul></div>
+							</td>
+						</tr>
+						<tr id="tr_info">
+							<td>
+								<table id="info_main">
 									<tbody>
-										<tr id="tr_chat">
-											<td>
-												<form id="chat_form">
-													<span id="txt">
-														<input size="50" id="text" autocomplete="off"> 
-														<!----> <!---->
-													</span> 
-													<input type="submit" id="msg_send" value="OK">
-													<!----> 
-													<span>
-														<span id="volume" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 50%;"></span></span> 
-														<b>(правее — громче)</b>
-													</span>
-												</form>
-												<div id="chat_msg"><hr></div>
-											</td>
-										</tr>
-										<tr id="tr_actions">
-											<td>
-												<span class="title">Действия</span> <div id="block_deys" style="display: none;">
-													<table style="width: 100%;">
-														<tbody>
-															<tr>
-																<td style="width: 70%;"><div id="akten" style="display: block;"><!--Действия--></div> <div id="dein" style="display: none;"><!--Действия с другими игроками--></div></td>
-																<td>
-																	Действия с каким-либо котом в соседней клетке:<br> <select id="mit"><option value="0">Действия с собой</option><option value="<!--ид кота-->"><!--имя кота--></option></select><br> <input type="button" id="mitok" value="Показать">
-																</td>
-															</tr>
-														</tbody>
-													</table>
-												</div> <div id="block_mess"></div>
-											</td>
-										</tr>
-										<tr id="tr_tos">
-											<td><table><tbody><tr><td><!----> <!----></td> <td><div id="tos" style="background: #E84232;background: -moz-linear-gradient(0deg, #F17558, #E00F0B);background: -webkit-linear-gradient(0deg, #F17558, #E00F0B);background: -o-linear-gradient(0deg, #F17558, #E00F0B);background: -ms-linear-gradient(0deg, #F17558, #E00F0B);background: linear-gradient(90deg, #F17558, #E00F0B););"></div></td> <td><a href="/time" target="_blank" id="hour"><img src="symbole/hours/7.png"></a></td> <td><a href="/time" target="_blank"><img src="symbole/season2.png"></a></td> <!----></tr></tbody></table></td>
-										</tr>
-										<tr id="tr_sky">
-											<td><div id="sky" style="background-image: url(&quot;sky/3.png&quot;);"></div></td>
-										</tr>
-										<tr id="tr_field">
-											<td id="act">
-												<div id="cages_overflow">
-													<div id="cages_div" style="opacity: 1; background-image: url('');">
-														<table id="cages" style="border:1px black solid">
-															<tbody>
-																<tr>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																</tr>
-																<tr>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																</tr>
-																<tr>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																</tr>
-																<tr>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																</tr>
-																<tr>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																</tr>
-																<tr>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																	<td class="cage"></td>
-																</tr>
-															</tbody>
-														</table>
+										<tr>
+											<td id="family" class="infos"><h2><a href="#" id="relatives" class="toggle">Родственные связи</a></h2> <div id="relatives_block"><div id="family_block"><b>Мама</b>: <u><span id="Mamapole"></span></u><br><b>Папа</b>: <u><span id="Papapole"></span></u><br><b>Братья и сёстры</b>: <span id="Bratosisterypole"></span><br><b>Котята</b>: нет<br><br><i>Курсивом</i> выделены приёмные родственники.</div> <a href="/relatives">Генеалогический кустик</a> <div id="pairs"> </div></div></td>
+											<td id="history" class="infos">
+												<h2><a href="#" id="history" class="toggle">История</a></h2> <div id="history_block">
+													<i>История очищена.</i> <span id="ist"></span><br> <a href="#" id="history_clean">Очистить историю</a> <div style="background-color: white;">
+														Моё местонахождение: <span id="location"></span>
 													</div>
 												</div>
 											</td>
-										</tr>
-										<tr id="tr_mouth">
-											<td>
-												<span class="title">Во рту</span> <div id="tir"><table><tbody><tr id="katze"><td><ol id="itemList"><!--Рот--></ol></td> <!----></tr></tbody></table></div> <a href="#">Смешивать</a> <!----><br><br> <div id="thdey" style="display: none;">
-													<ul style="margin: 0px; padding: 0px 0px 0px 1.4em;"><li><a href="#" id="eat"></a></li> <li><a href="#" id="put">Положить на землю</a></li> <li><a href="#" id="dig">Закопать</a></li> <li id="divide"><a href="#">Разделить</a></li> <li id="chew"><a href="#">Разжевать</a></li></ul> <br> <div id="layer" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 0%;"></span></div><br>
-													Чем правее, тем глубже будет закопан предмет. <a href="/about?id=12" target="_blank">[?]</a><br><br>
-												</div> <div id="ctdey" style="display: none;"><ul style="margin: 0px; padding: 0px 0px 0px 1.4em;"><li><a href="#" id="put2">Положить на землю</a></li> <li><a href="/cat1169401" target="_blank">Перейти в профиль</a></li></ul></div>
-											</td>
-										</tr>
-										<tr id="tr_info">
-											<td>
-												<table id="info_main">
-													<tbody>
-														<tr>
-															<td id="family" class="infos"><h2><a href="#" id="relatives" class="toggle">Родственные связи</a></h2> <div id="relatives_block"><div id="family_block"><b>Мама</b>: <u><span id="Mamapole"></span></u><br><b>Папа</b>: <u><span id="Papapole"></span></u><br><b>Братья и сёстры</b>: <span id="Bratosisterypole"></span><br><b>Котята</b>: нет<br><br><i>Курсивом</i> выделены приёмные родственники.</div> <a href="/relatives">Генеалогический кустик</a> <div id="pairs"> </div></div></td>
-															<td id="history" class="infos">
-																<h2><a href="#" id="history" class="toggle">История</a></h2> <div id="history_block">
-																	<i>История очищена.</i> <span id="ist"></span><br> <a href="#" id="history_clean">Очистить историю</a> <div style="background-color: white;">
-																		Моё местонахождение: <span id="location"></span>
-																	</div>
-																</div>
-															</td>
-															<td id="parameter" class="infos"><h2><a href="#" id="parameters" class="toggle">Параметры и навыки</a></h2> <div id="parameters_block"></div></td>
-														</tr>
-													</tbody>
-												</table>
-											</td>
+											<td id="parameter" class="infos"><h2><a href="#" id="parameters" class="toggle">Параметры и навыки</a></h2> <div id="parameters_block"></div></td>
 										</tr>
 									</tbody>
 								</table>
-								<!--schwarzen Noten-->
-								<p><b>Тёмные баллы (шанс попасть в Сумрачный лес после смерти):</b> <span id="black">~</span></p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<p>
+					<b>Тёмные баллы (шанс попасть в Сумрачный лес после смерти):</b> <span id="black">~</span>
+				</p>
 
-							</div>
-						</td>
-						<td>
-							<h2>Инструменты:</h2>
-							<div>
-								<h3>Заполнение клетки</h3>
-								<div class="section">
-									<h4>Тип клетки</h4>
-									<select id="tdType">
-										<option value="empty">Пустая клетка</option>
-										<option value="cat">Кот</option>
-										<option value="object">Предмет</option>
-										<option value="objectCat">Кот + предмет под ним</option>
+			</div>
+			<div>
+				<h3>Заполнение клетки</h3>
+				<div class="section">
+					<h4>Тип клетки</h4>
+					<select id="tdType">
+						<option value="empty">Пустая клетка</option>
+						<option value="cat">Кот</option>
+						<option value="object">Предмет</option>
+						<option value="objectCat">Кот + предмет под ним</option>
+					</select>
+				</div>
+			</div>
+			<div>
+				<h3>Настройки игровых компонентов</h3>
+				<div class="section">
+					<!--Чат-->
+					<h4>Чат</h4>
+					<table>
+						<tbody>
+							<tr>
+								<th>Сообщение</th>
+								<td><input type="text" maxlength="255" id="newMessText"></td>
+							</tr>
+							<tr>
+								<th>Отправитель</th>
+								<td><input type="text" id="newMessCat"></td>
+							</tr>
+							<tr>
+								<th>Громкость</th>
+								<td>
+									<select id="editVolume">
+										<option value="0">0</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
 									</select>
-								</div>
-								<div id="editCat" style="display:none" class="section">
-									<h4>Настройки кота</h4>
-									<table width="100%">
-										<tbody>
-											<tr>
-												<th width="140px">Пол</th>
-												<td>
-													<select id="catPOL">
-														<option value="der">Кот</option>
-														<option value="die">Кошка</option>
-													</select>
-												</td>
-												<td rowspan="9">
-													<h5>Предпросмотр</h5>
-													<div id="previewCat"></div>
-													<div id="previewDataCat"></div>
-												</td>
-											</tr>
-											<tr>
-												<th>Окрас</th>
-												<td><input type="text" id="catColor"></td>
-											</tr>
-											<tr>
-												<th>Размер</th>
-												<td><input type="number" id="catSize">%</td>
-											</tr>
-											<tr>
-												<th>Имя</th>
-												<td><input type="text" id="catName"></td>
-											</tr>
-											<tr>
-												<th>Должность</th>
-												<td><input type="text" id="catJob"></td>
-											</tr>
-											<tr>
-												<th>Запах</th>
-												<td><input type="text" id="catSmell"></td>
-											</tr>
-											<tr>
-												<th>Рот<br>(не работает)</th>
-												<td></td>
-											</tr>
-											<tr>
-												<th>Состояние</th>
-												<td>
-													<select id="catOnline">
-														<option value="online">В сети</option>
-														<option value="offline">Спит</option>
-														<option value="wait">Недавно ушёл</option>
-														<option value="block">Заблокирован</option>
-														<option value="delete">На удалении</option>
-													</select>
-												</td>
-											</tr>
-											<tr>
-												<th>Костюм и дефекты<br>(не работает)</th>
-												<td></td>
-											</tr>
-											<tr>
-												<td rowspan="2">
-													<input type="button" id="previewcatBtn" value="Предпросмотр" style="width:100%"/>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-								<div id="editObjects" style="display:none" class="section">
-									<h4>Создание предметов</h4>
-									<table class="constructor">
-										<thead>
-											<tr>
-												<th>Предметы</th>
-												<th><input type="button" value="+"></th>
-											</tr>
-										</thead>
-										<tbody></tbody>
-									</table>
-								</div>
-							</div>
-							<div>
-								<h3>Настройки игровых компонентов</h3>
-								<div class="section">
-									<!--Чат-->
-									<h4>Чат</h4>
-									<table>
-										<tbody>
-											<tr>
-												<th>Сообщение</th>
-												<td><input type="text" maxlength="255" id="newMessText"></td>
-											</tr>
-											<tr>
-												<th>Отправитель</th>
-												<td><input type="text" id="newMessCat"></td>
-											</tr>
-											<tr>
-												<th>Громкость</th>
-												<td>
-													<select id="editVolume">
-														<option value="0">0</option>
-														<option value="1">1</option>
-														<option value="2">2</option>
-														<option value="3">3</option>
-														<option value="4">4</option>
-														<option value="5">5</option>
-														<option value="6">6</option>
-														<option value="7">7</option>
-														<option value="8">8</option>
-														<option value="9">9</option>
-														<option value="10">10</option>
-													</select>
-												</td>
-											</tr>
-											<tr>
-												<th>
-													Моё имя
-												</th>
-												<td>
-													<input type="text" id="newMessName">
-												</td>
-											</tr>
-											<tr>
-												<td><input type="button" value="Отравить" id="newMessBtn"></td>
-												<td> </td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-								<div class="section">
-									<!--Погода-->
-									<h4>Погода</h4>
-									<h5>Небо</h5>
-									<select id="editSky">
-										<option value="1">Небо 1</option>
-										<option value="2">Небо 2</option>
-										<option value="3">Небо 3</option>
-										<option value="4">Небо 4</option>
-										<option value="5">Небо 5</option>
-										<option value="6">Небо 6</option>
-										<option value="7">Небо 7</option>
-										<option value="8">Небо 8</option>
-										<option value="9">Небо 9</option>
-										<option value="10">Небо 10</option>
-										<option value="11">Небо 11</option>
-									</select>
-									<img id="editSkyPreview" src="https://catwar.su/cw3/sky/11.png">
-									<h5>Время</h5>
-									<select id="editTime">
-										<option value="0">Время 0</option>
-										<option value="1">Время 1</option>
-										<option value="2">Время 2</option>
-										<option value="3">Время 3</option>
-										<option value="4">Время 4</option>
-										<option value="5">Время 5</option>
-										<option value="6">Время 6</option>
-										<option value="7">Время 7</option>
-										<option value="8">Время 8</option>
-										<option value="9">Время 9</option>
-										<option value="10">Время 10</option>
-										<option value="11">Время 11</option>
-										<option value="12">Время 12</option>
-										<option value="13">Время 13</option>
-										<option value="14">Время 14</option>
-										<option value="15">Время 15</option>
-										<option value="16">Время 16</option>
-										<option value="17">Время 17</option>
-										<option value="18">Время 18</option>
-										<option value="19">Время 19</option>
-										<option value="20">Время 20</option>
-										<option value="21">Время 21</option>
-										<option value="22">Время 22</option>
-										<option value="23">Время 23</option>
-									</select>
-									<img id="editTimePreview" src="https://catwar.su/cw3/symbole/hours/0.png">
-									<h5>Время года</h5>
-									<select id="editSeason">
-										<option value="0">Зима</option>
-										<option value="1">Весна</option>
-										<option value="2">Лето</option>
-										<option value="3">Осень</option>
-									</select>
-									<img id="editSeasonPreview" src="https://catwar.su/cw3/symbole/season0.png">
+								</td>
+							</tr>
+							<tr>
+								<th>
+									Моё имя
+								</th>
+								<td>
+									<input type="text" id="newMessName">
+								</td>
+							</tr>
+							<tr>
+								<td><input type="button" value="Отравить" id="newMessBtn"></td>
+								<td> </td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="section">
+					<!--Погода-->
+					<h4>Погода</h4>
+					<h5>Небо</h5>
+					<select id="editSky">
+						<option value="1">Небо 1</option>
+						<option value="2">Небо 2</option>
+						<option value="3">Небо 3</option>
+						<option value="4">Небо 4</option>
+						<option value="5">Небо 5</option>
+						<option value="6">Небо 6</option>
+						<option value="7">Небо 7</option>
+						<option value="8">Небо 8</option>
+						<option value="9">Небо 9</option>
+						<option value="10">Небо 10</option>
+						<option value="11">Небо 11</option>
+					</select>
+					<img id="editSkyPreview" src="https://catwar.su/cw3/sky/11.png">
+					<h5>Время</h5>
+					<select id="editTime">
+						<option value="0">Время 0</option>
+						<option value="1">Время 1</option>
+						<option value="2">Время 2</option>
+						<option value="3">Время 3</option>
+						<option value="4">Время 4</option>
+						<option value="5">Время 5</option>
+						<option value="6">Время 6</option>
+						<option value="7">Время 7</option>
+						<option value="8">Время 8</option>
+						<option value="9">Время 9</option>
+						<option value="10">Время 10</option>
+						<option value="11">Время 11</option>
+						<option value="12">Время 12</option>
+						<option value="13">Время 13</option>
+						<option value="14">Время 14</option>
+						<option value="15">Время 15</option>
+						<option value="16">Время 16</option>
+						<option value="17">Время 17</option>
+						<option value="18">Время 18</option>
+						<option value="19">Время 19</option>
+						<option value="20">Время 20</option>
+						<option value="21">Время 21</option>
+						<option value="22">Время 22</option>
+						<option value="23">Время 23</option>
+					</select>
+					<img id="editTimePreview" src="https://catwar.su/cw3/symbole/hours/0.png">
+					<h5>Время года</h5>
+					<select id="editSeason">
+						<option value="0">Зима</option>
+						<option value="1">Весна</option>
+						<option value="2">Лето</option>
+						<option value="3">Осень</option>
+					</select>
+					<img id="editSeasonPreview" src="https://catwar.su/cw3/symbole/season0.png">
 
-									<!--ТЕМПЕРАТУРА ТУТ ДОЛЖНА БЫТЬ, НО ПРИШЛИ ВОЛКИ, ПОСТАВИЛИ КРОЛИКУ ТЕРМОМЕТР, А ОН ПОКАЗЫВАЕТ "36.9", А ВОЛКИ ТАКИЕ: "А, НЕ-Е-Е, КРОЛЬ, ТЫ НАМ НЕ ПОХДОДИШЬ". ТЕПЕРЬ В ВАРЕ НЕТ ТЕМПЕРАТУРЫ-->
-								</div>
-								<div class="section">
-									<!--Действия-->
-									<h4>Действия</h4>
-									<h5>Выборка доступных</h5>
-									<table class="constructor">
-										<thead>
-											<tr>
-												<th>Действие</th>
-												<th><input type="button" value="+"></th>
-											</tr>
-										</thead>
-										<tbody></tbody>
-									</table>
-									<h5>С кем?</h5>
-									<input type="text" id="mitWem"><br>Чтобы выбрать "Действия с собой", оставьте поле пустым
-								</div>
-								<div>
-									<!--Рот-->
-									<h4>Рот</h4>
-									<div>
-										<h5>Выборка котов</h5>
-										<table class="constructor">
-											<thead>
-												<tr>
-													<th>Окрас</th>
-													<th><input type="button" value="+"></th>
-												</tr>
-											</thead>
-											<tbody></tbody>
-										</table>
-									</div>
-									<div>
-										<h5>Выборка предметов</h5>
-										<table class="constructor">
-											<thead>
-												<tr>
-													<th>Предмет</th>
-													<th><input type="button" value="+"></th>
-												</tr>
-											</thead>
-											<tbody></tbody>
-										</table>
-									</div>
-								</div>
-							</div>
-							<div>
-								<h3>Личные данные кота</h3>
-								<div class="section">
-									<!--Семья-->
-									<h4>Семья</h4>
-									<table>
-										<tbody>
-											<tr>
-												<td>Мама:</td>
-												<td><input id="Mutter" type="text"></td>
-											</tr>
-											<tr>
-												<td>Папа:</td>
-												<td><input id="Vater" type="text"></td>
-											</tr>
-											<tr>
-												<td>Братья и сёстры:</td>
-												<td><input id="Geschwister" type="text"></td>
-											</tr>
-											<!--<tr>
-												<td>Котята:</td>
-												<td><input id="Kinder" type="text"><br>Оставьте  поле пустым, если их нет</td>
-											</tr>
-											<tr>
-												<td><input type="checkbox" id="EhepartnerCHECK">Имя пары:</td>
-												<td><input id="Ehepartner" type="text"></td>
-											</tr>-->
-										</tbody>
-									</table>
-								</div>
-								<div class="section">
-									<!--История-->
-									<h4>История</h4>
-									<input type="text" id="Cathistory"><br>
-									Моё местонахождение:<br>
-									<input type="text" id="catLocation">
-								</div>
-								<!--
-									ПАРАМЕТРЫ И НАВЫКИ
-								-->
-							</div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</article>
-		<footer>
-			(c)<a href="https://catwar.su/cat982738">Серолапый</a>, 2020
-		</footer>
-		<!-- Yandex.Metrika counter -->
-		<script type="text/javascript">
-			(function (m, e, t, r, i, k, a) {
-				m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
-				m[i].l = 1 * new Date(); k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
-			})
-				(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+					<!--ТЕМПЕРАТУРА ТУТ ДОЛЖНА БЫТЬ, НО ПРИШЛИ ВОЛКИ, ПОСТАВИЛИ КРОЛИКУ ТЕРМОМЕТР, А ОН ПОКАЗЫВАЕТ "36.9", А ВОЛКИ ТАКИЕ: "А, НЕ-Е-Е, КРОЛЬ, ТЫ НАМ НЕ ПОХДОДИШЬ". ТЕПЕРЬ В ВАРЕ НЕТ ТЕМПЕРАТУРЫ-->
+				</div>
+				<div class="section">
+					<!--Действия-->
+					<h4>Действия</h4>
+					<h5>Выборка доступных</h5>
+					<table class="constructor">
+						<thead>
+							<tr>
+								<th>Действие</th>
+								<th><input type="button" value="+"></th>
+							</tr>
+						</thead>
+						<tbody></tbody>
+					</table>
+					<h5>С кем?</h5>
+					<input type="text" id="mitWem"><br>Чтобы выбрать "Действия с собой", оставьте поле пустым
+				</div>
+				<div>
+					<!--Рот-->
+					<h4>Рот</h4>
+					<div>
+						<h5>Выборка котов</h5>
+						<table class="constructor">
+							<thead>
+								<tr>
+									<th>Окрас</th>
+									<th><input type="button" value="+"></th>
+								</tr>
+							</thead>
+							<tbody></tbody>
+						</table>
+					</div>
+					<div>
+						<h5>Выборка предметов</h5>
+						<table class="constructor">
+							<thead>
+								<tr>
+									<th>Предмет</th>
+									<th><input type="button" value="+"></th>
+								</tr>
+							</thead>
+							<tbody></tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="newPers" class="pages">
+			<div id="editCat" style="display:none" class="section">
+				<h4>Настройки кота</h4>
+				<table width="100%">
+					<tbody>
+						<tr>
+							<th width="140px">Пол</th>
+							<td>
+								<select id="catPOL">
+									<option value="der">Кот</option>
+									<option value="die">Кошка</option>
+								</select>
+							</td>
+							<td rowspan="9">
+								<h5>Предпросмотр</h5>
+								<div id="previewCat"></div>
+								<div id="previewDataCat"></div>
+							</td>
+						</tr>
+						<tr>
+							<th>Окрас</th>
+							<td><input type="text" id="catColor"></td>
+						</tr>
+						<tr>
+							<th>Размер</th>
+							<td><input type="number" id="catSize">%</td>
+						</tr>
+						<tr>
+							<th>Имя</th>
+							<td><input type="text" id="catName"></td>
+						</tr>
+						<tr>
+							<th>Должность</th>
+							<td><input type="text" id="catJob"></td>
+						</tr>
+						<tr>
+							<th>Запах</th>
+							<td><input type="text" id="catSmell"></td>
+						</tr>
+						<tr>
+							<th>Рот<br>(не работает)</th>
+							<td></td>
+						</tr>
+						<tr>
+							<th>Состояние</th>
+							<td>
+								<select id="catOnline">
+									<option value="online">В сети</option>
+									<option value="offline">Спит</option>
+									<option value="wait">Недавно ушёл</option>
+									<option value="block">Заблокирован</option>
+									<option value="delete">На удалении</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<th>Костюм и дефекты<br>(не работает)</th>
+							<td></td>
+						</tr>
+						<tr>
+							<td rowspan="2">
+								<input type="button" id="previewcatBtn" value="Предпросмотр" style="width:100%" />
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div id="gItems" class="pages">
+			<div id="editObjects" style="display:none" class="section">
+				<h4>Создание предметов</h4>
+				<table class="constructor">
+					<thead>
+						<tr>
+							<th>Предметы</th>
+							<th><input type="button" value="+"></th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</div>
+		</div>
+		<div id="lData" class="pages">
+			<h3>Личные данные кота</h3>
+			<div class="section">
+				<!--Семья-->
+				<h4>Семья</h4>
+				<table>
+					<tbody>
+						<tr>
+							<td>Мама:</td>
+							<td><input id="Mutter" type="text"></td>
+						</tr>
+						<tr>
+							<td>Папа:</td>
+							<td><input id="Vater" type="text"></td>
+						</tr>
+						<tr>
+							<td>Братья и сёстры:</td>
+							<td><input id="Geschwister" type="text"></td>
+						</tr>
+						<!--<tr>
+							<td>Котята:</td>
+							<td><input id="Kinder" type="text"><br>Оставьте  поле пустым, если их нет</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" id="EhepartnerCHECK">Имя пары:</td>
+							<td><input id="Ehepartner" type="text"></td>
+						</tr>-->
+					</tbody>
+				</table>
+			</div>
+			<div class="section">
+				<!--История-->
+				<h4>История</h4>
+				<input type="text" id="Cathistory"><br>
+				Моё местонахождение:<br>
+				<input type="text" id="catLocation">
+			</div>
+			<!--
+				ПАРАМЕТРЫ И НАВЫКИ
+			-->
+		</div>
+		<div id="gCostume" class="pages">
+			Коллекция костюмов
+		</div>
+		<div id="instruction" class="pages">
+			Инструкция
+		</div>
+	</article>
+	<footer>
+		(c)<a href="https://catwar.su/cat982738">Серолапый</a>, 2020
+	</footer>
+	<!-- Yandex.Metrika counter -->
+	<script type="text/javascript">
+		(function (m, e, t, r, i, k, a) {
+			m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+			m[i].l = 1 * new Date(); k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+		})
+			(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-			ym(67068502, "init", {
-				clickmap: true,
-				trackLinks: true,
-				accurateTrackBounce: true
-			});
-		</script>
-		<noscript><div><img src="https://mc.yandex.ru/watch/67068502" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-		<!-- /Yandex.Metrika counter -->
-		<script src="js.js"></script>
-	</body>
+		ym(67068502, "init", {
+			clickmap: true,
+			trackLinks: true,
+			accurateTrackBounce: true
+		});
+	</script>
+	<noscript><div><img src="https://mc.yandex.ru/watch/67068502" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+	<!-- /Yandex.Metrika counter -->
+	<script src="js.js"></script>
+</body>
 </html>
