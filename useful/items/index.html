@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<script src="/js/jQuery.js"></script>
+	<title>Коллекция предметов CatWar | Serolapy</title>
+	<link rel="stylesheet" href="/css/site.css">
+	<link rel="SHORTCUT ICON" href="/img/favicon.ico" type="image/x-icon">
+	<script src="/js/site.js"></script>
+	<!--Vk-->
+	<script type="text/javascript" src="https://vk.com/js/api/openapi.js?168"></script>
+
+	<script type="text/javascript">
+        VK.init({ apiId: 7662607, onlyWidgets: true });
+	</script>
+	<!--/Vk-->
+</head>
+	<body>
+		<header>
+			<div id="header"><a href="https://vk.com/serolapy"><img src="/img/vk.png" class="mylink"></a><a href="https://t.me/serolapy"><img src="/img/telegram.png" class="mylink"></a><a href="" class="i"><img src="" class=""></a>Пушистый блог Серолапого<br><span>@serolapy</span></div>
+		</header>
+		<nav>
+			<ul>
+				<li>
+					<a href="/blogs">Блоги</a>
+				</li>
+				<li>
+					<a href="/">Главная</a>
+				</li>
+				<li>
+					<a href="/mods">Моды</a>
+				</li>
+				<li>
+					<a href="/useful">Полезное</a>
+				</li>
+			</ul>
+		</nav>
+		<aside>
+			<!--Боковая панель-->
+			<div id="vk_like" style="text-align:center"></div>
+			<script type="text/javascript">
+				VK.Widgets.Like("vk_like", { type: "button", height: 18 });
+			</script>
+			<h1>Смотрите также:</h1>
+			<a href="/useful/costume">Кол. костюмов</a>
+			<a href="/useful/items">Кол. предметов</a>
+		</aside>
+		<article>
+			<!--Главная часть-->
+			<h1>Коллекция предметов CatWar</h1>
+			<ul class="memory">
+				<li>Тут вы можете встретить вссе предметы из игры CatWar</li>
+				<li>Все изображения обновляются автоматически; частота обновлений зависит от Мурра.</li>
+				<li>Чтобы узнать прямую ссылку на изображение, нажмите на него.</li>
+				<li>Сайт попытается загрузить примерно 5000 изображений, нужно будет подождать пару минуток</li>
+			</ul>
+			<div class="warning">Нужно будет подождать некоторое время, чтобы загрузились все картинки, какие только могут загрузиться.</div>
+			<div id="images"><i>Загрузка изображений начнётся после полной загрузки страницы</i></div>
+			<div class="update">16 ноября 2020</div>
+		</article>
+		<footer>
+			(c)<a href="https://catwar.su/cat982738">Серолапый</a>, 2020
+		</footer>
+		<!-- Yandex.Metrika counter -->
+			<script type="text/javascript" >
+			(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+			m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+			(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+			
+			ym(67068502, "init", {
+					clickmap:true,
+					trackLinks:true,
+					accurateTrackBounce:true
+			});
+			</script>
+			<noscript><div><img src="https://mc.yandex.ru/watch/67068502" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+		<!-- /Yandex.Metrika counter -->
+		<script>
+			window.onload = function () {
+				var t = '';
+				for (i = 1; i <= 5000; i++) {
+                    t += '<img src="https://catwar.su/cw3/things/' + i +'.png" onclick="alertIMG($(this))">';
+				}
+				$('#images').html(t);
+            }
+			function alertIMG(e) {
+				alert(e.attr('src'));
+			}
+		</script>
+	</body>
+</html>
