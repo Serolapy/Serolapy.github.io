@@ -440,17 +440,25 @@
 			</div>
 		</div>
 		<div id="gItems" class="pages">
-			<div id="editObjects" style="display:none" class="section">
-				<h4>Создание предметов</h4>
-				<table class="constructor">
-					<thead>
-						<tr>
-							<th>Предметы</th>
-							<th><input type="button" value="+"></th>
-						</tr>
-					</thead>
-					<tbody></tbody>
-				</table>
+            <div id="editObjects" style="display:none" class="section">
+                <h4>Создание предметов</h4>
+                <table class="constructor">
+                    <thead>
+                        <tr>
+                            <th>Предметы</th>
+                            <th><input type="button" value="+"></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+			<div id="idItem">
+				<i>Тут будет прямая ссылка на выбранный вами предмет</i><br />
+				Внимание! Загрузка костюмов займёт некоторое время, подождите
+			</div>
+			<div id="allItem">
+				<input type="button" id="btnIdItem" value="Загрузить" />
 			</div>
 		</div>
 		<div id="lData" class="pages">
@@ -495,7 +503,13 @@
 			-->
 		</div>
 		<div id="gCostume" class="pages">
-			Коллекция костюмов
+			 <div id="idCostume">
+				 <i>Тут будет прямая ссылка на выбранный вами костюм</i><br />
+				 Внимание! Загрузка костюмов займёт некоторое время, подождите
+			 </div>
+			 <div id="allCostume">
+			 	<input type="button" id="btnIdCostume" value="Загрузить"/>
+			 </div>
 		</div>
 		<div id="instruction" class="pages" style="display:block;">
 			Инструкция

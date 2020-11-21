@@ -102,3 +102,21 @@ $('#previewcatBtn').on('click', function () {
 	$('#previewDataCat').html(EdCdata($('#catPOL').val(), $('#catName').val(), $('#catJob').val(), $('#catSmell').val(), $('#catOnline').val()));
 });
 
+/*костюмы и предметы*/
+function idCostumeItem(e,a) {
+	$('#id'+a).html(e.attr('src'))
+}
+$('#btnIdCostume').on('click', function () {
+	var t = '';
+	for (i = 1; i <= 5000; i++) {
+		t += '<img src="https://catwar.su/cw3/cats/0/costume/' + i + '.png" onclick="idCostumeItem($(this), \'Costume\')">';
+	}
+	$('#allCostume').html(t);
+});
+$('#btnIdItem').on('click', function () {
+	var t = '';
+	for (i = 1; i <= 5000; i++) {
+		t += '<img src="https://catwar.su/cw3/things/' + i + '.png" onclick="idCostumeItem($(this), \'Item\')">';
+	}
+	$('#allItem').html(t);
+});
