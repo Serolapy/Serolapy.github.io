@@ -2,12 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\animator",
-    "\\css",
-    "\\js",
-    "\\test",
-    "\\useful",
-    "\\useful\\costume"
+    "\\css"
   ],
-  "SelectedNode": "\\js\\site.js",
+  "SelectedNode": "\\css\\site2.css",
   "PreviewInSolutionExplorer": false
 }
