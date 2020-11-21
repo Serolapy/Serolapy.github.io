@@ -28,340 +28,348 @@
 	</nav>
 	<article>
 		<!--Главная часть-->
-
 		<div id="home" class="pages">
-			<h2>Инструменты:</h2>
-			<div id="app">
-				<!--Fehler-->
-				<p id="error" style="display: none;"></p>
-				<!--Zeit-->
-				<div id="timer" style="display: none;"></div>
-				<!--Kampf log-->
-				<div id="fightPanel" style="display: none; width: 320px;">
-					<img src="symbole/unlock.png" id="block"> <input type="button" value="I" class="hotkey"><input type="button" value="O" class="hotkey"><input type="button" value="L" class="hotkey"><input type="button" value="J" class="hotkey"><input type="button" value="K" class="hotkey"><input type="button" value="T+1" class="hotkey"><input type="button" value="T+2" class="hotkey"><input type="button" value="T+3" class="hotkey"> <div id="fightLog" style="height: 70px;"></div>
-				</div>
-				<!--Haupttabelle-->
-				<table id="main_table" style="border-spacing:2px">
-					<tbody>
-						<tr id="tr_chat">
-							<td>
-								<form id="chat_form">
-									<span id="txt">
-										<input size="50" id="text" autocomplete="off">
-										<!----> <!---->
-									</span>
-									<input type="submit" id="msg_send" value="OK">
-									<!---->
-									<span>
-										<span id="volume" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 50%;"></span></span>
-										<b>(правее — громче)</b>
-									</span>
-								</form>
-								<div id="chat_msg"><hr></div>
-							</td>
-						</tr>
-						<tr id="tr_actions">
-							<td>
-								<span class="title">Действия</span> <div id="block_deys" style="display: none;">
-									<table style="width: 100%;">
-										<tbody>
-											<tr>
-												<td style="width: 70%;"><div id="akten" style="display: block;"><!--Действия--></div> <div id="dein" style="display: none;"><!--Действия с другими игроками--></div></td>
-												<td>
-													Действия с каким-либо котом в соседней клетке:<br> <select id="mit"><option value="0">Действия с собой</option><option value="<!--ид кота-->"><!--имя кота--></option></select><br> <input type="button" id="mitok" value="Показать">
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</div> <div id="block_mess"></div>
-							</td>
-						</tr>
-						<tr id="tr_tos">
-							<td><table><tbody><tr><td><!----> <!----></td> <td><div id="tos" style="background: #E84232;background: -moz-linear-gradient(0deg, #F17558, #E00F0B);background: -webkit-linear-gradient(0deg, #F17558, #E00F0B);background: -o-linear-gradient(0deg, #F17558, #E00F0B);background: -ms-linear-gradient(0deg, #F17558, #E00F0B);background: linear-gradient(90deg, #F17558, #E00F0B););"></div></td> <td><a href="/time" target="_blank" id="hour"><img src="symbole/hours/7.png"></a></td> <td><a href="/time" target="_blank"><img src="symbole/season2.png"></a></td> <!----></tr></tbody></table></td>
-						</tr>
-						<tr id="tr_sky">
-							<td><div id="sky" style="background-image: url(&quot;sky/3.png&quot;);"></div></td>
-						</tr>
-						<tr id="tr_field">
-							<td id="act">
-								<div id="cages_overflow">
-									<div id="cages_div" style="opacity: 1; background-image: url('');">
-										<table id="cages" style="border:1px black solid">
+			<table>
+				<tbody>
+					<tr>
+						<td>
+							<div id="app">
+							<!--Fehler-->
+							<p id="error" style="display: none;"></p>
+							<!--Zeit-->
+							<div id="timer" style="display: none;"></div>
+							<!--Kampf log-->
+							<div id="fightPanel" style="display: none; width: 320px;">
+								<img src="symbole/unlock.png" id="block"> <input type="button" value="I" class="hotkey"><input type="button" value="O" class="hotkey"><input type="button" value="L" class="hotkey"><input type="button" value="J" class="hotkey"><input type="button" value="K" class="hotkey"><input type="button" value="T+1" class="hotkey"><input type="button" value="T+2" class="hotkey"><input type="button" value="T+3" class="hotkey"> <div id="fightLog" style="height: 70px;"></div>
+							</div>
+							<!--Haupttabelle-->
+							<table id="main_table" style="border-spacing:2px">
+							<tbody>
+								<tr id="tr_chat">
+									<td>
+										<form id="chat_form">
+											<span id="txt">
+												<input size="50" id="text" autocomplete="off">
+												<!----> <!---->
+											</span>
+											<input type="submit" id="msg_send" value="OK">
+											<!---->
+											<span>
+												<span id="volume" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 50%;"></span></span>
+												<b>(правее — громче)</b>
+											</span>
+										</form>
+										<div id="chat_msg"><hr></div>
+									</td>
+								</tr>
+								<tr id="tr_actions">
+									<td>
+										<span class="title">Действия</span> <div id="block_deys" style="display: none;">
+											<table style="width: 100%;">
+												<tbody>
+													<tr>
+														<td style="width: 70%;"><div id="akten" style="display: block;"><!--Действия--></div> <div id="dein" style="display: none;"><!--Действия с другими игроками--></div></td>
+														<td>
+															Действия с каким-либо котом в соседней клетке:<br> <select id="mit"><option value="0">Действия с собой</option><option value="<!--ид кота-->"><!--имя кота--></option></select><br> <input type="button" id="mitok" value="Показать">
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div> <div id="block_mess"></div>
+									</td>
+								</tr>
+								<tr id="tr_tos">
+									<td><table><tbody><tr><td><!----> <!----></td> <td><div id="tos" style="background: #E84232;background: -moz-linear-gradient(0deg, #F17558, #E00F0B);background: -webkit-linear-gradient(0deg, #F17558, #E00F0B);background: -o-linear-gradient(0deg, #F17558, #E00F0B);background: -ms-linear-gradient(0deg, #F17558, #E00F0B);background: linear-gradient(90deg, #F17558, #E00F0B););"></div></td> <td><a href="/time" target="_blank" id="hour"><img src="symbole/hours/7.png"></a></td> <td><a href="/time" target="_blank"><img src="symbole/season2.png"></a></td> <!----></tr></tbody></table></td>
+								</tr>
+								<tr id="tr_sky">
+									<td><div id="sky" style="background-image: url(&quot;sky/3.png&quot;);"></div></td>
+								</tr>
+								<tr id="tr_field">
+									<td id="act">
+										<div id="cages_overflow">
+											<div id="cages_div" style="opacity: 1; background-image: url('');">
+												<table id="cages" style="border:1px black solid">
+													<tbody>
+														<tr>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+														</tr>
+														<tr>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+														</tr>
+														<tr>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+														</tr>
+														<tr>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+														</tr>
+														<tr>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+														</tr>
+														<tr>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+															<td class="cage"></td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr id="tr_mouth">
+									<td>
+										<span class="title">Во рту</span> <div id="tir"><table><tbody><tr id="katze"><td><ol id="itemList"><!--Рот--></ol></td> <!----></tr></tbody></table></div> <a href="#">Смешивать</a> <!----><br><br> <div id="thdey" style="display: none;">
+											<ul style="margin: 0px; padding: 0px 0px 0px 1.4em;"><li><a href="#" id="eat"></a></li> <li><a href="#" id="put">Положить на землю</a></li> <li><a href="#" id="dig">Закопать</a></li> <li id="divide"><a href="#">Разделить</a></li> <li id="chew"><a href="#">Разжевать</a></li></ul> <br> <div id="layer" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 0%;"></span></div><br>
+											Чем правее, тем глубже будет закопан предмет. <a href="/about?id=12" target="_blank">[?]</a><br><br>
+										</div> <div id="ctdey" style="display: none;"><ul style="margin: 0px; padding: 0px 0px 0px 1.4em;"><li><a href="#" id="put2">Положить на землю</a></li> <li><a href="/cat1169401" target="_blank">Перейти в профиль</a></li></ul></div>
+									</td>
+								</tr>
+								<tr id="tr_info">
+									<td>
+										<table id="info_main">
 											<tbody>
 												<tr>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-												</tr>
-												<tr>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-												</tr>
-												<tr>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-												</tr>
-												<tr>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-												</tr>
-												<tr>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-												</tr>
-												<tr>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
-													<td class="cage"></td>
+													<td id="family" class="infos"><h2><a href="#" id="relatives" class="toggle">Родственные связи</a></h2> <div id="relatives_block"><div id="family_block"><b>Мама</b>: <u><span id="Mamapole"></span></u><br><b>Папа</b>: <u><span id="Papapole"></span></u><br><b>Братья и сёстры</b>: <span id="Bratosisterypole"></span><br><b>Котята</b>: нет<br><br><i>Курсивом</i> выделены приёмные родственники.</div> <a href="/relatives">Генеалогический кустик</a> <div id="pairs"> </div></div></td>
+													<td id="history" class="infos">
+														<h2><a href="#" id="history" class="toggle">История</a></h2> <div id="history_block">
+															<i>История очищена.</i> <span id="ist"></span><br> <a href="#" id="history_clean">Очистить историю</a> <div style="background-color: white;">
+																Моё местонахождение: <span id="location"></span>
+															</div>
+														</div>
+													</td>
+													<td id="parameter" class="infos"><h2><a href="#" id="parameters" class="toggle">Параметры и навыки</a></h2> <div id="parameters_block"></div></td>
 												</tr>
 											</tbody>
 										</table>
-									</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+							<p>
+							<b>Тёмные баллы (шанс попасть в Сумрачный лес после смерти):</b> <span id="black">~</span>
+						</p>
+
+						</div>
+						</td>
+						<td>
+							<div>
+								<h3>Заполнение клетки</h3>
+								<div class="section">
+									<h4>Тип клетки</h4>
+									<select id="tdType">
+										<option value="empty">Пустая клетка</option>
+										<option value="cat">Кот</option>
+										<option value="object">Предмет</option>
+										<option value="objectCat">Кот + предмет под ним</option>
+									</select>
 								</div>
-							</td>
-						</tr>
-						<tr id="tr_mouth">
-							<td>
-								<span class="title">Во рту</span> <div id="tir"><table><tbody><tr id="katze"><td><ol id="itemList"><!--Рот--></ol></td> <!----></tr></tbody></table></div> <a href="#">Смешивать</a> <!----><br><br> <div id="thdey" style="display: none;">
-									<ul style="margin: 0px; padding: 0px 0px 0px 1.4em;"><li><a href="#" id="eat"></a></li> <li><a href="#" id="put">Положить на землю</a></li> <li><a href="#" id="dig">Закопать</a></li> <li id="divide"><a href="#">Разделить</a></li> <li id="chew"><a href="#">Разжевать</a></li></ul> <br> <div id="layer" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 0%;"></span></div><br>
-									Чем правее, тем глубже будет закопан предмет. <a href="/about?id=12" target="_blank">[?]</a><br><br>
-								</div> <div id="ctdey" style="display: none;"><ul style="margin: 0px; padding: 0px 0px 0px 1.4em;"><li><a href="#" id="put2">Положить на землю</a></li> <li><a href="/cat1169401" target="_blank">Перейти в профиль</a></li></ul></div>
-							</td>
-						</tr>
-						<tr id="tr_info">
-							<td>
-								<table id="info_main">
+							</div>
+							<div>
+							<h3>Настройки игровых компонентов</h3>
+							<div class="section">
+								<!--Чат-->
+								<h4>Чат</h4>
+								<table>
 									<tbody>
 										<tr>
-											<td id="family" class="infos"><h2><a href="#" id="relatives" class="toggle">Родственные связи</a></h2> <div id="relatives_block"><div id="family_block"><b>Мама</b>: <u><span id="Mamapole"></span></u><br><b>Папа</b>: <u><span id="Papapole"></span></u><br><b>Братья и сёстры</b>: <span id="Bratosisterypole"></span><br><b>Котята</b>: нет<br><br><i>Курсивом</i> выделены приёмные родственники.</div> <a href="/relatives">Генеалогический кустик</a> <div id="pairs"> </div></div></td>
-											<td id="history" class="infos">
-												<h2><a href="#" id="history" class="toggle">История</a></h2> <div id="history_block">
-													<i>История очищена.</i> <span id="ist"></span><br> <a href="#" id="history_clean">Очистить историю</a> <div style="background-color: white;">
-														Моё местонахождение: <span id="location"></span>
-													</div>
-												</div>
+											<th>Сообщение</th>
+											<td><input type="text" maxlength="255" id="newMessText"></td>
+										</tr>
+										<tr>
+											<th>Отправитель</th>
+											<td><input type="text" id="newMessCat"></td>
+										</tr>
+										<tr>
+											<th>Громкость</th>
+											<td>
+												<select id="editVolume">
+													<option value="0">0</option>
+													<option value="1">1</option>
+													<option value="2">2</option>
+													<option value="3">3</option>
+													<option value="4">4</option>
+													<option value="5">5</option>
+													<option value="6">6</option>
+													<option value="7">7</option>
+													<option value="8">8</option>
+													<option value="9">9</option>
+													<option value="10">10</option>
+												</select>
 											</td>
-											<td id="parameter" class="infos"><h2><a href="#" id="parameters" class="toggle">Параметры и навыки</a></h2> <div id="parameters_block"></div></td>
+										</tr>
+										<tr>
+											<th>
+												Моё имя
+											</th>
+											<td>
+												<input type="text" id="newMessName">
+											</td>
+										</tr>
+										<tr>
+											<td><input type="button" value="Отравить" id="newMessBtn"></td>
+											<td> </td>
 										</tr>
 									</tbody>
 								</table>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<p>
-					<b>Тёмные баллы (шанс попасть в Сумрачный лес после смерти):</b> <span id="black">~</span>
-				</p>
+							</div>
+							<div class="section">
+								<!--Погода-->
+								<h4>Погода</h4>
+								<h5>Небо</h5>
+								<select id="editSky">
+									<option value="1">Небо 1</option>
+									<option value="2">Небо 2</option>
+									<option value="3">Небо 3</option>
+									<option value="4">Небо 4</option>
+									<option value="5">Небо 5</option>
+									<option value="6">Небо 6</option>
+									<option value="7">Небо 7</option>
+									<option value="8">Небо 8</option>
+									<option value="9">Небо 9</option>
+									<option value="10">Небо 10</option>
+									<option value="11">Небо 11</option>
+								</select>
+								<img id="editSkyPreview" src="https://catwar.su/cw3/sky/11.png">
+								<h5>Время</h5>
+								<select id="editTime">
+									<option value="0">Время 0</option>
+									<option value="1">Время 1</option>
+									<option value="2">Время 2</option>
+									<option value="3">Время 3</option>
+									<option value="4">Время 4</option>
+									<option value="5">Время 5</option>
+									<option value="6">Время 6</option>
+									<option value="7">Время 7</option>
+									<option value="8">Время 8</option>
+									<option value="9">Время 9</option>
+									<option value="10">Время 10</option>
+									<option value="11">Время 11</option>
+									<option value="12">Время 12</option>
+									<option value="13">Время 13</option>
+									<option value="14">Время 14</option>
+									<option value="15">Время 15</option>
+									<option value="16">Время 16</option>
+									<option value="17">Время 17</option>
+									<option value="18">Время 18</option>
+									<option value="19">Время 19</option>
+									<option value="20">Время 20</option>
+									<option value="21">Время 21</option>
+									<option value="22">Время 22</option>
+									<option value="23">Время 23</option>
+								</select>
+								<img id="editTimePreview" src="https://catwar.su/cw3/symbole/hours/0.png">
+								<h5>Время года</h5>
+								<select id="editSeason">
+									<option value="0">Зима</option>
+									<option value="1">Весна</option>
+									<option value="2">Лето</option>
+									<option value="3">Осень</option>
+								</select>
+								<img id="editSeasonPreview" src="https://catwar.su/cw3/symbole/season0.png">
 
-			</div>
-			<div>
-				<h3>Заполнение клетки</h3>
-				<div class="section">
-					<h4>Тип клетки</h4>
-					<select id="tdType">
-						<option value="empty">Пустая клетка</option>
-						<option value="cat">Кот</option>
-						<option value="object">Предмет</option>
-						<option value="objectCat">Кот + предмет под ним</option>
-					</select>
-				</div>
-			</div>
-			<div>
-				<h3>Настройки игровых компонентов</h3>
-				<div class="section">
-					<!--Чат-->
-					<h4>Чат</h4>
-					<table>
-						<tbody>
-							<tr>
-								<th>Сообщение</th>
-								<td><input type="text" maxlength="255" id="newMessText"></td>
-							</tr>
-							<tr>
-								<th>Отправитель</th>
-								<td><input type="text" id="newMessCat"></td>
-							</tr>
-							<tr>
-								<th>Громкость</th>
-								<td>
-									<select id="editVolume">
-										<option value="0">0</option>
-										<option value="1">1</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-										<option value="4">4</option>
-										<option value="5">5</option>
-										<option value="6">6</option>
-										<option value="7">7</option>
-										<option value="8">8</option>
-										<option value="9">9</option>
-										<option value="10">10</option>
-									</select>
-								</td>
-							</tr>
-							<tr>
-								<th>
-									Моё имя
-								</th>
-								<td>
-									<input type="text" id="newMessName">
-								</td>
-							</tr>
-							<tr>
-								<td><input type="button" value="Отравить" id="newMessBtn"></td>
-								<td> </td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div class="section">
-					<!--Погода-->
-					<h4>Погода</h4>
-					<h5>Небо</h5>
-					<select id="editSky">
-						<option value="1">Небо 1</option>
-						<option value="2">Небо 2</option>
-						<option value="3">Небо 3</option>
-						<option value="4">Небо 4</option>
-						<option value="5">Небо 5</option>
-						<option value="6">Небо 6</option>
-						<option value="7">Небо 7</option>
-						<option value="8">Небо 8</option>
-						<option value="9">Небо 9</option>
-						<option value="10">Небо 10</option>
-						<option value="11">Небо 11</option>
-					</select>
-					<img id="editSkyPreview" src="https://catwar.su/cw3/sky/11.png">
-					<h5>Время</h5>
-					<select id="editTime">
-						<option value="0">Время 0</option>
-						<option value="1">Время 1</option>
-						<option value="2">Время 2</option>
-						<option value="3">Время 3</option>
-						<option value="4">Время 4</option>
-						<option value="5">Время 5</option>
-						<option value="6">Время 6</option>
-						<option value="7">Время 7</option>
-						<option value="8">Время 8</option>
-						<option value="9">Время 9</option>
-						<option value="10">Время 10</option>
-						<option value="11">Время 11</option>
-						<option value="12">Время 12</option>
-						<option value="13">Время 13</option>
-						<option value="14">Время 14</option>
-						<option value="15">Время 15</option>
-						<option value="16">Время 16</option>
-						<option value="17">Время 17</option>
-						<option value="18">Время 18</option>
-						<option value="19">Время 19</option>
-						<option value="20">Время 20</option>
-						<option value="21">Время 21</option>
-						<option value="22">Время 22</option>
-						<option value="23">Время 23</option>
-					</select>
-					<img id="editTimePreview" src="https://catwar.su/cw3/symbole/hours/0.png">
-					<h5>Время года</h5>
-					<select id="editSeason">
-						<option value="0">Зима</option>
-						<option value="1">Весна</option>
-						<option value="2">Лето</option>
-						<option value="3">Осень</option>
-					</select>
-					<img id="editSeasonPreview" src="https://catwar.su/cw3/symbole/season0.png">
-
-					<!--ТЕМПЕРАТУРА ТУТ ДОЛЖНА БЫТЬ, НО ПРИШЛИ ВОЛКИ, ПОСТАВИЛИ КРОЛИКУ ТЕРМОМЕТР, А ОН ПОКАЗЫВАЕТ "36.9", А ВОЛКИ ТАКИЕ: "А, НЕ-Е-Е, КРОЛЬ, ТЫ НАМ НЕ ПОХДОДИШЬ". ТЕПЕРЬ В ВАРЕ НЕТ ТЕМПЕРАТУРЫ-->
-				</div>
-				<div class="section">
-					<!--Действия-->
-					<h4>Действия</h4>
-					<h5>Выборка доступных</h5>
-					<table class="constructor">
-						<thead>
-							<tr>
-								<th>Действие</th>
-								<th><input type="button" value="+"></th>
-							</tr>
-						</thead>
-						<tbody></tbody>
-					</table>
-					<h5>С кем?</h5>
-					<input type="text" id="mitWem"><br>Чтобы выбрать "Действия с собой", оставьте поле пустым
-				</div>
-				<div>
-					<!--Рот-->
-					<h4>Рот</h4>
-					<div>
-						<h5>Выборка котов</h5>
-						<table class="constructor">
-							<thead>
-								<tr>
-									<th>Окрас</th>
-									<th><input type="button" value="+"></th>
-								</tr>
-							</thead>
-							<tbody></tbody>
-						</table>
-					</div>
-					<div>
-						<h5>Выборка предметов</h5>
-						<table class="constructor">
-							<thead>
-								<tr>
-									<th>Предмет</th>
-									<th><input type="button" value="+"></th>
-								</tr>
-							</thead>
-							<tbody></tbody>
-						</table>
-					</div>
-				</div>
-			</div>
+								<!--ТЕМПЕРАТУРА ТУТ ДОЛЖНА БЫТЬ, НО ПРИШЛИ ВОЛКИ, ПОСТАВИЛИ КРОЛИКУ ТЕРМОМЕТР, А ОН ПОКАЗЫВАЕТ "36.9", А ВОЛКИ ТАКИЕ: "А, НЕ-Е-Е, КРОЛЬ, ТЫ НАМ НЕ ПОХДОДИШЬ". ТЕПЕРЬ В ВАРЕ НЕТ ТЕМПЕРАТУРЫ-->
+							</div>
+							<div class="section">
+								<!--Действия-->
+								<h4>Действия</h4>
+								<h5>Выборка доступных</h5>
+								<table class="constructor">
+									<thead>
+										<tr>
+											<th>Действие</th>
+											<th><input type="button" value="+"></th>
+										</tr>
+									</thead>
+									<tbody></tbody>
+								</table>
+								<h5>С кем?</h5>
+								<input type="text" id="mitWem"><br>Чтобы выбрать "Действия с собой", оставьте поле пустым
+							</div>
+							<div>
+								<!--Рот-->
+								<h4>Рот</h4>
+								<div>
+									<h5>Выборка котов</h5>
+									<table class="constructor">
+										<thead>
+											<tr>
+												<th>Окрас</th>
+												<th><input type="button" value="+"></th>
+											</tr>
+										</thead>
+										<tbody></tbody>
+									</table>
+								</div>
+								<div>
+									<h5>Выборка предметов</h5>
+									<table class="constructor">
+										<thead>
+											<tr>
+												<th>Предмет</th>
+												<th><input type="button" value="+"></th>
+											</tr>
+										</thead>
+										<tbody></tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 		<div id="newPers" class="pages">
 			<div id="editCat" style="display:none" class="section">
@@ -489,7 +497,7 @@
 		<div id="gCostume" class="pages">
 			Коллекция костюмов
 		</div>
-		<div id="instruction" class="pages">
+		<div id="instruction" class="pages" style="display:block;">
 			Инструкция
 		</div>
 	</article>
