@@ -216,5 +216,5 @@ $('#previewcatBtn').on('click', function () {
 		$('#catColor').val(),
 		Number($('#catSize').val()),
 		''
-	);
+	));
 });
