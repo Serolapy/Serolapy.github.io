@@ -217,5 +217,5 @@ $('#previewcatBtn').on('click', function () {
 		$('#catCostume').val().split(','),
 		Number($('#catSize').val()),
 		[].split(',')
-	);
+	));
 });
