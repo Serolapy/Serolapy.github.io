@@ -136,7 +136,7 @@ function addCat(pol, name, job, smell, online, color, costume, size, items) {
 		cat += '<div style="background-image:url(\'' + catwar + costume[i]+'\');background-size:' + size + '; position: absolute;"></div>';
 	}
 	/*окрас*/
-	cat += '<div style="background-image:url(\'' + catwar + color + '\');background-size:' + size + ';" class="d">';
+	cat += '<div style="background-image:url(\''+ color + '\');background-size:' + size + ';" class="d">';
 
 	//
 	//сведения
@@ -216,6 +216,6 @@ $('#previewcatBtn').on('click', function () {
 		$('#catColor').val(),
 		$('#catCostume').val().split(','),
 		Number($('#catSize').val()),
-		[].split(',')
+		''
 	));
 });
