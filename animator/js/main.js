@@ -214,7 +214,8 @@ $('#previewcatBtn').on('click', function () {
 		$('#catSmell').val(),
 		$('#catOnline').val(),
 		$('#catColor').val(),
+		$('#catCostume').val().split(','),
 		Number($('#catSize').val()),
-		''
-	));
+		[].split(',')
+	);
 });
