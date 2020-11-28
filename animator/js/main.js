@@ -1,4 +1,4 @@
-const catwar = 'https://caatwar.su';
+const catwar = 'https://catwar.su';
 
 /*вкладки*/
 $('.btnPages').on('click', function () {
@@ -136,7 +136,7 @@ function addCat(pol, name, job, smell, online, color, costume, size, items) {
 		cat += '<div style="background-image:url(\'' + catwar + costume[i]+'\');background-size:' + size + '; position: absolute;"></div>';
 	}
 	/*окрас*/
-	cat += '<div style="background-image:url(\'' + catwar + color + '\');background-size:' + size + ';" class="d">';
+	cat += '<div style="background-image:url(\''+ color + '\');background-size:' + size + ';" class="d">';
 
 	//
 	//сведения
@@ -204,6 +204,18 @@ function addCat(pol, name, job, smell, online, color, costume, size, items) {
 	var td = '<div class="cage_items" style="' + allItems + '">' + CatAndData + '</div>';
 	return td
 	//великий Хлебушек во тьме, помоги мне...
-
-	//вставить сюда кнопку для предпросмотра
 }
+$('#previewcatBtn').on('click', function () {
+	/*По нажатию на кнопку*/
+	$('#previewDataCat').html(addCat(
+		$('#catPOL').val(),
+		$('#catName').val(),
+		$('#catJob').val(),
+		$('#catSmell').val(),
+		$('#catOnline').val(),
+		$('#catColor').val(),
+		$('#catCostume').val().split(','),
+		Number($('#catSize').val()),
+		''
+	));
+});
