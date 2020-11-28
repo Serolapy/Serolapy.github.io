@@ -1,0 +1,16 @@
+﻿#previewDataCat .cat_tooltip {
+    display: block;
+    position: absolute;
+    z-index: 9999;
+    padding: 5px;
+    min-width: 80px;
+    background: RGBA(255, 255, 255, 0.9);
+    border: 1px solid gray;
+    border-radius: 6px;
+    color: #930;
+    font-weight: bold;
+    text-align: center;
+}
+#previewDataCat .cat_tooltip a {   
+    color: 930;
+}
