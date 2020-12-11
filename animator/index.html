@@ -228,6 +228,13 @@
 										<option value="objectCat">Кот + предмет под ним</option>
 									</select>
 								</div>
+								<div class="section">
+									<h4>
+										Персонажи, созданные ранее.
+									</h4>
+									<input type="button" id="oldCatBtn" value="Обновить" />
+									<span id="oldCats"></span>
+								</div>
 							</div>
 							<div>
 							<h3>Настройки игровых компонентов</h3>
@@ -444,8 +451,11 @@
 							<td><input type="text" id="catCostume"></td>
 						</tr>
 						<tr>
-							<td rowspan="2">
+							<td>
 								<input type="button" id="previewcatBtn" value="Предпросмотр" style="width:100%" />
+							</td>
+							<td>
+								<input type="button" id="saveCat" value="Сохранить" style="width:100%" />
 							</td>
 						</tr>
 					</tbody>

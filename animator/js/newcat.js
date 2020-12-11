@@ -30,13 +30,13 @@ function addCat(pol, name, job, smell, online, color, costume, size, items) {
 			cOnline += '<font color="#A52A2A">Спит</font>';
 			break;
 		case 'wait':
-			cOnline += '<font color="#333333">Недавно ' + (pol == 'der') ? 'ушёл' : 'ушла' + '</font>';
+			cOnline += '<font color="#333333">Недавно ' + ((pol == 'der') ? 'ушёл' : 'ушла') + '</font>';
 			break;
 		case 'delete':
 			cOnline += '<font color="#333366">На удалении</font>';
 			break;
 		case 'block':
-			cOnline += '<font color="#333366">Заблокирован' + (pol == 'der') ? '' : 'а' + '</font>';
+			cOnline += '<font color="#333366">Заблокирован' + ((pol == 'der') ? '' : 'а') + '</font>';
 			break;
 	}
 	cOnline += ']';
@@ -72,14 +72,38 @@ function addCat(pol, name, job, smell, online, color, costume, size, items) {
 		allItems += 'url("' + items[i] + '") ' + a + ' no-repeat' + (i == items.length - 1) ? ';' : ',';
 	}
 
+	//великий Хлебушек во тьме, помоги мне...
+
 	//
 	//клетка
 	//
 
 	var td = '<div class="cage_items" style="' + allItems + '">' + CatAndData + '</div>';
 	return td
-	//великий Хлебушек во тьме, помоги мне...
 }
+$('#saveCat').on('click', function () {
+	//
+	//local Storage
+	//
+	var Ls = localStorage.getItem('oldCats');
+	//
+	// 
+	newcat = addCat(
+		$('#catPOL').val(),
+		$('#catName').val(),
+		$('#catJob').val(),
+		$('#catSmell').val(),
+		$('#catOnline').val(),
+		$('#catColor').val(),
+		$('#catCostume').val().split(','),
+		Number($('#catSize').val()),
+		''
+	);
+	if (confirm('Сохранить персонажа?')) {
+		Ls += newcat;
+	}
+	localStorage.setItem('oldCats', Ls);
+});
 $('#previewcatBtn').on('click', function () {
 	/*По нажатию на кнопку*/
 	$('#previewDataCat').html(addCat(
@@ -94,3 +118,6 @@ $('#previewcatBtn').on('click', function () {
 		''
 	));
 });
+$('#oldCatBtn').on('click', function () {
+	$('#oldCats').html(localStorage.getItem('oldCats'));
+})
