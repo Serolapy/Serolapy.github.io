@@ -1,3 +1,6 @@
-$('a, input').click(function(e){
-	e.preventDefault();
+document.addEventListener('DOMContentLoaded', function() {
+	$('a, input').click(function(e){
+		e.preventDefault();
+	});
+	alert('Загружено');
 });
