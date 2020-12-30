@@ -1,32 +1,40 @@
-﻿<!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html>
 <head>
 	<meta charset="UTF-8">
 	<script src="/js/jQuery.js"></script>
 	<title>Анимационная студия CatWar</title>
-	<link rel="stylesheet" href="/css/site2.css">
+	
+	<!--СТИЛИ-->
 	<link rel="SHORTCUT ICON" href="/img/favicon.ico" type="image/x-icon">
-	<!--<link rel="stylesheet" href="css.css">
-	<script src="https://serolapy.github.io/js/jQuery.js"></script>-->
-	<!--для этой стр-->
-	<link rel="stylesheet" href="https://e.catwar.su/css/blank.css"><!--на всех ваространицах-->
+	<link rel="stylesheet" href="css/catwar/blank.css">
 	<link rel="stylesheet" href="css/pole.css">
 	<link rel="stylesheet" href="css/previewCat.css">
+	<link rel="stylesheet" href="css/catwar/jquery-ui.css"> <!--бегунок громкости-->
+	
+	<!--МОИ  СТИЛИ-->
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="css/class.css">
+	
+	<!--Вк-->
+	<script type="text/javascript" src="https://vk.com/js/api/openapi.js?168"></script>
+
+	<script type="text/javascript">
+		VK.init({apiId: 7662607, onlyWidgets: true});
+	</script>
+
+	
 </head>
 <body>
 	<header>
 		<table>
 			<tbody>
 				<tr>
-					<td>
+					<td width="12.5%">
 						<a href="/">Домой</a>
 					</td>
-					<td>
-						<a href="https://catwar.su/cat982738">@serolapy [cat982738]</a>
-					</td>
-					<td>
-						<h1>Анимационная студия CatWar</h1>
-					</td>
+					<td width="31.25%"></td>
+					<td width="56.25%"></td>
 				</tr>
 			</tbody>
 		</table>
@@ -40,186 +48,15 @@
 		<a href="#" data-id="instruction" class="btnPages">Инструкция</a>
 	</nav>
 	<article>
-		<!--Главная часть-->
 		<div id="home" class="pages">
-			<table>
+			<table id="home_table">
 				<tbody>
 					<tr>
-						<td>
-							<div id="app">
-							<!--Fehler-->
-							<p id="error" style="display: none;"></p>
-							<!--Zeit-->
-							<div id="timer" style="display: none;"></div>
-							<!--Kampf log-->
-							<div id="fightPanel" style="display: none; width: 320px;">
-								<img src="symbole/unlock.png" id="block"> <input type="button" value="I" class="hotkey"><input type="button" value="O" class="hotkey"><input type="button" value="L" class="hotkey"><input type="button" value="J" class="hotkey"><input type="button" value="K" class="hotkey"><input type="button" value="T+1" class="hotkey"><input type="button" value="T+2" class="hotkey"><input type="button" value="T+3" class="hotkey"> <div id="fightLog" style="height: 70px;"></div>
-							</div>
-							<!--Haupttabelle-->
-							<table id="main_table" style="border-spacing:2px">
-							<tbody>
-								<tr id="tr_chat">
-									<td>
-										<form id="chat_form">
-											<span id="txt">
-												<input size="50" id="text" autocomplete="off">
-												<!----> <!---->
-											</span>
-											<input type="submit" id="msg_send" value="OK">
-											<!---->
-											<span>
-												<span id="volume" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 50%;"></span></span>
-												<b>(правее — громче)</b>
-											</span>
-										</form>
-										<div id="chat_msg"><hr></div>
-									</td>
-								</tr>
-								<tr id="tr_actions">
-									<td>
-										<span class="title">Действия</span> <div id="block_deys" style="display: none;">
-											<table style="width: 100%;">
-												<tbody>
-													<tr>
-														<td style="width: 70%;"><div id="akten" style="display: block;"><!--Действия--></div> <div id="dein" style="display: none;"><!--Действия с другими игроками--></div></td>
-														<td>
-															Действия с каким-либо котом в соседней клетке:<br> <select id="mit"><option value="0">Действия с собой</option><option value="<!--ид кота-->"><!--имя кота--></option></select><br> <input type="button" id="mitok" value="Показать">
-														</td>
-													</tr>
-												</tbody>
-											</table>
-										</div> <div id="block_mess"></div>
-									</td>
-								</tr>
-								<tr id="tr_tos">
-									<td><table><tbody><tr><td><!----> <!----></td> <td><div id="tos" style="background: #E84232;background: -moz-linear-gradient(0deg, #F17558, #E00F0B);background: -webkit-linear-gradient(0deg, #F17558, #E00F0B);background: -o-linear-gradient(0deg, #F17558, #E00F0B);background: -ms-linear-gradient(0deg, #F17558, #E00F0B);background: linear-gradient(90deg, #F17558, #E00F0B););"></div></td> <td><a href="/time" target="_blank" id="hour"><img src="symbole/hours/7.png"></a></td> <td><a href="/time" target="_blank"><img src="symbole/season2.png"></a></td> <!----></tr></tbody></table></td>
-								</tr>
-								<tr id="tr_sky">
-									<td><div id="sky" style="background-image: url(&quot;sky/3.png&quot;);"></div></td>
-								</tr>
-								<tr id="tr_field">
-									<td id="act">
-										<div id="cages_overflow">
-											<div id="cages_div" style="opacity: 1; background-image: url('');">
-												<table id="cages" style="border:1px black solid">
-													<tbody>
-														<tr>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-														</tr>
-														<tr>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-														</tr>
-														<tr>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-														</tr>
-														<tr>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-														</tr>
-														<tr>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-														</tr>
-														<tr>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-															<td class="cage"></td>
-														</tr>
-													</tbody>
-												</table>
-											</div>
-										</div>
-									</td>
-								</tr>
-								<tr id="tr_mouth">
-									<td>
-										<span class="title">Во рту</span> <div id="tir"><table><tbody><tr id="katze"><td><ol id="itemList"><!--Рот--></ol></td> <!----></tr></tbody></table></div> <a href="#">Смешивать</a> <!----><br><br> <div id="thdey" style="display: none;">
-											<ul style="margin: 0px; padding: 0px 0px 0px 1.4em;"><li><a href="#" id="eat"></a></li> <li><a href="#" id="put">Положить на землю</a></li> <li><a href="#" id="dig">Закопать</a></li> <li id="divide"><a href="#">Разделить</a></li> <li id="chew"><a href="#">Разжевать</a></li></ul> <br> <div id="layer" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 0%;"></span></div><br>
-											Чем правее, тем глубже будет закопан предмет. <a href="/about?id=12" target="_blank">[?]</a><br><br>
-										</div> <div id="ctdey" style="display: none;"><ul style="margin: 0px; padding: 0px 0px 0px 1.4em;"><li><a href="#" id="put2">Положить на землю</a></li> <li><a href="/cat1169401" target="_blank">Перейти в профиль</a></li></ul></div>
-									</td>
-								</tr>
-								<tr id="tr_info">
-									<td>
-										<table id="info_main">
-											<tbody>
-												<tr>
-													<td id="family" class="infos"><h2><a href="#" id="relatives" class="toggle">Родственные связи</a></h2> <div id="relatives_block"><div id="family_block"><b>Мама</b>: <u><span id="Mamapole"></span></u><br><b>Папа</b>: <u><span id="Papapole"></span></u><br><b>Братья и сёстры</b>: <span id="Bratosisterypole"></span><br><b>Котята</b>: нет<br><br><i>Курсивом</i> выделены приёмные родственники.</div> <a href="/relatives">Генеалогический кустик</a> <div id="pairs"> </div></div></td>
-													<td id="history" class="infos">
-														<h2><a href="#" id="history" class="toggle">История</a></h2> <div id="history_block">
-															<i>История очищена.</i> <span id="ist"></span><br> <a href="#" id="history_clean">Очистить историю</a> <div style="background-color: white;">
-																Моё местонахождение: <span id="location"></span>
-															</div>
-														</div>
-													</td>
-													<td id="parameter" class="infos"><h2><a href="#" id="parameters" class="toggle">Параметры и навыки</a></h2> <div id="parameters_block"></div></td>
-												</tr>
-											</tbody>
-										</table>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-							<p>
-							<b>Тёмные баллы (шанс попасть в Сумрачный лес после смерти):</b> <span id="black">~</span>
-						</p>
-
-						</div>
-						</td>
-						<td>
-							<div>
+						<!--Моя колонка-->
+						<td class="editData">
+							<div> <!--Заполнение клетки-->
 								<h3>Заполнение клетки</h3>
-								<div class="section">
+								<div>
 									<h4>Тип клетки</h4>
 									<select id="tdType">
 										<option value="empty">Пустая клетка</option>
@@ -228,319 +65,641 @@
 										<option value="objectCat">Кот + предмет под ним</option>
 									</select>
 								</div>
-								<div class="section">
-									<h4>
-										Персонажи, созданные ранее.
-									</h4>
-									<input type="button" id="oldCatBtn" value="Обновить" />
-									<span id="oldCats"></span>
-								</div>
+							</div>
+							<table class="table">
+								<!--Чат-->
+								<tr>
+									<th rowspan="4">Чат</th>
+									<td>Сообщение</td>
+									<td>
+										<input type="text" maxlengtd="255" id="newMessText">
+									</td>
+									<td rowspan="4" class="table-result-bottom">
+										<input type="button" value="Отправить" id="newMessBtn">
+									</td>
+								</tr>
+								<tr>
+									<td>Отправитель</td>
+									<td><input type="text" id="newMessCat"></td>
+								</tr>
+								<tr>
+									<td>Громкость</td>
+									<td>
+										<select id="editVolume">
+											<option value="0">0</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
+											<option value="10">10</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Моё имя
+									</td>
+									<td>
+										<input type="text" id="newMessName">
+									</td>
+								</tr>
+								
+								<!--Погода-->
+								<tr>
+									<th rowspan="3">Погода</th>
+									<td>Небо</td>
+									<td>
+										<select id="editSky">
+											<option value="1">Небо 1</option>
+											<option value="2">Небо 2</option>
+											<option value="3">Небо 3</option>
+											<option value="4">Небо 4</option>
+											<option value="5">Небо 5</option>
+											<option value="6">Небо 6</option>
+											<option value="7">Небо 7</option>
+											<option value="8">Небо 8</option>
+											<option value="9">Небо 9</option>
+											<option value="10">Небо 10</option>
+											<option value="11">Небо 11</option>
+										</select>
+									</td>
+									<td>
+										<img id="editSkyPreview" src="https://catwar.su/cw3/sky/1.png">
+									</td>
+								</tr>
+								<tr>
+									<td>Время</td>
+									<td>
+										<select id="editTime">
+											<option value="0">Время 0</option>
+											<option value="1">Время 1</option>
+											<option value="2">Время 2</option>
+											<option value="3">Время 3</option>
+											<option value="4">Время 4</option>
+											<option value="5">Время 5</option>
+											<option value="6">Время 6</option>
+											<option value="7">Время 7</option>
+											<option value="8">Время 8</option>
+											<option value="9">Время 9</option>
+											<option value="10">Время 10</option>
+											<option value="11">Время 11</option>
+											<option value="12">Время 12</option>
+											<option value="13">Время 13</option>
+											<option value="14">Время 14</option>
+											<option value="15">Время 15</option>
+											<option value="16">Время 16</option>
+											<option value="17">Время 17</option>
+											<option value="18">Время 18</option>
+											<option value="19">Время 19</option>
+											<option value="20">Время 20</option>
+											<option value="21">Время 21</option>
+											<option value="22">Время 22</option>
+											<option value="23">Время 23</option>
+										</select>
+									</td>
+									<td>
+										<img id="editTimePreview" src="https://catwar.su/cw3/symbole/hours/0.png">
+									</td>
+								</tr>
+								<tr>
+									<td>Время года</td>
+									<td>
+										<select id="editSeason">
+											<option value="0">Зима</option>
+											<option value="1">Весна</option>
+											<option value="2">Лето</option>
+											<option value="3">Осень</option>
+										</select>
+									</td>
+									<td>
+										<img id="editSeasonPreview" src="https://catwar.su/cw3/symbole/season0.png">
+									</td>
+								</tr>
+								<!--Поле-->
+								<tr>
+									<th rowspan="1">Поле</th>
+									<td>Фон поля</td>
+									<td>
+										<input type="radio" name="fonPolya" id="fonPolya_1" value="link" checked class="radio_none"/><label for="fonPolya_1">Ссылка на картинку</label><br>
+										<input type="radio" name="fonPolya" id="fonPolya_2" value="color" class="radio_none"/><label for="fonPolya_2">Цвет</label>
+									</td>
+									<td class="table-result">
+										<input type="text" id="FonPolya">
+									</td>
+								</tr>
+							</table>
+						</td>
+						<td  class="editData">
+							<div>
+								<h3>
+									Персонажи, созданные ранее.
+								</h3>
+								<input type="button" id="oldCatBtn" value="Обновить" />
+								<span id="oldCats"></span>
 							</div>
 							<div>
-							<h3>Настройки игровых компонентов</h3>
-							<div class="section">
-								<!--Чат-->
-								<h4>Чат</h4>
-								<table>
+								<h3>
+									Предметы под котом
+								</h3>
+								<table class="table_1">
+									<tr>
+										<td>
+											<input type="text" id="itemListCAGE">
+										</td>
+										<td>
+											<input type="button" id="BtnItemListCAGE" value="Добавить предмет">
+										</td>
+									</tr>
+								</table>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<input type="button" id="openGamePole" value="Открыть Игровую в новом окне и синхронизировать">
+						</td>
+					</tr>
+					<tr>
+						<!--Игровое поле-->
+						<td colspan="2">
+							<div id="app">
+									<!--Fehler-->
+									<p id="error" style="display: none;"></p>
+									<!--Zeit-->
+									<div id="timer" style="display: none;"></div>
+									<!--Kampf log-->
+									<div id="fightPanel" style="display: none; width: 320px;">
+										<img src="https://catwar.su/cw3/symbole/unlock.png" id="block"> <input type="button" value="I" class="hotkey"><input type="button" value="O" class="hotkey"><input type="button" value="L" class="hotkey"><input type="button" value="J" class="hotkey"><input type="button" value="K" class="hotkey"><input type="button" value="T+1" class="hotkey"><input type="button" value="T+2" class="hotkey"><input type="button" value="T+3" class="hotkey"> 
+										
+										<div id="fightLog" style="height: 70px;"></div>
+									</div>
+									<!--Haupttabelle-->
+									<table id="main_table" style="border-spacing:2px">
 									<tbody>
-										<tr>
-											<th>Сообщение</th>
-											<td><input type="text" maxlength="255" id="newMessText"></td>
-										</tr>
-										<tr>
-											<th>Отправитель</th>
-											<td><input type="text" id="newMessCat"></td>
-										</tr>
-										<tr>
-											<th>Громкость</th>
+										<tr id="tr_chat">
 											<td>
-												<select id="editVolume">
-													<option value="0">0</option>
-													<option value="1">1</option>
-													<option value="2">2</option>
-													<option value="3">3</option>
-													<option value="4">4</option>
-													<option value="5">5</option>
-													<option value="6">6</option>
-													<option value="7">7</option>
-													<option value="8">8</option>
-													<option value="9">9</option>
-													<option value="10">10</option>
-												</select>
+												<form id="chat_form">
+													<span id="txt">
+														<input size="50" id="text" autocomplete="off">
+														<!----> <!---->
+													</span>
+													<input type="submit" id="msg_send" value="OK">
+													<!---->
+													<span>
+														<span id="volume" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 50%;"></span></span>
+														<b>(правее — громче)</b>
+													</span>
+												</form>
+												<div id="chat_msg"><hr></div>
 											</td>
 										</tr>
-										<tr>
-											<th>
-												Моё имя
-											</th>
+										<tr id="tr_actions">
 											<td>
-												<input type="text" id="newMessName">
+												<span class="title">Действия</span> <div id="block_deys" style="display: none;">
+													<table style="width: 100%;">
+														<tbody>
+															<tr>
+																<td style="width: 70%;">
+																	<div id="akten" style="display: block;"><!--Действия--></div> 
+																	<div id="dein" style="display: none;"><!--Действия с другими игроками--></div>
+																</td>
+																<td>
+																	Действия с каким-либо котом в соседней клетке:<br> <select id="mit">
+																		<option value="0">Действия с собой</option>
+																		<option value=""><!-- В валу ид кота--><!--имя кота--></option>
+																	</select><br> 
+																	<input type="button" id="mitok" value="Показать">
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div> <div id="block_mess"></div>
 											</td>
 										</tr>
-										<tr>
-											<td><input type="button" value="Отравить" id="newMessBtn"></td>
-											<td> </td>
+										<tr id="tr_tos">
+											<td>
+												<table>
+													<tbody>
+														<tr>
+															<td><!----> <!----></td> 
+															<td>
+																<div id="tos" style="background: #E84232;background: -moz-linear-gradient(0deg, #F17558, #E00F0B);background: -webkit-linear-gradient(0deg, #F17558, #E00F0B);background: -o-linear-gradient(0deg, #F17558, #E00F0B);background: -ms-linear-gradient(0deg, #F17558, #E00F0B);background: linear-gradient(90deg, #F17558, #E00F0B););">
+																</div>
+															</td> 
+															<td>
+																<a href="#" target="_blank" id="hour"><img src="https://catwar.su/cw3/symbole/hours/0.png"></a>
+															</td> 
+															<td>
+																<a href="#" target="_blank" id="seasonPOLE"><img src="https://catwar.su/cw3/symbole/season0.png"></a>
+															</td> 
+															<!---->
+														</tr>
+													</tbody>
+												</table>
+											</td>
+										</tr>
+										<tr id="tr_sky">
+											<td>
+												<div id="sky" style="background-image: url(&quot;https://catwar.su/cw3/sky/1.png&quot;);"></div>
+											</td>
+										</tr>
+										<tr id="tr_field">
+											<td id="act">
+												<div id="cages_overflow">
+													<div id="cages_div" style="opacity: 1; background-image: url('');">
+														<table id="cages" style="border:1px black solid">
+															<tbody>
+																<tr>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																</tr>
+																<tr>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																</tr>
+																<tr>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																</tr>
+																<tr>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																</tr>
+																<tr>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																</tr>
+																<tr>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																	<td class="cage"></td>
+																</tr>
+															</tbody>
+														</table>
+													</div>
+												</div>
+											</td>
+										</tr>
+										<tr id="tr_mouth">
+											<td>
+												<span class="title">Во рту</span> 
+												<div id="tir">
+													<table>
+														<tbody>
+															<tr id="katze">
+																<td>
+																	<ol id="itemListROT">
+																		<!--Рот-->
+																	</ol>
+																</td> 
+																<!---->
+															</tr>
+														</tbody>
+													</table>
+												</div> 
+												<a href="#">Смешивать</a> 
+												<!---->
+												<br>
+												<br> 
+												<div id="thdey" style="display: none;">
+													<ul style="margin: 0px; padding: 0px 0px 0px 1.4em;">
+														<li>
+															<a href="#" id="eat"></a>
+														</li> 
+														<li>
+															<a href="#" id="put">Положить на землю</a>
+														</li> 
+														<li>
+															<a href="#" id="dig">Закопать</a>
+														</li> 
+														<li id="divide">
+															<a href="#">Разделить</a>
+														</li> 
+														<li id="chew">
+															<a href="#">Разжевать</a>
+														</li>
+													</ul> 
+													<br> 
+													<div id="layer" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
+														<span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 0%;"></span>
+													</div>
+													<br>
+													Чем правее, тем глубже будет закопан предмет. <a href="#" target="_blank">[?]</a>
+													<br>
+													<br>
+												</div> 
+												<div id="ctdey" style="display: none;">
+													<ul style="margin: 0px; padding: 0px 0px 0px 1.4em;">
+														<li>
+															<a href="#" id="put2">Положить на землю</a>
+														</li> 
+														<li>
+															<a href="#" target="_blank">Перейти в профиль</a>
+														</li>
+													</ul>
+												</div>
+											</td>
+										</tr>
+										<tr id="tr_info">
+											<td>
+												<table id="info_main">
+													<tbody>
+														<tr>
+															<td id="family" class="infos"><h2><a href="#" id="relatives" class="toggle">Родственные связи</a></h2> <div id="relatives_block"><div id="family_block"><b>Мама</b>: <u><span id="Mamapole"></span></u><br><b>Папа</b>: <u><span id="Papapole"></span></u><br><b>Братья и сёстры</b>: <span id="Bratosisterypole"></span><br><b>Котята</b>: нет<br><br><i>Курсивом</i> выделены приёмные родственники.</div> <a href="/relatives">Генеалогический кустик</a> <div id="pairs"> </div></div></td>
+															<td id="history" class="infos">
+																<h2><a href="#" id="history" class="toggle">История</a></h2> <div id="history_block">
+																	<i>История очищена.</i> <span id="ist"></span><br> <a href="#" id="history_clean">Очистить историю</a> <div style="background-color: white;">
+																		Моё местонахождение: <span id="location"></span>
+																	</div>
+																</div>
+															</td>
+															<td id="parameter" class="infos"><h2><a href="#" id="parameters" class="toggle">Параметры и навыки</a></h2> <div id="parameters_block"></div></td>
+														</tr>
+													</tbody>
+												</table>
+											</td>
 										</tr>
 									</tbody>
 								</table>
+								<p>
+									<b>Тёмные баллы (шанс попасть в Сумрачный лес после смерти):</b> <span id="black">~</span>
+								</p>
+		
 							</div>
-							<div class="section">
-								<!--Погода-->
-								<h4>Погода</h4>
-								<h5>Небо</h5>
-								<select id="editSky">
-									<option value="1">Небо 1</option>
-									<option value="2">Небо 2</option>
-									<option value="3">Небо 3</option>
-									<option value="4">Небо 4</option>
-									<option value="5">Небо 5</option>
-									<option value="6">Небо 6</option>
-									<option value="7">Небо 7</option>
-									<option value="8">Небо 8</option>
-									<option value="9">Небо 9</option>
-									<option value="10">Небо 10</option>
-									<option value="11">Небо 11</option>
-								</select>
-								<img id="editSkyPreview" src="https://catwar.su/cw3/sky/11.png">
-								<h5>Время</h5>
-								<select id="editTime">
-									<option value="0">Время 0</option>
-									<option value="1">Время 1</option>
-									<option value="2">Время 2</option>
-									<option value="3">Время 3</option>
-									<option value="4">Время 4</option>
-									<option value="5">Время 5</option>
-									<option value="6">Время 6</option>
-									<option value="7">Время 7</option>
-									<option value="8">Время 8</option>
-									<option value="9">Время 9</option>
-									<option value="10">Время 10</option>
-									<option value="11">Время 11</option>
-									<option value="12">Время 12</option>
-									<option value="13">Время 13</option>
-									<option value="14">Время 14</option>
-									<option value="15">Время 15</option>
-									<option value="16">Время 16</option>
-									<option value="17">Время 17</option>
-									<option value="18">Время 18</option>
-									<option value="19">Время 19</option>
-									<option value="20">Время 20</option>
-									<option value="21">Время 21</option>
-									<option value="22">Время 22</option>
-									<option value="23">Время 23</option>
-								</select>
-								<img id="editTimePreview" src="https://catwar.su/cw3/symbole/hours/0.png">
-								<h5>Время года</h5>
-								<select id="editSeason">
-									<option value="0">Зима</option>
-									<option value="1">Весна</option>
-									<option value="2">Лето</option>
-									<option value="3">Осень</option>
-								</select>
-								<img id="editSeasonPreview" src="https://catwar.su/cw3/symbole/season0.png">
-
-								<!--ТЕМПЕРАТУРА ТУТ ДОЛЖНА БЫТЬ, НО ПРИШЛИ ВОЛКИ, ПОСТАВИЛИ КРОЛИКУ ТЕРМОМЕТР, А ОН ПОКАЗЫВАЕТ "36.9", А ВОЛКИ ТАКИЕ: "А, НЕ-Е-Е, КРОЛЬ, ТЫ НАМ НЕ ПОХДОДИШЬ". ТЕПЕРЬ В ВАРЕ НЕТ ТЕМПЕРАТУРЫ-->
-							</div>
-							<div class="section">
-								<!--Действия-->
-								<h4>Действия</h4>
-								<h5>Выборка доступных</h5>
-								<table class="constructor">
-									<thead>
-										<tr>
-											<th>Действие</th>
-											<th><input type="button" value="+"></th>
-										</tr>
-									</thead>
-									<tbody></tbody>
-								</table>
-								<h5>С кем?</h5>
-								<input type="text" id="mitWem"><br>Чтобы выбрать "Действия с собой", оставьте поле пустым
-							</div>
-							<div>
-								<!--Рот-->
-								<h4>Рот</h4>
-								<div>
-									<h5>Выборка котов</h5>
-									<table class="constructor">
-										<thead>
-											<tr>
-												<th>Окрас</th>
-												<th><input type="button" value="+"></th>
-											</tr>
-										</thead>
-										<tbody></tbody>
-									</table>
-								</div>
-								<div>
-									<h5>Выборка предметов</h5>
-									<table class="constructor">
-										<thead>
-											<tr>
-												<th>Предмет</th>
-												<th><input type="button" value="+"></th>
-											</tr>
-										</thead>
-										<tbody></tbody>
-									</table>
-								</div>
-							</div>
-						</div>
+						</td>
+						<!--Конец Игрового поля-->
+					</tr>
+				</tbody>
+			</table>
+		</div>		
+		<div id="newPers" class="pages">
+			<h3>Настройки кота</h3>
+			<table>
+				<tbody>
+					<tr>
+						<th width="140px">Пол</th>
+						<td>
+							<select id="catPOL">
+								<option value="der">Кот</option>
+								<option value="die">Кошка</option>
+							</select>
+						</td>
+						<td rowspan="9">
+							<h5>Предпросмотр</h5>
+							<div id="previewCat"></div>
+							<div id="previewDataCat"></div>
+						</td>
+					</tr>
+					<tr>
+						<th>Окрас</th>
+						<td><input type="text" id="catColor"></td>
+					</tr>
+					<tr>
+						<th>Размер</th>
+						<td><input type="number" id="catSize">%</td>
+					</tr>
+					<tr>
+						<th>Имя</th>
+						<td><input type="text" id="catName"></td>
+					</tr>
+					<tr>
+						<th>Должность</th>
+						<td><input type="text" id="catJob"></td>
+					</tr>
+					<tr>
+						<th>Запах</th>
+						<td><input type="text" id="catSmell"></td>
+					</tr>
+					<tr>
+						<th>Рот<br>(не работает)</th>
+						<td><input type="text" id="catRot"></td>
+					</tr>
+					<tr>
+						<th>Состояние</th>
+						<td>
+							<select id="catOnline">
+								<option value="online">В сети</option>
+								<option value="offline">Спит</option>
+								<option value="wait">Недавно ушёл (-а)</option>
+								<option value="block">Заблокирован (-а)</option>
+								<option value="delete">На удалении</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<th>Костюм и дефекты</th>
+						<td><input type="text" id="catCostume"></td>
+					</tr>
+					<tr>
+						<td>
+							<input type="button" id="previewcatBtn" value="Предпросмотр" style="width:100%" />
+						</td>
+						<td>
+							<input type="button" id="saveCat" value="Сохранить" style="width:100%" />
 						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-		<div id="newPers" class="pages">
-			<div id="editCat" style="display:none" class="section">
-				<h4>Настройки кота</h4>
-				<table width="100%">
-					<tbody>
-						<tr>
-							<th width="140px">Пол</th>
-							<td>
-								<select id="catPOL">
-									<option value="der">Кот</option>
-									<option value="die">Кошка</option>
-								</select>
-							</td>
-							<td rowspan="9">
-								<h5>Предпросмотр</h5>
-								<div id="previewCat"></div>
-								<div id="previewDataCat"></div>
-							</td>
-						</tr>
-						<tr>
-							<th>Окрас</th>
-							<td><input type="text" id="catColor"></td>
-						</tr>
-						<tr>
-							<th>Размер</th>
-							<td><input type="number" id="catSize">%</td>
-						</tr>
-						<tr>
-							<th>Имя</th>
-							<td><input type="text" id="catName"></td>
-						</tr>
-						<tr>
-							<th>Должность</th>
-							<td><input type="text" id="catJob"></td>
-						</tr>
-						<tr>
-							<th>Запах</th>
-							<td><input type="text" id="catSmell"></td>
-						</tr>
-						<tr>
-							<th>Рот<br>(не работает)</th>
-							<td><input type="text" id="catRot"></td>
-						</tr>
-						<tr>
-							<th>Состояние</th>
-							<td>
-								<select id="catOnline">
-									<option value="online">В сети</option>
-									<option value="offline">Спит</option>
-									<option value="wait">Недавно ушёл (-а)</option>
-									<option value="block">Заблокирован (-а)</option>
-									<option value="delete">На удалении</option>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<th>Костюм и дефекты<br>(не работает)</th>
-							<td><input type="text" id="catCostume"></td>
-						</tr>
-						<tr>
-							<td>
-								<input type="button" id="previewcatBtn" value="Предпросмотр" style="width:100%" />
-							</td>
-							<td>
-								<input type="button" id="saveCat" value="Сохранить" style="width:100%" />
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
 		<div id="gItems" class="pages">
-            <div id="editObjects" style="display:none" class="section">
-                <h4>Создание предметов</h4>
-                <table class="constructor">
-                    <thead>
-                        <tr>
-                            <th>Предметы</th>
-                            <th><input type="button" value="+"></th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-
+			<h3>Создание предметов</h3>
 			<div id="idItem">
-				<i>Тут будет прямая ссылка на выбранный вами предмет</i><br />
-				Внимание! Загрузка костюмов займёт некоторое время, подождите
+				 <i>Тут будет прямая ссылка на выбранный вами предмет</i><br />
+				 Внимание! Загрузка предметов займёт некоторое время, подождите
 			</div>
 			<div id="allItem">
-				<input type="button" id="btnIdItem" value="Загрузить" />
+				<input type="button" id="btnIdItem" value="Загрузить"/>
 			</div>
 		</div>
 		<div id="lData" class="pages">
 			<h3>Личные данные кота</h3>
-			<div class="section">
-				<!--Семья-->
-				<h4>Семья</h4>
-				<table>
-					<tbody>
-						<tr>
-							<td>Мама:</td>
-							<td><input id="Mutter" type="text"></td>
-						</tr>
-						<tr>
-							<td>Папа:</td>
-							<td><input id="Vater" type="text"></td>
-						</tr>
-						<tr>
-							<td>Братья и сёстры:</td>
-							<td><input id="Geschwister" type="text"></td>
-						</tr>
-						<!--<tr>
-							<td>Котята:</td>
-							<td><input id="Kinder" type="text"><br>Оставьте  поле пустым, если их нет</td>
-						</tr>
-						<tr>
-							<td><input type="checkbox" id="EhepartnerCHECK">Имя пары:</td>
-							<td><input id="Ehepartner" type="text"></td>
-						</tr>-->
-					</tbody>
-				</table>
-			</div>
-			<div class="section">
-				<!--История-->
-				<h4>История</h4>
-				<input type="text" id="Cathistory"><br>
-				Моё местонахождение:<br>
-				<input type="text" id="catLocation">
-			</div>
-			<!--
-				ПАРАМЕТРЫ И НАВЫКИ
-			-->
+			<table class="table">
+				<tr>
+					<th rowspan="3">Семья</th>
+					<td>Мама</td>
+					<td class="table-result">
+						<input id="Mutter" type="text">
+					</td>
+				</tr>
+				<tr>
+					<td>Папа</td>
+					<td class="table-result">
+						<input id="Vater" type="text">
+					</td>
+				</tr>
+				<tr>
+					<td>Братья и сёстры</td>
+					<td class="table-result">
+						<input id="Geschwister" type="text">
+					</td>
+				</tr>
+					<!--котята-->
+				<tr>
+					<th rowspan="2">История</th>
+					<td>Текст истории</td>
+					<td class="table-result">
+						<input type="text" id="Cathistory">
+					</td>
+				</tr>
+				<tr>
+					<td>Местонахожд.</td>
+					<td class="table-result">
+						<input type="text" id="catLocation">
+					</td>
+				</tr>
+				<!--Параметры и навыки-->
+			</table>
 		</div>
 		<div id="gCostume" class="pages">
-			 <div id="idCostume">
+			<h3>Создание костюмов</h3>
+			<div id="idCostume">
 				 <i>Тут будет прямая ссылка на выбранный вами костюм</i><br />
 				 Внимание! Загрузка костюмов займёт некоторое время, подождите
-			 </div>
-			 <div id="allCostume">
-			 	<input type="button" id="btnIdCostume" value="Загрузить"/>
-			 </div>
+			</div>
+			<div id="allCostume">
+				<input type="button" id="btnIdCostume" value="Загрузить"/>
+			</div>
 		</div>
 		<div id="instruction" class="pages" style="display:block;">
-			Инструкция
+			<!--лайк-->
+			<div id="vk_like"></div>
+			<h1>CatWar Animation Studio (Анимационная студия CatWar)</h1>
+			<div>Добро пожаловать на страницу проекта CatWar Animation Studio (сокращённо: CW-AS)! Тут вы можете сами управлять Игровой игры CatWar так, как вы этого сами захотите. Оригинал располагается на сайте <a href="https://catwar.su/cw3">https://catwar.su/cw3</a>; его автором является <a href="https://catwar.su/cat1">Мурр</a>. Этот сайт сделал <a href="https://catwar.su/cw3">Серолапый</a>.</div>
+			<div>В этом разделе вы можете изучить, как пользоваться студией, какие она имеет особенности, зачем нужна и прочее. Так же тут есть виджеты ВКонтакте, с помощью которых можно оставить комментарий или написать Серолапому в ЛС.</div>
+			
+			<div>
+				<h3>Навигация на сайте</h3>
+				Выше вы уже могли обратить внимание на различные кнопки: "главная", "новый персонаж" и прочие. Они нужны для открытия соответственных вкладок.<br>
+				<img src="css/about/1.png">
+				В данный моменты мы находимся на вкладке "инструкция". Чтобы перейти на другую, нужно нажать на соответственную кнопку. Пойдём в обратном порядке.
+			</div>
+			<div>
+				<h3>Инструкция</h3>
+				Каждый раз, когда вы будете заходить в студию, вы будете попадать на эту вкладку. Здесь будут находится поля "Комментарии", "Оценить сайт", "Обратная связь" и сама инструкция, которую вы сейчас читаете.
+				
+				<h4>Комментарии</h4>
+				Здесь можно оставить отзыв или поделиться чем-либо. Можно загрузить фотографию.<br>
+				<img src="css/about/2.png">
+				<h4>Оценить сайт</h4>
+				Кнопка "лайка". Мне будет очень приятно, если вы оцените мои старания ^_^. (ниже всего лишь картинка)<br>
+				<img src="css/about/3.png">
+				
+				<h4>Обратная связь</h4>
+				Сообщения группе ВКонтакте "Пушистый блог Серолапого". Здесь можно указать на баг или внести предложения по развитию этого и других моих проектов. Читал, что, вроде, можно писать анонимно, не авторизовываясь в социальной сети.<br>
+				<img src="css/about/4.png">
+			</div>
+			<div>
+				<h3>Коллекции костюмов и окрасов</h3>
+				Эти вкладки являются своеобразными копиями сайтов <a href="/useful/costume">"Коллекция костюмов CatWar"</a> и <a href="/useful/items">"Коллекция предметов CatWar"</a>. Для того, чтобы использовать функции вкладок, нужно перейти на неё, нажать на кнопку "Загрузить" и подождать некоторе время. Когда загрузятся все картинки, нажимаем на понравившийся и поднимаемся вверх. Появилась ссылка на картинку, которую копируем и вставляем, куда нужно.<br>
+				<img src="css/about/5.png">
+			</div>
+			<div>
+				<h3>Новый персонаж</h3>
+				Тут мы создаём нового кота - персонажа. Для этого нужно вставлять данные в свои поля. Когда все данные внесены, жмём кнопку "Предпросмотр" и любуемся тем, что у нас получилось. Если вам понравилось, нажимаем кнопку "Сохранить". Костюмы и дефекты разделяются запятыми без пробелов!<br>
+				<img src="css/about/6.png">
+			</div>
+			<div>
+				<h3>Личные данные</h3>
+				Родственники, история, параметры и навыки. Всё по шаблону. (параметры добавятся позже)
+				<img src="css/about/7.png">
+			</div>
+			<div>
+				<h3>Главная</h3>
+				Мы дошли до самого сока - главной страницы. Она состоит из нескольких разделов, обо всё по порядку.
+				<h4>Данные поля</h4>
+				<img src="css/about/8.png">
+				Поле чата: тут можно отправлять сообщения прямо в чат Игровой. Для этого нужно указать текст сообщения, его отправителя и громкость. "Моё имя" нужно для того, чтобы ваше имя можно было выделить жёлтым, будто к вам обращаются в Варе. После ввода данных жмём кнопку "Отправить".<br><br>
+				Поле погоды: выбираем текущее состояние из предложенного списка. Справа есть предпросмотр, на игровом поле всё изменится автоматически.<br><br>
+				Поле "поля": тут можно выбрать фон. Он бывает двух видов - однотонный (цвет) и картинка. Устанавливаем галочку у нужного варианта и в поле справа вставляем сам цвет (формат [RGB, RGBA, HEX..] не важен - работают все) или ссылку на картинку фона.
+				
+				<h4>Персонажи, созданные ранее</h4>
+				<img src="css/about/9.png">
+				Тут будут только те, которые вы сохранили! Чтобы они отобразились, жмём на кнопку "Обновить". Чтобы выбрать нужного кота, нужно нажать на него. Вокруг него появится черная рамка.<br><br>
+				
+				Под котов можно добавить предметы. Для этого выбираем кота выше, вставляем предметы через запятую без пробелов и нажимаем кнопку "Добавить предмет".
+				
+				<h4>Игровое поле</h4>
+				<b>Внимание!!! Это поле нужно лишь для сборки Игровой, скриншоты делаются не тут!</b>
+				<img src="css/about/10.png">
+				Вставляем кота. В "Данных поля" выбераем нужный тип клетки (кот, предмет, всё вместе или ничего), выбираем кота в "Персонажах, созданных ранее", кликаем по нужной клетке. Чтобы очистить клетку, в "Типах" выбирем пункт "Пустая клетка". Чтобы добавить только предмет, вставляем ех под любого кота, выбираем его, "Тип" - "Предмет", выбиаем клетку.<br><br>
+			
+				Удаление сообщения. Чтоб удалить сообщение, которое нам не нужно, нжно нажать на крестик справа от него, который в оригинале отвечает за жалобу на игрока.
+				
+				<h4>Открытие нового окна</h4>
+				Над полем есть большая кнопка:<br>
+				<img src="css/about/11.png">
+				При нажатии на нее откроется новое окно браузера с целиковой Игровой. Прикольно, да? Окно при желании разворачивается на весь экран. Можно полюбоваться тем, что вы сделали, сделать скриншоты своими средствами ИЛИ нажать правой кнопкой мыши (ПКМ), и система сделает скриншот автоматически, а браузер скачает его. Автоматика). Но за его работу я не отвечаю.<br>
+				<img src="css/about/12.png">
+				
+			<!--комментарии Вк блок-->
+			<div id="vk_comments"></div>
 		</div>
 	</article>
 	<footer>
 		(c)<a href="https://catwar.su/cat982738">Серолапый</a>, 2020
 	</footer>
+	
+	<!--СКРИПТЫ-->
+	<script src="js/block.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/home.js"></script>
+	<script src="js/items_and_costume.js"></script>
+	<script src="js/newcat.js"></script>
+	<script src="js/openGamePole.js"></script>
+	
+
 	<!-- Yandex.Metrika counter -->
 	<script type="text/javascript">
 			(function (m, e, t, r, i, k, a) {
@@ -548,16 +707,33 @@
 				m[i].l = 1 * new Date(); k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
 			})
 				(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
+	
 			ym(67068502, "init", {
 				clickmap: true,
 				trackLinks: true,
 				accurateTrackBounce: true
 			});
 	</script>
-	<noscript><div><img src="https://mc.yandex.ru/watch/67068502" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+	<noscript>
+		<div><img src="https://mc.yandex.ru/watch/67068502" style="position:absolute; left:-9999px;" alt="" /></div>
+	</noscript>
 	<!-- /Yandex.Metrika counter -->
-	<script src="js/main.js"></script>
-	<script src="js/newcat.js"></script>
+	
+	<!--Сообщения сообществу-->
+	<div id="vk_community_messages"></div>
+	<script type="text/javascript">
+		VK.Widgets.CommunityMessages("vk_community_messages", 187195090, {disableExpandChatSound: "1",disableButtonTooltip: "1"});
+	</script>
+	<!--/Сообщения сообществу-->
+	
+	<!--комментарии Вк скрипт-->
+	<script type="text/javascript">
+		VK.Widgets.Comments("vk_comments", {limit: 10, attach: "*"});
+	</script>
+	
+	<!--кнопка лайка-->
+	<script type="text/javascript">
+		VK.Widgets.Like("vk_like", {type: "full", height: 18});
+	</script>
 </body>
 </html>

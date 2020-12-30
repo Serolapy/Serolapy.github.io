@@ -1,4 +1,6 @@
 ﻿#previewDataCat .cat_tooltip {
+	font-size: 14px;
+    font-family: Verdana;
     display: block;
     position: absolute;
     z-index: 9999;
@@ -13,4 +15,7 @@
 }
 #previewDataCat .cat_tooltip a {   
     color: #930;
+}
+.select{
+	border: 1px solid black;
 }

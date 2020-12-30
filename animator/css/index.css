@@ -1,0 +1,125 @@
+/* Ð¦Ð²ÐµÑ‚Ð°:
+    rgba(255, 228, 196, 0.8) - Bisque: ARTICLE
+    rgba(255, 222, 173, 0.6)
+*/
+/*
+	общие настройки
+*/
+@font-face {
+	font-family: HEADER;
+	src: url(https://serolapy.github.io/css/fonts/DidactGothic.ttf);
+}
+
+body {
+	font-family: Arial;
+	margin: 0px;
+	background: #ffdead;
+}
+
+
+
+header, nav, footer {
+	width: 100%;
+	text-align: center;
+	margin: 2.5px 0 2.5px 0;
+}
+
+	header a{
+		font-family: HEADER;
+		padding: 50px;
+		transition:0.5s;
+		background:rgba(255,255,255,0.1);
+	}
+	    header a:hover{
+	    	font-size: 1.5em;
+	    	text-decoration:none;
+	    }
+
+header{
+	margin:0;
+	
+	background-image: url("header.jpg");
+	background-size: contain;
+	background-position: center center;
+	background-size: 100%;
+    background-repeat: no-repeat;
+}
+header table{
+	width: 100%;
+}
+
+h3{
+	text-align:center;
+	border-top:2px solid black;
+	border-radius:40px;
+	padding:10px;
+}
+
+select, input[type="text"],input[type="number"]{
+	background:#cc660033;
+	text-align:left;
+	padding:5px;
+    border-radius:20px;
+    outline:none;
+    width:200px;
+    border:2px solid black
+}
+select{
+	width:213.5px;
+	cursor:pointer;
+}
+    select:hover, input[type="text"]:hover,input[type="number"]:hover{
+    	background:#cc660033;
+    }
+option{
+	background:#ffdead;
+}
+    option:checked{
+    	background:#cc660077;
+    }
+input[type="button"]{
+	background:#cc660033;
+	border:2px solid black;
+	width:100%;
+	padding:5px;
+	outline:none;
+	margin-top:5px;
+}
+    input[type="button"]:hover{
+    	text-decoration:underline;
+    	cursor:pointer;
+    	background:#cc660077;
+    }
+a{
+	color:black;
+	text-decoration:none;
+}
+    a:hover{
+    	text-decoration:underline;
+    }
+.radio_none{
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+    .radio_none+label::before {
+      content: '';
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      flex-shrink: 0;
+      flex-grow: 0;
+      border: 1px solid black;
+      border-radius:10px;
+      margin:1px
+    }
+    .radio_none:checked+label::before{
+    	/*background: url("/css/radio.jpg") no-repeat 50% 50%;
+    	background-size: 15px 15px;*/
+    	content: "✓";
+    	border-radius:0;
+    	border:none;
+    }
+label{
+	cursor:pointer;
+}

@@ -3,6 +3,7 @@ html, body {
   padding: 0; }
 
 #app {
+  display: none;
   width: 1000px;
   margin: auto; }
 

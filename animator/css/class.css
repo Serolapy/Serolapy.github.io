@@ -1,0 +1,71 @@
+.pages {
+	display: none;
+	margin: 10px;
+}
+
+.btnPages {
+	text-decoration: none;
+	padding: 5px 10px 5px 10px;
+	margin-left: auto;
+	display: inline-block;
+	border: 1px black solid;
+	transition: 0.5s;
+	margin-bottom:5px;
+	font-family: HEADER;
+}
+	.btnPages:hover {
+		background-color: #cc660077;
+	}
+
+.editData{
+	width: 50%;
+	vertical-align:top;
+	padding:10px;
+}
+    #editSkyPreview{
+    	width:100%;
+    	/* height: 100%; */
+    }
+
+#openGamePole{
+	padding:20px 5px 20px 5px;
+	border-radius:30px;
+	background:none;
+	font-family:HEADER;
+	font-size: 20px
+}
+.table{
+	width:100%;
+	border-collapse:collapse;
+	border: 2px black solid;
+	margin:5px
+}
+    .table td, .table th{
+    	padding:2.5px;
+    	border: 1px grey solid;
+    	text-align:center
+    }
+    .table th{
+    	transform: rotate(-90deg);
+    }
+	.table-result-bottom{
+		vertical-align:bottom;
+	}
+
+.table_1{
+	width:100%;
+	text-align:center;
+
+}
+    .table_1 td{
+    	width:50%;
+
+    }
+#instruction img{
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+}
+#vk_comments{
+	margin-top:20px;
+}

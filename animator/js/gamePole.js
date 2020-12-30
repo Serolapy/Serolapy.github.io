@@ -10,7 +10,7 @@ function start(){
 			//плавное перемещение вверх
 			$('html, body').stop().animate({
 				scrollTop: $('#app').offset().top
-			}, 0);
+			}, 1);
 			
 			//получение даты и времени
 			
