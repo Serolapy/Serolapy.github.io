@@ -39,7 +39,7 @@ header{
 	margin:0;
 	
 	background-image: url("header.jpg");
-	background-size: contain;
+	/*background-size: contain;*/
 	background-position: center center;
 	background-size: 100%;
     background-repeat: no-repeat;
