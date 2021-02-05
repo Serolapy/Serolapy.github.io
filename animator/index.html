@@ -49,6 +49,10 @@
 	</nav>
 	<article>
 		<div id="home" class="pages">
+			<div class="cage_menu" id="cage_menu" style="display:none">
+				<a href="#" data-function="empty">Очистить</a><br>
+				<!--<a href="#" data-function="items">Предметы</a><br>-->
+			</div>
 			<table id="home_table">
 				<tbody>
 					<tr>
@@ -197,26 +201,17 @@
 						<td  class="editData">
 							<div>
 								<h3>
-									Персонажи, созданные ранее.
+									Персонажи
 								</h3>
-								<input type="button" id="oldCatBtn" value="Обновить" />
 								<span id="oldCats"></span>
 							</div>
 							<div>
 								<h3>
-									Предметы под котом
+									Переходы
 								</h3>
-								<table class="table_1">
-									<tr>
-										<td>
-											<input type="text" id="itemListCAGE" placeholder="[предмет1],[предмет2]..">
-										</td>
-										<td>
-											<input type="button" id="BtnItemListCAGE" value="Добавить предмет">
-										</td>
-									</tr>
-								</table>
+								<span id="oldMoves"></span>
 							</div>
+							<input type="button" id="delete_select" value="Удалить выбранное">
 						</td>
 					</tr>
 					<tr>
@@ -311,7 +306,7 @@
 										<tr id="tr_field">
 											<td id="act">
 												<div id="cages_overflow">
-													<div id="cages_div" style="opacity: 1; background-image: url('');">
+													<div id="cages_div" style="opacity: 1; background-image: url('https://catwar.su/cw3/spacoj/0.jpg');">
 														<table id="cages" style="border:1px black solid">
 															<tbody>
 																<tr>
@@ -457,7 +452,7 @@
 												<table id="info_main">
 													<tbody>
 														<tr>
-															<td id="family" class="infos"><h2><a href="#" id="relatives" class="toggle">Родственные связи</a></h2> <div id="relatives_block"><div id="family_block"><b>Мама</b>: <u><span id="Mamapole"></span></u><br><b>Папа</b>: <u><span id="Papapole"></span></u><br><b>Братья и сёстры</b>: <span id="Bratosisterypole"></span><br><b>Котята</b>: нет<br><br><i>Курсивом</i> выделены приёмные родственники.</div> <a href="/relatives">Генеалогический кустик</a> <div id="pairs"> </div></div></td>
+															<td id="family" class="infos"><h2><a href="#" id="relatives" class="toggle">Родственные связи</a></h2> <div id="relatives_block"><div id="family_block"><b>Мама</b>: <u><span id="Mamapole"></span></u><br><b>Папа</b>: <u><span id="Papapole"></span></u><br><b>Братья и сёстры</b>: <span id="Bratosisterypole"></span><br><b>Котята</b>: нет<br><br><i>Курсивом</i> выделены приёмные родственники.</div> <a href="#">Генеалогический кустик</a> <div id="pairs"> </div></div></td>
 															<td id="history" class="infos">
 																<h2><a href="#" id="history" class="toggle">История</a></h2> <div id="history_block">
 																	<i>История очищена.</i> <span id="ist"></span><br> <a href="#" id="history_clean">Очистить историю</a> <div style="background-color: white;">
@@ -485,69 +480,102 @@
 			</table>
 		</div>		
 		<div id="newPers" class="pages">
-			<h3>Настройки кота</h3>
-			<table>
-				<tbody>
-					<tr>
-						<th width="140px">Пол</th>
-						<td>
-							<select id="catPOL">
-								<option value="der">Кот</option>
-								<option value="die">Кошка</option>
-							</select>
-						</td>
-						<td rowspan="9">
-							<h5>Предпросмотр</h5>
-							<div id="previewCat"></div>
-							<div id="previewDataCat"></div>
-						</td>
-					</tr>
-					<tr>
-						<th>Окрас</th>
-						<td><input type="text" id="catColor" placeholder="https://catwar.su/cw3/composited/1.png"></td>
-					</tr>
-					<tr>
-						<th>Размер</th>
-						<td><input type="number" id="catSize" placeholder="100">%</td>
-					</tr>
-					<tr>
-						<th>Имя</th>
-						<td><input type="text" id="catName" placeholder="Серолапый"></td>
-					</tr>
-					<tr>
-						<th>Должность</th>
-						<td><input type="text" id="catJob" placeholder="Оруженосец"></td>
-					</tr>
-					<tr>
-						<th>Запах</th>
-						<td><input type="text" id="catSmell" placeholder="https://catwar.su/cw3/odoroj/51.png"></td>
-					</tr>
-					<tr>
-						<th>Состояние</th>
-						<td>
-							<select id="catOnline">
-								<option value="online">В сети</option>
-								<option value="offline">Спит</option>
-								<option value="wait">Недавно ушёл (-а)</option>
-								<option value="block">Заблокирован (-а)</option>
-								<option value="delete">На удалении</option>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<th>Костюм и дефекты</th>
-						<td><input type="text" id="catCostume" placeholder="[костюм],[дефект1].."></td>
-					</tr>
-					<tr>
-						<td>
-							<input type="button" id="previewcatBtn" value="Предпросмотр" style="width:100%" />
-						</td>
-						<td>
-							<input type="button" id="saveCat" value="Сохранить" style="width:100%" />
-						</td>
-					</tr>
-				</tbody>
-			</table>
+			<div>
+				<h3>Настройки кота</h3>
+				<table>
+					<tbody>
+						<tr>
+							<th width="140px">Пол</th>
+							<td>
+								<select id="catPOL">
+									<option value="der">Кот</option>
+									<option value="die">Кошка</option>
+								</select>
+							</td>
+							<td rowspan="10" style="vertical-align: top;">
+								<div id="previewCat"></div>
+								<div id="previewDataCat"></div>
+							</td>
+						</tr>
+						<tr>
+							<th>Окрас</th>
+							<td><input type="text" id="catColor" placeholder="https://catwar.su/cw3/composited/1.png"></td>
+						</tr>
+						<tr>
+							<th>Размер</th>
+							<td><input type="number" id="catSize" placeholder="100">%</td>
+						</tr>
+						<tr>
+							<th>Имя</th>
+							<td><input type="text" id="catName" placeholder="Серолапый"></td>
+						</tr>
+						<tr>
+							<th>Должность</th>
+							<td><input type="text" id="catJob" placeholder="Оруженосец"></td>
+						</tr>
+						<tr>
+							<th>Запах</th>
+							<td><input type="text" id="catSmell" placeholder="https://catwar.su/cw3/odoroj/51.png"></td>
+						</tr>
+						<tr>
+							<th>Состояние</th>
+							<td>
+								<select id="catOnline">
+									<option value="online">В сети</option>
+									<option value="offline">Спит</option>
+									<option value="wait">Недавно ушёл (-а)</option>
+									<option value="block">Заблокирован (-а)</option>
+									<option value="delete">На удалении</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<th>Костюм и дефекты</th>
+							<td><input type="text" id="catCostume" placeholder="[костюм] [дефект1] [..]"></td>
+						</tr>
+						<tr>
+							<th>Рот</th>
+							<td><input type="text" id="catMouth" placeholder="[предмет1] [предмет2] [..]"></td>
+						</tr>
+						<tr>
+							<td>
+								<input type="button" id="previewcatBtn" value="Предпросмотр" style="width:100%" />
+							</td>
+							<td>
+								<input type="button" id="saveCat" value="Сохранить" style="width:100%" />
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div>
+				<h3>Настройки перехода</h3>
+				<table>
+					<tbody>
+						<tr>
+							<th width="140px">Картинка</th>
+							<td><input type="text" id="movesBackground" placeholder="https://catwar.su/cw3/moves/1.png"></td>
+							<td rowspan="3" style="vertical-align: top;">
+								<div id="previewMoves"></div>
+							</td>
+						</tr>
+						<tr>
+							<th>Подпись</th>
+							<td>
+								<input type="text" id="movesName" placeholder="Название локации">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="button" id="previewmovesBtn" value="Предпросмотр" style="width:100%" />
+							</td>
+							<td>
+								<input type="button" id="saveMoves" value="Сохранить" style="width:100%" />
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 		<div id="gItems" class="pages">
 			<h3>Создание предметов</h3>

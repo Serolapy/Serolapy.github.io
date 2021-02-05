@@ -206,10 +206,7 @@ input#text {
   position: absolute; }
 
 .cat_tooltip {
-  display: none; }
-
-.cat:hover .cat_tooltip {
-  display: block;
+  display: none; 
   position: absolute;
   z-index: 9999;
   padding: 10px;
@@ -221,7 +218,10 @@ input#text {
   font-weight: bold;
   text-align: center; }
 
-.cat:hover .cat_tooltip a {
+.cat:hover .cat_tooltip {
+  display: block;}
+
+.cat .cat_tooltip a {
   color: #930; }
 
 .mouth {
