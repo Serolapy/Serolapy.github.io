@@ -1,3 +1,16 @@
+@-moz-document url-prefix(){
+	/*
+		ТУПАЯ
+		НИКЧЕМНАЯ
+		БЕЗДУШНАЯ
+		МАЗИЛА
+		ФАЙЕР
+		ФОКС!!!!
+	*/
+    .cat_tooltip{
+		position: inherit;
+	}
+}
 #app {
   display: block;
   width: 1000px;
