@@ -78,7 +78,11 @@
 	border-radius:10px;
 	z-index:9999;
 }
-.select_cage{
+.select_cage, .select_machen{
 	transition: 0.5s;
 	background: #cc660077;
+}
+.divMachen{
+	height:140px;
+	overflow:auto;
 }

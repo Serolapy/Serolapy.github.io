@@ -38,7 +38,7 @@ header, nav, footer {
 header{
 	margin:0;
 	
-	background-image: url("header.jpg");
+	background-image: url("img/header.jpg");
 	/*background-size: contain;*/
 	background-position: center center;
 	background-size: 100%;
@@ -55,7 +55,7 @@ h3{
 	padding:10px;
 }
 
-select, input[type="text"],input[type="number"]{
+select:not(#app select), input[type="text"],input[type="number"]{
 	background:#cc660033;
 	text-align:left;
 	padding:5px;
@@ -64,11 +64,11 @@ select, input[type="text"],input[type="number"]{
     width:200px;
     border:2px solid black
 }
-select{
+select:not(#app select){
 	width:213.5px;
 	cursor:pointer;
 }
-    select:hover, input[type="text"]:hover,input[type="number"]:hover{
+    select:hover:not(#app select:hover), input[type="text"]:hover,input[type="number"]:hover{
     	background:#cc660033;
     }
 option{
@@ -77,7 +77,7 @@ option{
     option:checked{
     	background:#cc660077;
     }
-input[type="button"]{
+input[type="button"]:not(#app input[type="button"]){
 	background:#cc660033;
 	border:2px solid black;
 	width:100%;

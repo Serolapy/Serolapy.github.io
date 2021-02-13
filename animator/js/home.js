@@ -55,17 +55,6 @@ function SkyTimeSeasons() {
 }
 $('#editSky,#editTime,#editSeason').change(SkyTimeSeasons);	//при изменении значения в одном из полей
 
-/*изменение данных полей*/
-function FamilieGeschichteUndAndere() {
-	/*$(Murr).html($(Serolapy).val())*/
-	$('#Mamapole').html($('#Mutter').val());
-	$('#Papapole').html($('#Vater').val());
-	$('#Bratosisterypole').html($('#MuttGeschwisterer').val());
-	$('#ist').html($('#Cathistory').val());
-	$('#location').html($('#catLocation').val());
-}
-$('#Mutter, #Vater, #MuttGeschwisterer, #Cathistory, #catLocation').change(FamilieGeschichteUndAndere);	//при изменении значения в одном из полей
-
 /*Отправка сообщений*/
 $('#newMessBtn').on('click', function () {
 	//text = $('newMessText').val().replace($('#newMessName').val(), '<span class="myname">' + $('#newMessName').val() + '</span>');

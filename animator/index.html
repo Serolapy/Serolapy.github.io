@@ -255,25 +255,24 @@
 										</tr>
 										<tr id="tr_actions">
 											<td>
-												<span class="title">Действия</span> <div id="block_deys" style="display: none;">
+												<span class="title">Действия</span> <div id="block_deys">
 													<table style="width: 100%;">
 														<tbody>
 															<tr>
 																<td style="width: 70%;">
-																	<div id="akten" style="display: block;"><!--Действия--></div> 
-																	<div id="dein" style="display: none;"><!--Действия с другими игроками--></div>
+																	<div id="akten" style="display: block;"></div> 
+																	<div id="dein" style="display: none;"></div>
 																</td>
 																<td>
 																	Действия с каким-либо котом в соседней клетке:<br> <select id="mit">
-																		<option value="0">Действия с собой</option>
-																		<option value=""><!-- В валу ид кота--><!--имя кота--></option>
+																		<option>Действия с собой</option>
 																	</select><br> 
 																	<input type="button" id="mitok" value="Показать">
 																</td>
 															</tr>
 														</tbody>
 													</table>
-												</div> <div id="block_mess"></div>
+												</div> <div id="block_mess" style="display:none;"></div>
 											</td>
 										</tr>
 										<tr id="tr_tos">
@@ -460,7 +459,42 @@
 																	</div>
 																</div>
 															</td>
-															<td id="parameter" class="infos"><h2><a href="#" id="parameters" class="toggle">Параметры и навыки</a></h2> <div id="parameters_block"></div></td>
+															<td id="parameter" class="infos">
+																<h2><a href="#" id="parameters" class="toggle">Параметры и навыки</a></h2> 
+																<div id="parameters_block">
+																	<!--+ Сон-->
+																	<table id="dream_table"><tbody><tr><td><div class="symbole" style="background-position: 0px -30px"></div></td><td><span id="dream"><table class="parameter"><tbody><tr><td style="width: 150px; background-color: green;"></td><td style="background-color: red; width: 0px;"></td></tr></tbody></table></span></td></tr></tbody></table>
+																	<!--+ Голод-->
+																	<table id="hunger_table"><tbody><tr><td><div class="symbole" style="background-position: 0px -60px"></div></td><td><span id="hunger"><table class="parameter"><tbody><tr><td style="width: 150px; background-color: green;"></td><td style="background-color: red; width: 0px;"></td></tr></tbody></table></span></td></tr></tbody></table>
+																	<!--+ Жажда-->
+																	<table id="thirst_table"><tbody><tr><td><div class="symbole" style="background-position: 0px -15px"></div></td><td><span id="thirst"><table class="parameter"><tbody><tr><td style="width: 150px; background-color: green;"></td><td style="background-color: red; width: 0px;"></td></tr></tbody></table></span></td></tr></tbody></table>
+																	<!--+ Нужда-->
+																	<table id="need_table"><tbody><tr><td><div class="symbole" style="background-position: 0px -45px;"></div></td><td><span id="need"><table class="parameter"><tbody><tr><td style="width: 150px; background-color: green;"></td><td style="background-color: red; width: 0px;"></td></tr></tbody></table></span></td></tr></tbody></table>
+																	<!--+ Здоровье-->
+																	<table id="health_table"><tbody><tr><td><div class="symbole" id="vundo_icon" style="background-position: 0px -90px"></div></td><td><span id="health"><table class="parameter"><tbody><tr><td style="width: 150px; background-color: green;"></td><td style="background-color: red; width: 0px;"></td></tr></tbody></table></span></td></tr></tbody></table>
+																	<!--+ Чистота-->
+																	<table id="clean_table"><tbody><tr><td><div class="symbole" style="background-position: 0px -120px"></div></td><td><span id="clean"><table class="parameter"><tbody><tr><td style="width: 150px; background-color: green;"></td><td style="background-color: red; width: 0px;"></td></tr></tbody></table></span></td></tr></tbody></table>
+																	<hr>
+																	<!--+ Нюх-->
+																	<table class="skills" id="smell_table"><tbody><tr><td><div class="symbole" id="smell_icon" style="background-position: 0px 0px"></div></td><td><span id="smell"><table cellspacing="0" cellpadding="0"><tbody><tr><td><table class="parameter"><tbody><tr><td style="width:150px;background-color:green"></td><td style="background-color:#ccc;width:0px"></td></tr></tbody></table></td><td>&nbsp;<b>6</b></td></tr></tbody></table></span></td></tr></tbody></table>
+																	<!--+ Копание-->
+																	<table class="skills" id="dig_table"><tbody><tr><td><div class="symbole" style="background-position: 0px -105px"></div></td><td><span id="dig"><table cellspacing="0" cellpadding="0"><tbody><tr><td><table class="parameter"><tbody><tr><td style="width:150px;background-color:green"></td><td style="background-color:#ccc;width:0px"></td></tr></tbody></table></td><td>&nbsp;<b>6</b></td></tr></tbody></table></span></td></tr></tbody></table>
+																	<!--Целительские-->
+																	<table class="skills" id="medicine_table"><tbody><tr><td><div class="symbole" style="background-position: 0px -105px"></div></td><td><span id="medicine"><table cellspacing="0" cellpadding="0"><tbody><tr><td><table class="parameter"><tbody><tr><td style="width:150px;background-color:green"></td><td style="background-color:#ccc;width:0px"></td></tr></tbody></table></td><td>&nbsp;<b>6</b></td></tr></tbody></table></span></td></tr></tbody></table>
+																	<!--Плавание (мой ид)-->
+																	<table class="skills" id="Swimming_table"><tbody><tr><td><div class="symbole" style="background-position: 0px -135px"></div></td><td><span id="Swimming"><table cellspacing="0" cellpadding="0"><tbody><tr><td><table class="parameter"><tbody><tr><td style="width:150px;background-color:green"></td><td style="background-color:#ccc;width:0px"></td></tr></tbody></table></td><td>&nbsp;<b>6</b></td></tr></tbody></table></span></td></tr></tbody></table>
+																	<!--+ Боевые умения-->
+																	<table class="skills" id="might_table"><tbody><tr><td><div class="symbole" style="background-position: 0px -150px"></div></td><td><span id="might"><table cellspacing="0" cellpadding="0"><tbody><tr><td><table class="parameter"><tbody><tr><td style="width:150px;background-color:green"></td><td style="background-color:#ccc;width:0px"></td></tr></tbody></table></td><td>&nbsp;<b>6</b></td></tr></tbody></table></span></td></tr></tbody></table>
+																	<!--Могущество-->
+																	<table class="skills" id="power_table"><tbody><tr><td><div class="symbole" style="background-position: 0px -165px"></div></td><td><span id="power"><table cellspacing="0" cellpadding="0"><tbody><tr><td><table class="parameter"><tbody><tr><td style="width:150px;background-color:green"></td><td style="background-color:#ccc;width:0px"></td></tr></tbody></table></td><td>&nbsp;<b>6</b></td></tr></tbody></table></span></td></tr></tbody></table>
+																	<!--Двунолапые-->
+																	<table class="skills" id="Loyalty_table"><tbody><tr><td><div class="symbole" style="background-position: 0px -180px"></div></td><td><span id="Loyalty"><table cellspacing="0" cellpadding="0"><tbody><tr><td><table class="parameter"><tbody><tr><td style="width:150px;background-color:green"></td><td style="background-color:#ccc;width:0px"></td></tr></tbody></table></td><td>&nbsp;<b>6</b></td></tr></tbody></table></span></td></tr></tbody></table>
+																	<!--+ Лазание-->
+																	<table class="skills" id="tree_table"><tbody><tr><td><div class="symbole" style="background-position: 0px -195px"></div></td><td><span id="tree"><table cellspacing="0" cellpadding="0"><tbody><tr><td><table class="parameter"><tbody><tr><td style="width:150px;background-color:green"></td><td style="background-color:#ccc;width:0px"></td></tr></tbody></table></td><td>&nbsp;<b>6</b></td></tr></tbody></table></span></td></tr></tbody></table>
+																	<!--Зоркость-->
+																	<table class="skills" id="vigilance_table"><tbody><tr><td><div class="symbole" style="background-position: 0px -210px"></div></td><td><span id="vigilance"><table cellspacing="0" cellpadding="0"><tbody><tr><td><table class="parameter"><tbody><tr><td style="width:150px;background-color:green"></td><td style="background-color:#ccc;width:0px"></td></tr></tbody></table></td><td>&nbsp;<b>6</b></td></tr></tbody></table></span></td></tr></tbody></table>
+																</div>
+															</td>
 														</tr>
 													</tbody>
 												</table>
@@ -593,19 +627,19 @@
 				<tr>
 					<th rowspan="3">Семья</th>
 					<td>Мама</td>
-					<td class="table-result">
+					<td class="table-result" colspan="2">
 						<input id="Mutter" type="text" placeholder="Сверкающая Молния">
 					</td>
 				</tr>
 				<tr>
 					<td>Папа</td>
-					<td class="table-result">
+					<td class="table-result" colspan="2">
 						<input id="Vater" type="text" placeholder="Удар Грома">
 					</td>
 				</tr>
 				<tr>
 					<td>Братья и сёстры</td>
-					<td class="table-result">
+					<td class="table-result" colspan="2">
 						<input id="Geschwister" type="text" placeholder="Почемугрив, Мурр, Почтовик">
 					</td>
 				</tr>
@@ -613,17 +647,369 @@
 				<tr>
 					<th rowspan="2">История</th>
 					<td>Текст истории</td>
-					<td class="table-result">
+					<td class="table-result" colspan="2">
 						<input type="text" id="Cathistory" placeholder="Поспал. Поел. Поспал.">
 					</td>
 				</tr>
 				<tr>
 					<td>Местонахожд.</td>
-					<td class="table-result">
+					<td class="table-result" colspan="2">
 						<input type="text" id="catLocation" placeholder="Предгорья">
 					</td>
 				</tr>
-				<!--Параметры и навыки-->
+				<tr class="skills-edit" data-id="dream">
+					<th rowspan="6">Параметры</th>
+					<td>Сон</td>
+					<td class="table-result" colspan="2">
+						<input type="number" placeholder="50"> из <input type="number" placeholder="150">
+					</td>
+
+				</tr>
+				<tr class="skills-edit" data-id="hunger">
+					<td>Голод</td>
+					<td class="table-result" colspan="2">
+						<input type="number" placeholder="50"> из <input type="number" placeholder="150">
+					</td>
+				</tr>
+				<tr class="skills-edit" data-id="thirst">
+					<td>Жажда</td>
+					<td class="table-result" colspan="2">
+						<input type="number" placeholder="50"> из <input type="number" placeholder="150">
+					</td>
+				</tr>
+				<tr class="skills-edit" data-id="need">
+					<td>Нужда</td>
+					<td class="table-result" colspan="2">
+						<input type="number" placeholder="50"> из <input type="number" placeholder="150">
+					</td>
+				</tr>
+				<tr class="skills-edit" data-id="health">
+					<td>Здоровье</td>
+					<td class="table-result" colspan="2">
+						<input type="number" placeholder="50"> из <input type="number" placeholder="150">
+					</td>
+				</tr>
+				<tr class="skills-edit" data-id="clean">
+					<td>Чистота</td>
+					<td class="table-result" colspan="2">
+						<input type="number" placeholder="50"> из <input type="number" placeholder="150">
+					</td>
+				</tr>
+
+				<tr class="skills-edit skills-edit-not" data-id="smell">
+					<th rowspan="9">Навыки</th>
+					<td>Нюх</td>
+					<td class="table-result">
+						<input type="number" placeholder="50"> из <input type="number" placeholder="150">
+					</td>
+					<td class="table-result">
+						<input type="number" placeholder="Уровень">
+					</td>
+				</tr>
+				<tr class="skills-edit skills-edit-not" data-id="dig">
+					<td>Копание</td>
+					<td class="table-result">
+						<input type="number" placeholder="50"> из <input type="number" placeholder="150">
+					</td>
+					<td class="table-result">
+						<input type="number" placeholder="Уровень">
+					</td>
+				</tr>
+				<tr class="skills-edit skills-edit-not" data-id="medicine">
+					<td>Целительские ум.</td>
+					<td class="table-result">
+						<input type="number" placeholder="50"> из <input type="number" placeholder="150">
+					</td>
+					<td class="table-result">
+						<input type="number" placeholder="Уровень">
+					</td>
+				</tr>
+				<tr class="skills-edit skills-edit-not" data-id="Swimming">
+					<td>Плавание</td>
+					<td class="table-result">
+						<input type="number" placeholder="50"> из <input type="number" placeholder="150">
+					</td>
+					<td class="table-result">
+						<input type="number" placeholder="Уровень">
+					</td>
+				</tr>
+				<tr class="skills-edit skills-edit-not" data-id="might">
+					<td>Боевые умения</td>
+					<td class="table-result">
+						<input type="number" placeholder="50"> из <input type="number" placeholder="150">
+					</td>
+					<td class="table-result">
+						<input type="number" placeholder="Уровень">
+					</td>
+				</tr>
+				<tr class="skills-edit skills-edit-not" data-id="power">
+					<td>Могущество</td>
+					<td class="table-result">
+						<input type="number" placeholder="50"> из <input type="number" placeholder="150">
+					</td>
+					<td class="table-result">
+						<input type="number" placeholder="Уровень">
+					</td>
+				</tr>
+				<tr class="skills-edit skills-edit-not" data-id="Loyalty">
+					<td>Верность Двуногим</td>
+					<td class="table-result">
+						<input type="number" placeholder="50"> из <input type="number" placeholder="150">
+					</td>
+					<td class="table-result">
+						<input type="number" placeholder="Уровень">
+					</td>
+				</tr>
+				<tr class="skills-edit skills-edit-not" data-id="tree">
+					<td>Лазание</td>
+					<td class="table-result">
+						<input type="number" placeholder="50"> из <input type="number" placeholder="150">
+					</td>
+					<td class="table-result">
+						<input type="number" placeholder="Уровень">
+					</td>
+				</tr>
+				<tr class="skills-edit skills-edit-not" data-id="vigilance">
+					<td>Зоркость</td>
+					<td class="table-result">
+						<input type="number" placeholder="50"> из <input type="number" placeholder="150">
+					</td>
+					<td class="table-result">
+						<input type="number" placeholder="Уровень">
+					</td>
+				</tr>
+				<!--ТБ-->
+			</table>
+			<h3>Действия</h3>
+			<table class="table">
+				<tr>
+					<td colspan="3">Укажите нужный тип и веберете нужные действия</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="radio" name="machen" value="akten" checked>
+					</td>
+					<td>
+						<div class="divMachen" id="aktenID">
+							<!--div#akten--> 
+							<img src="https://catwar.su/cw3/actions/3.png">
+							<img src="https://catwar.su/cw3/actions/13.png">
+							<img src="https://catwar.su/cw3/actions/17.png">
+							<img src="https://catwar.su/cw3/actions/27.png">
+							<img src="https://catwar.su/cw3/actions/flowers.png">
+							<img src="https://catwar.su/cw3/actions/hunt2.png">
+							<img src="https://catwar.su/cw3/actions/hunt3.png">
+							<img src="https://catwar.su/cw3/actions/hunt4.png">
+							<img src="https://catwar.su/cw3/actions/hunt6.png">
+							<img src="https://catwar.su/cw3/actions/hunt7.png">
+							<img src="https://catwar.su/cw3/actions/hunt8.png">
+							<img src="https://catwar.su/cw3/actions/hunt9.png">
+							<img src="https://catwar.su/cw3/actions/hunt10.png">
+							<img src="https://catwar.su/cw3/actions/hunt11.png">
+							<img src="https://catwar.su/cw3/actions/hunt12.png">
+							<img src="https://catwar.su/cw3/actions/hunt45.png">
+							<img src="https://catwar.su/cw3/actions/hunt50.png">
+							<img src="https://catwar.su/cw3/actions/hunt89.png">
+							<img src="https://catwar.su/cw3/actions/hunt96.png">
+							<img src="https://catwar.su/cw3/actions/hunt101.png">
+							<img src="https://catwar.su/cw3/actions/hunt103.png">
+							<img src="https://catwar.su/cw3/actions/hunt185.png">
+							<img src="https://catwar.su/cw3/actions/hunt191.png">
+							<img src="https://catwar.su/cw3/actions/hunt218.png">
+							<img src="https://catwar.su/cw3/actions/hunt235.png">
+							<img src="https://catwar.su/cw3/actions/hunt242.png">
+							<img src="https://catwar.su/cw3/actions/hunt249.png">
+							<img src="https://catwar.su/cw3/actions/hunt461.png">
+							<img src="https://catwar.su/cw3/actions/hunt517.png">
+							<img src="https://catwar.su/cw3/actions/hunt539.png">
+							<img src="https://catwar.su/cw3/actions/hunt606.png">
+							<img src="https://catwar.su/cw3/actions/hunt618.png">
+							<img src="https://catwar.su/cw3/actions/hunt641.png">
+							<img src="https://catwar.su/cw3/actions/hunt648.png">
+							<img src="https://catwar.su/cw3/actions/hunt660.png">
+							<img src="https://catwar.su/cw3/actions/hunt663.png">
+							<img src="https://catwar.su/cw3/actions/hunt666.png">
+							<img src="https://catwar.su/cw3/actions/hunt669.png">
+							<img src="https://catwar.su/cw3/actions/hunt672.png">
+							<img src="https://catwar.su/cw3/actions/hunt676.png">
+							<img src="https://catwar.su/cw3/actions/hunt691.png">
+							<img src="https://catwar.su/cw3/actions/hunt709.png">
+							<img src="https://catwar.su/cw3/actions/hunt739.png">
+							<img src="https://catwar.su/cw3/actions/hunt763.png">
+							<img src="https://catwar.su/cw3/actions/hunt779.png">
+							<img src="https://catwar.su/cw3/actions/hunt791.png">
+							<img src="https://catwar.su/cw3/actions/hunt798.png">
+							<img src="https://catwar.su/cw3/actions/hunt815.png">
+							<img src="https://catwar.su/cw3/actions/hunt824.png">
+							<img src="https://catwar.su/cw3/actions/hunt833.png">
+							<img src="https://catwar.su/cw3/actions/hunt842.png">
+							<img src="https://catwar.su/cw3/actions/hunt878.png">
+							<img src="https://catwar.su/cw3/actions/hunt887.png">
+							<img src="https://catwar.su/cw3/actions/hunt890.png">
+							<img src="https://catwar.su/cw3/actions/hunt895.png">
+							<img src="https://catwar.su/cw3/actions/hunt904.png">
+							<img src="https://catwar.su/cw3/actions/hunt907.png">
+							<img src="https://catwar.su/cw3/actions/hunt917.png">
+							<img src="https://catwar.su/cw3/actions/hunt920.png">
+							<img src="https://catwar.su/cw3/actions/hunt926.png">
+							<img src="https://catwar.su/cw3/actions/hunt950.png">
+							<img src="https://catwar.su/cw3/actions/hunt962.png">
+							<img src="https://catwar.su/cw3/actions/hunt990.png">
+							<img src="https://catwar.su/cw3/actions/hunt1024.png">
+							<img src="https://catwar.su/cw3/actions/hunt1028.png">
+							<img src="https://catwar.su/cw3/actions/hunt1029.png">
+							<img src="https://catwar.su/cw3/actions/hunt1050.png">
+							<img src="https://catwar.su/cw3/actions/hunt1068.png">
+							<img src="https://catwar.su/cw3/actions/hunt1076.png">
+							<img src="https://catwar.su/cw3/actions/hunt1130.png">
+							<img src="https://catwar.su/cw3/actions/hunt1135.png">
+							<img src="https://catwar.su/cw3/actions/hunt1159.png">
+							<img src="https://catwar.su/cw3/actions/hunt1172.png">
+							<img src="https://catwar.su/cw3/actions/hunt1174.png">
+							<img src="https://catwar.su/cw3/actions/hunt1176.png">
+							<img src="https://catwar.su/cw3/actions/hunt1182.png">
+							<img src="https://catwar.su/cw3/actions/hunt1221.png">
+							<img src="https://catwar.su/cw3/actions/hunt1263.png">
+							<img src="https://catwar.su/cw3/actions/hunt1300.png">
+							<img src="https://catwar.su/cw3/actions/hunt1309.png">
+							<img src="https://catwar.su/cw3/actions/hunt1353.png">
+							<img src="https://catwar.su/cw3/actions/hunt1356.png">
+							<img src="https://catwar.su/cw3/actions/hunt1397.png">
+							<img src="https://catwar.su/cw3/actions/hunt1406.png">
+							<img src="https://catwar.su/cw3/actions/hunt1410.png">
+							<img src="https://catwar.su/cw3/actions/hunt1413.png">
+							<img src="https://catwar.su/cw3/actions/hunt1436.png">
+							<img src="https://catwar.su/cw3/actions/hunt1454.png">
+							<img src="https://catwar.su/cw3/actions/hunt1471.png">
+							<img src="https://catwar.su/cw3/actions/hunt1518.png">
+							<img src="https://catwar.su/cw3/actions/hunt1570.png">
+							<img src="https://catwar.su/cw3/actions/hunt1610.png">
+							<img src="https://catwar.su/cw3/actions/hunt1702.png">
+							<img src="https://catwar.su/cw3/actions/hunt1784.png">
+							<img src="https://catwar.su/cw3/actions/hunt1835.png">
+							<img src="https://catwar.su/cw3/actions/hunt1838.png">
+							<img src="https://catwar.su/cw3/actions/hunt1839.png">
+							<img src="https://catwar.su/cw3/actions/hunt1879.png">
+							<img src="https://catwar.su/cw3/actions/hunt1912.png">
+							<img src="https://catwar.su/cw3/actions/hunt1913.png">
+							<img src="https://catwar.su/cw3/actions/hunt1914.png">
+							<img src="https://catwar.su/cw3/actions/hunt1915.png">
+							<img src="https://catwar.su/cw3/actions/hunt1916.png">
+							<img src="https://catwar.su/cw3/actions/hunt1998.png">
+							<img src="https://catwar.su/cw3/actions/hunt2213.png">
+							<img src="https://catwar.su/cw3/actions/hunt2224.png">
+							<img src="https://catwar.su/cw3/actions/hunt2373.png">
+							<img src="https://catwar.su/cw3/actions/hunt2551.png">
+							<img src="https://catwar.su/cw3/actions/hunt2525.png">
+							<img src="https://catwar.su/cw3/actions/hunt2581.png">
+							<img src="https://catwar.su/cw3/actions/hunt2511.png">
+							<img src="https://catwar.su/cw3/actions/hunt2532.png">
+							<img src="https://catwar.su/cw3/actions/hunt2620.png">
+							<img src="https://catwar.su/cw3/actions/hunt2633.png">
+							<img src="https://catwar.su/cw3/actions/hunt2677.png">
+							<img src="https://catwar.su/cw3/actions/hunt2688.png">
+							<img src="https://catwar.su/cw3/actions/hunt2795.png">
+							<img src="https://catwar.su/cw3/actions/hunt2798.png">
+							<img src="https://catwar.su/cw3/actions/hunt2914.png">
+							<img src="https://catwar.su/cw3/actions/hunt2920.png">
+							<img src="https://catwar.su/cw3/actions/hunt2926.png">
+							<img src="https://catwar.su/cw3/actions/hunt2929.png">
+							<img src="https://catwar.su/cw3/actions/hunt2935.png">
+							<img src="https://catwar.su/cw3/actions/hunt3002.png">
+							<img src="https://catwar.su/cw3/actions/hunt3006.png">
+							<img src="https://catwar.su/cw3/actions/hunt3007.png">
+							<img src="https://catwar.su/cw3/actions/hunt3008.png">
+							<img src="https://catwar.su/cw3/actions/hunt3046.png">
+							<img src="https://catwar.su/cw3/actions/hunt3070.png">
+							<img src="https://catwar.su/cw3/actions/hunt3163.png">
+							<img src="https://catwar.su/cw3/actions/hunt3167.png">
+							<img src="https://catwar.su/cw3/actions/hunt3190.png">
+							<img src="https://catwar.su/cw3/actions/hunt3301.png">
+							<img src="https://catwar.su/cw3/actions/hunt3312.png">
+							<img src="https://catwar.su/cw3/actions/hunt3316.png">
+							<img src="https://catwar.su/cw3/actions/hunt3331.png">
+							<img src="https://catwar.su/cw3/actions/hunt3345.png">
+							<img src="https://catwar.su/cw3/actions/hunt3435.png">
+							<img src="https://catwar.su/cw3/actions/hunt3436.png">
+							<img src="https://catwar.su/cw3/actions/hunt3503.png">
+							<img src="https://catwar.su/cw3/actions/hunt3512.png">
+							<img src="https://catwar.su/cw3/actions/hunt3517.png">
+							<img src="https://catwar.su/cw3/actions/hunt3521.png">
+							<img src="https://catwar.su/cw3/actions/hunt3535.png">
+							<img src="https://catwar.su/cw3/actions/hunt3551.png">
+							<img src="https://catwar.su/cw3/actions/hunt3600.png">
+							<img src="https://catwar.su/cw3/actions/hunt3601.png">
+							<img src="https://catwar.su/cw3/actions/hunt3602.png">
+							<img src="https://catwar.su/cw3/actions/hunt3603.png">
+							<img src="https://catwar.su/cw3/actions/hunt3752.png">
+							<img src="https://catwar.su/cw3/actions/hunt3785.png">
+							<img src="https://catwar.su/cw3/actions/hunt3851.png">
+							<img src="https://catwar.su/cw3/actions/hunt3854.png">
+							<img src="https://catwar.su/cw3/actions/hunt3901.png">
+							<img src="https://catwar.su/cw3/actions/hunt3904.png">
+							<img src="https://catwar.su/cw3/actions/hunt3911.png">
+							<img src="https://catwar.su/cw3/actions/hunt3914.png">
+							<img src="https://catwar.su/cw3/actions/hunt4195.png">
+							<img src="https://catwar.su/cw3/actions/hunt4196.png">
+							<img src="https://catwar.su/cw3/actions/hunt4197.png">
+							<img src="https://catwar.su/cw3/actions/hunt4198.png">
+							<img src="https://catwar.su/cw3/actions/hunt4199.png">
+							<img src="https://catwar.su/cw3/actions/hunt4256.png">
+							<img src="https://catwar.su/cw3/actions/hunt4279.png">
+							<img src="https://catwar.su/cw3/actions/hunt4473.png">
+							<img src="https://catwar.su/cw3/actions/hunt4482.png">
+							<img src="https://catwar.su/cw3/actions/hunt4677.png">
+							<img src="https://catwar.su/cw3/actions/hunt4396.png">
+							<img src="https://catwar.su/cw3/actions/hunt4009.png">
+							<img src="https://catwar.su/cw3/actions/hunt4779.png">
+							<img src="https://catwar.su/cw3/actions/hunt4789.png">
+							<img src="https://catwar.su/cw3/actions/hunt4886.png">
+							<img src="https://catwar.su/cw3/actions/hunt4801.png">
+							<img src="https://catwar.su/cw3/actions/hunt4933.png">
+							<img src="https://catwar.su/cw3/actions/hunt4976.png">
+							<img src="https://catwar.su/cw3/actions/hunt4993.png">
+							<img src="https://catwar.su/cw3/actions/hunt5068.png">
+							<img src="https://catwar.su/cw3/actions/hunt5110.png">
+							<img src="https://catwar.su/cw3/actions/hunt5116.png">
+						</div>
+					</td>
+					<td rowspan="2">
+						Список котов, доступных для действий
+						<input type="text" id="mitMachen" placeholder="Кот1 Кот2 Кот3 ...">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="radio" name="machen" value="dein">
+					</td>
+					<td>
+						<div class="divMachen" id="deinID">
+							<!--div#dein-->
+							<img src="https://catwar.su/cw3/actions/6.png">
+							<img src="https://catwar.su/cw3/actions/9.png">
+							<img src="https://catwar.su/cw3/actions/12.png">
+							<img src="https://catwar.su/cw3/actions/14.png">
+							<img src="https://catwar.su/cw3/actions/19.png">
+							<img src="https://catwar.su/cw3/actions/51.png">
+							<img src="https://catwar.su/cw3/actions/52.png">
+							<img src="https://catwar.su/cw3/actions/53.png">
+							<img src="https://catwar.su/cw3/actions/talk.png">
+							<img src="https://catwar.su/cw3/actions/flowers.png">
+							<img src="https://catwar.su/cw3/actions/exchange.png">
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="radio" name="machen" value="machen">
+					</td>
+					<td>
+						<input type="text" id="meinMachenText" placeholder="Вылизываться осталось 10 сек." id="machenID">
+					</td>
+					<td>
+						<input type="checkbox" id="meinMachenCheckbox"> Отменить
+					</td>
+				</tr>
 			</table>
 		</div>
 		<div id="gCostume" class="pages">
@@ -706,7 +1092,7 @@
 				<img src="css/about/11.png" style="width:75%;">
 				При нажатии на нее откроется новое окно браузера с целиковой Игровой. Прикольно, да? Окно при желании разворачивается на весь экран. Можно полюбоваться тем, что вы сделали, сделать скриншоты своими средствами ИЛИ нажать правой кнопкой мыши (ПКМ), и система сделает скриншот автоматически, а браузер скачает его. Автоматика). Но за его работу я не отвечаю.<br>
 				<img src="css/about/12.png">
-
+			</div>
 				
 			<!--комментарии Вк блок-->
 			<div id="vk_comments"></div>
@@ -715,7 +1101,7 @@
 		</div>
 	</article>
 	<footer>
-		(c)<a href="https://catwar.su/cat982738">Серолапый</a>, 2020
+		(c)<a href="https://catwar.su/cat982738">Серолапый</a>, 2020-2021
 	</footer>
 	
 	<!--СКРИПТЫ-->
@@ -725,6 +1111,7 @@
 	<script src="js/items_and_costume.js"></script>
 	<script src="js/newcat.js"></script>
 	<script src="js/openGamePole.js"></script>
+	<script src="js/lData.js"></script>
 	
 
 	<!-- Yandex.Metrika counter -->
