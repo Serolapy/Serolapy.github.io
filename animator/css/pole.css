@@ -8,7 +8,7 @@
 		ФОКС!!!!
 	*/
     .cat_tooltip{
-		position: inherit;
+		position: inherit !important;
 	}
 }
 #app {
