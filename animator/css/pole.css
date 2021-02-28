@@ -257,13 +257,13 @@ input#text {
   height: 96px; }
 
 .arrow-paws {
-  background: url("https://catwar.su/cw3/symbole/arrow_paws.png") 0 0 no-repeat; }
+  background: url("img/arrows/black.png") 0 0 no-repeat; }
 
 .arrow-claws {
-  background: url("https://catwar.su/cw3/symbole/arrow_claws.png") 0 0 no-repeat; }
+  background: url("img/arrows/red.png") 0 0 no-repeat; }
 
 .arrow-teeth {
-  background: url("https://catwar.su/cw3/symbole/arrow_teeth.png") 0 0 no-repeat; }
+  background: url("img/arrows/white.png") 0 0 no-repeat; }
 
 .arrow {
   height: 8px;
@@ -273,9 +273,10 @@ input#text {
   z-index: 2; }
 
 .arrow table, .arrow td {
-  height: 5px !important;
-  padding: 0;
-  margin: 0; }
+	height: 5px !important;
+    padding: 0 !important;
+    margin: 0;
+    border: 0 !important;}
 
 .arrow_red {
   background: #CD4141; }

@@ -1,0 +1,16 @@
+/*
+	Художник: https://vk.com/porandoseburu
+	Стиль: https://vk.com/serolapy
+*/
+body{
+	cursor: url(1/default.cur),default;
+}
+input, select, textarea, option, a[href="#"], label{
+	cursor: url(1/pointer.cur),pointer;
+}
+input[type='text']{
+	cursor: url(1/text.cur),text;
+}
+a{
+	cursor: url(1/planet.cur),pointer;
+}

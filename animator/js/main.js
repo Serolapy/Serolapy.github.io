@@ -42,6 +42,11 @@ $('.tbl_plus_add').on('click', function(){
 //меню выбора действий в #app .cage
 $('.cage').on('contextmenu', function(e){
 	e.preventDefault();
+	if($(this).hasClass('select_cage')){
+		$('.select_cage').removeClass('select_cage');
+		$('#cage_menu').css('display', 'none');
+		return
+		}
 	$('.select_cage').removeClass('select_cage');
 	$(this).addClass('select_cage');
 	
@@ -74,7 +79,6 @@ $('.cage').on('contextmenu', function(e){
 	$('#cage_menu').css('top', mouseY(e)).css('left',mouseX(e)).css('display','block');
 	$('body').on('click', function(){
 		$('#cage_menu').css('display', 'none');
-		$('.select_cage').removeClass('select_cage');
 		$('body').off('click');
 	});
 });
@@ -95,7 +99,36 @@ $('#cage_menu > a').on('click', function(e){
 			$('#cage_menu').css('display', 'none');
 			$('.select_cage').removeClass('select_cage');
 			break;
-		case 'items':
-			break;		
+			
+		case 'arrow':
+			$('#cage_menu').css('display', 'none');
+			
+			var cat_arrow = $('.select_cage .arrow'),
+				preview_arrow = $('#arrowPreview');
+			if(cat_arrow.length){
+				//флажок СТРЕЛКА
+				$('#arrow_menu_checkAdd').prop('checked',true);
+				//угол поворота
+				preview_arrow.css('transform','rotate('+ cat_arrow.attr('style').split('rotate(')[1].split(')')[0] +')');
+				$('#arrow_menu_rotate').val(parseInt(cat_arrow.attr('style').split('rotate(')[1].split(')')[0]));
+				//классы [цвет наконечника]
+				preview_arrow.attr('class',cat_arrow.attr('class'));
+				$("#arrow_menu_color").val(cat_arrow.attr('class').split(' ')[1]);
+				//размеры стрелок
+				var size = parseInt(parseInt($('.select_cage .d').css('background-size'))/2);;
+					//зеленая часть стрелы
+				$('#arrowPreview .arrow_green').css('width',parseInt(parseInt($('.select_cage .arrow_green').css('width'))*50/size) + 'px');
+				$('#arrow_menu_energy').val(parseInt(parseInt($('.select_cage .arrow_green').css('width'))*100/size));
+					//красная часть стрелы
+				$('#arrowPreview .arrow_red').css('width',50-parseInt(parseInt($('.select_cage .arrow_green').css('width'))*50/size) + 'px');
+				//успокаивание
+				var opacity = $('.select_cage .arrow').css('opacity');
+				$('#arrowPreview').css('opacity', opacity);
+				$('#arrow_menu_checkOpacity').prop('checked',(opacity === '0.5' ? true:false))
+			}else{
+				$('#arrow_menu_checkAdd').prop('checked',false);
+			}
+			$('#arrow_menu').css('display','block');
+			break;
 	}	
 });

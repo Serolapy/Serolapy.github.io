@@ -3,6 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<script src="/js/jQuery.js"></script>
+	<!--Импорты-->
+	
 	<title>Анимационная студия CatWar</title>
 	
 	<!--СТИЛИ-->
@@ -15,6 +17,7 @@
 	<!--МОИ  СТИЛИ-->
 	<link rel="stylesheet" href="css/index.css">
 	<link rel="stylesheet" href="css/class.css">
+	<link rel="stylesheet" href="/css/cursors/1.css">
 	
 	<!--Вк-->
 	<script type="text/javascript" src="https://vk.com/js/api/openapi.js?168"></script>
@@ -49,27 +52,91 @@
 	</nav>
 	<article>
 		<div id="home" class="pages">
-			<div class="cage_menu" id="cage_menu" style="display:none">
+			<div class="menu cage_menu" id="cage_menu" style="display:none">
 				<a href="#" data-function="empty">Очистить</a><br>
-				<!--<a href="#" data-function="items">Предметы</a><br>-->
+				<!-- <a href="#" data-function="items">Предметы</a><br> -->
+				<a href="#" data-function="arrow">Стрела</a><br>
+			</div>
+			<div class="menu arrow_menu" id="arrow_menu" style="display:none">
+				<div id="arrow_menu_drag" class="drag drag_parent">Боевой режим</div>
+				<span class="closeMenu">X</span>
+				<table class="table">
+					<tbody>
+						<tr>
+							<td width="152px">
+								Угол поворота, &deg;
+							</td>
+							<td width="215px">
+								<input type="number" id="arrow_menu_rotate" placeholder="72&deg;">
+							</td>
+							<td rowspan="3" width="100px" height="150px">
+								<div id="arrow_menu_preview">
+									<div class="cage_items">
+										<span class="catWithArrow">
+											<div style="position: relative;">
+												<div id="arrowPreview" class="arrow arrow-paws" style="top: 75px;transform: rotate(0deg);opacity: 1;">
+													<table style="border-collapse: collapse;width: 100px;">
+														<tbody>
+															<tr>
+																<td class="arrow_red" style="width: 0px;"></td>
+																<td class="arrow_green" style="width: 50px;"></td>
+																<td class="arrow_empty"style="width: 50px;"></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+											<span class="cat">
+												<div>
+													<div style="background-image:url('css/img/preview_cat.png');background-size:100%;filter: brightness(0);" class="d"></div>
+												</div>
+											</span>
+										</span>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Зеленая полоса, %
+							</td>
+							<td>
+								<input type="number" id="arrow_menu_energy" placeholder="100%" value="100">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Цвет наконечника
+							</td>
+							<td>
+								<select id="arrow_menu_color">
+									<option select value="arrow-paws">Чёрный</option>
+									<option value="arrow-claws">Красный</option>
+									<option value="arrow-teeth">Белый</option>
+								</select>
+							</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td>
+								<input type="checkbox" id="arrow_menu_checkAdd"> Стрела
+							</td>
+							<td colspan="2">
+								<input type="checkbox" id="arrow_menu_checkOpacity"> Успокаиваться
+							</td>
+						</tr>
+					</tfoot>
+				</table>
 			</div>
 			<table id="home_table">
 				<tbody>
 					<tr>
 						<!--Моя колонка-->
 						<td class="editData">
-							<div> <!--Заполнение клетки-->
-								<h3>Заполнение клетки</h3>
-								<div>
-									<h4>Тип клетки</h4>
-									<select id="tdType">
-										<option value="empty">Пустая клетка</option>
-										<option value="cat">Кот</option>
-										<option value="object">Предмет</option>
-										<option value="objectCat">Кот + предмет под ним</option>
-									</select>
-								</div>
-							</div>
+							<h3>
+								Данные поля
+							</h3>
 							<table class="table">
 								<!--Чат-->
 								<tr>
@@ -1112,6 +1179,7 @@
 	<script src="js/newcat.js"></script>
 	<script src="js/openGamePole.js"></script>
 	<script src="js/lData.js"></script>
+	<script type="text/javascript" src="js/menu_functions.js"></script>
 	
 
 	<!-- Yandex.Metrika counter -->

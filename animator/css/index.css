@@ -66,7 +66,6 @@ select:not(#app select), input[type="text"],input[type="number"]{
 }
 select:not(#app select){
 	width:213.5px;
-	cursor:pointer;
 }
     select:hover:not(#app select:hover), input[type="text"]:hover,input[type="number"]:hover{
     	background:#cc660033;
@@ -87,7 +86,6 @@ input[type="button"]:not(#app input[type="button"]){
 }
     input[type="button"]:hover{
     	text-decoration:underline;
-    	cursor:pointer;
     	background:#cc660077;
     }
 a{
@@ -120,6 +118,3 @@ a{
     	border-radius:0;
     	border:none;
     }
-label{
-	cursor:pointer;
-}

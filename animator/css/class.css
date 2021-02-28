@@ -70,14 +70,6 @@
 #vk_comments{
 	margin-top:20px;
 }
-.cage_menu{
-	background:white;
-	width:150px;
-	text-align:center;
-	position:absolute;
-	border-radius:10px;
-	z-index:9999;
-}
 .select_cage, .select_machen{
 	transition: 0.5s;
 	background: #cc660077;
@@ -86,3 +78,58 @@
 	height:140px;
 	overflow:auto;
 }
+
+
+/*
+	блоки меню
+*/
+.menu{
+	background:white;
+	text-align:center;
+	border-radius:10px;
+	z-index:9999;
+}
+/*драги*/
+.drag{
+	/*для любого драга*/
+	margin: 0;
+    text-align: center;
+    display: block;
+    padding: 10px;
+    width: calc(100% - 20px);
+	cursor: grab;
+}
+	.drag_parent{
+		/*драг родителя через себя*/
+	}
+	
+/*кн. закрытия меню*/
+.closeMenu{
+	padding: 2px;
+	position: absolute;
+	top: 0;
+	right: 5px;
+	cursor: pointer;
+	
+}
+	.closeMenu:hover{
+		text-decoration: underline;
+	}
+/*ПКМ по полю*/
+.cage_menu{
+	width:150px;
+	position:absolute;
+}
+/*блок меню БР*/
+.arrow_menu{
+	position:fixed;
+	top:0px;
+	left:0px;
+	width: 467px;
+}
+	.arrow_menu table{
+		margin: 0 !important;
+	}
+		.arrow_menu table td{
+			padding: 0 !important;
+		}
