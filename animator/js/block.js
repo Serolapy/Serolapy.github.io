@@ -1,3 +1,12 @@
+if(true){
+	$('body').html(`
+		Мяу! Страничка временно закрыта по техническим причинам (пришёл Святой Кроль, намазал её на хлеб и съел).
+Для получения дополнительной информации Вы можете обратиться к Серолапому в <a href="https://catwar.su/cat982738">CatWar</a> или в <a href="https://vk.com/serolapy">Вк</a>.
+Анимационная Студия CatWar скоро вернётся, следите за обновлениями в тематической <a href="https://vk.com/serolapy">группе Вк</a>.
+<a href="/">Главная</a>
+		`);
+	window.stop();
+}
 var versionBlock = 1
 if(localStorage.getItem('CAS_block') != versionBlock){
 	$('.scripts').remove();
