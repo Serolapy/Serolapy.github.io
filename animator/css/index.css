@@ -13,7 +13,7 @@
 body {
 	font-family: Arial;
 	margin: 0px;
-	background: #ffdead;
+	background: #fddcab;
 }
 
 
@@ -71,7 +71,7 @@ select:not(#app select){
     	background:#cc660033;
     }
 option{
-	background:#ffdead;
+	background:#fddcab;
 }
     option:checked{
     	background:#cc660077;

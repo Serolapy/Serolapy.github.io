@@ -1,0 +1,34 @@
+Оснорвной цвет страницы 
+body{
+	background-color: #ffdead -> #fddcab;
+}
+
+Поле чата
+#tr_chat{
+	background-color: #C60 -> #B50;
+}
+
+Поле действий
+#tr_actions{
+	background-color: #ffdead -> #fddcab;
+}
+
+Поле рта
+#tr_mouth{
+	background-color: #ffdead -> #fddcab;
+}
+
+Поле с инфой (родственники, истори, парам и навыки)
+#info_main{
+	background-color: #ffdead -> #fddcab;
+}
+
+Цвета параметро и навыков{
+	green: #008000 -> #109010
+	red: #ff0000 -> #EE101
+	gray: #ddd -> #ddd // исправить
+}
+Цвета Стрел{
+green: #40CC69;
+red: #CE4040
+}

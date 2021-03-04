@@ -51,7 +51,7 @@
 #info_main {
   border: none;
   width: 100%;
-  background: #FFDEAD; }
+  background: #fddcab; }
 
 #timer {
   display: none;
@@ -68,7 +68,7 @@
   padding: 1px; }
 
 #tr_actions {
-  background-color: #FFDEAD; }
+  background-color: #fddcab; }
 
 .dey {
   margin-right: 3px; }
@@ -80,7 +80,7 @@
   margin: 8px 0; }
 
 #tr_chat {
-  background-color: #C60; }
+  background-color: #B50; }
 
 #chat_form {
   margin: 15px; }
@@ -279,10 +279,10 @@ input#text {
     border: 0 !important;}
 
 .arrow_red {
-  background: #CD4141; }
+  background: #CE4040; }
 
 .arrow_green {
-  background: #41CD70; }
+  background: #40CC69; }
 
 #fightPanel {
   position: fixed;
@@ -322,7 +322,7 @@ input#text {
   width: 200px; }
 
 #tr_mouth {
-  background-color: #FFDEAD; }
+  background-color: #fddcab; }
 
 #itemList {
   list-style-type: none;

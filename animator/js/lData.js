@@ -85,7 +85,7 @@ function skills_update(){
 		//значение
 		$('#'+id+ ' .parameter td:eq(0)').css('width', result_value + 'px');
 		//остаток
-		$('#'+id+ '.parameter td:eq(1)').css('width', result_ostatok);
+		$('#'+id+ ' .parameter td:eq(1)').css('width', result_ostatok + 'px');
 		//уровень
 		if($('.skills-edit:eq('+i+')').hasClass('skills-edit-not')){
 			$('#'+id+' tr> td:eq(3)').html('&nbsp;<b>'+lvl+'</b>');
