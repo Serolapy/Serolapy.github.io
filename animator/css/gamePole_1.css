@@ -248,13 +248,13 @@ input#text {
   height: 96px; }
 
 .arrow-paws {
-  background: url("/cw3/symbole/arrow_paws.png") 0 0 no-repeat; }
+  background: url("img/arrows/black.png") 0 0 no-repeat; }
 
 .arrow-claws {
-  background: url("/cw3/symbole/arrow_claws.png") 0 0 no-repeat; }
+  background: url("img/arrows/red.png") 0 0 no-repeat; }
 
 .arrow-teeth {
-  background: url("/cw3/symbole/arrow_teeth.png") 0 0 no-repeat; }
+  background: url("img/arrows/white.png") 0 0 no-repeat; }
 
 .arrow {
   height: 8px;
