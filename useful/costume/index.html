@@ -52,11 +52,11 @@
 				<li>Тут вы можете встретить не только костюмы котов, но и ботов.</li>
 				<li>Все изображения обновляются автоматически; частота обновлений зависит от Мурра.</li>
 				<li>Чтобы узнать прямую ссылку на изображение, нажмите на него.</li>
-				<li>Сайт попытается загрузить примерно 5000 изображений, нужно будет подождать пару минуток</li>
+				<li>Сайт попытается загрузить примерно 10000 изображений, нужно будет подождать пару минуток</li>
 			</ul>
 			<div class="warning">Нужно будет подождать некоторое время, чтобы загрузились все картинки, какие только могут загрузиться.</div>
 			<div id="images"><i>Загрузка изображений начнётся после полной загрузки страницы</i></div>
-			<div class="update">14 ноября 2020</div>
+			<div class="update">6 апреля 2021</div>
 		</article>
 		<footer>
 			(c)<a href="https://catwar.su/cat982738">Серолапый</a>, 2020
@@ -79,10 +79,14 @@
 			window.onload = function () {
 				var t = '';
 				for (i = 1; i <= 10000; i++) {
-                    t += '<img src="https://catwar.su/cw3/cats/0/costume/' + i +'.png" onclick="alertIMG($(this))" onerror="$(this).remove()">';
+								if(i%1000 == 0){
+												t += '<hr><center>'+ i +'</center><br>';
+								} 
+     				t += '<img src="https://catwar.su/cw3/cats/0/costume/' + i +'.png" onclick="alertIMG($(this))" onerror="function(){$(this).remove();}">';
 				}
 				$('#images').html(t);
-            }
+				alert('Загружено!');
+   }
 			function alertIMG(e) {
 				alert(e.attr('src'));
 			}
