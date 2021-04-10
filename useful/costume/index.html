@@ -82,7 +82,7 @@
 								if(i%1000 == 0){
 												t += '<hr><center>'+ i +'</center><br>';
 								} 
-     				t += '<img src="https://catwar.su/cw3/cats/0/costume/' + i +'.png" onclick="alertIMG($(this))" onerror="function(){$(this).remove();}">';
+     				t += '<img src="https://catwar.su/cw3/cats/0/costume/' + i +'.png" onclick="alertIMG($(this))" onerror="$(this).remove();">';
 				}
 				$('#images').html(t);
 				alert('Загружено!');
