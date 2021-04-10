@@ -56,7 +56,7 @@
 			</ul>
 			<div class="warning">Нужно будет подождать некоторое время, чтобы загрузились все картинки, какие только могут загрузиться.</div>
 			<div id="images"><i>Загрузка изображений начнётся после полной загрузки страницы</i></div>
-			<div class="update">16 ноября 2020</div>
+			<div class="update">10 апреля 2021</div>
 		</article>
 		<footer>
 			(c)<a href="https://catwar.su/cat982738">Серолапый</a>, 2020
@@ -78,11 +78,15 @@
 		<script>
 			window.onload = function () {
 				var t = '';
-				for (i = 1; i <= 5000; i++) {
-                    t += '<img src="https://catwar.su/cw3/things/' + i +'.png" onclick="alertIMG($(this))">';
+				for (i = 1; i <= 10000; i++) {
+								if(i%1000 == 0){
+												t += '<hr><center>'+ i +'</center><br>';
+								} 
+     				t += '<img src="https://catwar.su/cw3/cats/0/things/' + i +'.png" onclick="alertIMG($(this))" onerror="$(this).remove();">';
 				}
 				$('#images').html(t);
-            }
+				alert('Загружено!');
+   }
 			function alertIMG(e) {
 				alert(e.attr('src'));
 			}
