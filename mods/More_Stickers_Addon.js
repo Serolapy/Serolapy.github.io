@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         More Stickers
+// @name         More Stickers - код
 // @namespace    https://catwar.su/cat982738
-// @version      2.0
+// @version      3.2
 // @description  Больше стикеров для CatWar! Как добавить свои - спрашивайте в личку https://catwar.su/cat982738
 // @copyright	 2020, Serolapy (https://openuserjs.org/users/Serolapy)
 // @license		 MIT
@@ -33,6 +33,12 @@ $('#MSbutton').on('click',function(e){
 /*возврат к меню*/
 function clearStickers(){
 	$('.stickers_panel').html(mainMenu);
+
+	//кнокпи добавления пака на экран
+	$('.MRbutton').off('click');
+	$('.MRbutton').on('click', function(){
+		stickerPack(parseInt($(this).data('value')));
+	});
 	setTimeout(OnStickers, 1);
 }
 
