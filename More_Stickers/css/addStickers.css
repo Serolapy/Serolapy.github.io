@@ -1,25 +1,20 @@
-.tableMR{
-	margin: auto;
-	color:black;
-	
-}
+/* Поля ввода данных о стикерпакете */
 .text{
 	text-align: center;
-    margin: 5px auto;
-    border-radius: 5px;
-    border-color: black;
-    width: 75%;
-    display: block;
-    transition: 0.5s;
-    outline: none;
+   margin: 5px auto;
+   border-radius: 5px;
+   border-color: black;
+   width: 75%;
+   display: block;
+   transition: 0.5s;
+   outline: none;
 }
 .text:focus{
 	width:100%;
 	border-color:rgb(255, 222, 173);
 }
-#tablesticks{
-	margin: auto;
-}
+
+/* Окошко ввода ссылки на стикер */
 .newsticker{
 	background: none;
 	border-color: black;
@@ -28,25 +23,39 @@
 	color: black;
 	border-radius: 5px;
 }
-.newsticker:focus {
-	border-color:rgb(255, 222, 173);
-}
+	.newsticker:focus {
+		border-color:rgb(255, 222, 173);
+	}
+/* Кнопки + и - */
 .buttonpm{
 	outline: none;
-    border-color: black;
-    background: rgba(255, 222, 173,0.6); 
-    border-radius: 20px;
-    color: black;
-    width: 100%;
+   border-color: black;
+   background: rgba(255, 222, 173,0.6);
+   border-radius: 20px;
+   color: black;
+   width: 100%;
 }
-.buttonpm:hover{
-	border-color: rgb(255, 222, 173);
-}
+	.buttonpm:hover{
+		border-color: rgb(255, 222, 173);
+	}
+ /* Кнопки ДОБАВЛЕННЫЕ и ПРЕДПРОСМОТР  */
 .button{
 	outline: none;
-    border-color: #000000;
-    background: none;
-    border-radius: 20px;
-    width: 75%;
-    cursor: pointer;
+   border-color: #000000;
+   background: none;
+   border-radius: 20px;
+   width: 75%;
+   cursor: pointer;
+}
+
+/* Таблицы */
+.tableMR{
+	width: 80%;
+	margin: auto;
+	border: black;
+}
+
+/* Отступы блоков */
+article > *{
+	margin-bottom: 5px;
 }

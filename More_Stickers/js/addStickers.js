@@ -1,113 +1,150 @@
-//Добавление стикеров
-var newsticker = document.getElementById("tablesticks").childNodes[3],
-	counter = 1,
-	oldstickers = '',
-	oldstickersNB = 0;
-function plus(){
-	counter++;
-	var onestickerTr = document.createElement("tr");
-	onestickerTr.innerHTML += '<td><input type="text" name="MR'+counter+'" class="newsticker"></td><td><input type="button" value="-" name="minus" class="buttonpm" onclick="minus('+counter+')"></td>';
-	newsticker.appendChild(onestickerTr);
-	document.getElementById("spanstickers").innerHTML = counter;
-}
-function minus(number){
-	let line = document.getElementsByName("MR"+number)[0].parentNode.parentNode;
-	line.parentNode.removeChild(line);
-	counter--;
-	document.getElementById("spanstickers").innerHTML = counter;
-}
-//Вывод добавленных
+/*
+	ФУНКЦИОНАЛ СТРАНИЦЫ
+*/
 
+/*добавление строк в поля с ссылками и авторами*/
+//авторы
+$('.addAuthor').on('click', function(){
+	let tr = $('<tr></tr>').html('<td><input type="text" class="text authorName"></td><td><input type="number" class="text authorId"></td><td><input type="button" value="-" class="buttonpm removeLine"></td>');
+	$('#authors').append(tr);
+	removeLine();
+});
+//стикеры
+$('.addSticker').on('click', function(){
+	let tr = $('<tr></tr>').html('<td><input type="text" class="newsticker linkSticker"></td><td><input type="button" value="-" class="buttonpm removeLine"></td>');
+	$('#sticks').append(tr);
+	removeLine();
+});
+//удаление строк
+function removeLine(){
+	//класс .removeLine ставится на кнопку, удаляющую данную строку в таблице
+	$('.removeLine').off('click');
+	$('.removeLine').on('click', function(){
+		$(this).parents().eq(1).remove();
+	});
+}
 
-var stickers_panel = document.getElementById("listStickers"),	
-	listStickers = '',
-	one_sticker = '';
-function clearStickers(){													//Названия стиков
-	stickers_panel.innerHTML = listStickers;
-}
-function stickerPack(stickarray){											//Замена стикеров
-	stickers_panel.innerHTML = '<input type="button" value="Назад" onclick="clearStickers()" style="cursor: pointer"><br>'+stickarray;
-}
-for (i=0;i<stickersName.length;i++){
-	one_sticker = '<input type="button" onclick="stickerPack(stickerPacks['+i+'])" value="'+stickersName[i]+'"><br/>';
-	listStickers += one_sticker;
-}
-stickers_panel.innerHTML += listStickers;
-document.getElementsByName("oldstickers")[0].onclick = function(){
-	if (oldstickersNB == 0){
-		document.getElementById("oldstickers").style.display = "block";
-		oldstickersNB = 1;
-	} else if (oldstickersNB == 1){
-		document.getElementById("oldstickers").style.display = "none";
-		oldstickersNB = 0;
+/* создание пакета стикеров */
+/* кнопка ПРЕДПРОСМОТР */
+$('#previewBtn').on('click', function(){
+	var BBcode = '',
+		code = {};
+
+	//авторы
+	let authorsPreview = '@ ',						//Строка для предпросмотра
+		authors = $('#authors').children(),		//массив авторов
+		authorCode = [];								//код авторов
+	for(let i = 0; i < authors.length; i++){
+		let author = {}
+		//имя
+		author['cat'] = authors.eq(i).children().eq(0).children().eq(0).val() || 'Нет игрока';
+		//id
+		author['id'] = parseInt(authors.eq(i).children().eq(1).children().eq(0).val()) || 982738;
+		// author -> authorCode
+		authorCode.push(author);
+		//в превью
+		authorsPreview += '<a href="/cat'+ author.id +'">'+ author.cat +'</a>' + (i == authors.length - 1? '' : ', ');
 	}
-};
-//превью
-var previewNB = 0,
-	stickers = document.getElementById("tablesticks").childNodes[3].childNodes,
-	newstickerPack = '',
-	valueSt ='';
-function Ferrors(){
-	document.getElementById("ID").style.color = "black";
-	document.getElementById("name").style.color = "black";
-	document.getElementById("nameSt").style.color = "bkack";
-}
-function preview() {
+	code['authors'] = authorCode;
+
+	//название
+	let namePreview = $('#nameStickerPack').val() || 'Без названия';
+	code['name'] = namePreview;
+
 	//стикеры
-	for (j=1;j<stickers.length-1;j++){
-		valueSt = document.getElementsByName("MR"+j)[0].value;
-		if (valueSt != ''){
-		newstickerPack += '<a href="#" class="sticker" data-code="[img]'+valueSt+'[/img]"><img src="'+valueSt+'" width="96" height="96"></a>';
+	let stickersPreview = '',							//Строка для предпросмотра
+		stickers = $('#sticks').children(),			//массив стикеров
+		stickersCode = [];								//код стикеров
+	for(let i = 0; i < stickers.length; i++){
+		let sticker = $('#sticks').children().eq(i).children().eq(0).children().eq(0).val();
+		if(!sticker){continue}
+		stickersCode.push(sticker);
+		stickersPreview += '<a href="#" class="sticker" data-code="[img]'+ sticker +'[/img]"><img src="' + sticker +'" width="96" height="96"></a>';
+	}
+	code['stickers'] = stickersCode;
+
+	//вывод кода
+	console.dir(code);
+	$('#stickersCode').val(JSON.stringify(code));
+	//показ превью
+	$('#images').html(`<b>${namePreview}</b> ${authorsPreview}\n${stickersPreview}`);
+	$('#preview').css('display', 'block');
+});
+
+/* кнопка ДОБАВЛЕННЫЕ */
+var mainMenu = '',	//кнопки с паками
+	data = {};
+
+//функция вывода пакам
+function stickerPack(val){
+	var pack = data[val],
+		html = '';
+
+	//закрытие пака
+	html += '<input type="button" value="Скрыть" id="collectionClose"><br>';
+	html += '<p class="stickers_title">';
+
+	//название
+	html += pack.name + ' ';
+
+	//имена создателей
+	html += '@ ';
+
+	for(var j = 0; j < pack.authors.length; j++){
+		var author = pack.authors[j];
+		html += '<a href="/cat'+ author.id +'">'+ author.cat +'</a>';
+
+		if(j != pack.authors.length - 1){
+			//если не последний автор
+			html += ', ';
 		}
 	}
-	//авторизация
-	var authorization = document.getElementsByName("name"),
-		newstickerPackname = '<div><p class="stickers_title">'+authorization[2].value+' © <a href="/cat'+authorization[0].value+'">'+authorization[1].value+'</a></p>'+newstickerPack+'</div>',
-		check = true,
-		errors = '';
-	document.getElementById("previewstickersimg").innerHTML = newstickerPackname;
-		var textnewstickerPack = document.createTextNode(newstickerPackname);
-	document.getElementById("previewstickers").appendChild(textnewstickerPack);
-	if (authorization[0].value ==''){
-		document.getElementById("ID").style.color = "red";
-		check = false;
-		errors += 'Введите свой ID!<br>';
-		setTimeout(Ferrors, 3000);
+	html += '</p>';
+
+	//добавка стикеров
+	for(var k = 0; k < pack.stickers.length; k++){
+		html += '<a href="#" class="sticker" data-code="[img]'+ pack.stickers[k] +'[/img]"><img src="' + pack.stickers[k] +'" width="96" height="96"></a>';
 	}
-	if (authorization[1].value ==''){
-		document.getElementById("name").style.color = "red";
-		check = false;
-		errors += 'Введите своё имя! <br>';
-		setTimeout(Ferrors, 3000);
-	}
-	if (authorization[2].value ==''){
-		document.getElementById("nameSt").style.color = "red";
-		check = false;
-		errors += 'Введите имя стикерпака!';
-		setTimeout(Ferrors, 3000);
-	}
-	if (newstickerPack =='' && check){
-		errors = 'Тут пусто!';
-	}
-	if (errors!=''){
-		document.getElementById("previewstickers").innerHTML = errors;
-		document.getElementById("previewstickersimg").innerHTML = '';
-	}
-	newstickerPack = '';
-	
+
+
+	$('#collectoinField').html(html);
+
+	//кнопка закрытия пака
+	$('#collectionClose').off('click');
+	$('#collectionClose').on('click', function(){
+		$('#collectoinField').html('');
+	});
 }
-document.getElementsByName("preview")[0].onclick = function(){
-	if (previewNB == 0){
-		document.getElementById("preview").style.display = "block";
-		previewNB = 1;
-		preview();
-	} else if (previewNB == 1){
-		document.getElementById("preview").style.display = "none";
-		previewNB = 0;
-		
-		newstickerPack = '';
-		textnewstickerPack = '';
-		document.getElementById("previewstickers").innerHTML = '';
-		document.getElementById("previewstickersimg").innerHTML = '';
-	}
-};
+//вешаю событие на кнопку
+$('#previewCollection').on('click', function(){
+	$('#collectionButtons').html('Загрузка..');
+
+	$.get('https://raw.githubusercontent.com/Serolapy/Serolapy.github.io/master/More_Stickers/js/stickerpacks.js', function(getData){
+		getData = getData.replace('\n', '');
+		try{
+			getData = JSON.parse(getData);
+
+			data = getData;
+			mainMenu = '';
+		}
+		catch(error){
+			console.log('!!! Не удалось получить стикеры: ' + error);
+			mainMenu = 'Ошибка обработки запроса. Напишите, пожалуйста, <a href="/cat982738">Серолапому</a> для уточнения причин ошибки.';
+			data = {};
+		}
+		// data = "[{\"name\":\"Транзакция\",\"authors\":[{\"cat\":\"Райан\",\"id\":119456}],\"stickers\":[\"/img/stickers/transaction1/1.png\"]}]";
+		// data = getData = JSON.parse(data);
+
+		//кнопки меню
+		for(var i = 0; i < data.length; i++){
+			//переборка паков
+			mainMenu += '<input type="button" data-value = "' + i + '" value="'+ data[i].name +'" class="MRbutton"><br/>';
+		}
+		$('#collectionButtons').html(mainMenu);
+		//кнокпи вывода пака на экран
+		$('.MRbutton').off('click');
+		$('.MRbutton').on('click', function(){
+			stickerPack(parseInt($(this).data('value')));
+		});
+	});
+});
