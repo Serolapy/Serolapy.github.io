@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         More Stickers - код
 // @namespace    https://catwar.su/cat982738
-// @version      3.3
+// @version      3.3.1
 // @description  Больше стикеров для CatWar! Как добавить свои - спрашивайте в личку https://catwar.su/cat982738
-// @copyright	 2020, Serolapy (https://openuserjs.org/users/Serolapy)
-// @license		 MIT
-// @author       Серолапый, 2020
+// @copyright	 2020 - 2021, Serolapy (https://openuserjs.org/users/Serolapy)
+// @license	 MIT
+// @author       Серолапый, 2020 - 2021
 // @include      https://catwar.su/*
 // ==/UserScript==
 
