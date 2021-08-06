@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Квесты | Serolapy</title>
+		<link rel="SHORTCUT ICON" href="/img/favicon.ico" type="image/x-icon">
+		<script src="/js/jQuery.js"></script>
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/elements.css">
+		<link rel="stylesheet" href="css/catwarPage.css">
+	</head>
+	<body>
+		<header>
+			<div class="header-title">UQuests</div>
+			<div class="header-section"><a href="#">creation</a></div>
+			<div class="header-toHome"><a href="/"><img src="/img/standart.png" alt="На главную" title="На главную"></a></div>
+		</header>
+		<nav data-class="page">
+			<h2>Разделы</h2>
+			<a href="#" data-name="quest">Квеcт</a>
+			<a href="#" data-name="create">Создать</a>
+			<a href="#" data-name="bots">Боты</a>
+			<a href="#" data-name="location">Локации</a>
+			<a href="#" data-name="user">Игрок</a>
+		</nav>
+		<aside>
+			<h2>Инструменты</h2>
+			<div data-id="quest" class="window page">Квест</div>
+			<div data-id="location" class="window page">Локации</div>
+		</aside>
+		<article>
+			<div data-id="quest" class="window page">
+				<h2>Квест</h2>
+				<table>
+					<tbody>
+						<tr>
+							<th rowspan="2">Общие данные</th>
+							<td>Название</td>
+							<td><input id="quest-nameQuest" type="text" placeholder="Название квеста"></td>
+						</tr>
+						<tr>
+							<td>Описание</td>
+							<td><input id="quest-descriptionQuest" type="text" placeholder="Описание квеста"></td>
+						</tr>
+
+						<tr>
+							<th>Авторы</th>
+							<td><input type="button" value="+" id="quest-addAuthorBtn"></td>
+							<td>
+								<table>
+									<thead>
+										<tr>
+											<td>Его имя</td>
+											<td>Его ID в CatWar</td>
+											<td><input type="button" id="quest-saveAuthors" value="Сохранить"></td>
+										</tr>
+									</thead>
+									<tbody id="authors"></tbody>
+								</table>
+							</td>
+						</tr>
+
+						<tr>
+							<th rowspan="2">Главный герой</th>
+							<td>Данные о коте</td>
+							<td><input type="text" class="import" data-extension=".cat.serolapy" readonly id="quest-hauptSpieler"></td>
+						</tr>
+						<tr>
+							<td>Просмотр</td>
+							<td id="previewHaupSpieler"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div data-id="location" class="window page">
+				<h2>Локации</h2>
+				<nav data-class="page-location">
+					<a href="#" data-name="create">Создать..</a>
+					<a href="#" data-name="list">Список..</a>
+				</nav>
+
+				<div class="windowDefault page-location">Выберите нужный пункт.</div>
+				<div class="window page-location" data-id="create">
+					<h3>Создать локацию</h3>
+					<input type="button" id="location-create-new" value="Создать новую локацию">
+					<div id="location-create-createBlock">
+						<table>
+							<tbody>
+								<tr>
+									<th rowspan="3">Данные</th>
+									<td>Название</td>
+									<td><input type="text" id="location-create-nameLocation" placeholder="Лагерь племени"></td>
+								</tr>
+								<tr>
+									<td>Уникальный ID Локации</td>
+									<td><input type="text" id="location-create-idLocation" readonly></td>
+								</tr>
+								<tr>
+									<td>Фон</td>
+									<td><input type="text" id="location-create-backgroundLocation" placeholder="Ссылка на картинку"></td>
+								</tr>
+
+								<tr>
+									<th rowspan="2">Появление игрока</th>
+									<td>Позиция X</td>
+									<td><input type="number" min="1" max="10" id="location-create-playerX" placeholder="От 1 до 10"></td>
+								</tr>
+								<tr>
+									<td>Позиция Y</td>
+									<td><input type="number" min="1" max="6" id="location-create-playerY" placeholder="От 1 до 6"></td>
+								</tr>
+							</tbody>
+						</table>
+
+						<input type="button" id="location-create-save" value="Сохранить локацию">
+					</div>
+				</div>
+				<div class="window page-location" data-id=list>
+					<h3>Список локаций</h3>
+					<div id="location-list-listLocation">
+						<div class="location"></div>
+					</div>
+				</div>
+			</div>
+			<div data-id="bots" class="window page">
+				<h2>Боты</h2>
+				<nav data-class="page-bots">
+					<a href="#" data-name="create">Создать..</a>
+					<a href="#" data-name="list">Список..</a>
+				</nav>
+				<div class="windowDefault page-bots">Выберите нужный пункт.</div>
+				<div class="window page-bots" data-id="create">
+					<h3>Создать бота</h3>
+					<input type="button" id="bots-create-new" value="Создать нового бота">
+					<div id="bots-create-createBlock">
+						<table>
+							<tbody>
+								<tr>
+									<th rowspan="3">Данные</th>
+									<td>Внешние признаки</td>
+									<td><input type="text" class="import" data-extension=".cat.serolapy" readonly id="bots-create-cat"></td>
+								</tr>
+								<tr>
+									<td>Уникальный ID бота</td>
+									<td><input type="text" id="bots-create-idBot" readonly></td>
+								</tr>
+
+								<tr>
+									<td>Описание</td>
+									<td><input type="text" id="bots-create-description"></td>
+								</tr>
+
+								<tr>
+									<th rowspan="2">Появление бота</th>
+									<td>Позиция X</td>
+									<td><input type="number" min="1" max="10" id="bots-create-botX" placeholder="От 1 до 10"></td>
+								</tr>
+								<tr>
+									<td>Позиция Y</td>
+									<td><input type="number" min="1" max="6" id="bots-create-botY" placeholder="От 1 до 6"></td>
+								</tr>
+
+								<tr>
+									<th rowspan="2">Диалог с ботом</th>
+									<td>ID диалога</td>
+									<td><input type="text" placeholder="#00000" id="bots-create-idDialog"></td>
+								</tr>
+								<tr>
+									<td>Условия начала диалога</td>
+									<td>
+										<table>
+											<thead>
+												<tr>
+													<td>Условие</td>
+													<td>Значение</td>
+													<td><input type="button" value="Сохранить" class="condition-save"></td>
+												</tr>
+											</thead>
+											<tbody></tbody>
+										</table>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<fieldset>
+							<legend>Логика</legend>
+							<input type="button" value="Добавить новое условие" id="bots-create-addCondition">
+							<ul id="bots-create-conditions">
+								<li>
+									Когда игрок появится на локации выполнить <input type="text" class="condition-action">
+									При выполнении условия
+									<select class="condition-conditionsList"><option value="-" selected>УСЛОВИЕ</option></select>
+									выполнить
+									<select class="condition-actionsList"><option value="-" selected>ДЕЙСТВИЕ</option></select>
+									<span class="condition-params">c параметрами ...</span>
+									<span class="condition-deleteCondition">X</span>
+								</li>
+							</ul>
+						</fieldset>
+					</div>
+				</div>
+			</div>
+			<div class="page windowDefault">
+				Выберите, пожалуйста, слева раздел (работает только "Квест")<br><br>
+			</div>
+
+		</article>
+		<footer>
+			<table>
+				<tr>
+					<td><a href="https://vk.com/serolapy">@serolapy</a></td>
+					<td>По заказу<br><a href="https://catwar.su/cat1316569">Мэсс</a></td>
+				</tr>
+				<tr>
+					<td colspan="2">2021 год</td>
+				</tr>
+			</table>
+		</footer>
+
+		<div id="uploadDiv">
+			<table>
+				<thead>
+					<tr>
+						<td colspan="3">Загрузите, пожалуйста, файл для заполнения данного поля любым удобным для вас способом.</td>
+					</tr>
+					<tr>
+						<td colspan="3"><span id="uploadDiv-errorArea"></span></td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Загрузите файл формата <span id="uploadDiv-extension">формат</span>.</td>
+						<td>Вставьте ссылку на файл с другого сайта.</td>
+						<td>Вставьте импортируемые данные в поле ниже.</td>
+					</tr>
+					<tr>
+						<td><input type="file" id="uploadDiv-file"></td>
+						<td><input type="text" id="uploadDiv-link" placeholder="https://example.com/file"></td>
+						<td><input type="text" id="uploadDiv-text" placeholder='{"data": ["key": "val", ...]}'></td>
+					</tr>
+					<tr>
+						<td><input type="button" class="uploadDiv-upload" data-type="file" value="Принять"></td>
+						<td><input type="button" class="uploadDiv-upload" data-type="link" value="Принять"></td>
+						<td><input type="button" class="uploadDiv-upload" data-type="text" value="Принять"></td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="3"><input type="button" value="Отменить всё и закрыть окно" id="uploadDiv-close"></td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+		<div id="errorPanel"></div>
+		<!--Скрипты-->
+		<script type="text/javascript" src="js/main.js"></script>
+		<script type="text/javascript" src="js/myObj.js"></script>
+		<script type="text/javascript" src="js/readData.js"></script>
+	</body>
+</html>

@@ -1,0 +1,78 @@
+a{
+	color: var(--links);
+}
+h2{
+	margin: 0;
+	border-bottom: 3px dotted var(--borders);
+	text-align: center;
+}
+h3{
+	display: inline-block;
+}
+/*скролл бары*/
+::-webkit-scrollbar{
+	width: 5px;
+
+	background: none;
+}
+::-webkit-scrollbar:hover{
+	background: var(--hoverBlock);
+}
+::-webkit-scrollbar-thumb{
+	background: var(--text);
+}
+*{
+	scrollbar-width: thin;
+	scrollbar-color: var(--text) var(--hoverBlock);
+}
+
+/*
+	ПАНЕЛЬ ЗАГРУЗКИ ФАЙЛОВ
+*/
+#uploadDiv{
+	display: none;
+	position: fixed;
+	height: 75%;
+	width: 75%;
+	top: 12.5%;
+	left: 12.5%;
+
+	background: var(--bodyBlocksColor);
+	border: 5px solid var(--borders);
+	box-shadow: 0 0 100px 20px black;
+}
+/*
+	ПАНЕЛЬ ОШИБОК
+*/
+#errorPanel{
+	display: block;
+	position: fixed;
+	bottom: 0;
+	right: calc(-1 * var(--asideWidth) - 10px);
+	width: calc(var(--asideWidth) - 10px);
+	min-height: 64px;
+	max-height: calc(100% - 95px);
+	transition: 2s;
+
+	background: RGBA(241,90,90,.9);
+	cursor: pointer;
+	padding: 5px;
+	color: black;
+	overflow-y: overlay;
+}
+.errorDiv{
+	margin-bottom: 5px;
+	border-bottom: 1px dotted var(--borders);
+}
+	.errorDiv > span{
+		font-weight: bold;
+	}
+/*
+	SCRIPTS
+*/
+.window:not(.windowDefault){
+	display: none;
+}
+#location-create-createBlock, #bots-create-createBlock{
+	display: none;
+}
