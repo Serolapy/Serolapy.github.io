@@ -9,6 +9,98 @@ h2{
 h3{
 	display: inline-block;
 }
+fieldset{
+	display: block;
+	margin: 5px 5px 0 5px;
+	border: 2px solid var(--borders);
+	overflow-y: hidden;
+	height: auto;
+
+    transition-duration: 5s;
+    transition-timing-function: cubic-bezier(0, 0.88, 0.39, 0.75);
+}
+	fieldset legend{
+		font-weight: bold;
+		border: 2px solid var(--borders);
+	}
+	fieldset.hide{
+		height: 0;
+	}
+
+input[type=text]:not(.input-id), input[type=number]{
+	background:none;
+	border: 1px solid rgba(0,0,0,0);
+	display: inline-block;
+	width: 85%;
+	border-bottom: 1px solid black;
+	outline: none;
+	font-family: HEADER;
+
+	/*для намбер*/
+	-moz-appearance: textfield;
+	-webkit-appearance: textfield;
+	appearance: textfield;
+}
+    input[type=text]:not(.input-id):focus, input[type=number]:focus{
+    	border: 1px dashed black;
+    	background: var(--hoverBlock);
+    }
+	input[type=text]:not(.input-id):hover, input[type=number]:hover{
+		background: var(--hoverBlock);
+	}
+
+	/*убираем стрелки у намбер*/
+	input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+	    display: none;
+    }
+    input[type=text]:not(.input-id)::placeholder, input[type=number]::placeholder{
+    	font-family: Arial;
+    }
+
+input.import{
+	cursor: pointer;
+}
+
+input.input-id{
+	border: none;
+	outline: none;
+	background: none;
+	width: 45px;
+	border-bottom: 1px solid black;
+	/*color: var(--mainText);*/
+}
+select{
+	background: none;
+	border: none;
+	outline: none;
+	border-bottom: 1px solid black;
+	width: 85%;
+}
+    select:hover{
+    	background: var(--hoverBlock);
+    }
+    select:focus{
+    	border: 1px dashed black;
+    	background: var(--hoverBlock);
+    }
+    option{
+    	background: var(--hoverBlock);
+    }
+
+input[type=button]{
+	display: block;
+	text-align: center;
+	background: var(--hoverBlock);
+	border: 1px solid black;
+	height: 25px;
+	width: 85%;
+	margin: 5px auto;
+	border: 1px solid var(--borders);
+}
+input.btnAddRemove{
+	width: 25px;
+}
 /*скролл бары*/
 ::-webkit-scrollbar{
 	width: 5px;
@@ -73,6 +165,17 @@ h3{
 .window:not(.windowDefault){
 	display: none;
 }
-#location-create-createBlock, #bots-create-createBlock{
+#location-create-createBlock, #bots-create-createBlock, #dialog-create-createBlock{
 	display: none;
+}
+
+/*
+    ПРОЧЕЕ
+*/
+/*диалоги*/
+.replica{
+	background: var(--hoverBlock);
+	padding: 5px;
+	margin: 10px;
+	border-bottom: 5px dashed black;
 }
