@@ -18,10 +18,11 @@
 		<nav data-class="page">
 			<h2>Разделы</h2>
 			<a href="#" data-name="quest">Квеcт</a>
-			<a href="#" data-name="create">Создать</a>
+			<a href="#" data-name="items">Предметы</a>
 			<a href="#" data-name="bots">Боты</a>
 			<a href="#" data-name="location">Локации</a>
-			<a href="#" data-name="user">Игрок</a>
+			<a href="#" data-name="action">Действия</a>
+			<a href="#" data-name="dialogs">Диалоги</a>
 		</nav>
 		<aside>
 			<h2>Инструменты</h2>
@@ -34,8 +35,8 @@
 				<table>
 					<tbody>
 						<tr>
-							<th rowspan="2">Общие данные</th>
-							<td>Название</td>
+							<th rowspan="2" width="135px">Общие данные</th>
+							<td width="120px">Название</td>
 							<td><input id="quest-nameQuest" type="text" placeholder="Название квеста"></td>
 						</tr>
 						<tr>
@@ -45,13 +46,13 @@
 
 						<tr>
 							<th>Авторы</th>
-							<td><input type="button" value="+" id="quest-addAuthorBtn"></td>
+							<td><input type="button" class="btnAddRemove" value="+" id="quest-addAuthorBtn"></td>
 							<td>
 								<table>
 									<thead>
 										<tr>
-											<td>Его имя</td>
-											<td>Его ID в CatWar</td>
+											<td width="159.5px">Его имя</td>
+											<td width="159.5px">Его ID в CatWar</td>
 											<td><input type="button" id="quest-saveAuthors" value="Сохранить"></td>
 										</tr>
 									</thead>
@@ -93,7 +94,7 @@
 								</tr>
 								<tr>
 									<td>Уникальный ID Локации</td>
-									<td><input type="text" id="location-create-idLocation" readonly></td>
+									<td><input type="text" id="location-create-idLocation" readonly class="input-id"></td>
 								</tr>
 								<tr>
 									<td>Фон</td>
@@ -142,7 +143,7 @@
 								</tr>
 								<tr>
 									<td>Уникальный ID бота</td>
-									<td><input type="text" id="bots-create-idBot" readonly></td>
+									<td><input type="text" id="bots-create-idBot" readonly class="input-id"></td>
 								</tr>
 
 								<tr>
@@ -163,7 +164,7 @@
 								<tr>
 									<th rowspan="2">Диалог с ботом</th>
 									<td>ID диалога</td>
-									<td><input type="text" placeholder="#00000" id="bots-create-idDialog"></td>
+									<td><input type="text" placeholder="#00000" id="bots-create-idDialog" class="input-id"></td>
 								</tr>
 								<tr>
 									<td>Условия начала диалога</td>
@@ -184,20 +185,121 @@
 						</table>
 						<fieldset>
 							<legend>Логика</legend>
-							<input type="button" value="Добавить новое условие" id="bots-create-addCondition">
 							<ul id="bots-create-conditions">
 								<li>
-									Когда игрок появится на локации выполнить <input type="text" class="condition-action">
-									При выполнении условия
-									<select class="condition-conditionsList"><option value="-" selected>УСЛОВИЕ</option></select>
-									выполнить
-									<select class="condition-actionsList"><option value="-" selected>ДЕЙСТВИЕ</option></select>
-									<span class="condition-params">c параметрами ...</span>
-									<span class="condition-deleteCondition">X</span>
+									<input type="radio" name="bots-create-conditionType" value="withOutItem" checked> Когда игрок поговорит с ботом выполнить <input type="text" class="condition-action input-id" placeholder="#00000">.
+								</li>
+								<li>
+									<input type="radio" name="bots-create-conditionType" value="withItem"> Когда игрок поговорил с ботом и у игрока есть предмет с ID <input type="text" placeholder="ID предмета" class="condition-idItem"> выполнить <input type="text" class="condition-action input-id" placeholder="#00000">.
+									<br>Иначе выполнить <input type="text" class="condition-action input-id" placeholder="#00000">.
 								</li>
 							</ul>
 						</fieldset>
 					</div>
+				</div>
+			</div>
+			<div data-id="action" class="window page">
+				<h2>Действия</h2>
+				<table>
+					<thead>
+						<tr>
+							<td colspan="2">Общие данные действий</td>
+							<td rowspan="2" colspan="2" width="404px">Параметры</td>
+						</tr>
+						<tr>
+							<td width="95px">ID действия</td>
+							<td>Тип</td>
+						</tr>
+					</thead>
+					<tbody id="action-actionsList"></tbody>
+					<tfoot>
+						<tr>
+							<td colspan="4"><input type="button" value="Добавить действие" id="action-addAction"></td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+			<div data-id="items" class="window page">
+				<h2>Предметы</h2>
+				<input type="radio" name="items-typeEnterItems" value="catwar" checked> Стандартные предметы CatWar
+				<fieldset>
+					<legend>Подсказка</legend>
+					При выборе этого типа распределения предметов все ID предметов в квесте будут равны ID предметов в игре CatWar. То есть если предмет в CatWar имеет ID = 1, то в квесте его ID = #1. Для поиска предметов советую воспользоваться этой моей страницей: <a href="/useful/items">Коллекция предметов CatWar</a>.
+					<br><i>Полезно, если Вы не добавляете новые предметы в свой квест.</i>
+				</fieldset>
+
+				<input type="radio" name="items-typeEnterItems" value="my"> Собственные предметы
+				<fieldset>
+					<legend>Подсказка</legend>
+					При выборе этого типа распределения предметов Вы сами будете создавать предметы, нужные именно Вам. ID созданных предметов будут указаны при создании.
+					<br><i>Полезно, если Вы хотите добавить свои предметы, которых нет в CatWar.</i>
+				</fieldset>
+				<div style="display: none;" id="items-blockAddItems">
+					<table>
+						<thead>
+							<tr>
+								<td colspan="2" width="280px">Общие данные предмета</td>
+								<td colspan="2" width="331px">Картинка</td>
+								<td rowspan="2">Параметры</td>
+							</tr>
+							<tr>
+								<td width="106px">ID предмета</td>
+								<td>Название</td>
+								<td width="171px">Ссылка на картинку</td>
+								<td>Проверка ссылки</td>
+							</tr>
+						</thead>
+						<tbody></tbody>
+						<tfoot>
+							<tr>
+								<td colspan="5"><input type="button" value="Добавить предмет" id="items-addItem"></td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+
+			</div>
+			<div data-id="dialogs" class="window page">
+				<h2>Диалоги</h2>
+				<fieldset>
+					<legend>Пояснение</legend>
+					Каждый диалог состоит из нескольких <i>реплик</i>, <i>ответов к репликам</i> и <i>действий</i> на ответ.
+				</fieldset>
+				<nav data-class="page-dialogs">
+					<a href="#" data-name="create">Создать..</a>
+					<a href="#" data-name="list">Список..</a>
+				</nav>
+				<div class="window page-dialogs" data-id="create">
+					<h3>Создать диалог</h3>
+					<input type="button" id="dialogs-create-new" value="Создать новый диалог">
+					<div id="dialog-create-createBlock">
+						<h4>Общие данные</h4>
+						<table>
+							<tbody>
+								<tr>
+									<td>ID диалога</td>
+									<td><input type="text" id="dialogs-create-dialogID" readonly class="input-id"></td>
+								</tr>
+								<tr>
+									<td>Краткое описание, название</td>
+									<td><input type="text" id="dialogs-create-dialogName" placeholder="Диалог первой встречи с Транзи"></td>
+								</tr>
+								<tr>
+									<td>Реплика ввода</td>
+									<td><input type="text" id="dialogs-create-replicaEnterId"></td>
+								</tr>
+							</tbody>
+						</table>
+
+						<h4>Реплики</h4>
+						<input type="button" value="Добавить реплику" id="dialogs-create-replicas-addReplica">
+						<div id="replicas">
+
+						</div>
+					</div>
+				</div>
+				<div class="window page-dialogs" data-id="list">
+					<h3>Список диалогов</h3>
 				</div>
 			</div>
 			<div class="page windowDefault">

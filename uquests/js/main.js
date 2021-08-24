@@ -156,3 +156,8 @@ $('#uploadDiv-close').on('click', function(){
 	$('#uploadDiv-link').val('');
 	$('#uploadDiv-text').val('');
 });
+
+//открытие-закрытие fieldset
+$('legend').on('click', function(){
+	$(this).parent().toggleClass('hide');
+})
