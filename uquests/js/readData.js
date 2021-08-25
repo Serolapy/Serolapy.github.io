@@ -16,7 +16,6 @@ var questData = {
 	'locations': [],		//локации
 	'bots': [],				//боты
 	'dialogs': [],			//диалоги
-	'replicas': [],			//реплики
 	'moves': [],			//переходы
 	'actions': [],			//действия
 	'hauptSpieler': {},		//главный герой
@@ -37,49 +36,6 @@ $('#quest-addAuthorBtn').on('click', function(){
 	$('.quest-removeAuthor').on('click', function(){
 		$(this).parents().eq(1).remove();
 	});
-});
-//расстановка полей
-$('#quest-nameQuest').change(function(){
-	if($(this).val() == ''){
-		systemError('Название не сохранено');
-		questData.data.name = '';
-		return
-	}
-	questData.data.name = $(this).val();
-});
-$('#quest-descriptionQuest').change(function(){
-	if($(this).val() == ''){
-		systemError('Описание не сохранено');
-		questData.data.description = '';
-		return
-	}
-	questData.data.description = $(this).val();
-});
-$('#quest-saveAuthors').on('click', function(){
-	let authors = $('#authors').children(),
-		allAuthorsSaved = true;
-
-	//если авторов нет - ошибка
-	if(!authors.length){
-		systemError('Авторов нет');
-		return
-	}
-	for(let i = 0; i < authors.length; i++){
-		let name = $('.quest-nameAuthor').eq(i).val(),
-			id = $('.quest-idAuthor').eq(i).val();
-		if(!(name && id)){
-			allAuthorsSaved = false;
-			continue
-		}
-		questData.data.authors.push({
-			'name': name,
-			'id': id
-		});
-	}
-
-	if(!allAuthorsSaved){
-		systemError('Сохранены не все авторы')
-	}
 });
 
 /*
@@ -280,7 +236,7 @@ $('#dialogs-create-replicas-addReplica').on('click', function(){
 					<td>ID</td>
 				</tr>
 			</thead>
-			<tbody></tbody>
+			<tbody class="dialogs-create-replicas-userReplys"></tbody>
 			<tfoot>
 				<tr>
 					<td colspan="4"><input type="button" value="Добавить" class="dialogs-create-replicas-addUserReply"></td>
@@ -333,3 +289,145 @@ $('#dialogs-create-replicas-addReplica').on('click', function(){
 		});
 	});
 });
+
+/*
+	ЗАПИСЬ ДАННЫХ
+*/
+/*квест*/
+$('#quest-nameQuest').change(function(){
+	if($(this).val() == ''){
+		systemError('Название не сохранено');
+		questData.data.name = '';
+		return
+	}
+	questData.data.name = $(this).val();
+});
+$('#quest-descriptionQuest').change(function(){
+	if($(this).val() == ''){
+		systemError('Описание не сохранено');
+		questData.data.description = '';
+		return
+	}
+	questData.data.description = $(this).val();
+});
+$('#quest-saveAuthors').on('click', function(){
+	let authors = $('#authors').children(),
+		allAuthorsSaved = true;
+
+	//если авторов нет - ошибка
+	if(!authors.length){
+		systemError('Авторов нет');
+		return
+	}
+	for(let i = 0; i < authors.length; i++){
+		let name = $('.quest-nameAuthor').eq(i).val(),
+			id = $('.quest-idAuthor').eq(i).val();
+		if(!(name && id)){
+			allAuthorsSaved = false;
+			continue
+		}
+		questData.data.authors.push({
+			'name': name,
+			'id': id
+		});
+	}
+
+	if(!allAuthorsSaved){
+		systemError('Сохранены не все авторы')
+	}
+});
+/*диалоги*/
+$('#dialogs-create-saveDialog').on('click', function(){
+	//заполнены не все поля
+	if(	$('#dialogs-create-dialogID').val() === '' ||
+		$('#dialogs-create-dialogName').val() === '' ||
+		$('#dialogs-create-replicaEnterId').val() === ''
+	){
+		systemError('Заполенены не все поля! Не сохранено');
+		return
+	}
+	//нет реплик
+	if($('.replica').length === 0){
+		systemError('Добавьте хотя бы 1 реплику. Не сохранено');
+		return
+	}
+
+	let replicas = [],				//массив с репликами
+		checkRelicaEnter = false;	//проверка поля "реплика ввода"
+	for(let i = 0; i < $('.replica').length; i++){
+		let r = $('.replica').eq(i);
+
+		if(r.find('.dialogs-create-replicas-replicaID').val() == $('#dialogs-create-replicaEnterId').val()){
+			//реплика ввода найдена
+			checkRelicaEnter = true;
+		}
+
+		//проверка на ввод всех полей реплики
+		let id = r.find('.dialogs-create-replicas-replicaID').val(),
+			botName = r.find('.dialogs-create-replicas-replicaNameBot').val(),
+			botText = r.find('.dialogs-create-replicas-replicaText').val(),
+			reply = [];
+
+		//ответы игрока
+		for(let j = 0; j < r.find('.dialogs-create-replicas-userReplys').children().length; j++){
+			let repl = r.find('.dialogs-create-replicas-userReplys').children().eq(j),
+				textPlayer = repl.find('.dialogs-create-replicas-text').val(),
+				typeAction = repl.find('.dialogs-create-replicas-typeAction').val(),
+				paramsAction = repl.find('.dialogs-create-replicas-actionId').val();
+
+			if(	textPlayer === '' ||
+				typeAction != 'end' && paramsAction === ''
+			){
+				systemError('Введены не все данные в ответах игрока в реплике ' + id + '. Не сохранено');
+				return
+			}
+
+			reply.push({
+				textPlayer : textPlayer,
+				typeAction : typeAction,
+				paramsAction : paramsAction
+			});
+		}
+		//нет ответов игрока
+		if(!reply.length){
+			systemError('Добавьте хотя бы 1 ответ игрока в реплике ' + id + '. Не сохранено');
+			return
+		}
+		//проверка на введённые данные
+		if(
+			botName == '' ||
+			botText == ''
+		){
+			systemError('Введены не все данные в реплике ' + id + '. Не сохранено');
+			return
+		}
+		replicas.push(new replica(
+			id,
+			reply,
+			botName
+		));
+	}
+	//нет реплики ввода
+	if(!checkRelicaEnter){
+		systemError('Неправильно введено ID реплики ввода. Не сохранено');
+		return
+	}
+
+	//если всё норм
+	questData.dialogs.push(new dialog(
+		$('#dialogs-create-dialogID').val(),
+		$('#dialogs-create-dialogName').val(),
+		$('#dialogs-create-replicaEnterId').val(),
+		replicas
+	));
+
+	updateDialogsList();
+});
+
+/*
+	ОБНОВЛЕНИЕ ЛИСТОВ
+*/
+//диалоги
+function updateDialogsList(){
+	console.log(questData.dialogs);
+}

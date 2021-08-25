@@ -354,3 +354,76 @@ function bot(katze = new cat(), id = '#####', position = {x: 0, y: 0}, dialog = 
 		return JSON.stringify(this);
 	}
 }
+
+//REPLICA.SEROLAPY - объект реплики
+/*
+	>id - ID реплики;
+	Тип: string;
+	Возможные значения: формат ID;
+	По умолчанию: '#00000';
+	Заметки: (в каждом диалоге свои реплики; ID реплик могут повторяться в разных диалогах)
+
+	>reply - массив с ответами игрока;
+	Тип: array;
+	Возможные значения: {
+		textPlayer : 'Слова игрока',
+		typeAction : 'см. select',
+		paramsAction : 'ID или подобное для действия'
+	};
+	По умолчанию: [];
+	Заметки:
+
+	>botName - имя бота, который говорит слова;
+	Тип: string;
+	Возможные значения: любая строка;
+	По умолчанию: 'Системолап';
+	Заметки:
+
+	>botText - слова реплики;
+	Тип: string;
+	Возможные значения: любая строка;
+	По умолчанию: 'Если бот молчит, то лучше его не перебивать.';
+	Заметки:
+*/
+function replica(id = '#00000', reply = [], botName = 'Системолап', botText = 'Если бот молчит, то лучше его не перебивать.'){
+	this.format = '.replica.serolapy';
+
+	this.id = id;
+	this.reply = reply;
+	this.botName = botName;
+	this.botText = botText;
+}
+
+//DIALOG.SEROLAPY - диалоги
+/*
+	>id - id диалога;
+	Тип: string;
+	Возможные значения: формат id;
+	По умолчанию: '#00000';
+	Заметки:
+
+	>dialogName - краткое описание диалога, название;
+	Тип: string;
+	Возможные значения: строка;
+	По умолчанию: 'Диалог';
+	Заметки:
+
+	>replicaEnterId - реплика ввода;
+	Тип: string;
+	Возможные значения: форма id;
+	По умолчанию: '#00000';
+	Заметки:
+
+	>replicas - реплики диалога;
+	Тип: array;
+	Возможные значения: объекты replica();
+	По умолчанию: [];
+	Заметки:
+*/
+function dialog(id = '#00000', dialogName = 'Диалог', replicaEnterId = '#00000', replicas = []){
+	this.format = '.dialog.serolapy';
+
+	this.dialogName = dialogName;
+	this.replicaEnterId = replicaEnterId;
+	this.replicas = replicas;
+}
