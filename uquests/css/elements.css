@@ -179,3 +179,12 @@ input.btnAddRemove{
 	margin: 10px;
 	border-bottom: 5px dashed black;
 }
+/*поля ввода позиций ботов и переходов*/
+.field{
+	border-width: 1px;
+}
+	.field td{
+		padding: 0;
+		/*мин. значения*/
+		height: 67.56px;
+	}

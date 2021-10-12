@@ -1,7 +1,7 @@
 /*
 	SEROLAPY - объекты для проектов
 */
-// >Списки условий и действий< \\
+// >Списки условий< \\
 const conditionsList = [
 	'say',				//поговорил с ботом
 	'userInLocation',	//пришёл на локацию
@@ -248,14 +248,14 @@ function codeMoves(moves){
 	По умолчанию: {'x': 0, 'y': 0};
 	Заметки:
 
-	>bots - боты на локации
+	>entities - сущности на локации (боты и переходы)
 	Тип: array;
-	Возможные значения: массив с объектами CAT
+	Возможные значения: массив с объектами {type = 'bot/move', id = ИД бота, x = позиция икс, y = позиция игрек}
 	По умолчанию: [];
 	Заметки:
 
 */
-function field(name = 'Без названия', img = '/standart.png', playerSpawn = {'x': 0, 'y': 0}, bots = []){
+function field(name = 'Без названия', img = '/standart.png', playerSpawn = {'x': 0, 'y': 0}, entities = []){
 	this.format = '.field.serolapy';
 	this.img = img;
 	this.playerSpawn = {};
@@ -263,13 +263,13 @@ function field(name = 'Без названия', img = '/standart.png', playerSp
 		if(!playerSpawn.x){this.playerSpawn.x = 0;}
 		this.playerSpawn.y = playerSpawn.y;
 		if(!playerSpawn.y){this.playerSpawn.y = 0;}
-	this.bots = bots;
+	this.entities = entities;
 	//добавить проверку на точку появления кота относительно ботов
 	this.import = function(data){
 		if(data.format != this.format){return false}
 		this.img = data.img || this.img;
 		this.playerSpawn = data.playerSpawn || this.playerSpawn;
-		this.bots = data.bots || this.bots;
+		this.entities = data.entities || this.entities;
 
 		return true
 	}
@@ -290,7 +290,7 @@ function field(name = 'Без названия', img = '/standart.png', playerSp
 
 	>id - ID бота;
 	Тип: string;
-	Возможные значения: '#####';
+	Возможные значения: '#00000';
 	По умолчанию: '00000';
 	Заметки:
 
@@ -308,26 +308,20 @@ function field(name = 'Без названия', img = '/standart.png', playerSp
 	По умолчанию: {'x': 0, 'y': 0};
 	Заметки:
 
-	>dialog - ID диалога с ботом;
-	Тип: string;
-	Возможные значения: id диалога;
-	По умолчанию: '#####';
-	Заметки:
-
-	>conditions - массив с условиями и действиями бота;
-	Тип: array;
+	>condition - условие и действие бота;
+	Тип: object;
 	Возможные значения: см. заметки;
-	По умолчанию: [];
+	По умолчанию: {};
 	Заметки:
-		В массиве находятся след. объекты:
+		объект кондишн:
 		{
-			"condition": new condition(),
-			"condParams": {"параметр условия" : "его значение"},
-			"actions": new action(),
-			"actParams": {"параметр действия" : "его значение"}
+			condition: условие, см input[name='bots-create-conditionType'],
+			params : {
+				ключ параметра : его значение
+			}
 		}
 */
-function bot(katze = new cat(), id = '#####', position = {x: 0, y: 0}, dialog = '#####', conditions = []){
+function bot(katze = new cat(), id = '#00000', description = '', position = {x: 0, y: 0}, condition = {}){
 	this.format = '.bot.serolapy';
 
 	this.cat = katze;
@@ -337,15 +331,14 @@ function bot(katze = new cat(), id = '#####', position = {x: 0, y: 0}, dialog = 
 		if(!position.x){this.position.x = 0;}
 		this.position.y = position.y;
 		if(!position.y){this.position.y = 0;}
-	this.dialog = dialog;
 
+	this.description = description;
 	this.condition = condition;
 	this.import = function(data){
 		if(data.format != this.format){return false}
 		this.cat = data.cat || this.cat;
 		this.id = data.id || this.id;
 		this.position = data.position || this.position;
-		this.dialog = data.dialog || this.dialog;
 		this.condition = data.condition || this.condition;
 
 		return true
@@ -426,4 +419,34 @@ function dialog(id = '#00000', dialogName = 'Диалог', replicaEnterId = '#0
 	this.dialogName = dialogName;
 	this.replicaEnterId = replicaEnterId;
 	this.replicas = replicas;
+}
+
+//ACTION.SEROLAPY - действия
+/*
+	>id - id действия;
+	Тип: string;
+	Возможные значения: формат id;
+	По умолчанию: '#00000';
+	Заметки:
+
+	>type - тип действия;
+	Тип: string;
+	Возможные значения: см. select;
+	По умолчанию: '';
+	Заметки:
+
+	>params - параметры действия;
+	Тип: object;
+	Возможные значения: {
+		персональные ключи : 'значение'
+	};
+	По умолчанию: {};
+	Заметки:
+*/
+function action(id = '#00000', type = '', params = {}){
+	this.format = '.action.serolapy';
+
+	this.id = id;
+	this.type = type;
+	this.params = params;
 }

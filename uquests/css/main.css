@@ -96,7 +96,7 @@ header{
 		}
 
 body > nav{
-	height: calc(100% - 95px);	/*вся страница минус header*/
+	height: calc(100% - 95px - 64px - 10px);	/*вся страница минус header и footer и пропуск*/
 	width: var(--asideWidth);
 	text-align: center;
 	border-right: 1px solid var(--borders);
@@ -123,20 +123,11 @@ article nav{
 		padding: 5px 2.5px;
 	}
 
-aside{
-	height: calc(100% - 95px - 64px - 10px);	/*вся страница минус header и footer и пропуск*/
-	width: var(--asideWidth);
-	text-align: center;
-	border-left: 2px solid var(--borders);
-
-	top: 95px;
-	right: 0;
-}
 
 article{
-	left: calc(var(--asideWidth) + 10px);
+	right: 0;
 	top: 95px;
-	width: calc(100% - 2 * var(--asideWidth) - 20px);
+	width: calc(100% - var(--asideWidth) - 10px);
 	height: calc(100% - 95px);	/*вся страница минус header*/
 }
 	article section{
@@ -168,7 +159,7 @@ article{
 footer{
 	border-left: 1px solid var(--borders);
 	bottom: 0;
-	right: 0;
+	left: 0;
 	width: var(--asideWidth);
 	height: 64px;
 }

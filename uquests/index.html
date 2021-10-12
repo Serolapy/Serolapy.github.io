@@ -23,12 +23,8 @@
 			<a href="#" data-name="location">Локации</a>
 			<a href="#" data-name="action">Действия</a>
 			<a href="#" data-name="dialogs">Диалоги</a>
+			<a href="#" data-name="save">Сохранить</a>
 		</nav>
-		<aside>
-			<h2>Инструменты</h2>
-			<div data-id="quest" class="window page">Квест</div>
-			<div data-id="location" class="window page">Локации</div>
-		</aside>
 		<article>
 			<div data-id="quest" class="window page">
 				<h2>Квест</h2>
@@ -85,6 +81,7 @@
 					<h3>Создать локацию</h3>
 					<input type="button" id="location-create-new" value="Создать новую локацию">
 					<div id="location-create-createBlock">
+						<input type="button" id="location-create-save" value="Сохранить локацию">
 						<table>
 							<tbody>
 								<tr>
@@ -112,8 +109,166 @@
 								</tr>
 							</tbody>
 						</table>
+						<fieldset>
+							<legend>Позирование</legend>
+							<h4>Боты</h4>
+							Введите ID ботов в клетки, где будут расположены выбранные боты.
+							<table id="location-create-positionBots" class="field">
+								<tbody>
+									<tr>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+									</tr>
+									<tr>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+									</tr>
+									<tr>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+									</tr>
+									<tr>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+									</tr>
+									<tr>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+									</tr>
+									<tr>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+										<td><input type="text" class="input-id location-create-positionBots-botsId"></td>
+									</tr>
+								</tbody>
+							</table>
 
-						<input type="button" id="location-create-save" value="Сохранить локацию">
+							<h4>Переходы</h4>
+							Введите ID локаций в клетки, где будут расположены переходы в них.
+							<table id="location-create-positionMoves" class="field">
+								<tbody>
+									<tr>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+									</tr>
+									<tr>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+									</tr>
+									<tr>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+									</tr>
+									<tr>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+									</tr>
+									<tr>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+									</tr>
+									<tr>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+										<td><input type="text" class="input-id location-create-positionMoves-movesId"></td>
+									</tr>
+								</tbody>
+							</table>
+						</fieldset>
 					</div>
 				</div>
 				<div class="window page-location" data-id=list>
@@ -134,6 +289,7 @@
 					<h3>Создать бота</h3>
 					<input type="button" id="bots-create-new" value="Создать нового бота">
 					<div id="bots-create-createBlock">
+						<input type="button" id="bots-create-save" value="Сохранить бота">
 						<table>
 							<tbody>
 								<tr>
@@ -150,48 +306,17 @@
 									<td>Описание</td>
 									<td><input type="text" id="bots-create-description"></td>
 								</tr>
-
-								<tr>
-									<th rowspan="2">Появление бота</th>
-									<td>Позиция X</td>
-									<td><input type="number" min="1" max="10" id="bots-create-botX" placeholder="От 1 до 10"></td>
-								</tr>
-								<tr>
-									<td>Позиция Y</td>
-									<td><input type="number" min="1" max="6" id="bots-create-botY" placeholder="От 1 до 6"></td>
-								</tr>
-
-								<tr>
-									<th rowspan="2">Диалог с ботом</th>
-									<td>ID диалога</td>
-									<td><input type="text" placeholder="#00000" id="bots-create-idDialog" class="input-id"></td>
-								</tr>
-								<tr>
-									<td>Условия начала диалога</td>
-									<td>
-										<table>
-											<thead>
-												<tr>
-													<td>Условие</td>
-													<td>Значение</td>
-													<td><input type="button" value="Сохранить" class="condition-save"></td>
-												</tr>
-											</thead>
-											<tbody></tbody>
-										</table>
-									</td>
-								</tr>
 							</tbody>
 						</table>
 						<fieldset>
 							<legend>Логика</legend>
 							<ul id="bots-create-conditions">
 								<li>
-									<input type="radio" name="bots-create-conditionType" value="withOutItem" checked> Когда игрок поговорит с ботом выполнить <input type="text" class="condition-action input-id" placeholder="#00000">.
+									<input type="radio" name="bots-create-conditionType" value="withOutItem" checked> Когда игрок поговорит с ботом выполнить действие <input type="text" class="condition-action input-id" placeholder="#00000">.
 								</li>
 								<li>
-									<input type="radio" name="bots-create-conditionType" value="withItem"> Когда игрок поговорил с ботом и у игрока есть предмет с ID <input type="text" placeholder="ID предмета" class="condition-idItem"> выполнить <input type="text" class="condition-action input-id" placeholder="#00000">.
-									<br>Иначе выполнить <input type="text" class="condition-action input-id" placeholder="#00000">.
+									<input type="radio" name="bots-create-conditionType" value="withItem"> Когда игрок поговорил с ботом и у игрока есть предмет с ID <input type="text" placeholder="#00000" class="condition-idItem input-id"> выполнить действие <input type="text" class="condition-action input-id" placeholder="#00000">.
+									<br>Иначе выполнить действие <input type="text" class="condition-action input-id" placeholder="#00000">.
 								</li>
 							</ul>
 						</fieldset>
@@ -273,7 +398,7 @@
 					<h3>Создать диалог</h3>
 					<input type="button" id="dialogs-create-new" value="Создать новый диалог">
 					<div id="dialog-create-createBlock">
-						<input type="buton" value="Сохранить диалог" id="dialogs-create-saveDialog">
+						<input type="button" value="Сохранить диалог" id="dialogs-create-saveDialog">
 						<h4>Общие данные</h4>
 						<table>
 							<tbody>
@@ -301,6 +426,30 @@
 				</div>
 				<div class="window page-dialogs" data-id="list">
 					<h3>Список диалогов</h3>
+				</div>
+			</div>
+			<div data-id="save" class="window page">
+				<h3>Сохранение квеста</h3>
+				<fieldset>
+					<legend>Пояснение</legend>
+					Перед сохранением квеста проверьте правильность ввода всех данных.
+				</fieldset>
+				<input type="button" value="Сохранить квест" id="save-saveButton">
+				<div id="save-logDiv">
+					<h4>Проверка корректности введённых данных</h4>
+					<ul id="save-logList">
+						<li data-type="quest">Общие данные</li>
+						<li data-type="items">Предметы</li>
+						<li data-type="">Диалоги</li>
+						<li data-type="">Действия</li>
+						<li data-type="">Боты</li>
+						<li data-type="">Локации</li>
+					</ul>
+					<div id="save-logDiv-errorDiv">
+						<h3>Произошла ошибка!</h3>
+						<input type="text" id="save-logDiv-errorDiv">
+						<input type="button" value="Ок">
+					</div>
 				</div>
 			</div>
 			<div class="page windowDefault">
@@ -359,5 +508,6 @@
 		<script type="text/javascript" src="js/main.js"></script>
 		<script type="text/javascript" src="js/myObj.js"></script>
 		<script type="text/javascript" src="js/readData.js"></script>
+		<script type="text/javascript" src="js/saveData.js"></script>
 	</body>
 </html>

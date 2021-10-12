@@ -3,6 +3,11 @@
 /*
 	ОБЩИЕ НАСТРОЙКИ
 */
+//предупреждение закрытия окна
+window.onbeforeunload = function() {
+	return false;
+};
+
 //переключение по вкладкам
 $('nav a').on('click', function(e) {
 	e.preventDefault();
@@ -101,6 +106,8 @@ $('.import').on('click', function(e){
 					uploadError('Ошибка обработки ссылки.');
 					return
 				});
+				//закрыть окно
+				$('#uploadDiv-close').click();
 				break;
 
 			case 'text':
@@ -113,8 +120,10 @@ $('.import').on('click', function(e){
 					return
 				}
 				if(checkFormat(data, extension)){
-					input.val(data);
+					input.val(JSON.stringify(data));
 				}
+				//закрыть окно
+				$('#uploadDiv-close').click();
 				break;
 
 			case 'file':
@@ -143,6 +152,8 @@ $('.import').on('click', function(e){
 						uploadError('Неверный формат.')
 					}
 				}
+				//закрыть окно
+				$('#uploadDiv-close').click();
 				break;
 		}
 	});
@@ -160,4 +171,4 @@ $('#uploadDiv-close').on('click', function(){
 //открытие-закрытие fieldset
 $('legend').on('click', function(){
 	$(this).parent().toggleClass('hide');
-})
+});

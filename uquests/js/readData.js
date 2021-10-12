@@ -9,8 +9,8 @@ const actionsOption = `<option value="teleport">Переход на другую
 
 var questData = {
 	'data': {
-		'name': 'Очень крутое название',
-		'description': 'Очень крутое описание',
+		'name': '',
+		'description': '',
 		'authors': []
 	},
 	'locations': [],		//локации
@@ -56,6 +56,7 @@ $('#location-create-new').on('click', function(){
 $('#bots-create-new').on('click', function(){
 	$('#bots-create-new').css('display', 'none');
 	$('#bots-create-createBlock').css('display', 'block');
+	$('#bots-create-createBlock').find('input[type != "button"]').val('');
 
 	$('#bots-create-idBot').val(generationID(questData.bots));
 });
@@ -194,6 +195,8 @@ var dialogReplicasId = [];	//переменная, хранящая id репл�
 //открытие
 $('#dialogs-create-new').on('click', function(){
 	$(this).css('display', 'none');
+	$('#replicas').html('');
+	$('#dialog-create-createBlock').find('input[type != "button"]').val('');
 	$('#dialogs-create-dialogID').val(generationID(questData.dialogs));
 	$('#dialog-create-createBlock').css('display', 'block');
 });
@@ -336,6 +339,7 @@ $('#quest-saveAuthors').on('click', function(){
 		systemError('Сохранены не все авторы')
 	}
 });
+
 /*диалоги*/
 $('#dialogs-create-saveDialog').on('click', function(){
 	//заполнены не все поля
@@ -404,16 +408,18 @@ $('#dialogs-create-saveDialog').on('click', function(){
 		replicas.push(new replica(
 			id,
 			reply,
-			botName
+			botName,
+			botText
 		));
 	}
+
 	//нет реплики ввода
 	if(!checkRelicaEnter){
 		systemError('Неправильно введено ID реплики ввода. Не сохранено');
 		return
 	}
 
-	//если всё норм
+	//если всё норм -->
 	questData.dialogs.push(new dialog(
 		$('#dialogs-create-dialogID').val(),
 		$('#dialogs-create-dialogName').val(),
@@ -422,12 +428,230 @@ $('#dialogs-create-saveDialog').on('click', function(){
 	));
 
 	updateDialogsList();
+
+	//очистка переменной с ID реплику
+	dialogReplicasId = [];
+
+	//закрытие окна
+	$('#dialog-create-createBlock').css('display', 'none');
+	$('#dialogs-create-new').css('display', 'block');
 });
 
+/*действия*/
+//а их тут нет. Появятся в квестДата во время сборки квеста
+
+/*предметы*/
+//а их тут нет. Появятся в квестДата во время сборки квеста
+
+/*боты*/
+$('#bots-create-save').on('click', function(){
+	//поля регистрации переношу в переменные
+	let cat_vision = $('#bots-create-cat').val(),
+		id = $('#bots-create-idBot').val(),
+		description = $('#bots-create-description').val(),
+
+		conditionType = $('input[name="bots-create-conditionType"]:checked').val(),
+		conditionLi = $('#bots-create-conditions').find($(`input[value="${conditionType}"]`).parent()),	//это элемент li выбранного условия
+		params = {};
+	//проверка введённых данных
+	if(
+		cat_vision === '' ||
+		id === '' ||
+		description === '' ||
+		conditionType === ''
+	){
+		systemError('Введены не все данные! Не сохранено');
+		return
+	}
+	//параметры в логике
+	switch (conditionType) {
+		case 'withOutItem':
+			//без предмета
+			if(conditionLi.find('.condition-action:eq(0)').val() === ''){
+				systemError('Введены не все данные. Не сохранено');
+				return
+			}
+			params = {
+				'action' : conditionLi.find('.condition-action:eq(0)').val()
+			}
+			break;
+		case 'withItem':
+			if(
+				conditionLi.find('.condition-idItem:eq(0)').val() === '' ||
+				conditionLi.find('.condition-action:eq(0)').val() === '' ||
+				conditionLi.find('.condition-action:eq(1)').val() === ''
+			){
+				systemError('Введены не все данные. Не сохранено');
+				return
+			}
+			//если есть предмет с id..
+			params['itemId'] = conditionLi.find('.condition-idItem:eq(0)').val();
+			//выполнить действие..
+			params['action'] = conditionLi.find('.condition-action:eq(0)').val();
+			//иначе выполнить..
+			params['actionElse'] = conditionLi.find('.condition-action:eq(1)').val();
+		default:
+			systemError('Я горжусь тобой, ученик. - Транзакция\nА теперь расщепись на биты, жалкая трёхмерка! - Транзакция');
+			return
+	}
+
+	//запись в квест дата
+	questData.bots.push(new bot(
+		cat_vision,
+		id,
+		description,
+		{x: 0, y: 0},
+		{condition: conditionType, params: params}
+	));
+
+	//закрытие окна
+	$('#bots-create-new').css('display', 'block');
+	$('#bots-create-createBlock').css('display', 'none');
+
+	//обновление листа
+	updateBotsList();
+});
+
+/*локации*/
+$('#location-create-save').on('click', function(){
+	let name = $('#location-create-nameLocation').val(),
+		id = $('#location-create-idLocation').val(),
+		background = $('#location-create-backgroundLocation').val(),
+		x = parseInt($('#location-create-playerX').val()),
+		y = parseInt($('#location-create-playerY').val()),
+		entities = [];
+
+	if(
+		name === '' ||
+		id === '' ||
+		background === '' ||
+		x === '' ||
+		y === ''
+	){
+		systemError('Заполенены не все поля! Не сохранено');
+		return
+	}
+	//координата появления игрока
+	if(!(x >= 1 && x <= 10)){
+		systemError('Неверно указана координата x. Не сохранено');
+		return
+	} else if (!(y >= 1 && y <= 6)) {
+		systemError('Неверно указана координата y. Не сохранено');
+		return
+	}
+	x--; y--;
+	let playerSpawn = {
+		'x' : x,
+		'y' : y
+	};
+
+	//bots
+	let botsField = $('#location-create-positionBots > tbody');
+	for(let i = 0; i < 6; i++){
+		//i - строка
+		for(let j = 0; j < 10; j++){
+			//j - столбец
+			let inputId = botsField.find($(`tr`)).eq(i).find($(`td`)).eq(j).find($(`input`)).val();
+			if(inputId !== ''){
+				//подходит нам - проверяем, не занята ли клетка..
+				//..сущностью
+				for(let k = 0; k < entities.length; k++){
+					let entitie = entities[k];	//текущая сущность
+					if(entitie.x == j && entitie.y == i){
+						//эта клетка уже занята другой сущностью
+						i++; j++;
+						systemError(`Ошибка расстановки ботов. Клетка с координатами (${j}, ${i}) уже занята. Не сохранено`);
+						return
+					}
+				}
+				//..игроком
+				if(j == x && i == y){
+					//эта клетка уже занята игроком
+					i++; j++;
+					systemError(`Ошибка расстановки ботов. Клетка с координатами (${j}, ${i}) уже занята игроком. Не сохранено`);
+					return
+				}
+				//если норм всё
+				entities.push(
+					{
+						'type' : 'bot',
+						'id' : inputId,
+						'x' : j,
+						'y' : i
+					}
+				);
+			}
+		}
+	}
+
+	//moves
+	let movesField = $('#location-create-positionMoves > tbody');
+	for(let i = 0; i < 6; i++){
+		//i - строка
+		for(let j = 0; j < 10; j++){
+			//j - столбец
+			let inputId = movesField.find($(`tr`)).eq(i).find($(`td`)).eq(j).find($(`input`)).val();
+			if(inputId !== ''){
+				//подходит нам - проверяем, не занята ли клетка..
+				//..сущностью
+				for(let k = 0; k < entities.length; k++){
+					let entitie = entities[k];	//текущая сущность
+					if(entitie.x == j && entitie.y == i){
+						//эта клетка уже занята другой сущностью
+						i++; j++;
+						systemError(`Ошибка расстановки переходов. Клетка с координатами (${j}, ${i}) уже занята. Не сохранено`);
+						return
+					}
+				}
+				//..игроком
+				if(j == x && i == y){
+					//эта клетка уже занята игроком
+					i++; j++;
+					systemError(`Ошибка расстановки переходов. Клетка с координатами (${j}, ${i}) уже занята игроком. Не сохранено`);
+					return
+				}
+				//если норм всё
+				entities.push(
+					{
+						'type' : 'move',
+						'id' : inputId,
+						'x' : j,
+						'y' : i
+					}
+				);
+			}
+		}
+	}
+
+	//сохранение
+	questData.locations.push(
+		new field(
+			name,
+			background,
+			playerSpawn,
+			entities
+		)
+	);
+
+	//закрытие окна
+	$('#location-create-createBlock').css('display', 'none');
+	$('#location-create-new').css('display', 'block');
+
+	//обновление листа
+	updateLocationsList();
+});
 /*
-	ОБНОВЛЕНИЕ ЛИСТОВ
+	ОБНОВЛЕНИЕ ЛИСТОВ НА ЭКРАНЕ
 */
 //диалоги
 function updateDialogsList(){
 	console.log(questData.dialogs);
+}
+//боты
+function updateBotsList(){
+	console.log(questData.bots);
+}
+//локации
+function updateLocationsList(){
+	console.log(questData.locations);
 }
