@@ -19,6 +19,7 @@
 		bottom: 20px;
 		--glassesQuizWidget_width: 400px; 	/*ширина виджета - не меньше 318px - стандарт 375px*/
 		--glassesQuizWidget_height: 600px; 	/*высота виджета - стандарт 638px*/
+		position: initial !important;
 	}
 </style>
 <link rel="stylesheet" href="main.css">
@@ -48,18 +49,21 @@
 		</aside>
 		<article>	<!--Главная часть-->
 			<h1>Виджет выбора очков</h1>
-			Ну имеем что-то типа такого.
-			Константы тут: <b>
-			right: 20px;
-			bottom: 20px;
-			--glassesQuizWidget_width: 400px;
-			--glassesQuizWidget_height: 600px;</b>
-			
+			<div id="glasses-quiz-widget" data-source="https://example.com/"></div>
+      			<script type="text/babel" src="script.js"></script>
+			Ну имеем что-то типа такого.<br>
+			Константы тут: <b><br>
+			right: 20px;<br>
+			bottom: 20px;<br>
+			--glassesQuizWidget_width: 400px;<br>
+			--glassesQuizWidget_height: 600px;</b><br>
+			Я захотел, чтобы тут виджет не был фиксирован на экране, потому указал в style: <br>
+			<b>position: initial !important;</b>
+			В данной версии скрипта есть небльшие огрехи, в изначально указанном репозитории их нет.
 		</article>
 		<footer>
 			(c)<a href="https://t.me/serolapy">Serolapy</a>, 2020-2022
 		</footer>
-      <div id="glasses-quiz-widget" data-source="https://example.com/"></div>
-      <script type="text/babel" src="script.js"></script>
+     
 	</body>
 </html>
