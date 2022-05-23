@@ -1,6 +1,11 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+	<!-- REACT -->
+	<script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+	<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.js"></script>
+
 	<meta charset="UTF-8">
 	<script src="/js/jQuery.js"></script>
 	<title>Serolapy</title>
@@ -10,10 +15,10 @@
   
   <style>
 	    #glasses-quiz-widget{
-		top: 0;
-		left: 0;
-		--glassesQuizWidget_width: 375px; 	/*ширина виджета - не меньше 318px - стандарт 375px*/
-		--glassesQuizWidget_height: 638px; 	/*высота виджета - стандарт 638px*/
+		right: 20px;
+		bottom: 20px;
+		--glassesQuizWidget_width: 400px; 	/*ширина виджета - не меньше 318px - стандарт 375px*/
+		--glassesQuizWidget_height: 600px; 	/*высота виджета - стандарт 638px*/
 	}
 </style>
 <link rel="stylesheet" href="main.css">
@@ -43,6 +48,12 @@
 		</aside>
 		<article>	<!--Главная часть-->
 			<h1>Виджет выбора очков</h1>
+			Ну имеем что-то типа такого.
+			Константы тут: <b>
+			right: 20px;
+			bottom: 20px;
+			--glassesQuizWidget_width: 400px;
+			--glassesQuizWidget_height: 600px;</b>
 			
 		</article>
 		<footer>
