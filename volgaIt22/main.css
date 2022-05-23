@@ -281,6 +281,8 @@
 	font-size: 20px;
 	line-height: 30px;
 	color: #2196F3;
+	border: none;
+	background: none;
 
 	position: absolute;
 	top: calc(35.31% + 14px);
